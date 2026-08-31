@@ -42,6 +42,55 @@ Deng-Ping Fan, Ge-Peng Ji, Tao Zhou, Geng Chen, Huazhu Fu, Jianbing Shen, and
 \newblock In {\em Medical Image Computing and Computer-Assisted Intervention --
   MICCAI 2020}, pages 263--273. Springer, 2020.
 
+\bibitem{ctnet}
+Bin Xiao, Jinwu Hu, Weisheng Li, Chi-Man Pun, and Xiuli Bi.
+\newblock {CTNet}: Contrastive transformer network for polyp segmentation.
+\newblock {\em IEEE Transactions on Cybernetics}, 54:5040--5053, 2024.
+
+\bibitem{cifformer}
+Cunlu Xu, Long Lin, Bin Wang, and Jun Liu.
+\newblock {CIFFormer}: A contextual information flow guided transformer for
+  colorectal polyp segmentation.
+\newblock {\em Neurocomputing}, 644:130413, 2025.
+
+\bibitem{pfprnet}
+Jinghui Chu, Wangtao Liu, Qi~Tian, and Wei Lu.
+\newblock {PFPRNet}: A phase-wise feature pyramid with retention network for
+  polyp segmentation.
+\newblock {\em IEEE Journal of Biomedical and Health Informatics},
+  29:1137--1150, 2025.
+
+\bibitem{mfnet}
+Shuangyuan Wang, Shengmao Lin, Fujia Sun, and Xiaobo Li.
+\newblock Multi-feature fusion for accurate polyp segmentation using pyramid
+  visual transformers.
+\newblock {\em Expert Systems with Applications}, 280:127558, 2025.
+
+\bibitem{emcad}
+Md~Mostafijur Rahman, Mustafa Munir, and Radu Marculescu.
+\newblock {EMCAD}: Efficient multi-scale convolutional attention decoding for
+  medical image segmentation.
+\newblock In {\em Proceedings of the IEEE/CVF Conference on Computer Vision and
+  Pattern Recognition}, pages 11769--11779, 2024.
+
+\bibitem{senet}
+Jie Hu, Li~Shen, and Gang Sun.
+\newblock Squeeze-and-excitation networks.
+\newblock In {\em Proceedings of the IEEE/CVF Conference on Computer Vision and
+  Pattern Recognition}, pages 7132--7141, 2018.
+
+\bibitem{sknet}
+Xiang Li, Wenhai Wang, Xiaolin Hu, and Jian Yang.
+\newblock Selective kernel networks.
+\newblock In {\em Proceedings of the IEEE/CVF Conference on Computer Vision and
+  Pattern Recognition}, pages 510--519, 2019.
+
+\bibitem{fcanet}
+Zequn Qin, Pengyi Zhang, Fei Wu, and Xi~Li.
+\newblock {FcaNet}: Frequency channel attention networks.
+\newblock In {\em Proceedings of the IEEE/CVF International Conference on
+  Computer Vision}, pages 763--772, 2021.
+
 \bibitem{polypmamba}
 Xingguo Zhu, Wei Wang, Chen Zhang, and Haifeng Wang.
 \newblock {Polyp-Mamba}: A hybrid multi-frequency perception gated selection
@@ -61,6 +110,17 @@ Xing-Liang Pan, Ju-Rong Ding, Xia Li, Shuo Liu, Jie Wang, Bo~Hua, Guo-Zhi Tang,
 \newblock {MSBP-Net}: A multi-scale boundary prediction network for automated
   polyp segmentation.
 \newblock {\em Pattern Recognition}, 170:112101, 2026.
+
+\bibitem{mein}
+Xiaolu Kang, Zhuoqi Ma, Kang Liu, Yunan Li, and Qiguang Miao.
+\newblock Modeling multi-scale uncertainty with evidence integration for
+  reliable polyp segmentation.
+\newblock {\em Neural Networks}, 189:107553, 2025.
+
+\bibitem{pranetv2}
+Bo-Cheng Hu, Ge-Peng Ji, Dian Shao, and Deng-Ping Fan.
+\newblock {PraNet-V2}: Dual-supervised reverse attention for medical image
+  segmentation, 2025.
 
 \bibitem{kvasirseg}
 Debesh Jha, Pia~H. Smedsrud, Michael~A. Riegler, Pål Halvorsen, Thomas
@@ -113,11 +173,6 @@ Federico Perazzi, Philipp Krähenbühl, Yael Pritch, and Alexander Hornung.
 \newblock In {\em Proceedings of the IEEE Conference on Computer Vision and
   Pattern Recognition}, pages 733--740, 2012.
 
-\bibitem{ctnet}
-Bin Xiao, Jinwu Hu, Weisheng Li, Chi-Man Pun, and Xiuli Bi.
-\newblock {CTNet}: Contrastive transformer network for polyp segmentation.
-\newblock {\em IEEE Transactions on Cybernetics}, 54:5040--5053, 2024.
-
 \bibitem{cafenet}
 {CAFÉ-Net}, 2024.
 \newblock Incomplete manuscript citation; authors and venue require manual
@@ -127,36 +182,6 @@ Bin Xiao, Jinwu Hu, Weisheng Li, Chi-Man Pun, and Xiuli Bi.
 {Polyp-LVT}, 2024.
 \newblock Incomplete manuscript citation; authors and venue require manual
   verification.
-
-\bibitem{mein}
-Xiaolu Kang, Zhuoqi Ma, Kang Liu, Yunan Li, and Qiguang Miao.
-\newblock Modeling multi-scale uncertainty with evidence integration for
-  reliable polyp segmentation.
-\newblock {\em Neural Networks}, 189:107553, 2025.
-
-\bibitem{mfnet}
-Shuangyuan Wang, Shengmao Lin, Fujia Sun, and Xiaobo Li.
-\newblock Multi-feature fusion for accurate polyp segmentation using pyramid
-  visual transformers.
-\newblock {\em Expert Systems with Applications}, 280:127558, 2025.
-
-\bibitem{cifformer}
-Cunlu Xu, Long Lin, Bin Wang, and Jun Liu.
-\newblock {CIFFormer}: A contextual information flow guided transformer for
-  colorectal polyp segmentation.
-\newblock {\em Neurocomputing}, 644:130413, 2025.
-
-\bibitem{pfprnet}
-Jinghui Chu, Wangtao Liu, Qi~Tian, and Wei Lu.
-\newblock {PFPRNet}: A phase-wise feature pyramid with retention network for
-  polyp segmentation.
-\newblock {\em IEEE Journal of Biomedical and Health Informatics},
-  29:1137--1150, 2025.
-
-\bibitem{pranetv2}
-Bo-Cheng Hu, Ge-Peng Ji, Dian Shao, and Deng-Ping Fan.
-\newblock {PraNet-V2}: Dual-supervised reverse attention for medical image
-  segmentation, 2025.
 
 \bibitem{mlbnet}
 {MLB-Net}, 2026.
