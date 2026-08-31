@@ -1,133 +1,124 @@
 \section{Experiments}\label{experiments}
 
-\subsection{\texorpdfstring{Dataset: }{Dataset: }}\label{dataset}
+\subsection{Datasets and Data Splits}\label{dataset}
 
-To verify the effectiveness of the models, we adopted five public
-datasets (including Kvasir-SEG \cite{kvasirseg}, CVC-ClinicDB \cite{cvcclinicdb},
-ETIS \cite{etis}, CVC-ColonDB \cite{cvccolondb} and CVC-300 \cite{cvc300})
-commonly used in existing polyp segmentation studies. These images are
-acquired from colonoscopy video sequences, and all of them contain the
-corresponding ground truth. \RL{}For fair comparison, according to table
-1, we split the datasets as in PraNet \cite{pranet}. The training set consists
-of 900 images from the Kvasir-SEG and 550 images from the CVC-ClinicDB.
-The remaining samples in the Kvasir-SEG and the CVC-ClinicDB, and the
-other three datasets are used as five inde pendent test sets. In this
-study, we randomly selected 145 images (10 \% of the training set) from
-the training set as the validation set, serving as the criterion for
-saving the model during training.
+We used Kvasir-SEG \cite{kvasirseg}, CVC-ClinicDB \cite{cvcclinicdb},
+CVC-300 \cite{cvc300}, CVC-ColonDB \cite{cvccolondb}, and
+ETIS-LaribPolypDB \cite{etis}. Kvasir-SEG and CVC-ClinicDB were split
+independently with a 90:10 ratio using shuffled sampling with random seed
+42. Their training subsets were merged, giving 900 Kvasir-SEG and 550
+CVC-ClinicDB images for training. The corresponding held-out subsets of
+100 and 62 images were merged for validation and were also evaluated
+separately for reporting. CVC-300, CVC-ColonDB, and ETIS-LaribPolypDB
+were used only for external evaluation; none influenced training or
+checkpoint selection.
 
-Table 1 Number, resolution, and trainin/test split of the five public
-polyp segmentation datasets. Resized to 352*352.
+\begin{table}[htbp]
+\centering
+\caption{Dataset use in the final experiment.}
+\label{tab:dataset-splits}
+\begin{tabular}{lrrrr}
+\toprule
+Dataset & Total & Train & Validation & External test \\
+\midrule
+Kvasir-SEG & 1000 & 900 & 100 & -- \\
+CVC-ClinicDB & 612 & 550 & 62 & -- \\
+CVC-300 & 60 & -- & -- & 60 \\
+CVC-ColonDB & 380 & -- & -- & 380 \\
+ETIS-LaribPolypDB & 196 & -- & -- & 196 \\
+\bottomrule
+\end{tabular}
+\end{table}
 
-\begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2406}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2202}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1972}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1677}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1744}}@{}}
-\toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\raggedright
-Dataset
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Number
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Train
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Test
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Resolution
-\end{minipage} \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-Kvasir-Seg & 1000 & 900 & 500 & 500*574 \\
-CVC-ClinicDB & 612 & 550 & 62 & 288*384 \\
-CVC-ColonDB & 380 & - & 380 & 500*570 \\
-ETIS-LaribPolypDB & 196 & - & 196 & 966*1225 \\
-CVC-300 & 60 & - & 60 & 500*570 \\
-\end{longtable}
+Images were converted to RGB, resized to $352\times352$ with bilinear
+interpolation, and scaled to $[0,1]$. Masks were resized with
+nearest-neighbor interpolation and binarized. The encoder applied
+ImageNet normalization with mean $(0.485,0.456,0.406)$ and standard
+deviation $(0.229,0.224,0.225)$.
 
-\subsection{Loss function}\label{loss-function}
+\subsection{Implementation Details}\label{implementation-details}
 
-\subsection{\texorpdfstring{Evaluation metrics
-}{Evaluation metrics }}\label{evaluation-metrics}
+The final seed-42 experiment was implemented in PyTorch 2.5.1+cu124 and
+trained for 200 epochs with batch size 24. AdamW with betas
+$(0.9,0.999)$ used separate parameter groups. The maximum learning rates
+were $3.0\times10^{-4}$ for the decoder and $4.5\times10^{-4}$ for the
+final refinement head. Encoder Stages 4, 3, 2, and 1 plus the stem used
+$3.0\times10^{-5}$, $2.4\times10^{-5}$, $1.92\times10^{-5}$, and
+$1.536\times10^{-5}$, respectively, corresponding to layer-wise decay
+0.8. Weight decay was $1.0\times10^{-4}$ for the decoder,
+$5.0\times10^{-2}$ for the encoder, and $1.0\times10^{-2}$ for the
+refinement head.
 
-To objectively evaluate model performance, two commonly used
-segmentation metrics are employed: the mean Intersection over Union
-(mIoU) and mean Dice coefficient (mDice). In addition, in order to
-evaluate the performance of the model more comprehensively, this paper
-also adds four evaluation indicators commonly used in the field of
-salient object detection, namely S-measure (S$\alpha$) \cite{smeasure},
-F-measure{[}{]}, E-measure () \cite{emeasure} and mean absolute error (MAE)
-\cite{saliencyfilters}. The detailed definitions and formulas for these metrics
-are as follows: mIoU and mDice are commonly used to measure the
-similarity between the prediction map and the real map. They
-quantitatively analyze the spatial overlap between the prediction map
-and the real map. The higher the value, the better the segmentation
-accuracy of the model. Among them, the average means that the IoU
-coefficient and Dice co efficient of each category are averaged, but
-there is only one category of polyps here. Thus, their calculation
-formulas are as follows:
+Learning rates were warmed up linearly for five epochs from 0.1 to 1.0
+of each group maximum and then cosine-annealed over the remaining epochs
+to $1.0\times10^{-6}$. Training used AMP FP16, global gradient clipping
+at norm 1.0, and an exponential moving average (EMA) with decay 0.995.
+All parameters were trainable from the first epoch; no staged freezing
+or decoder-only warmup was used. The encoder was initialized from
+\texttt{convnext\_tiny\_22k\_1k\_384.pth}, logged as ImageNet pretrained
+weights. Deep supervision and frequency augmentation were disabled, and
+sampling was uniform. Early stopping was configured with patience 30
+from the start of training but did not trigger; training completed at the
+maximum epoch. The final model has 30,057,415 trainable parameters.
 
-\[mIoU = \ \frac{TP}{TP + FN + FP}\]
+Training augmentation applied horizontal and vertical flips independently
+with probability 0.5, rotation in $[-15^{\circ},15^{\circ}]$ with
+probability 0.5, and a random crop ratio in $[0.7,1.0]$ followed by
+resizing with probability 0.5. Joint brightness and contrast factors in
+$[0.85,1.15]$ and saturation in $[0.9,1.1]$ were applied with probability
+0.5. A $3\times3$ Gaussian blur and additive Gaussian noise with standard
+deviation 0.015 were applied with probabilities 0.15 and 0.25,
+respectively.
 
-\[mDice = \ \frac{2*TP}{2*TP + FP + FN}\]
+\subsection{Loss Function}\label{loss-function}
 
-Where TP (True Positive) indicates the real sample, that is, the
-forecast is a positive sample, and the actual sample is also a positive
-sample; FP (False Positive) indicates the false positive sample, that
-is, the prediction is a positive sample, and the actual sample is a
-negative sample; FN (False Negative) indicates the false negative
-sample, that is, the prediction is a negative sample, and the actual
-sample is a positive sample.
+The final objective was
+\begin{equation}
+\mathcal{L}=0.55\mathcal{L}_{\mathrm{Dice}}
++0.25\mathcal{L}_{\mathrm{BCE}}
++0.20\mathcal{L}_{\mathrm{boundary}}.
+\end{equation}
+The soft Dice term used a smoothing constant of 1.0. The BCE-with-logits
+term used targets smoothed as
+$y_{\mathrm{BCE}}=0.98y+0.01$, corresponding to label smoothing 0.02.
+The boundary-aware term used $\kappa=5$. The available focal-Tversky term
+had weight zero and therefore did not contribute to training.
 
-S-measure, \(S_{\alpha}\), is used to measure the structural similarity
-between region perception (\(S_{r}\)) and object perception (\(S_{o}\))
-between the predicted graph and the real graph. It comprehensively
-considers the similarity of spatial structure and regional contour, and
-is a comprehensive evaluation of segmentation performance. Thus, this
-calculation formulas are as follows:
+\subsection{Evaluation Metrics}\label{evaluation-metrics}
 
-\[S_{\alpha} = \ \alpha*\ S_{\alpha} + (1 - \alpha)*\ S_{r}\]
+We report mean Dice (mDice), mean intersection over union (mIoU),
+S-measure $S_{\alpha}$ \cite{smeasure}, weighted F-measure
+$F_{\beta}^{w}$, mean and maximum E-measure ($mE_{\phi}$ and
+$\max E_{\phi}$) \cite{emeasure}, and mean absolute error (MAE)
+\cite{saliencyfilters}. For each image, the thresholded prediction $P$
+and binary ground truth $G$ were flattened and evaluated as
+\begin{equation}
+\operatorname{Dice}(P,G)=
+\frac{2|P\cap G|+10^{-6}}{|P|+|G|+10^{-6}},
+\qquad
+\operatorname{IoU}(P,G)=
+\frac{|P\cap G|+10^{-6}}{|P|+|G|-|P\cap G|+10^{-6}}.
+\end{equation}
+The reported mDice and mIoU are arithmetic means of these per-image
+scores, rather than global pixel aggregates. S-measure, weighted
+F-measure, the E-measure curve, and MAE were computed per image with
+\texttt{py\_sod\_metrics} from 8-bit probability maps and binary ground
+truth. The mean and maximum of the resulting E-measure curve were
+reported.
 
-Where $\alpha$ is the weight parameter, and the default setting is 0.5.
+\subsection{Model Selection and Evaluation Protocol}
+\label{model-selection}
 
-F-measure, \(F_{\beta}\), comprehensively considers the importance of
-precision and recall rate, and gives corresponding weights to precision
-and recall rate according to specific standards. It provides a balanced
-evaluation index for the evaluation model. Thus, \(F_{\beta}\)
-calculation formula is as follows:
-
-\[F_{\beta} = \left( 1 + \beta^{2} \right)\frac{P*R}{\beta^{2}P + R}\]
-
-Where P and Rare precision and recall respectively; \(\beta^{2}\)
-parameter, which is set to 0.3.
-
-E-measure,\(E_{\varphi}\) , is used to quantified alignment between
-predicted and ground truth masks at image and pixel levels. Its
-calculation formula is as follows:
-
-\[E_{\varphi} = \ \frac{1}{W*H}\sum_{i = 1}^{W}{\sum_{j = 1}^{H}{\phi_{FM}(i,j),\ \ }}\]
-
-Where \(\phi_{FM}\) is the enhanced alignment matrix \cite{emeasure}.
-
-MAE is used to compute the mean absolute error between predicted and
-ground truth masks. The calculation formula is as follows:
-
-\[MAE = \ \frac{1}{W*H}\sum_{i = 1}^{W}{\sum_{j = 1}^{H}{\left| T(i,j) - G(i,j) \right|,\ \ }}\]
-
-Where T and G denote the predicted and ground truth masks, respectively.
-
-\subsection{Implementation details}\label{implementation-details}
-
-In this work, the proposed ConvNeXt-UNet was trained on a GeForce RTX
-3090 GPU with 24 GB memory and a pytorch framework. the AdamW optimizer
-was employed with a learning rate of 0.0001 and weight decay of 0.0004,
-and the batch size was set to 16. All samples were resized to 352 ×352
-before training. An early stopping mechanism was used to supervise the
-training. Experiments indicated that the model converged to its optimal
-state at approximately the 120th epoch.
+At each epoch, EMA weights were evaluated on the merged held-out
+Kvasir-SEG and CVC-ClinicDB validation set. Probabilities were obtained
+with one sigmoid operation and binarized using the strict rule
+$p>0.45$. A checkpoint was saved only when validation IoU was strictly
+greater than the previous best. The selected checkpoint was epoch 184,
+with merged-validation IoU 0.8780511022 and Dice 0.9348011783. Final
+evaluation loaded this best checkpoint strictly and evaluated the two
+held-out subsets separately, followed by the full CVC-300,
+CVC-ColonDB, and ETIS-LaribPolypDB sets. Test-time augmentation was
+disabled, and external test results did not affect checkpoint selection.
 
 \subsection{Comparative study}\label{comparative-study}
 
@@ -534,177 +525,3 @@ DVFIP-Net~\cite{dvfipnet} & 2026 & 0.900 & 0.833 & ? & ? & ? & ? & ? \\
 Ours & - & \textbf{0.916} & \textbf{0.845} & 0.848 & 0.939 & 0.951 &
 0.969 & 0.007 \\
 \end{longtable}
-
-\subsection{Ablation Studies}\label{ablation-studies}
-
-To systematically evaluate the individual contributions of the proposed
-modules to the overall segmentation performance, a comprehensive
-ablation study was conducted. We define our baseline model as the
-ConvNeXt-Tiny encoder paired with a lightweight decoder and the final
-prediction head, completely omitting the Multi-Scale Context (MSC)
-module, BSEI, the Detail Branch (DB), Gated Detail Fusion (GDF), and
-Deep Supervision (DS). By incrementally adding or systematically
-removing these components, we isolated their specific impacts on the
-network. The quantitative results of these architectural modifications
-are summarized in Table XX.
-
-\subsubsection{Effectiveness of MSC}\label{effectiveness-of-msc}
-
-The Multi-Scale Context (MSC) module is designed to capture and
-aggregate multi-scale contextual information, which is critical for
-handling significant variations in target object sizes. To assess its
-impact, we compared the baseline model with a configuration integrating
-the MSC module. As shown in Table XX, the addition of the MSC module
-effectively enhanced the network\textquotesingle s spatial adaptability,
-yielding an improvement of XX\% in mDice and XX\% in mIoU on the XX
-dataset. This confirms the module\textquotesingle s capability to enrich
-feature representations prior to the decoding stage.
-
-\subsubsection{Effectiveness of BSEI}\label{effectiveness-of-bsei}
-
-The BSEI module is introduced to {[}describe specific function, e.g.,
-enhance boundary spatial features / integrate edge-level information{]}
-during the feature extraction process. In our ablation experiments,
-removing the BSEI module from the combined network led to a noticeable
-degradation in segmentation accuracy, particularly in {[}describe
-specific area, e.g., complex boundary regions{]}. Specifically, the
-performance metrics decreased by XX\% in mDice and XX\% in mIoU (Table
-XX). This demonstrates that the BSEI module successfully contributes to
-{[}describe specific benefit, e.g., refining target boundaries and
-reducing false positives{]}.
-
-\subsubsection{Effectiveness of DB}\label{effectiveness-of-db}
-
-The Detail Branch (DB) was specifically developed to preserve
-high-resolution spatial details that are typically lost as features pass
-through the deeper, heavily down-sampled stages of the encoder.
-Discarding the DB in the ablation experiments resulted in overly
-smoothed predictions and a loss of fine-grained structural delineation.
-Table XX reveals that incorporating the DB leads to an XX\% gain in
-mDice on the XX dataset, validating its necessity for extracting and
-maintaining high-fidelity spatial details throughout the network.
-
-\subsubsection{Effectiveness of GDF}\label{effectiveness-of-gdf}
-
-The Gated Detail Fusion (GDF) module acts as a selective mechanism to
-optimally combine the high-resolution spatial features from the DB with
-the high-level semantic features from the main network. To isolate the
-contribution of this gating mechanism, we replaced the GDF module with a
-standard feature fusion strategy, utilizing simple concatenation and
-element-wise addition. The results in Table XX indicate that the GDF
-module significantly outperforms simple fusion, achieving an XX\%
-improvement in mIoU. This highlights the GDF\textquotesingle s
-effectiveness in filtering out background noise and dynamically
-emphasizing salient target features during the fusion process.
-
-\subsubsection{Effectiveness of DS}\label{effectiveness-of-ds}
-
-Finally, Deep Supervision (DS) is employed during the training phase to
-facilitate direct gradient flow to intermediate layers, thereby
-alleviating the vanishing gradient problem and optimizing multi-level
-feature learning. When DS was omitted from the complete proposed
-architecture (evaluating only the final prediction head loss), the model
-exhibited slower convergence and a drop in final segmentation accuracy.
-As evidenced in Table XX, the inclusion of DS improved the mDice by
-XX\%, ensuring more robust feature optimization and contributing to the
-superior generalization of the proposed framework.
-
-\textbf{Table X. Ablation study of the proposed architectural components
-on the five test sets.}
-
-\begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1369}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1454}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1330}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1207}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1200}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1125}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1194}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1121}}@{}}
-\toprule\noalign{}
-\multirow{4}{=}{\begin{minipage}[b]{\linewidth}\raggedright
-Dataset
-\end{minipage}} &
-\multirow{2}{=}{\begin{minipage}[b]{\linewidth}\raggedright
-Metrics
-\end{minipage}} &
-\multicolumn{6}{>{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.7177} + 10\tabcolsep}@{}}{%
-\begin{minipage}[b]{\linewidth}\raggedright
-Model
-\end{minipage}} \\
-& & \begin{minipage}[b]{\linewidth}\raggedright
-Baseline
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-+MSC
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-+BSEI
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-+DB
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-+GDF
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-+DS
-\end{minipage} \\
-& \begin{minipage}[b]{\linewidth}\raggedright
-Params(M)
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-\end{minipage} \\
-& \begin{minipage}[b]{\linewidth}\raggedright
-GFlops(G)
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-\end{minipage} \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-\multirow{7}{=}{Kvasir-Seg} & mDice \(\uparrow\) & & & & & & \\
-& mIoU \(\uparrow\) & & & & & & \\
-& \(\mathbf{F}_{\mathbf{\beta}}^{\mathbf{w}} \uparrow\) & & & & & & \\
-& \(\mathbf{S}_{\mathbf{\alpha}}\) \(\uparrow\) & & & & & & \\
-& \(\mathbf{m}\mathbf{E}_{\mathbf{\xi}}\) \(\uparrow\) & & & & & & \\
-& \(\mathbf{\max}\mathbf{E}_{\mathbf{\xi}}\) \(\uparrow\) & & & & & & \\
-& MAE \(\downarrow\) & & & & & & \\
-\multirow{7}{=}{CVC-ClinicDB} & mDice \(\uparrow\) & & & & & & \\
-& mIoU \(\uparrow\) & & & & & & \\
-& \(\mathbf{F}_{\mathbf{\beta}}^{\mathbf{w}} \uparrow\) & & & & & & \\
-& \(\mathbf{S}_{\mathbf{\alpha}}\) \(\uparrow\) & & & & & & \\
-& \(\mathbf{m}\mathbf{E}_{\mathbf{\xi}}\) \(\uparrow\) & & & & & & \\
-& \(\mathbf{\max}\mathbf{E}_{\mathbf{\xi}}\) \(\uparrow\) & & & & & & \\
-& MAE \(\downarrow\) & & & & & & \\
-\multirow{7}{=}{CVC-ColonDB} & mDice \(\uparrow\) & & & & & & \\
-& mIoU \(\uparrow\) & & & & & & \\
-& \(\mathbf{F}_{\mathbf{\beta}}^{\mathbf{w}} \uparrow\) & & & & & & \\
-& \(\mathbf{S}_{\mathbf{\alpha}}\) \(\uparrow\) & & & & & & \\
-& \(\mathbf{m}\mathbf{E}_{\mathbf{\xi}}\) \(\uparrow\) & & & & & & \\
-& \(\mathbf{\max}\mathbf{E}_{\mathbf{\xi}}\) \(\uparrow\) & & & & & & \\
-& MAE \(\downarrow\) & & & & & & \\
-\multirow{7}{=}{CVC-300} & mDice \(\uparrow\) & & & & & & \\
-& mIoU \(\uparrow\) & & & & & & \\
-& \(\mathbf{F}_{\mathbf{\beta}}^{\mathbf{w}} \uparrow\) & & & & & & \\
-& \(\mathbf{S}_{\mathbf{\alpha}}\) \(\uparrow\) & & & & & & \\
-& \(\mathbf{m}\mathbf{E}_{\mathbf{\xi}}\) \(\uparrow\) & & & & & & \\
-& \(\mathbf{\max}\mathbf{E}_{\mathbf{\xi}}\) \(\uparrow\) & & & & & & \\
-& MAE \(\downarrow\) & & & & & & \\
-ETIS & mDice \(\uparrow\) & & & & & & \\
-& mIoU \(\uparrow\) & & & & & & \\
-& \(\mathbf{F}_{\mathbf{\beta}}^{\mathbf{w}} \uparrow\) & & & & & & \\
-& \(\mathbf{S}_{\mathbf{\alpha}}\) \(\uparrow\) & & & & & & \\
-& \(\mathbf{m}\mathbf{E}_{\mathbf{\xi}}\) \(\uparrow\) & & & & & & \\
-& \(\mathbf{\max}\mathbf{E}_{\mathbf{\xi}}\) \(\uparrow\) & & & & & & \\
-& MAE \(\downarrow\) & & & & & & \\
-\end{longtable}
-
-\textbf{Notes.} MSC = Multi-Scale Context module; DB = Detail Branch;
-GDF = Gated Detail Fusion; DS = Deep Supervision. Baseline denotes the
-ConvNeXt-Tiny encoder with the lightweight decoder and final prediction
-head, without MSC, BSEI, DB, GDF, or DS.
