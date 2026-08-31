@@ -82,8 +82,9 @@ The final objective was
 \mathcal{L}=0.55\mathcal{L}_{\mathrm{Dice}}
 +0.25\mathcal{L}_{\mathrm{BCE}}
 +0.20\mathcal{L}_{\mathrm{boundary}}.
+\label{eq:loss}
 \end{equation}
-The soft Dice term used a smoothing constant of 1.0. The BCE-with-logits
+The objective in Eq.~\eqref{eq:loss} uses a soft Dice term with a smoothing constant of 1.0. The BCE-with-logits
 term used targets smoothed as
 $y_{\mathrm{BCE}}=0.98y+0.01$, corresponding to label smoothing 0.02.
 The boundary-aware term used $\kappa=5$. The available focal-Tversky term
@@ -103,9 +104,9 @@ and binary ground truth $G$ were flattened and evaluated as
 \qquad
 \operatorname{IoU}(P,G)=
 \frac{|P\cap G|+10^{-6}}{|P|+|G|-|P\cap G|+10^{-6}}.
+\label{eq:dice_iou}
 \end{equation}
-The reported mDice and mIoU are arithmetic means of these per-image
-scores, rather than global pixel aggregates. S-measure, weighted
+The reported mDice and mIoU are arithmetic means of the per-image scores in Eq.~\eqref{eq:dice_iou}, rather than global pixel aggregates. S-measure, weighted
 F-measure, the E-measure curve, and MAE were computed per image with
 \texttt{py\_sod\_metrics} from 8-bit probability maps and binary ground
 truth. The mean and maximum of the resulting E-measure curve were

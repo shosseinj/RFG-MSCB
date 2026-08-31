@@ -6,27 +6,28 @@ The proposed framework follows a U-shaped encoder--decoder architecture built up
 
 Let
 
-$$
+\[
 I \in \mathbb{R}^{3\times H\times W}
-$$
+\]
 
 denote an input colonoscopy image. The ConvNeXt-Tiny encoder extracts four hierarchical feature maps,
 
-$$
+\begin{equation}
 \{F_1,F_2,F_3,F_4\}=E(I),
-$$
+\label{eq:encoder_features}
+\end{equation}
 
 where
 
-$$
+\[
 F_1\in\mathbb{R}^{96\times H/4\times W/4},\quad
 F_2\in\mathbb{R}^{192\times H/8\times W/8},
-$$
+\]
 
-$$
+\[
 F_3\in\mathbb{R}^{384\times H/16\times W/16},\quad
 F_4\in\mathbb{R}^{768\times H/32\times W/32}.
-$$
+\]
 
 For an input resolution of $352\times352$, their spatial dimensions are $88\times88$, $44\times44$, $22\times22$, and $11\times11$, respectively.
 
@@ -34,51 +35,32 @@ The deepest encoder feature $F_4$ is first processed by a Frequency-Aware Featur
 
 The overall processing can therefore be summarized as
 
-$$
+\begin{align}
 (\widetilde{F}_4,\mathbf{z}_f)
-=
-\mathcal{F}_{\mathrm{FAFEM}}(F_4),
-$$
-
-$$
-B=\mathcal{B}(\widetilde{F}_4),
-$$
-
-$$
-D_4=
-\mathcal{M}_{\mathrm{RFG}}
+&=\mathcal{F}_{\mathrm{FAFEM}}(F_4),
+\label{eq:overall_fafem}\\
+B&=\mathcal{B}(\widetilde{F}_4),
+\label{eq:overall_bottleneck}\\
+D_4&=\mathcal{M}_{\mathrm{RFG}}
 \left(
-\mathcal{S}_3
-\left[
-\mathcal{D}_4(B),F_3
-\right],
+\mathcal{S}_3\left[\mathcal{D}_4(B),F_3\right],
 \mathbf{z}_f
-\right),
-$$
+\right).
+\label{eq:overall_stage3}
+\end{align}
 
 followed by
 
-$$
-D_3=
-\mathcal{S}_2
-\left[
-\mathcal{D}_3(D_4),F_2
-\right],
-$$
+\begin{align}
+D_3&=\mathcal{S}_2\left[\mathcal{D}_3(D_4),F_2\right],
+\label{eq:decoder_stage2}\\
+D_2&=\mathcal{S}_1\left[\mathcal{D}_2(D_3),F_1\right],
+\label{eq:decoder_stage1}\\
+D_1&=\mathcal{D}_1(D_2).
+\label{eq:decoder_final}
+\end{align}
 
-$$
-D_2=
-\mathcal{S}_1
-\left[
-\mathcal{D}_2(D_3),F_1
-\right],
-$$
-
-$$
-D_1=\mathcal{D}_1(D_2).
-$$
-
-Here, $\mathcal{D}_i$ denotes a decoder block, $\mathcal{S}_i$ denotes the corresponding skip-feature fusion operation, $\mathbf{z}*f$ is the frequency descriptor extracted at the bottleneck, and $\mathcal{M}*{\mathrm{RFG}}$ denotes the proposed residual frequency-guided multi-scale refinement mechanism.
+Here, $\mathcal{D}_i$ denotes a decoder block, $\mathcal{S}_i$ denotes the corresponding skip-feature fusion operation, $\mathbf{z}_f$ is the frequency descriptor extracted at the bottleneck, and $\mathcal{M}_{\mathrm{RFG}}$ denotes the proposed residual frequency-guided multi-scale refinement mechanism. Equations~\eqref{eq:overall_stage3}--\eqref{eq:decoder_final} summarize the decoder path.
 
 The final prediction head transforms $D_1$ into a single-channel segmentation logit map, which is bilinearly resized to the original image resolution.
 
@@ -86,47 +68,42 @@ The final prediction head transforms $D_1$ into a single-channel segmentation lo
 
 The encoder employs ConvNeXt-Tiny with stage depths
 
-$$
+\[
 [3,3,9,3]
-$$
+\]
 
 and channel dimensions
 
-$$
+\[
 [96,192,384,768].
-$$
+\]
 
 Before entering the encoder, each RGB image is normalized using the ImageNet statistics
 
-$$
+\[
 \boldsymbol{\mu}=(0.485,0.456,0.406),
 \qquad
 \boldsymbol{\sigma}=(0.229,0.224,0.225).
-$$
+\]
 
 The first stage uses a $4\times4$ convolution with stride 4 to generate $F_1$. Each subsequent stage begins with spatial downsampling using a $2\times2$ stride-2 convolution.
 
 For an input feature $X$, a ConvNeXt block first performs a $7\times7$ depthwise convolution. The resulting feature is normalized in channels-last format and processed by a pointwise multilayer perceptron with a fourfold channel expansion:
 
-$$
-Z=\mathrm{DWConv}_{7\times7}(X),
-$$
-
-$$
-V=W_2
-\left(
-\mathrm{GELU}
-\left(
-W_1(\mathrm{LN}(Z))
-\right)
-\right).
-$$
+\begin{equation}
+\begin{aligned}
+Z&=\mathrm{DWConv}_{7\times7}(X),\\
+V&=W_2\left(\mathrm{GELU}\left(W_1(\mathrm{LN}(Z))\right)\right).
+\end{aligned}
+\label{eq:convnext_transform}
+\end{equation}
 
 The block output is obtained through layer-scaled residual learning,
 
-$$
+\begin{equation}
 Y=X+\mathrm{DropPath}(\gamma\odot V),
-$$
+\label{eq:convnext_residual}
+\end{equation}
 
 where $\gamma$ is a learnable layer-scale parameter initialized to $10^{-6}$.
 
@@ -138,37 +115,33 @@ The deepest encoder representation $F_4$ contains strong semantic information bu
 
 Given
 
-$$
+\[
 X=F_4,
-$$
+\]
 
 a local low-frequency approximation is obtained using $3\times3$ average pooling,
 
-$$
-X_L=\mathrm{AvgPool}_{3\times3}(X),
-$$
+\begin{align}
+X_L&=\mathrm{AvgPool}_{3\times3}(X),
+\label{eq:fafem_low_frequency}\\
+X_H&=X-X_L.
+\label{eq:fafem_high_frequency}
+\end{align}
 
-and the corresponding high-frequency component is defined as
+The low- and high-frequency components in Eqs.~\eqref{eq:fafem_low_frequency} and \eqref{eq:fafem_high_frequency} are independently transformed using depthwise convolutional branches,
 
-$$
-X_H=X-X_L.
-$$
-
-The low- and high-frequency components are independently transformed using depthwise convolutional branches,
-
-$$
-\widehat{X}_L=
-\phi_L(X_L),
+\begin{equation}
+\widehat{X}_L=\phi_L(X_L),
 \qquad
-\widehat{X}_H=
-\phi_H(X_H),
-$$
+\widehat{X}_H=\phi_H(X_H),
+\label{eq:fafem_frequency_transforms}
+\end{equation}
 
 where each $\phi(\cdot)$ contains a $3\times3$ depthwise convolution followed by GELU activation.
 
 The two components are concatenated and globally pooled to obtain the frequency descriptor
 
-$$
+\begin{equation}
 \mathbf{z}_f
 =
 \mathrm{GAP}
@@ -176,17 +149,18 @@ $$
 [\widehat{X}_L,\widehat{X}_H]
 \right)
 \in\mathbb{R}^{2C}.
-$$
+\label{eq:frequency_descriptor}
+\end{equation}
 
 Since $C=768$ at the bottleneck,
 
-$$
+\[
 \mathbf{z}_f\in\mathbb{R}^{1536}.
-$$
+\]
 
 A lightweight channel-gating network generates adaptive weights for the low- and high-frequency representations. Their weighted combination is spatially refined and introduced through a residual connection:
 
-$$
+\begin{equation}
 \widetilde{F}_4
 =
 F_4+
@@ -195,7 +169,8 @@ F_4+
 w_L\odot\widehat{X}_L+
 w_H\odot\widehat{X}_H
 \right),
-$$
+\label{eq:fafem_residual_output}
+\end{equation}
 
 where $\gamma_f$ is a learnable scalar initialized to zero.
 
@@ -207,26 +182,22 @@ The frequency-enhanced representation $\widetilde{F}_4$ is subsequently processe
 
 A $1\times1$ convolution first reduces the number of channels from 768 to 192:
 
-$$
-X_r=
-\mathrm{GELU}
-\left(
-\mathrm{LN}
-\left(
-\mathrm{Conv}_{1\times1}(\widetilde{F}_4)
-\right)
-\right).
-$$
+\begin{equation}
+X_r=\mathrm{GELU}\left(\mathrm{LN}\left(
+\mathrm{Conv}_{1\times1}(\widetilde{F}_4)\right)\right).
+\label{eq:bottleneck_reduction}
+\end{equation}
 
 A $3\times3$ depthwise-separable convolution performs spatial transformation in the reduced feature space. The representation is subsequently projected back to 768 channels.
 
 The bottleneck output is formulated as
 
-$$
+\begin{equation}
 B=
 \widetilde{F}_4+
 \gamma_b\mathcal{H}(\widetilde{F}_4),
-$$
+\label{eq:lightweight_bottleneck}
+\end{equation}
 
 where $\mathcal{H}(\cdot)$ denotes the bottleneck transformation and $\gamma_b$ is a learnable scalar initialized to zero.
 
@@ -238,19 +209,19 @@ The principal architectural contribution of this work is the Residual Frequency-
 
 After the bottleneck feature is upsampled from $H/32$ to $H/16$, the decoder representation is reduced from 768 to 384 channels and concatenated with the Stage-3 encoder feature $F_3$. A lightweight fusion block transforms the resulting 768-channel representation into
 
-$$
+\[
 X_3\in\mathbb{R}^{384\times H/16\times W/16}.
-$$
+\]
 
 For a $352\times352$ input,
 
-$$
+\[
 X_3\in\mathbb{R}^{384\times22\times22}.
-$$
+\]
 
 A conventional lightweight multi-scale convolution block first expands the feature dimension from $C$ to $2C$:
 
-$$
+\begin{equation}
 X_e=
 \mathrm{ReLU6}
 \left(
@@ -259,35 +230,38 @@ X_e=
 \mathrm{Conv}_{1\times1}(X_3)
 \right)
 \right).
-$$
+\label{eq:mscb_expansion}
+\end{equation}
 
 Three parallel depthwise convolution branches with kernel sizes
 
-$$
+\[
 k\in\{1,3,5\}
-$$
+\]
 
 then generate multi-scale responses,
 
-$$
+\begin{equation}
 B_k=\phi_k(X_e),
-$$
+\label{eq:mscb_branches}
+\end{equation}
 
 where each $\phi_k$ consists of a depthwise convolution, Batch Normalization, and ReLU6 activation.
 
 In a conventional MSCB, these branches are combined uniformly:
 
-$$
+\begin{equation}
 M_{\mathrm{ord}}
 =
 B_1+B_3+B_5.
-$$
+\label{eq:mscb_ordinary_aggregation}
+\end{equation}
 
 Instead of treating the three receptive fields identically for every image, the proposed mechanism conditions their relative contributions on the bottleneck frequency descriptor $\mathbf{z}_f$.
 
 A lightweight guidance network maps the 1536-dimensional descriptor to three branch logits:
 
-$$
+\begin{equation}
 \mathbf{q}
 =
 W_{g2}
@@ -297,43 +271,46 @@ W_{g2}
 W_{g1}\mathbf{z}_f
 \right)
 \right),
-$$
+\label{eq:rfg_logits}
+\end{equation}
 
 where
 
-$$
+\[
 W_{g1}:1536\rightarrow48,
 \qquad
 W_{g2}:48\rightarrow3.
-$$
+\]
 
 The normalized branch weights are calculated as
 
-$$
+\begin{equation}
 [\alpha_1,\alpha_3,\alpha_5]
 =
 3\,\mathrm{Softmax}(\mathbf{q}),
-$$
+\label{eq:rfg_weights}
+\end{equation}
 
 such that
 
-$$
+\[
 \alpha_1+\alpha_3+\alpha_5=3.
-$$
+\]
 
 The frequency-guided response becomes
 
-$$
+\begin{equation}
 M_{\mathrm{guide}}
 =
 \alpha_1B_1+
 \alpha_3B_3+
 \alpha_5B_5.
-$$
+\label{eq:rfg_guided_aggregation}
+\end{equation}
 
 Directly replacing the conventional multi-scale response with the guided response may excessively perturb an already effective MSCB representation. We therefore introduce the guidance as a bounded residual deviation:
 
-$$
+\begin{equation}
 M_{\mathrm{RFG}}
 =
 M_{\mathrm{ord}}
@@ -342,33 +319,34 @@ s
 \left(
 M_{\mathrm{guide}}-M_{\mathrm{ord}}
 \right),
-$$
+\label{eq:rfg_residual}
+\end{equation}
 
 where
 
-$$
+\[
 0\leq s\leq0.5.
-$$
+\]
 
 The learnable guidance-strength parameter $s$ is initialized to 0.05. Consequently, the frequency-conditioned branch regulation is introduced conservatively during early optimization.
 
 Furthermore, the final guidance-layer weights and biases are initialized such that the initial branch logits are equal. Therefore,
 
-$$
+\[
 \alpha_1=\alpha_3=\alpha_5=1
-$$
+\]
 
 at initialization, which gives
 
-$$
+\[
 M_{\mathrm{guide}}=M_{\mathrm{ord}}.
-$$
+\]
 
 The module thus initially reproduces the conventional multi-scale path, while optimization is allowed to learn image-dependent deviations from uniform branch weighting.
 
 The resulting feature is processed using channel shuffle and a $1\times1$ projection from $2C$ back to $C$, followed by Batch Normalization. A final residual connection preserves the input representation:
 
-$$
+\begin{equation}
 Y_3
 =
 X_3+
@@ -376,7 +354,8 @@ X_3+
 \left(
 \mathrm{Shuffle}(M_{\mathrm{RFG}})
 \right).
-$$
+\label{eq:rfg_final_output}
+\end{equation}
 
 This formulation establishes an explicit cross-level connection between deep frequency information extracted at the bottleneck and multi-scale spatial refinement performed at $H/16$ resolution.
 
@@ -386,57 +365,35 @@ After frequency-guided Stage-3 refinement, the decoder progressively restores sp
 
 The first refined decoder feature has 384 channels:
 
-$$
+\[
 D_4=Y_3.
-$$
+\]
 
-The subsequent decoder stages are
-
-$$
-D_3=
-\mathcal{S}_2
-\left[
-\mathcal{D}_3(D_4),F_2
-\right],
-$$
-
-$$
-D_2=
-\mathcal{S}_1
-\left[
-\mathcal{D}_2(D_3),F_1
-\right],
-$$
-
-followed by
-
-$$
-D_1=\mathcal{D}_1(D_2).
-$$
+The subsequent decoder stages follow Eqs.~\eqref{eq:decoder_stage2}--\eqref{eq:decoder_final}.
 
 Their dimensions for a $352\times352$ input are
 
-$$
+\[
 D_4:
 384\times22\times22,
-$$
+\]
 
-$$
+\[
 D_3:
 192\times44\times44,
-$$
+\]
 
-$$
+\[
 D_2:
 96\times88\times88,
-$$
+\]
 
 and
 
-$$
+\[
 D_1:
 96\times176\times176.
-$$
+\]
 
 At the $F_2$ and $F_1$ skip levels, the upsampled decoder representation is concatenated with the corresponding encoder feature and processed by a lightweight fusion block containing a $1\times1$ projection followed by a depthwise-separable $3\times3$ convolution.
 
@@ -448,32 +405,22 @@ The final decoder stage has no direct encoder skip connection because the ConvNe
 
 The final decoder feature $D_1$ is processed using a lightweight refinement head. Two depthwise-separable $3\times3$ convolutions transform the feature dimensions as
 
-$$
+\[
 96\rightarrow96\rightarrow48.
-$$
+\]
 
 Each transformation is followed by Layer Normalization and GELU activation. A final $1\times1$ convolution produces a single-channel segmentation logit map:
 
-$$
-P_0=
-\mathrm{Conv}_{1\times1}
-\left(
-\mathcal{R}(D_1)
-\right).
-$$
+\begin{align}
+P_0&=\mathrm{Conv}_{1\times1}\left(\mathcal{R}(D_1)\right),
+\label{eq:prediction_logits}\\
+P&=\mathrm{Up}_{H,W}(P_0),
+\label{eq:prediction_resize}\\
+\widehat{Y}&=\sigma(P).
+\label{eq:prediction_probability}
+\end{align}
 
-The prediction is then bilinearly resized from $H/2\times W/2$ to the original input resolution:
-
-$$
-P=
-\mathrm{Up}_{H,W}(P_0).
-$$
-
-The network directly returns logits. During inference, the foreground probability map is obtained as
-
-$$
-\widehat{Y}=\sigma(P),
-$$
+The prediction in Eq.~\eqref{eq:prediction_resize} is bilinearly resized from $H/2\times W/2$ to the original input resolution. The network directly returns logits; during inference, Eq.~\eqref{eq:prediction_probability} gives the foreground probability map,
 
 where $\sigma(\cdot)$ denotes the sigmoid function.
 
@@ -483,15 +430,15 @@ The selected architecture does not employ auxiliary prediction heads or deep sup
 
 The complete proposed model contains
 
-$$
+\[
 30{,}057{,}415
-$$
+\]
 
 trainable parameters, corresponding to approximately
 
-$$
+\[
 30.06\ \mathrm{M}
-$$
+\]
 
 parameters.
 
