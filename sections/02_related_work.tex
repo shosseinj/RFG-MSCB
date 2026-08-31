@@ -1,0 +1,154 @@
+\section{Related work}\label{related-work}
+
+\subsection{Convolutional encoder-decoder
+architectures}\label{convolutional-encoder-decoder-architectures}
+
+Fully convolutional encoder-decoder networks form the foundation of
+modern medical image segmentation. U-Net introduced a symmetric
+contracting and expanding architecture in which high-resolution encoder
+representations are transferred to the decoder through skip connections.
+This design enables the network to combine contextual representations
+with spatially detailed features and has become a standard baseline for
+biomedical segmentation {[}1{]}.
+
+Subsequent studies modified the U-shaped architecture to improve feature
+fusion and optimization. UNet++ introduced nested dense skip pathways to
+reduce the semantic discrepancy between encoder and decoder features and
+employed deep supervision at multiple decoder depths {[}2{]}. Such
+developments demonstrated that the design of skip connections is as
+important as the choice of encoder because direct feature transfer may
+combine representations with substantially different semantic
+characteristics.
+
+In polyp segmentation, computationally efficient convolutional networks
+have also received considerable attention. HarDNet-MSEG combines a
+low-memory-traffic convolutional backbone with a lightweight decoder and
+illustrates that competitive segmentation performance can be obtained
+without a computationally expensive transformer architecture {[}6{]}.
+However, standard convolutional models generally require additional
+mechanisms to capture broad contextual relationships and refine weak
+lesion boundaries.
+
+PraNet introduced a parallel partial decoder to aggregate high-level
+features and a reverse-attention strategy to progressively refine
+uncertain polyp regions {[}7{]}. Its recurrent interaction between
+regional predictions and boundary cues demonstrated the effectiveness of
+explicitly directing the decoder toward inadequately segmented regions.
+Nevertheless, reverse-attention refinement depends on preceding
+prediction maps and does not directly solve the problem of noisy
+information transferred through conventional skip connections.
+
+\subsection{Global and multi-scale contextual
+modeling}\label{global-and-multi-scale-contextual-modeling}
+
+The considerable variation in polyp size motivates the use of
+multi-scale contextual modeling. A segmentation network must preserve
+local details for small lesions while maintaining a sufficiently large
+receptive field to identify extensive or irregularly shaped polyps.
+Dilated convolutions, pyramid pooling, multi-branch receptive fields,
+and cross-scale feature aggregation have consequently been incorporated
+into many segmentation architectures.
+
+Transformer-based approaches address this problem by modeling long-range
+spatial relationships. TransUNet uses a transformer encoder over
+convolutional feature representations to capture global context while
+retaining high-resolution CNN features for localization {[}3{]}.
+Polyp-PVT employs a pyramid vision transformer and specialized fusion
+modules to integrate semantic and positional information across
+hierarchical feature levels {[}4{]}. These methods improve long-range
+feature interaction, but their attention operations and cross-level
+fusion mechanisms may increase architectural and computational
+complexity.
+
+Recent contextual-information-flow and multi-stage architectures
+similarly emphasize the need to coordinate local lesion appearance with
+broader anatomical context. State-space and frequency-oriented
+architectures have also been investigated. Polyp-Mamba combines
+multi-frequency perception with a gated selection mechanism to model
+spatial dependencies and frequency-sensitive representations {[}8{]}.
+The present work does not employ frequency decomposition or a
+state-space operator; instead, it uses parallel dilated depthwise
+convolutions and global average pooling to obtain multi-scale contextual
+information within a purely convolutional framework.
+
+\subsection{Boundary-aware polyp
+segmentation}\label{boundary-aware-polyp-segmentation}
+
+Weak and visually ambiguous lesion boundaries are among the principal
+difficulties in colorectal polyp segmentation. Boundary-aware networks
+attempt to preserve or reconstruct structural information that may
+disappear during repeated down-sampling. These methods commonly
+introduce explicit edge supervision, auxiliary contour branches,
+gradient-derived features, reverse attention, or boundary-sensitive
+feature fusion.
+
+MEGANet employs multi-scale edge-guided attention and incorporates
+high-frequency information derived from image pyramids to improve
+segmentation of weak boundaries {[}9{]}. Its findings demonstrate that
+explicitly retaining edge-related information can reduce deterioration
+of boundary features in deep networks. MSBP-Net performs multi-scale
+boundary prediction to improve contour delineation while maintaining
+relatively low model complexity {[}10{]}. This line of research
+indicates that boundary information should be modeled at more than one
+scale because polyp contours may contain both broad structural
+transitions and small irregularities.
+
+Explicit edge extraction may also respond to irrelevant structures such
+as folds, reflections, bubbles, and instruments. Furthermore, additional
+boundary labels or edge-generation procedures may increase the
+complexity of the training pipeline. The BSEI module in the proposed
+model follows a different strategy. It derives a learned spatial
+response from transformed skip features and uses this response to
+modulate the features through residual enhancement. Therefore, the
+method is boundary-sensitive but does not depend on Sobel filtering,
+Laplacian pyramids, explicit contour labels, or a separate boundary
+loss.
+
+\subsection{Detail preservation and adaptive feature
+fusion}\label{detail-preservation-and-adaptive-feature-fusion}
+
+Deep semantic features provide strong category discrimination but have
+reduced spatial resolution. Conversely, shallow features preserve local
+appearance and edge information but may contain substantial background
+noise. Effective segmentation therefore requires controlled interaction
+between semantic and detailed representations.
+
+Conventional U-shaped networks concatenate or add shallow and deep
+features directly. Although these operations are computationally simple,
+they assign no explicit relevance to detailed information. Attention and
+gating mechanisms provide a more selective alternative by estimating the
+contribution of one representation conditioned on another. Recent
+polyp-segmentation architectures employ specialized cross-scale or
+attention-based fusion to suppress irrelevant responses and improve
+lesion localization.
+
+The proposed method addresses detail preservation using a shallow Detail
+Branch operating at one-half of the input resolution. Instead of
+directly adding this feature to the decoder, the Gated Detail Fusion
+module estimates a gate from the concatenated decoder and detail
+representations. The gate modulates the detail feature before final
+fusion, enabling the network to retain high-resolution information while
+limiting transfer of irrelevant low-level responses.
+
+\subsection{Positioning of the proposed
+method}\label{positioning-of-the-proposed-method}
+
+Existing approaches have improved polyp segmentation through reverse
+attention, transformer-based contextual modeling, frequency processing,
+explicit boundary prediction, or complex multi-stage refinement.
+Nevertheless, many methods address context, boundaries, and fine details
+as separate problems. The proposed architecture integrates these
+requirements within a unified convolutional encoder-decoder framework.
+
+Unlike transformer-based methods, the model employs a ConvNeXt-Tiny
+encoder and depthwise separable convolutions. Unlike frequency-oriented
+networks, it does not require Fourier or wavelet decomposition. Unlike
+explicitly supervised boundary networks, it derives a learned
+local-response map from intermediate features. Finally, unlike direct
+shallow-deep fusion, it uses a conditioned gate to control the
+contribution of the high-resolution detail representation. These design
+choices provide a coherent framework for investigating whether
+multi-scale context, boundary-sensitive skip refinement, and selective
+detail fusion can jointly improve polyp segmentation and cross-dataset
+generalization.
+

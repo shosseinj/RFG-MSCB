@@ -1,0 +1,264 @@
+\section{Method}\label{method}
+
+\subsection{Overall architecture}\label{overall-architecture}
+
+Let \(I \in \mathbb{R}^{3\times H\times W}\) denote an input colonoscopy image. The proposed
+network follows a U-shaped encoder-decoder configuration and consists of
+five principal components: a ConvNeXt-Tiny encoder, a lightweight
+residual bottleneck, a Multi-Scale Context module, a boundary-sensitive
+decoder with refined skip connections, and a high-resolution Detail
+Branch with gated fusion.
+
+The encoder produces four hierarchical feature maps \{F1, F2, F3, F4\}
+with channel dimensions \{96, 192, 384, 768\} and spatial resolutions
+\{H/4×W/4, H/8×W/8, H/16×W/16, H/32×W/32\}. The deepest feature is
+processed by the lightweight bottleneck and the Multi-Scale Context
+module. The decoder then progressively increases spatial resolution. At
+the first three decoding stages, the upsampled decoder feature is
+concatenated with the corresponding encoder representation and processed
+by BSEI. At one-half input resolution, the final decoder feature is
+fused with the output of the Detail Branch. A refinement head converts
+the fused representation into final segmentation logits, which are
+bilinearly resized to the original image resolution. During training,
+three auxiliary prediction heads produce additional full-resolution
+logits from intermediate decoder stages.
+
+The principal forward operations can be summarized as follows:
+
+\emph{\{F1, F2, F3, F4\} = E(I),}
+
+\emph{B = M\_MSC(M\_LB(F4)),}
+
+\emph{D4 = M\_BSEI,4({[}U4(B), F3{]}),}
+
+\emph{D3 = M\_BSEI,3({[}U3(D4), F2{]}),}
+
+\emph{D2 = M\_BSEI,2({[}U2(D3), F1{]}),}
+
+\emph{D1 = M\_BSEI,1(U1(D2)),}
+
+\emph{P = U\_out(M\_ref(M\_GDF(D1, M\_detail(I)))).}
+
+Here, {[}·,·{]} denotes channel-wise concatenation, Ui denotes the
+corresponding decoder up-sampling operation, M\_LB is the lightweight
+bottleneck, M\_MSC is the Multi-Scale Context module, M\_GDF is Gated
+Detail Fusion, and P denotes the final segmentation logits.
+
+\subsection{\texorpdfstring{ ConvNeXt-Tiny
+encoder}{ ConvNeXt-Tiny encoder}}\label{convnext-tiny-encoder}
+
+Before entering the encoder, the input image is normalized using the
+ImageNet channel mean and standard deviation:
+
+\emph{\(\hat{I}_c = (I_c - \mu_c) / \sigma_c,\)}
+
+\emph{\(\mu = (0.485, 0.456, 0.406), \sigma = (0.229, 0.224, 0.225).\)}
+
+The first encoder stage uses a 4×4 convolution with stride 4, followed
+by Layer Normalization. The subsequent three stages begin with Layer
+Normalization and a 2×2 stride-2 convolution. The numbers of ConvNeXt
+blocks in the four stages are 3, 3, 9, and 3, respectively.
+
+For an input feature X, each ConvNeXt block applies a 7×7 depthwise
+convolution, converts the representation to channels-last format for
+Layer Normalization and linear channel projection, expands the channel
+dimension by a factor of four, applies GELU activation, restores the
+original channel dimension, and adds the transformed representation
+through a layer-scaled stochastic residual connection.
+
+\emph{Z = DWConv7×7(X),}
+
+\emph{V = W2(GELU(W1(LN(Z)))),}
+
+\emph{\(Y = X + \operatorname{DropPath}(\gamma \odot V).\)}
+
+Spatial dropout is applied to the outputs of the second, third, and
+fourth encoder stages. This regularization reduces excessive dependence
+on individual feature channels in deeper semantic representations.
+
+\subsection{\texorpdfstring{ Lightweight residual
+bottleneck}{ Lightweight residual bottleneck}}\label{lightweight-residual-bottleneck}
+
+The deepest encoder representation F4 is first processed by a
+lightweight residual bottleneck. A 1×1 convolution reduces its channel
+dimension from 768 to 192. A depthwise separable 3×3 convolution
+performs spatial transformation in the reduced feature space, after
+which another 1×1 convolution restores the channel dimension to 768.
+
+\emph{\(B_0 = F_4 + \gamma_b H(F_4).\)}
+
+The transformation H(·) includes pointwise channel reduction, Layer
+Normalization, GELU activation, depthwise separable convolution,
+dropout, pointwise channel restoration, and final Layer Normalization.
+The learnable scalar \(\gamma_b\) is initialized to zero, so the bottleneck
+initially behaves as an identity mapping and progressively introduces
+its residual transformation during optimization.
+
+\subsection{\texorpdfstring{ Multi-Scale Context
+module}{ Multi-Scale Context module}}\label{multi-scale-context-module}
+
+The Multi-Scale Context module is applied to B0 to enrich the bottleneck
+representation using multiple receptive fields while maintaining
+moderate computational complexity. A 1×1 convolution first reduces the
+768-channel input to 96 channels.
+
+\emph{R = GELU(LN(Conv1×1(B0))).}
+
+Three parallel depthwise 3×3 convolutions with dilation rates \(d \in \{1,
+3, 5\}\) are applied:
+
+\emph{\(C_d = \operatorname{GELU}(\operatorname{LN}(\operatorname{DWConv}_{3\times3,d}(R))),\ d \in \{1, 3, 5\}.\)}
+
+A fourth branch extracts image-level context through global average
+pooling:
+
+\emph{Cg = Up(GELU(Conv1×1(GAP(R)))).}
+
+The four branches are concatenated and projected back to 768 channels:
+
+\emph{C = {[}C1, C3, C5, Cg{]},}
+
+\emph{\(B = B_0 + \gamma_c P(C).\)}
+
+The projection P(·) consists of a 1×1 convolution, Layer Normalization,
+GELU activation, and dropout. The scalar \(\gamma_c\) is initialized to zero.
+Dilation rates 1, 3, and 5 provide local and progressively broader
+neighborhoods, while the pooled branch supplies image-level context.
+
+\subsection{Boundary-Sensitive Enhancement and Integration
+module}\label{boundary-sensitive-enhancement-and-integration-module}
+
+At each skip-connected decoder stage, the upsampled decoder feature is
+concatenated with the corresponding encoder feature. The resulting
+representation is refined using BSEI. Let Sl = {[}Ul, Fl{]} denote the
+concatenated decoder and encoder features at level l.
+
+\emph{Ql = GELU(LN(Conv1×1(Sl))),}
+
+\emph{Zl = GELU(LN(SepConv3×3(Ql))).}
+
+A learned depthwise 3×3 convolution generates a local response map. The
+absolute value represents the magnitude of the learned spatial
+variation, and a sigmoid bounds the response:
+
+\emph{Al = sigmoid(\textbar DWConv3×3(Zl)\textbar).}
+
+The enhanced feature is calculated by residual modulation:
+
+\emph{\(Y_l = Z_l + A_l \odot Z_l.\)}
+
+Locations with stronger learned spatial responses therefore receive
+greater amplification. This operation should be described as learned
+boundary-sensitive or edge-response enhancement, rather than explicit
+boundary detection. It does not use Sobel filters, manually generated
+edge maps, channel squeeze-and-excitation, or boundary annotations.
+
+\subsection{Progressive decoder}\label{progressive-decoder}
+
+Each decoder block consists of bilinear up-sampling by a factor of two,
+a depthwise separable 3×3 convolution, Layer Normalization, GELU
+activation, and spatial dropout. The first decoder stage transforms the
+context-enhanced bottleneck from 768 to 384 channels. After
+concatenation with F3, BSEI produces a 384-channel representation.
+
+\emph{D4 = M\_BSEI,4({[}M\_dec,4(B), F3{]}),}
+
+\emph{D3 = M\_BSEI,3({[}M\_dec,3(D4), F2{]}),}
+
+\emph{D2 = M\_BSEI,2({[}M\_dec,2(D3), F1{]}),}
+
+\emph{D1 = M\_BSEI,1(M\_dec,1(D2)).}
+
+The output channel dimensions of D3 and D2 are 192 and 96, respectively.
+The final decoder block increases the spatial resolution from H/4×W/4 to
+H/2×W/2. No encoder skip feature is concatenated at this final stage
+because the encoder stem begins at one-quarter input resolution.
+
+\subsection{High-resolution Detail
+Branch}\label{high-resolution-detail-branch}
+
+The Detail Branch processes the original input independently of the deep
+encoder. Its objective is to retain relatively high-resolution
+appearance information that may be attenuated by the stride-4 encoder
+stem. The branch begins with a 3×3 convolution with stride 2, producing
+a 32-channel feature at one-half input resolution.
+
+\emph{T0 = GELU(BN(Conv3×3,s=2(I))),}
+
+\emph{T = GELU(BN(SepConv3×3(T0))).}
+
+Dropout is applied after both operations. Unlike the main encoder and
+decoder, this branch uses Batch Normalization.
+
+\subsection{Gated Detail Fusion}\label{gated-detail-fusion}
+
+The final decoder feature D1 and the detail representation T have the
+same spatial resolution. Before fusion, the detail feature is projected
+using a depthwise separable convolution:
+
+\emph{\(\hat{T} = \operatorname{GELU}(\operatorname{BN}(\operatorname{SepConv}_{3\times3}(T))).\)}
+
+A spatially varying gate is estimated from the concatenated decoder and
+detail representations:
+
+\emph{\(G = \operatorname{sigmoid}(W_{g2}(\operatorname{GELU}(W_{g1}([D_1, \hat{T}])))).\)}
+
+The gate contains 32 channels and modulates the detail representation:
+
+\emph{\(T_g = G \odot \hat{T}.\)}
+
+The gated detail representation is concatenated with the decoder feature
+and projected to 128 channels:
+
+\emph{Ffuse = GELU(LN(Conv1×1({[}D1, Tg{]}))).}
+
+The gate controls the spatial and channel-wise contribution of the
+shallow detail representation before it enters the final prediction
+head.
+
+\subsection{Prediction head and deep
+supervision}\label{prediction-head-and-deep-supervision}
+
+The fused feature is processed by two depthwise separable convolutions.
+The first reduces the channel dimension from 128 to 96, and the second
+reduces it from 96 to 48. A 1×1 convolution then produces the
+segmentation logits.
+
+\emph{P0 = Conv1×1(R(Ffuse)),}
+
+\emph{P = UpH,W(P0).}
+
+For binary segmentation, the probability map at inference is obtained as
+\(\hat{Y} = \operatorname{sigmoid}(P)\). The implementation returns logits rather than sigmoid
+probabilities; consequently, the activation should be applied by the
+loss function or by the inference procedure.
+
+During training, auxiliary 1×1 prediction heads are attached to D2, D3,
+and D4. Their logits are resized to the original input resolution:
+
+\emph{P2 = UpH,W(Conv1×1(D2)),}
+
+\emph{P3 = UpH,W(Conv1×1(D3)),}
+
+\emph{P4 = UpH,W(Conv1×1(D4)).}
+
+A general deeply supervised objective can be written as:
+
+\emph{Ltotal = Lseg(P,Y) + $\lambda$2 Lseg(P2,Y) + $\lambda$3 Lseg(P3,Y) + $\lambda$4
+Lseg(P4,Y).}
+
+\emph{Here, Y denotes the reference mask and $\lambda$2, $\lambda$3, and $\lambda$4 control the
+auxiliary losses. The exact segmentation loss and numerical auxiliary
+weights are not defined in the supplied architecture file and must be
+obtained from the training implementation before the manuscript is
+finalized.}
+
+\subsection{Model complexity}\label{model-complexity}
+
+For a single-class output configuration, the supplied implementation
+contains 29,609,302 trainable parameters (approximately 29.61 million).
+This value is consistent with the approximately 29.60 million parameters
+reported in the later complexity table of the experimental draft. Any
+earlier table reporting 38.5 million parameters should be corrected or
+explicitly identified as belonging to a different model version.
+

@@ -1,0 +1,113 @@
+\section{Introduction}\label{introduction}
+
+Colorectal polyps are abnormal tissue growths that may develop into
+malignant lesions if they are not detected and removed at an early
+stage. Colonoscopy is routinely employed for examination of the lower
+gastrointestinal tract and enables clinicians to identify and resect
+suspicious polyps. However, the reliability of visual inspection is
+affected by operator experience, fatigue, imaging conditions, and the
+heterogeneous appearance of colorectal lesions. Computer-aided polyp
+segmentation can assist clinical examination by providing pixel-level
+localization of suspected lesions and by presenting their spatial extent
+and boundaries more explicitly.
+
+Accurate polyp segmentation remains challenging because colorectal
+lesions exhibit substantial variations in size, morphology, texture,
+color, and location. Some polyps occupy a large and visually distinctive
+region, whereas others are small, flat, or partially concealed by
+intestinal folds. In addition, visual similarity between lesion tissue
+and the surrounding mucosa frequently produces weak or ambiguous
+boundaries. Specular reflections, motion blur, bubbles, shadows, fecal
+material, and medical instruments may further interfere with feature
+extraction. These factors make it difficult for a segmentation model to
+obtain reliable semantic localization and precise boundary delineation
+simultaneously.
+
+U-shaped convolutional architectures have been extensively used in
+medical image segmentation because their contracting paths extract
+hierarchical semantic features, while their expanding paths
+progressively recover spatial resolution. Skip connections transfer
+relatively high-resolution encoder representations to the decoder and
+therefore facilitate lesion localization. Nevertheless, conventional
+skip connections may also introduce redundant texture responses and
+background interference because encoder features are transferred without
+explicit feature selection. Moreover, repeated spatial down-sampling may
+remove subtle structural information required for segmenting small or
+weakly bounded polyps. U-Net established the fundamental
+contracting-expanding design, while subsequent architectures, including
+UNet++, redesigned skip pathways and incorporated deep supervision to
+reduce the semantic discrepancy between encoder and decoder
+representations {[}1,2{]}.
+
+To improve global-context modeling, transformer-based and hybrid
+convolution-transformer architectures have been investigated for medical
+image segmentation. TransUNet combines convolutional feature extraction
+with transformer encoding to capture long-range dependencies, while
+Polyp-PVT employs hierarchical transformer representations and
+cross-level feature aggregation for polyp segmentation {[}3,4{]}. These
+methods demonstrate the value of global contextual information; however,
+transformer-based designs can introduce considerable computational
+complexity and may still require dedicated mechanisms for recovering
+local boundary information.
+
+Modern convolutional architectures provide an alternative means of
+obtaining strong hierarchical representations without relying on
+self-attention. ConvNeXt modernizes conventional convolutional design
+through large-kernel depthwise convolution, inverted channel expansion,
+Layer Normalization, GELU activation, layer scaling, and stochastic
+depth. These characteristics enable ConvNeXt to retain the spatial
+inductive biases and computational regularity of convolutional networks
+while providing competitive representation capacity {[}5{]}.
+
+Despite these advances, three interconnected limitations remain
+important for polyp segmentation. First, the large variation in lesion
+size requires contextual representations with multiple receptive fields.
+Second, weak boundaries require a mechanism that selectively enhances
+local structural variations rather than indiscriminately transferring
+skip features. Third, deep semantic representations must be combined
+with shallow spatial information without allowing noisy low-level
+responses to dominate the final prediction. Addressing these limitations
+within a computationally moderate architecture is particularly important
+for applications in which both accuracy and practical inference
+efficiency are required.
+
+This study proposes a multi-scale and boundary-sensitive ConvNeXt-UNet
+for automatic colorectal polyp segmentation. The model employs a
+ConvNeXt-Tiny encoder to generate four levels of hierarchical
+representations. A lightweight residual bottleneck and a Multi-Scale
+Context module are applied to the deepest encoder feature to aggregate
+local, enlarged-receptive-field, and global information. During
+decoding, a Boundary-Sensitive Enhancement and Integration module
+refines the concatenated encoder and decoder features by learning
+spatial edge-response attention. In parallel, a shallow Detail Branch
+preserves high-resolution appearance information directly from the input
+image. A Gated Detail Fusion module selectively injects this detailed
+representation into the final decoder stage. Three auxiliary output
+heads provide intermediate supervision during training. The complete
+architecture contains approximately 29.61 million trainable parameters.
+
+The principal contributions of this work are summarized as follows:
+
+1. A ConvNeXt-Tiny-based U-shaped segmentation architecture is developed
+to combine hierarchical convolutional feature extraction with a
+lightweight decoder for colorectal polyp segmentation.
+
+2. A Multi-Scale Context module is introduced at the bottleneck to
+aggregate features obtained using three dilated depthwise convolution
+branches and a global-context branch.
+
+3. A Boundary-Sensitive Enhancement and Integration module is designed
+to refine skip-connected features through learned spatial edge-response
+modulation.
+
+4. A high-resolution Detail Branch and Gated Detail Fusion module are
+introduced to preserve shallow spatial information and selectively
+combine it with the final decoder representation.
+
+5. Intermediate prediction heads are incorporated to support deep
+supervision and improve optimization of multi-level decoder features.
+
+6. The proposed model is evaluated on Kvasir-SEG, CVC-ClinicDB, CVC-300,
+CVC-ColonDB, and ETIS-LaribPolypDB using in-distribution and
+cross-dataset testing protocols.
+
