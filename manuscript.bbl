@@ -135,12 +135,11 @@ Jorge Bernal, F.~Javier Sánchez, Gloria Fernández-Esparrach, Debora Gil,
   Validation versus saliency maps from physicians.
 \newblock {\em Computerized Medical Imaging and Graphics}, 43:99--111, 2015.
 
-\bibitem{etis}
-Juan Silva, Aymeric Histace, Olivier Romain, Xavier Dray, and Bertrand Granado.
-\newblock Toward embedded detection of polyps in {WCE} images for early
-  diagnosis of colorectal cancer.
-\newblock {\em International Journal of Computer Assisted Radiology and
-  Surgery}, 9(2):283--293, 2014.
+\bibitem{cvc300}
+David Vázquez, Jorge Bernal, F.~Javier Sánchez, Gloria Fernández-Esparrach,
+  Antonio~M. López, Adriana Romero, Michal Drozdzal, and Aaron Courville.
+\newblock A benchmark for endoluminal scene segmentation of colonoscopy images.
+\newblock {\em Journal of Healthcare Engineering}, 2017:1--9, 2017.
 
 \bibitem{cvccolondb}
 Nima Tajbakhsh, Suryakanth~R. Gurudu, and Jianming Liang.
@@ -148,11 +147,12 @@ Nima Tajbakhsh, Suryakanth~R. Gurudu, and Jianming Liang.
   context information.
 \newblock {\em IEEE Transactions on Medical Imaging}, 35(2):630--644, 2016.
 
-\bibitem{cvc300}
-David Vázquez, Jorge Bernal, F.~Javier Sánchez, Gloria Fernández-Esparrach,
-  Antonio~M. López, Adriana Romero, Michal Drozdzal, and Aaron Courville.
-\newblock A benchmark for endoluminal scene segmentation of colonoscopy images.
-\newblock {\em Journal of Healthcare Engineering}, 2017:1--9, 2017.
+\bibitem{etis}
+Juan Silva, Aymeric Histace, Olivier Romain, Xavier Dray, and Bertrand Granado.
+\newblock Toward embedded detection of polyps in {WCE} images for early
+  diagnosis of colorectal cancer.
+\newblock {\em International Journal of Computer Assisted Radiology and
+  Surgery}, 9(2):283--293, 2014.
 
 \bibitem{smeasure}
 Deng-Ping Fan, Ming-Ming Cheng, Yun Liu, Tao Li, and Ali Borji.

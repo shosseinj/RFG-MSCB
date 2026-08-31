@@ -1,0 +1,58 @@
+\section{Ablation Study}\label{ablation-study}
+
+We perform ablation studies to quantify the effect of our proposed frequency-guided residual coupling mechanism when added to the FAFEM-enhanced backbone. We also analyze the placement of the multi-scale refinement layer.
+
+The ablation experiments use the same training and evaluation protocol as Exp45, with variations in the architecture only. Unless otherwise noted, results are reported as mean $\pm$ standard deviation over three random seeds.
+
+\subsection{Effect of FAFEM}
+
+We first establish the contribution of the FAFEM module relative to the baseline ConvNeXt-UNet architecture. In Exp33, we replace the basic stem convolution with the FAFEM module (no multi-scale refinement layers are present). The Kvasir-SEG mean Dice score increases from 0.9095 (baseline) to 0.9260. This effect is consistent across all five polyp segmentation datasets. FAFEM is not a novel contribution of this work; we include this experiment to verify the reproducibility of the prior work under our training protocol.
+
+\subsection{Effect of Stage-3 MSCB-Lite}
+
+In Exp37, we add a Stage-3 MSCB-lite layer to the FAFEM-enhanced backbone. MSCB-lite uses the same spatial refinement but without frequency-guided coupling. The Kvasir-SEG mean Dice score increases from 0.9260 in Exp33 to 0.9294, a change of +0.34 percentage points. Improvements are observed on all external datasets as well, indicating that the multi-scale refinement improves feature representation across diverse polyp appearances and imaging protocols. This experiment establishes the baseline for our frequency-guided variant.
+
+\subsection{Effect of Residual Frequency-Guided Coupling}
+
+In Exp45, we add our residual frequency-guided coupling to the MSCB-lite Stage-3 layer. This is the principal architecture change that distinguishes Exp45 from Exp37. The Kvasir-SEG mean Dice score increases from 0.9294 to 0.9313, a change of +0.19 percentage points. The MAE decreases from 0.0327 to 0.0306, indicating reduced pixel-wise error magnitude. These improvements suggest that the frequency-guided residual coupling mechanism provides better alignment between frequency domains when integrated with the spatial refinement process.
+
+A single-seed experiment (Exp43) tested the frequency guidance without the residual coupling; preliminary results on Kvasir-SEG do not outperform the Stage-3 MSCB-lite configuration, highlighting the importance of the coupled mechanism rather than frequency guidance in isolation.
+
+\subsection{Stage Placement Analysis}
+
+The placement of the multi-scale refinement layer is analyzed experimentally. In the final configuration (Exp45), the layer is applied only at encoder Stage 3. This placement was selected based on observed results rather than theoretical assumptions.
+
+A single-seed exploratory experiment (Exp49) tested an all-skip configuration; under the tested batch size of 32 and identical learning rate, the results did not improve relative to the Stage-3 configuration. However, this comparison is limited by the single-seed evaluation and potential protocol interactions, so we cannot draw general conclusions about optimal placement from this result alone. Future work could systematically ablate stage placements with more rigorous statistical verification.
+
+Table~\ref{tab:ablation} presents the ablation results across the three verified configurations, showing the progressive improvement as components are added.
+
+\begin{table*}[t]
+\centering
+\caption{Ablation study: Three-seed mean $\pm$ SD results on Kvasir-SEG.\label{tab:ablation}}
+\small
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{lccllll}
+\toprule
+Method & Params (M) & mDice & mIoU & MAE & Acc \\\midrule
+FAFEM only (Exp33) & 29.4 & \meanstd{0.9259}{0.0004} & \meanstd{0.8598}{0.0004} & \meanstd{0.0324}{0.0001} & \meanstd{0.9908}{0.0000} \\\midrule
+FAFEM + MSCB-lite (Exp37) & 30.0 & \meanstd{0.9294}{0.0002} & \meanstd{0.8611}{0.0003} & \meanstd{0.0327}{0.0000} & \meanstd{0.9910}{0.0000} \\\midrule
+FAFEM + RFG-MSCB (Exp45) & 30.1 & \meanstd{0.9313}{0.0002} & \meanstd{0.8635}{0.0002} & \meanstd{0.0306}{0.0001} & \meanstd{0.9911}{0.0000} \\\bottomrule
+\end{tabular}
+\end{table*}
+
+\subsection{Ablation Discussion}
+
+Our three-seed ablation shows that:
+\begin{enumerate}
+\item FAFEM provides a solid feature enhancement baseline (0.9260 mDice on Kvasir-SEG).
+\item Adding MSCB-lite at Stage 3 increases performance to 0.9294 mDice, demonstrating the value of multi-scale refinement in polyp segmentation.
+\item Incorporating residual frequency-guided coupling yields a final score of 0.9313 mDice, indicating that the frequency-domain coupling mechanism provides complementary information to the spatial refinement.
+\end{enumerate}
+
+The parameter overhead is minimal: from 29.4M in Exp33 to 30.0M in Exp37 to 30.1M in Exp45, showing that our additions are computationally efficient.
+
+\subsection{Generalization Evaluation}
+
+The trends observed on Kvasir-SEG hold across the four external polyp segmentation datasets (CVC-ClinicDB, CVC-300, CVC-ColonDB, ETIS-Larib), suggesting that the improvements from FAFEM and our RFG-MSCB module generalize to diverse imaging protocols and polyp appearances.
+
+Note that Exp44 (residual coupling with default initialization) did not complete training, so it is excluded from the ablation. Future work may examine the sensitivity to initialization strength in more detail.
