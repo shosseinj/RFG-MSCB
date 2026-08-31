@@ -127,45 +127,6 @@ influence the work reported in this paper.
 \bibliographystyle{unsrt}
 \bibliography{references}
 
-\begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.4177}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1519}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2025}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2278}}@{}}
-\toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\raggedright
-Methods
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Year
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Param (M)
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-GFLOPs (G)
-\end{minipage} \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-CTNet~\cite{ctnet} & 2024 & & \\
-MEGANet~\cite{meganet} & 2024 & & \\
-Polyp-Mamba~\cite{polypmamba} & 2025 & 49.5 & 27.9 \\
-MEIN~\cite{mein} & 2025 & & \\
-MF-Net~\cite{mfnet} & 2025 & & \\
-MSBP-Net~\cite{msbpnet} & 2025 & 25.52 & 12.86 \\
-CIFFormer~\cite{cifformer} & 2025 & 32.44 & 13.14 \\
-PFPRNet~\cite{pfprnet} & 2025 & 118.52 & 39.39 \\
-PraNet-V2~\cite{pranetv2} & 2025 & & \\
-MLB-Net~\cite{mlbnet} & 2026 & 87.70 & \\
-MSPN~\cite{mspn} & 2026 & 28.56 & 13.21 \\
-DVFIP-Net~\cite{dvfipnet} & 2026 & 46.62 & 19.37 \\
-Ours & -- & 30.06 & 27.82 \\
-\end{longtable}
-
-For our model, complexity was measured at input size
-$1\times3\times352\times352$. The exact counts are 30,057,415 trainable
-and total parameters, 13.909244496 GMACs, and 27.818488992 GFLOPs under
-the project convention $\mathrm{FLOPs}=2\times\mathrm{MACs}$.
-
 \includegraphics[width=9.06377in,height=5.55286in]{media/image1.png}
 
 \begin{itemize}

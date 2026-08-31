@@ -6,6 +6,6 @@ The RFG-MSCB preserves the conventional multi-scale pathway as a reference and l
 
 Ablation experiments using three random seeds show that the addition of the Stage-3 MSCB-lite to a FAFEM baseline increases Kvasir-SEG mDice by +0.34 percentage points. The further addition of the residual frequency-guided coupling yields a final Kvasir-SEG mDice of 0.9313 ± 0.0044, an additional +0.19 pp over the MSCB-lite configuration. On external datasets, the model achieves mDice of 0.9370 on CVC-ClinicDB, 0.8821 on CVC-300, 0.7944 on CVC-ColonDB, and 0.7870 on ETIS-LaribPolypDB. Performance on CVC-ColonDB and ETIS remains lower, indicating limited out-of-distribution generalization.
 
-The final model has 30.06M parameters and 27.82 GFLOPs at 352×352 input, with a 2.4% parameter overhead over the FAFEM-only baseline. All reported values are descriptive means over three seeds; no statistical significance testing was performed.
+The final architecture adds 2.4\% in parameters relative to the FAFEM-only configuration; its detailed complexity and measurement convention are reported in Table~\ref{tab:model-complexity}. All performance values are descriptive means over three seeds; no statistical significance testing was performed.
 
 In summary, this work demonstrates that cross-level frequency guidance with bounded residual branch adaptation is a viable design for polyp segmentation. Future work includes systematic placement ablation, component disentanglement of the RFG-MSCB, and domain adaptation strategies for stronger generalization on challenging external datasets.

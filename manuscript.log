@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.12) (preloaded format=xelatex 2026.8.31)  31 AUG 2026 18:21
+This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.12) (preloaded format=xelatex 2026.8.31)  31 AUG 2026 18:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1191,24 +1191,31 @@ LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/b/n' will be
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/b/n' will be
 (Font)              scaled to size 4.99947pt on input line 84.
 
-[5] [6] [7] [8] [9]) (sections/04_experiments.tex [10] [11]
-
-Package hyperref Warning: Suppressing empty link on input line 131.
-
-(sections/04_ablation_experiments.tex [12]
+[5] [6] [7] [8] [9]
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 9.0pt on input line 34.
+(Font)              scaled to size 9.0pt on input line 445.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 6.0pt on input line 34.
+(Font)              scaled to size 6.0pt on input line 445.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 9.00082pt on input line 34.
+(Font)              scaled to size 9.00082pt on input line 445.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 6.00055pt on input line 34.
+(Font)              scaled to size 6.00055pt on input line 445.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 8.99904pt on input line 34.
+(Font)              scaled to size 8.99904pt on input line 445.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 5.99936pt on input line 34.
-) [13] [14]
+(Font)              scaled to size 5.99936pt on input line 445.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 8.0pt on input line 466.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 8.00073pt on input line 466.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 7.99915pt on input line 466.
+) (sections/04_experiments.tex [10] [11]
+
+Package hyperref Warning: Suppressing empty link on input line 128.
+
+(sections/04_ablation_experiments.tex [12] [13])
+ignored error: Infinite glue shrinkage found in box being split [14]
 ignored error: Infinite glue shrinkage found in box being split [15])
 (sections/05_discussion.tex [16] [17]
 Underfull \hbox (badness 1253) in paragraph at lines 47--48
@@ -1216,11 +1223,11 @@ Underfull \hbox (badness 1253) in paragraph at lines 47--48
 model, CUDA/cuDNN versions, and
  []
 
-) (sections/06_conclusion.tex) [18] (manuscript.bbl [19]) [20]
+) (sections/06_conclusion.tex [18]) (manuscript.bbl [19] [20])
 File: media/image1.png Graphic file (type bmp)
 <media/image1.png>
 
-Overfull \hbox (185.31169pt too wide) in paragraph at lines 169--170
+Overfull \hbox (185.31169pt too wide) in paragraph at lines 130--131
 [][] 
  []
 
@@ -1228,14 +1235,14 @@ Overfull \hbox (185.31169pt too wide) in paragraph at lines 169--170
 File: media/image2.png Graphic file (type bmp)
 <media/image2.png>
 
-Overfull \hbox (201.12358pt too wide) in paragraph at lines 183--184
+Overfull \hbox (201.12358pt too wide) in paragraph at lines 144--145
 [][] 
  []
 
 File: media/image3.png Graphic file (type bmp)
 <media/image3.png>
 
-Overfull \hbox (90.41432pt too wide) in paragraph at lines 185--186
+Overfull \hbox (90.41432pt too wide) in paragraph at lines 146--147
 [][] 
  []
 
@@ -1246,7 +1253,7 @@ File: media/image4.png Graphic file (type bmp)
 File: media/image5.png Graphic file (type bmp)
 <media/image5.png>
 
-Overfull \hbox (186.80754pt too wide) in paragraph at lines 189--190
+Overfull \hbox (186.80754pt too wide) in paragraph at lines 150--151
 [][] 
  []
 
@@ -1257,11 +1264,11 @@ L3 programming layer <2025-12-24>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 19475 strings out of 402987
- 350903 string characters out of 5452871
- 1005880 words of memory out of 5000000
- 47902 multiletter control sequences out of 15000+600000
- 635002 words of font info for 100 fonts, out of 8000000 for 9000
+ 19500 strings out of 402987
+ 351647 string characters out of 5452871
+ 1005160 words of memory out of 5000000
+ 47919 multiletter control sequences out of 15000+600000
+ 635978 words of font info for 108 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  90i,15n,114p,1009b,495s stack positions out of 10000i,1000n,20000p,200000b,200000s
 

@@ -30,7 +30,7 @@ The model's weakest performance is on CVC-ColonDB and ETIS-LaribPolypDB, where m
 
 \subsection{Model Complexity and Practical Trade-offs}
 
-The final model has 30.06M parameters (all trainable), 13.91 GMACs, and 27.82 GFLOPs at 1×3×352×352 input under the FLOPs = 2×MACs convention. The ablation adds approximately 0.6M parameters from FAFEM (29.36M) to FAFEM + RFG-MSCB (30.06M), a 2.4% increase. Training uses AMP FP16 with batch size 24 and completes in ~5000 seconds per seed on a single GPU. Inference latency is suitable for real-time clinical assistance. The parameter overhead of the RFG-MSCB module is minimal relative to the backbone.
+As summarized in Table~\ref{tab:model-complexity}, the final architecture has a moderate parameter count within the small subset of methods for which primary-source counts could be verified. The ablation indicates a 2.4\% parameter increase from the FAFEM configuration to the final model. Computational-cost rankings remain uncertain because most competitor reports do not provide a verified input resolution together with an explicit FLOP-counting convention. No matched-hardware latency benchmark was performed, so the present evidence does not establish real-time inference suitability.
 
 \subsection{Placement Analysis}
 

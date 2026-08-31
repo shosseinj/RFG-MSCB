@@ -60,11 +60,8 @@ or decoder-only warmup was used. The encoder was initialized from
 weights. Deep supervision and frequency augmentation were disabled, and
 sampling was uniform. Early stopping was configured with patience 30
 from the start of training. Seeds 42 and 6543 completed the maximum 200
-epochs; seed 7777 stopped early at final epoch 167. The final model has
-30,057,415 trainable and total parameters. At input size
-$1\times3\times352\times352$, it requires 13.909244496 GMACs and
-27.818488992 GFLOPs under the project convention
-$\mathrm{FLOPs}=2\times\mathrm{MACs}$.
+epochs; seed 7777 stopped early at final epoch 167. Model complexity and
+its measurement convention are reported in Table~\ref{tab:model-complexity}.
 
 Training augmentation applied horizontal and vertical flips independently
 with probability 0.5, rotation in $[-15^{\circ},15^{\circ}]$ with

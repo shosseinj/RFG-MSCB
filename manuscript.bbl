@@ -122,6 +122,22 @@ Bo-Cheng Hu, Ge-Peng Ji, Dian Shao, and Deng-Ping Fan.
 \newblock {PraNet-V2}: Dual-supervised reverse attention for medical image
   segmentation, 2025.
 
+\bibitem{mlbnet}
+{MLB-Net}, 2026.
+\newblock Incomplete manuscript citation; authors and venue require manual
+  verification.
+
+\bibitem{mspn}
+From coarse to fine: Multi-stage progressive network for colon polyp
+  segmentation, 2026.
+\newblock Incomplete manuscript citation; authors and venue require manual
+  verification.
+
+\bibitem{dvfipnet}
+{DVFIP-Net}, 2026.
+\newblock Incomplete manuscript citation; authors and venue require manual
+  verification.
+
 \bibitem{kvasirseg}
 Debesh Jha, Pia~H. Smedsrud, Michael~A. Riegler, Pål Halvorsen, Thomas
   de~Lange, Dag Johansen, and Håvard~D. Johansen.
@@ -180,22 +196,6 @@ Federico Perazzi, Philipp Krähenbühl, Yael Pritch, and Alexander Hornung.
 
 \bibitem{polyplvt}
 {Polyp-LVT}, 2024.
-\newblock Incomplete manuscript citation; authors and venue require manual
-  verification.
-
-\bibitem{mlbnet}
-{MLB-Net}, 2026.
-\newblock Incomplete manuscript citation; authors and venue require manual
-  verification.
-
-\bibitem{mspn}
-From coarse to fine: Multi-stage progressive network for colon polyp
-  segmentation, 2026.
-\newblock Incomplete manuscript citation; authors and venue require manual
-  verification.
-
-\bibitem{dvfipnet}
-{DVFIP-Net}, 2026.
 \newblock Incomplete manuscript citation; authors and venue require manual
   verification.
 
