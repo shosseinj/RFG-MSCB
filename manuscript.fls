@@ -190,18 +190,6 @@ INPUT .\sections\01_introduction.tex
 INPUT sections\01_introduction.tex
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\ec-lmr12.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\ec-lmbx12.tfm
-INPUT .\sections\02_related_work.tex
-INPUT .\sections\02_related_work.tex
-INPUT .\sections\02_related_work.tex
-INPUT .\sections\02_related_work.tex
-INPUT sections\02_related_work.tex
-INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\ec-lmr12.tfm
-INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\ec-lmbx12.tfm
-INPUT .\sections\03_method.tex
-INPUT .\sections\03_method.tex
-INPUT .\sections\03_method.tex
-INPUT .\sections\03_method.tex
-INPUT sections\03_method.tex
 INPUT C:\Program Files\MiKTeX\tex\latex\lm\ot1lmr.fd
 INPUT C:\Program Files\MiKTeX\tex\latex\lm\ot1lmr.fd
 INPUT C:\Program Files\MiKTeX\tex\latex\lm\ot1lmr.fd
@@ -242,12 +230,24 @@ INPUT C:\Users\jafari.h\AppData\Roaming\MiKTeX\tex\latex\microtype\mt-msb.cfg
 INPUT C:\Users\jafari.h\AppData\Roaming\MiKTeX\tex\latex\microtype\mt-msb.cfg
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm7.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm5.tfm
+INPUT C:\Program Files\MiKTeX\fonts\enc\dvips\lm\lm-mathit.enc
+INPUT C:\Program Files\MiKTeX\fonts\enc\dvips\lm\lm-rm.enc
+INPUT C:\Program Files\MiKTeX\fonts\enc\dvips\lm\lm-mathsy.enc
+INPUT .\sections\02_related_work.tex
+INPUT .\sections\02_related_work.tex
+INPUT .\sections\02_related_work.tex
+INPUT .\sections\02_related_work.tex
+INPUT sections\02_related_work.tex
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\ec-lmr12.tfm
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\ec-lmbx12.tfm
+INPUT .\sections\03_method.tex
+INPUT .\sections\03_method.tex
+INPUT .\sections\03_method.tex
+INPUT .\sections\03_method.tex
+INPUT sections\03_method.tex
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\rm-lmbx10.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\rm-lmbx7.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\rm-lmbx5.tfm
-INPUT C:\Program Files\MiKTeX\fonts\enc\dvips\lm\lm-mathit.enc
-INPUT C:\Program Files\MiKTeX\fonts\enc\dvips\lm\lm-mathsy.enc
-INPUT C:\Program Files\MiKTeX\fonts\enc\dvips\lm\lm-rm.enc
 INPUT C:\Program Files\MiKTeX\fonts\enc\dvips\lm\lm-mathex.enc
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\lmmib10.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\lmmib7.tfm
@@ -270,8 +270,10 @@ INPUT .\sections\06_conclusion.tex
 INPUT .\sections\06_conclusion.tex
 INPUT .\sections\06_conclusion.tex
 INPUT sections\06_conclusion.tex
+INPUT .\manuscript.bbl
+INPUT .\manuscript.bbl
+INPUT manuscript.bbl
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\ec-lmri10.tfm
-INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\ts1-lmri10.tfm
 INPUT .\media\image1.png
 INPUT .\media\image1.png
 INPUT .\media\image1.png

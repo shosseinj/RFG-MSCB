@@ -9,12 +9,12 @@ contracting and expanding architecture in which high-resolution encoder
 representations are transferred to the decoder through skip connections.
 This design enables the network to combine contextual representations
 with spatially detailed features and has become a standard baseline for
-biomedical segmentation {[}1{]}.
+biomedical segmentation \cite{unet}.
 
 Subsequent studies modified the U-shaped architecture to improve feature
 fusion and optimization. UNet++ introduced nested dense skip pathways to
 reduce the semantic discrepancy between encoder and decoder features and
-employed deep supervision at multiple decoder depths {[}2{]}. Such
+employed deep supervision at multiple decoder depths \cite{unetpp}. Such
 developments demonstrated that the design of skip connections is as
 important as the choice of encoder because direct feature transfer may
 combine representations with substantially different semantic
@@ -24,14 +24,14 @@ In polyp segmentation, computationally efficient convolutional networks
 have also received considerable attention. HarDNet-MSEG combines a
 low-memory-traffic convolutional backbone with a lightweight decoder and
 illustrates that competitive segmentation performance can be obtained
-without a computationally expensive transformer architecture {[}6{]}.
+without a computationally expensive transformer architecture \cite{hardnetmseg}.
 However, standard convolutional models generally require additional
 mechanisms to capture broad contextual relationships and refine weak
 lesion boundaries.
 
 PraNet introduced a parallel partial decoder to aggregate high-level
 features and a reverse-attention strategy to progressively refine
-uncertain polyp regions {[}7{]}. Its recurrent interaction between
+uncertain polyp regions \cite{pranet}. Its recurrent interaction between
 regional predictions and boundary cues demonstrated the effectiveness of
 explicitly directing the decoder toward inadequately segmented regions.
 Nevertheless, reverse-attention refinement depends on preceding
@@ -52,10 +52,10 @@ into many segmentation architectures.
 Transformer-based approaches address this problem by modeling long-range
 spatial relationships. TransUNet uses a transformer encoder over
 convolutional feature representations to capture global context while
-retaining high-resolution CNN features for localization {[}3{]}.
+retaining high-resolution CNN features for localization \cite{transunet}.
 Polyp-PVT employs a pyramid vision transformer and specialized fusion
 modules to integrate semantic and positional information across
-hierarchical feature levels {[}4{]}. These methods improve long-range
+hierarchical feature levels \cite{polyppvt}. These methods improve long-range
 feature interaction, but their attention operations and cross-level
 fusion mechanisms may increase architectural and computational
 complexity.
@@ -65,7 +65,7 @@ similarly emphasize the need to coordinate local lesion appearance with
 broader anatomical context. State-space and frequency-oriented
 architectures have also been investigated. Polyp-Mamba combines
 multi-frequency perception with a gated selection mechanism to model
-spatial dependencies and frequency-sensitive representations {[}8{]}.
+spatial dependencies and frequency-sensitive representations \cite{polypmamba}.
 The present work does not employ frequency decomposition or a
 state-space operator; instead, it uses parallel dilated depthwise
 convolutions and global average pooling to obtain multi-scale contextual
@@ -84,11 +84,11 @@ feature fusion.
 
 MEGANet employs multi-scale edge-guided attention and incorporates
 high-frequency information derived from image pyramids to improve
-segmentation of weak boundaries {[}9{]}. Its findings demonstrate that
+segmentation of weak boundaries \cite{meganet}. Its findings demonstrate that
 explicitly retaining edge-related information can reduce deterioration
 of boundary features in deep networks. MSBP-Net performs multi-scale
 boundary prediction to improve contour delineation while maintaining
-relatively low model complexity {[}10{]}. This line of research
+relatively low model complexity \cite{msbpnet}. This line of research
 indicates that boundary information should be modeled at more than one
 scale because polyp contours may contain both broad structural
 transitions and small irregularities.
@@ -151,4 +151,3 @@ choices provide a coherent framework for investigating whether
 multi-scale context, boundary-sensitive skip refinement, and selective
 detail fusion can jointly improve polyp segmentation and cross-dataset
 generalization.
-

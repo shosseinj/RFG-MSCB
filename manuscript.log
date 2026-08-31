@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.8.31)  31 AUG 2026 09:00
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.8.31)  31 AUG 2026 10:15
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -537,41 +537,42 @@ Overfull \hbox (2.4906pt too wide) in paragraph at lines 338--339
 []\T1/lmr/bx/n/10 (-20) Epoch  
  []
 
-(sections/01_introduction.tex [2] [3]) (sections/02_related_work.tex [4]) (sections/03_method.tex [5]
-LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 9.
+(sections/01_introduction.tex [2]
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 17.
  (C:\Program Files\MiKTeX\tex/latex/lm\ot1lmr.fd
 File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 9.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 17.
  (C:\Program Files\MiKTeX\tex/latex/lm\omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 9.
+LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 17.
  (C:\Program Files\MiKTeX\tex/latex/lm\omslmsy.fd
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 9.
+LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 17.
  (C:\Program Files\MiKTeX\tex/latex/lm\omxlmex.fd
 File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 9.
+(Font)              <10> on input line 17.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 9.
+(Font)              <7> on input line 17.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 9.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 9.
+(Font)              <5> on input line 17.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 17.
  (C:\Program Files\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 ) (C:\Users\jafari.h\AppData\Roaming\MiKTeX\tex/latex/microtype\mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 9.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 17.
  (C:\Program Files\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) (C:\Users\jafari.h\AppData\Roaming\MiKTeX\tex/latex/microtype\mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
-) [6{C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}{C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}{C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-mathex.enc}] [7] [8] [9] [10] [11]) (sections/04_experiments.tex [12]
+) [3{C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}{C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}]) (sections/02_related_work.tex [4]) (sections/03_method.tex [5] [6{C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-mathex.enc}] [7] [8] [9] [10] [11]) (sections/04_experiments.tex
+sections/04_experiments.tex:49: ignored error: Infinite glue shrinkage found in box being split [12] [13]
 Overfull \hbox (2.4236pt too wide) in paragraph at lines 163--164
 []\T1/lmr/bx/n/10 (-20) Epoch  
  []
@@ -581,60 +582,53 @@ Overfull \hbox (1.2072pt too wide) in paragraph at lines 215--215
 []|\T1/lmr/m/n/10 (-20) Our9388|  
  []
 
-[13]
-sections/04_experiments.tex:351: ignored error: Infinite glue shrinkage found in box being split [14]
-sections/04_experiments.tex:474: ignored error: Infinite glue shrinkage found in box being split [15] [16]
-sections/04_experiments.tex:705: ignored error: Infinite glue shrinkage found in box being split [17]) (sections/05_discussion.tex) (sections/06_conclusion.tex) [18]
-Underfull \hbox (badness 1603) in paragraph at lines 492--497
-[]\T1/lmr/m/n/10 (+20) [ho-35] N. Tajbakhsh, S.R. Gu-rudu, J. Liang, Au-to-mated polyp de-tec-tion in colonoscopy
- []
-
-[19]
-<media/image1.png, id=156, 654.94687pt x 401.24907pt>
+sections/04_experiments.tex:289: ignored error: Infinite glue shrinkage found in box being split [14] [15] [16]
+sections/04_experiments.tex:705: ignored error: Infinite glue shrinkage found in box being split [17]) (sections/05_discussion.tex) (sections/06_conclusion.tex) (manuscript.bbl [18] [19])
+<media/image1.png, id=280, 654.94687pt x 401.24907pt>
 File: media/image1.png Graphic file (type png)
 <use media/image1.png>
-Package pdftex.def Info: media/image1.png  used on input line 582.
+Package pdftex.def Info: media/image1.png  used on input line 463.
 (pdftex.def)             Requested size: 655.04521pt x 401.3093pt.
 
-Overfull \hbox (185.29019pt too wide) in paragraph at lines 582--583
+Overfull \hbox (185.29019pt too wide) in paragraph at lines 463--464
 [][] 
  []
 
 [20]
-<media/image2.png, id=163, 670.75594pt x 112.16907pt>
+<media/image2.png, id=288, 670.75594pt x 112.16907pt>
 File: media/image2.png Graphic file (type png)
 <use media/image2.png>
-Package pdftex.def Info: media/image2.png  used on input line 596.
+Package pdftex.def Info: media/image2.png  used on input line 477.
 (pdftex.def)             Requested size: 670.84639pt x 112.18417pt.
 
-Overfull \hbox (201.09137pt too wide) in paragraph at lines 596--597
+Overfull \hbox (201.09137pt too wide) in paragraph at lines 477--478
 [][] 
  []
 
-<media/image3.png, id=164, 560.0925pt x 460.72125pt>
+<media/image3.png, id=289, 560.0925pt x 460.72125pt>
 File: media/image3.png Graphic file (type png)
 <use media/image3.png>
-Package pdftex.def Info: media/image3.png  used on input line 598.
+Package pdftex.def Info: media/image3.png  used on input line 479.
 (pdftex.def)             Requested size: 560.16803pt x 460.78339pt.
 
-Overfull \hbox (90.41301pt too wide) in paragraph at lines 598--599
+Overfull \hbox (90.41301pt too wide) in paragraph at lines 479--480
 [][] 
  []
 
 [21 <./media/image1.png> <./media/image2.png>]
-<media/image4.png, id=171, 309.40594pt x 225.84375pt>
+<media/image4.png, id=296, 309.40594pt x 225.84375pt>
 File: media/image4.png Graphic file (type png)
 <use media/image4.png>
-Package pdftex.def Info: media/image4.png  used on input line 600.
+Package pdftex.def Info: media/image4.png  used on input line 481.
 (pdftex.def)             Requested size: 309.46655pt x 225.88797pt.
  [22 <./media/image3.png>]
-<media/image5.png, id=177, 656.4525pt x 350.81062pt>
+<media/image5.png, id=302, 656.4525pt x 350.81062pt>
 File: media/image5.png Graphic file (type png)
 <use media/image5.png>
-Package pdftex.def Info: media/image5.png  used on input line 602.
+Package pdftex.def Info: media/image5.png  used on input line 483.
 (pdftex.def)             Requested size: 656.55106pt x 350.86328pt.
 
-Overfull \hbox (186.79604pt too wide) in paragraph at lines 602--603
+Overfull \hbox (186.79604pt too wide) in paragraph at lines 483--484
 [][] 
  []
 
@@ -645,17 +639,17 @@ L3 programming layer <2025-12-24>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 14464 strings out of 467871
- 227475 string characters out of 5428434
- 738644 words of memory out of 5000000
- 42869 multiletter control sequences out of 15000+600000
- 680854 words of font info for 146 fonts, out of 8000000 for 9000
+ 14533 strings out of 467871
+ 228360 string characters out of 5428434
+ 749504 words of memory out of 5000000
+ 42900 multiletter control sequences out of 15000+600000
+ 681048 words of font info for 149 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 77i,9n,81p,1060b,612s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 77i,9n,81p,1060b,608s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbx7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmex10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmmi10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmmi7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmmib10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmsy7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on manuscript.pdf (24 pages, 1731334 bytes).
+Output written on manuscript.pdf (24 pages, 1760755 bytes).
 PDF statistics:
- 378 PDF objects out of 1000 (max. 8388607)
- 82 named destinations out of 1000 (max. 500000)
- 31018 words of extra memory for PDF output out of 35830 (max. 10000000)
+ 507 PDF objects out of 1000 (max. 8388607)
+ 110 named destinations out of 1000 (max. 500000)
+ 28970 words of extra memory for PDF output out of 29859 (max. 10000000)
 

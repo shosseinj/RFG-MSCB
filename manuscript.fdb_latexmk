@@ -1,5 +1,13 @@
 # Fdb version 4
-["pdflatex"] 1788154242.65462 "c:/Users/jafari.h/Desktop/ai_project/testing/writing/manuscript.tex" "manuscript.pdf" "manuscript" 1788154243.66384 0
+["bibtex manuscript"] 1788158732.68597 "manuscript.aux" "manuscript.bbl" "manuscript" 1788158734.4072 0
+  "./references.bib" 1788158617 10065 fdad6abea3df91bf4f0e5738bb02676d ""
+  "C:/Program Files/MiKTeX/bibtex/bst/bibtex/unsrt.bst" 1291864736 18030 1376b4b231b50c66211e47e42eda2875 ""
+  "manuscript.aux" 1788158733 22537 f19e4fb7ea0327640c1db70946585d8e "pdflatex"
+  (generated)
+  "manuscript.bbl"
+  "manuscript.blg"
+  (rewritten before read)
+["pdflatex"] 1788158732.89343 "c:/Users/jafari.h/Desktop/ai_project/testing/writing/manuscript.tex" "manuscript.pdf" "manuscript" 1788158734.40771 0
   "C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc" 1256929440 2375 baa924870cfb487815765f9094cf3728 ""
   "C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-mathex.enc" 1256929440 3486 c7eadf5dcc57b3b2d11736679f6636ba ""
   "C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc" 1256929440 2405 5dcf2c1b967ee25cc46c58cd52244aed ""
@@ -39,7 +47,6 @@
   "C:/Program Files/MiKTeX/fonts/tfm/public/lm/rm-lmr5.tfm" 1256929440 11804 aefb10c002e6492c25236524a447f969 ""
   "C:/Program Files/MiKTeX/fonts/tfm/public/lm/rm-lmr7.tfm" 1256929440 11852 5a9022f105fd1ee2797df861e79ae9a0 ""
   "C:/Program Files/MiKTeX/fonts/tfm/public/lm/ts1-lmr10.tfm" 1256929440 1556 b86d923e6b2f9aab2e313098a95cb0b8 ""
-  "C:/Program Files/MiKTeX/fonts/tfm/public/lm/ts1-lmri10.tfm" 1256929440 1764 bd63b6aa2f40108e63ad65c1421568c6 ""
   "C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb" 1247596673 34694 870c211f62cb72718a00e353f14f254d ""
   "C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbx10.pfb" 1256929440 121021 836464b5fe0c782d94085eb083550ccc ""
   "C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbx12.pfb" 1256929440 116908 9a7a12d1e4df280ea0ab4aad83cdef88 ""
@@ -136,18 +143,19 @@
   "C:/Users/jafari.h/AppData/Roaming/MiKTeX/tex/latex/rerunfilecheck/rerunfilecheck.sty" 1751104012 9684 a33a14b82ce60d6e77cb9be689d79ee6 ""
   "C:/Users/jafari.h/AppData/Roaming/MiKTeX/tex/latex/upquote/upquote.sty" 1335534756 1088 517e01cde97c1c0baf72e69d43aa5a2e ""
   "C:/Users/jafari.h/AppData/Roaming/MiKTeX/tex/latex/xurl/xurl.sty" 1641733940 4675 e4b8c405820368c2dfb03526e16d725a ""
-  "c:/Users/jafari.h/Desktop/ai_project/testing/writing/manuscript.tex" 1788153874 23405 55a8497749455a44b9c02fbd8bfaf4cf ""
-  "manuscript.aux" 1788154243 20058 402833cd49de571a08bfe237ec0dbcef "pdflatex"
-  "manuscript.tex" 1788153874 23405 55a8497749455a44b9c02fbd8bfaf4cf ""
+  "c:/Users/jafari.h/Desktop/ai_project/testing/writing/manuscript.tex" 1788158673 18255 9eaf635dbd29fa98a2fad8e90b912344 ""
+  "manuscript.aux" 1788158733 22537 f19e4fb7ea0327640c1db70946585d8e "pdflatex"
+  "manuscript.bbl" 1788158732 7496 f4ae0898e61d64140a8ca2f36b45caf2 "bibtex manuscript"
+  "manuscript.tex" 1788158673 18255 9eaf635dbd29fa98a2fad8e90b912344 ""
   "media/image1.png" 1788151088 534465 f0dfef4cfad9b6bf108d49e0a28a763c ""
   "media/image2.png" 1788151088 144175 e0d2227c16ff69c1ac7bcf691ee9c645 ""
   "media/image3.png" 1788151088 319306 42519a9175239240fefe9bdd6a59ef48 ""
   "media/image4.png" 1788151088 51262 42e6fda0a788a130a7c3a59e51320b04 ""
   "media/image5.png" 1788151088 194556 4289be7a81b556e34b4e34cfb0082483 ""
-  "sections/01_introduction.tex" 1788153874 6341 1c85b9f2c266ee3d71d7185369fc7102 ""
-  "sections/02_related_work.tex" 1788153874 8412 27b055124567b12149e1028fbc4dffaf ""
+  "sections/01_introduction.tex" 1788158730 7503 78c90b4079392fda8c6aed4945e6c15d ""
+  "sections/02_related_work.tex" 1788158634 8478 8c9496c607c7e0878ae120887939e31e ""
   "sections/03_method.tex" 1788154241 12351 c03561c9cfaf441d9e6eab0f82831747 ""
-  "sections/04_experiments.tex" 1788153874 33044 3de3dbdebf8893106da5110a4076ce87 ""
+  "sections/04_experiments.tex" 1788158652 33489 3b17d86ffbc1339a2b98f25e273e4828 ""
   "sections/05_discussion.tex" 1788153874 40 c8d91f9442d7f0fe5d0ca026540d5340 ""
   "sections/06_conclusion.tex" 1788153874 0 d41d8cd98f00b204e9800998ecf8427e ""
   (generated)

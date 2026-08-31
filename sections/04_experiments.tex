@@ -3,12 +3,12 @@
 \subsection{\texorpdfstring{Dataset: }{Dataset: }}\label{dataset}
 
 To verify the effectiveness of the models, we adopted five public
-datasets (including Kvasir-SEG {[}ho-32{]}, CVC-ClinicDB {[}ho-33{]},
-ETIS {[}ho-34{]}, CVC-ColonDB {[}ho-35{]} and CVC-300 {[}ho-36{]})
+datasets (including Kvasir-SEG \cite{kvasirseg}, CVC-ClinicDB \cite{cvcclinicdb},
+ETIS \cite{etis}, CVC-ColonDB \cite{cvccolondb} and CVC-300 \cite{cvc300})
 commonly used in existing polyp segmentation studies. These images are
 acquired from colonoscopy video sequences, and all of them contain the
 corresponding ground truth. \RL{}For fair comparison, according to table
-1, we split the datasets as in PraNet {[}8{]}. The training set consists
+1, we split the datasets as in PraNet \cite{pranet}. The training set consists
 of 900 images from the Kvasir-SEG and 550 images from the CVC-ClinicDB.
 The remaining samples in the Kvasir-SEG and the CVC-ClinicDB, and the
 other three datasets are used as five inde pendent test sets. In this
@@ -58,9 +58,9 @@ segmentation metrics are employed: the mean Intersection over Union
 (mIoU) and mean Dice coefficient (mDice). In addition, in order to
 evaluate the performance of the model more comprehensively, this paper
 also adds four evaluation indicators commonly used in the field of
-salient object detection, namely S-measure (S$\alpha$) {[}ho-f20{]},
-F-measure{[}{]}, E-measure () {[}ho-fan{]} and mean absolute error (MAE)
-{[}ho-peraz{]}. The detailed definitions and formulas for these metrics
+salient object detection, namely S-measure (S$\alpha$) \cite{smeasure},
+F-measure{[}{]}, E-measure () \cite{emeasure} and mean absolute error (MAE)
+\cite{saliencyfilters}. The detailed definitions and formulas for these metrics
 are as follows: mIoU and mDice are commonly used to measure the
 similarity between the prediction map and the real map. They
 quantitatively analyze the spatial overlap between the prediction map
@@ -110,7 +110,7 @@ calculation formula is as follows:
 
 \[E_{\varphi} = \ \frac{1}{W*H}\sum_{i = 1}^{W}{\sum_{j = 1}^{H}{\phi_{FM}(i,j),\ \ }}\]
 
-Where \(\phi_{FM}\) is the enhanced alignment matrix {[}ho-40{]}.
+Where \(\phi_{FM}\) is the enhanced alignment matrix \cite{emeasure}.
 
 MAE is used to compute the mean absolute error between predicted and
 ground truth masks. The calculation formula is as follows:
@@ -259,31 +259,31 @@ MAE
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-CTNet{[}20-1{]} & 2024 & 0.917 & 0.863 & 0.910 & 0.928 & 0.959 & 0.964 &
+CTNet~\cite{ctnet} & 2024 & 0.917 & 0.863 & 0.910 & 0.928 & 0.959 & 0.964 &
 0.023 \\
-MEGANet{[}47-1{]} & 2024 & 0.913 & 0.863 & 0.907 & 0.918 & 0.956 & 0.959
+MEGANet~\cite{meganet} & 2024 & 0.913 & 0.863 & 0.907 & 0.918 & 0.956 & 0.959
 & 0.025 \\
-CAFÉ-Net{[}2{]} & 2024 & 0.933 & \textbf{0.889} & 0.927 & 0.939 & 0.967
+CAFÉ-Net~\cite{cafenet} & 2024 & 0.933 & \textbf{0.889} & 0.927 & 0.939 & 0.967
 & ? & \textbf{0.019} \\
-Polyp-LVT{[}2{]} & 2024 & 0.909 & 0.851 & 0.913 & 0.922 & 0.941 & ? &
+Polyp-LVT~\cite{polyplvt} & 2024 & 0.909 & 0.851 & 0.913 & 0.922 & 0.941 & ? &
 0.024 \\
-Polyp-Mamba{[}48-1{]} & 2025 & 0.919 & 0.867 & 0.912 & \textbf{0.951} &
+Polyp-Mamba~\cite{polypmamba} & 2025 & 0.919 & 0.867 & 0.912 & \textbf{0.951} &
 - & 0.968 & 0.021 \\
-MEIN{[}25-1{]} & 2025 & 0.905 & 0.847 & 0.905 & 0.914 & - & 0.964 &
+MEIN~\cite{mein} & 2025 & 0.905 & 0.847 & 0.905 & 0.914 & - & 0.964 &
 0.026 \\
-MF-Net{[}2{]} & 2025 & 0.915 & 0.863 & 0.939 & 0.924 & 0.962 & ? &
+MF-Net~\cite{mfnet} & 2025 & 0.915 & 0.863 & 0.939 & 0.924 & 0.962 & ? &
 0.022 \\
-MSBP-Net{[}2{]} & 2025 & 0.919 & 0.868 & 0.916 & 0.926 & 0.961 & ? &
+MSBP-Net~\cite{msbpnet} & 2025 & 0.919 & 0.868 & 0.916 & 0.926 & 0.961 & ? &
 0.023 \\
-CIFFormer{[}2{]} & 2025 & 0.926 & 0.876 & \textbf{0.929} & 0.939 & 0.967
+CIFFormer~\cite{cifformer} & 2025 & 0.926 & 0.876 & \textbf{0.929} & 0.939 & 0.967
 & ? & \textbf{0.019} \\
-PFPRNet{[}2{]} & 2025 & 0.930 & 0.881 & 0.920 & 0.935 & \textbf{0.971} &
+PFPRNet~\cite{pfprnet} & 2025 & 0.930 & 0.881 & 0.920 & 0.935 & \textbf{0.971} &
 ? & \textbf{0.019} \\
-PraNet-V2{[}11-3{]} & 2025 & 0.907 & 0.853 & ? & ? & ? & ? & 0.025 \\
-MLB-Net{[}1{]} & 2026 & 0.926 & 0.878 & 0.921 & 0.938 & 0.969 &
+PraNet-V2~\cite{pranetv2} & 2025 & 0.907 & 0.853 & ? & ? & ? & ? & 0.025 \\
+MLB-Net~\cite{mlbnet} & 2026 & 0.926 & 0.878 & 0.921 & 0.938 & 0.969 &
 \textbf{0.975} & 0.021 \\
-MSPN{[}3{]} & 2026 & 0.927 & 0.879 & ? & ? & ? & ? & 0.021 \\
-DVFIP-Net{[}4{]} & 2026 & 0.922 & 0.874 & ? & ? & ? & ? & ? \\
+MSPN~\cite{mspn} & 2026 & 0.927 & 0.879 & ? & ? & ? & ? & 0.021 \\
+DVFIP-Net~\cite{dvfipnet} & 2026 & 0.922 & 0.874 & ? & ? & ? & ? & ? \\
 Ours & - & \textbf{0.935} & 0.879 & 0.901 & 0.935 & 0.952 & 0.963 &
 0.025 \\
 \end{longtable}
@@ -325,27 +325,27 @@ MAE
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-CTNet{[}20-1{]} & 2024 & 0.936 & 0.887 & 0.934 & 0.952 & 0.983 & 0.986 &
+CTNet~\cite{ctnet} & 2024 & 0.936 & 0.887 & 0.934 & 0.952 & 0.983 & 0.986 &
 0.006 \\
-MEGANet{[}47-1{]} & 2024 & 0.938 & 0.894 & 0.940 & 0.950 & - & 0.987 &
+MEGANet~\cite{meganet} & 2024 & 0.938 & 0.894 & 0.940 & 0.950 & - & 0.987 &
 0.007 \\
-Polyp-Mamba{[}48-1{]} & 2025 & 0.941 & 0.896 & 0.936 & \textbf{0.970} &
+Polyp-Mamba~\cite{polypmamba} & 2025 & 0.941 & 0.896 & 0.936 & \textbf{0.970} &
 - & 0.970 & 0.008 \\
-MEIN{[}25-1{]} & 2025 & 0.923 & 0.878 & 0.928 & 0.944 & - & 0.970 &
+MEIN~\cite{mein} & 2025 & 0.923 & 0.878 & 0.928 & 0.944 & - & 0.970 &
 0.008 \\
-MF-Net{[}2{]} & 2025 & 0.931 & 0.884 & 0.953 & 0.949 & 0.983 & ? &
+MF-Net~\cite{mfnet} & 2025 & 0.931 & 0.884 & 0.953 & 0.949 & 0.983 & ? &
 \textbf{0.006} \\
-MSBP-Net{[}2{]} & 2025 & 0.940 & 0.892 & 0.927 & 0.939 & 0.976 & ? &
+MSBP-Net~\cite{msbpnet} & 2025 & 0.940 & 0.892 & 0.927 & 0.939 & 0.976 & ? &
 0.007 \\
-CIFFormer{[}2{]} & 2025 & 0.944 & 0.897 & 0.941 & 0.934 & 0.972 & ? &
+CIFFormer~\cite{cifformer} & 2025 & 0.944 & 0.897 & 0.941 & 0.934 & 0.972 & ? &
 0.007 \\
-PFPRNet{[}2{]} & 2025 & 0.949 & 0.903 & 0.947 & 0.957 & 0.989 & ? &
+PFPRNet~\cite{pfprnet} & 2025 & 0.949 & 0.903 & 0.947 & 0.957 & 0.989 & ? &
 \textbf{0.006} \\
-PraNet-V2{[}11-3{]} & 2025 & 0.929 & 0.88 & ? & ? & ? & ? & 0.009 \\
-MLB-Net{[}1{]} & 2026 & 0.945 & 0.902 & \textbf{0.948} & 0.958 & 0.989 &
+PraNet-V2~\cite{pranetv2} & 2025 & 0.929 & 0.88 & ? & ? & ? & ? & 0.009 \\
+MLB-Net~\cite{mlbnet} & 2026 & 0.945 & 0.902 & \textbf{0.948} & 0.958 & 0.989 &
 \textbf{0.992} & \textbf{0.006} \\
-MSPN{[}3{]} & 2026 & 0.943 & 0.902 & ? & ? & ? & ? & \textbf{0.006} \\
-DVFIP-Net{[}4{]} & 2026 & 0.942 & 0.896 & ? & ? & ? & ? & ? \\
+MSPN~\cite{mspn} & 2026 & 0.943 & 0.902 & ? & ? & ? & ? & \textbf{0.006} \\
+DVFIP-Net~\cite{dvfipnet} & 2026 & 0.942 & 0.896 & ? & ? & ? & ? & ? \\
 Ours & - & \textbf{0.951} & \textbf{0.906} & 0.931 & 0.954 & 0.983 &
 0.990 & 0.009 \\
 \end{longtable}
@@ -387,27 +387,27 @@ MAE
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-CTNet{[}20-1{]} & 2024 & 0.810 & 0.734 & 0.776 & 0.886 & 0.913 & 0.921 &
+CTNet~\cite{ctnet} & 2024 & 0.810 & 0.734 & 0.776 & 0.886 & 0.913 & 0.921 &
 0.014 \\
-MEGANet{[}47-1{]} & 2024 & 0.789 & 0.709 & 0.753 & 0.866 & 0.855 & 0.915
+MEGANet~\cite{meganet} & 2024 & 0.789 & 0.709 & 0.753 & 0.866 & 0.855 & 0.915
 & 0.015 \\
-Polyp-Mamba{[}48-1{]} & 2025 & 0.756 & 0.668 & 0.756 & 0.887 & - & 0.872
+Polyp-Mamba~\cite{polypmamba} & 2025 & 0.756 & 0.668 & 0.756 & 0.887 & - & 0.872
 & 0.014 \\
-MEIN{[}25-1{]} & 2025 & 0.788 & 0.711 & 0.764 & 0.870 & - & 0.902 &
+MEIN~\cite{mein} & 2025 & 0.788 & 0.711 & 0.764 & 0.870 & - & 0.902 &
 0.018 \\
-MF-Net{[}2{]} & 2025 & 0.821 & 0.750 & 0.850 & 0.901 & 0.925 & ? &
+MF-Net~\cite{mfnet} & 2025 & 0.821 & 0.750 & 0.850 & 0.901 & 0.925 & ? &
 \textbf{0.011} \\
-MSBP-Net{[}2{]} & 2025 & 0.795 & 0.718 & 0.770 & 0.873 & 0.899 & ? &
+MSBP-Net~\cite{msbpnet} & 2025 & 0.795 & 0.718 & 0.770 & 0.873 & 0.899 & ? &
 0.019 \\
-CIFFormer{[}2{]} & 2025 & 0.810 & 0.746 & \textbf{0.858} & 0.889 & 0.918
+CIFFormer~\cite{cifformer} & 2025 & 0.810 & 0.746 & \textbf{0.858} & 0.889 & 0.918
 & ? & 0.013 \\
-PFPRNet{[}2{]} & 2025 & 0.828 & 0.764 & 0.839 & \textbf{0.908} &
+PFPRNet~\cite{pfprnet} & 2025 & 0.828 & 0.764 & 0.839 & \textbf{0.908} &
 \textbf{0.935} & ? & 0.012 \\
-PraNet-V2{[}11-3{]} & 2025 & 0.713 & 0.633 & ? & ? & ? & ? & 0.021 \\
-MLB-Net{[}1{]} & 2026 & 0.821 & 0.744 & 0.780 & 0.899 & 0.914 &
+PraNet-V2~\cite{pranetv2} & 2025 & 0.713 & 0.633 & ? & ? & ? & ? & 0.021 \\
+MLB-Net~\cite{mlbnet} & 2026 & 0.821 & 0.744 & 0.780 & 0.899 & 0.914 &
 \textbf{0.935} & 0.013 \\
-MSPN{[}3{]} & 2026 & 0.798 & 0.717 & ? & ? & ? & ? & 0.017 \\
-DVFIP-Net{[}4{]} & 2026 & 0.811 & 0.730 & ? & ? & ? & ? & ? \\
+MSPN~\cite{mspn} & 2026 & 0.798 & 0.717 & ? & ? & ? & ? & 0.017 \\
+DVFIP-Net~\cite{dvfipnet} & 2026 & 0.811 & 0.730 & ? & ? & ? & ? & ? \\
 Ours & - & \textbf{0.887} & \textbf{0.797} & 0.730 & 0.873 & 0.883 &
 0.913 & 0.014 \\
 \end{longtable}
@@ -449,27 +449,27 @@ MAE
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-CTNet{[}20-1{]} & 2024 & 0.813 & 0.734 & 0.801 & 0.874 & 0.915 & 0.919 &
+CTNet~\cite{ctnet} & 2024 & 0.813 & 0.734 & 0.801 & 0.874 & 0.915 & 0.919 &
 0.040 \\
-MEGANet{[}47-1{]} & 2024 & 0.793 & 0.714 & 0.779 & 0.854 & 0.892 & 0.895
+MEGANet~\cite{meganet} & 2024 & 0.793 & 0.714 & 0.779 & 0.854 & 0.892 & 0.895
 & 0.034 \\
-Polyp-Mamba{[}48-1{]} & 2025 & 0.791 & 0.713 & 0.765 & 0.846 & - & 0.902
+Polyp-Mamba~\cite{polypmamba} & 2025 & 0.791 & 0.713 & 0.765 & 0.846 & - & 0.902
 & 0.034 \\
-MEIN{[}25-1{]} & 2025 & 0.791 & 0.715 & 0.785 & 0.856 & - & 0.897 &
+MEIN~\cite{mein} & 2025 & 0.791 & 0.715 & 0.785 & 0.856 & - & 0.897 &
 0.034 \\
-MF-Net{[}2{]} & 2025 & 0.825 & 0.751 & 0.864 & 0.887 & 0.929 & ? &
+MF-Net~\cite{mfnet} & 2025 & 0.825 & 0.751 & 0.864 & 0.887 & 0.929 & ? &
 0.024 \\
-MSBP-Net{[}2{]} & 2025 & 0.810 & 0.731 & 0.810 & 0.861 & 0.912 & ? &
+MSBP-Net~\cite{msbpnet} & 2025 & 0.810 & 0.731 & 0.810 & 0.861 & 0.912 & ? &
 0.029 \\
-CIFFormer{[}2{]} & 2025 & 0.823 & 0.741 & 0.851 & 0.874 & 0.918 & ? &
+CIFFormer~\cite{cifformer} & 2025 & 0.823 & 0.741 & 0.851 & 0.874 & 0.918 & ? &
 0.026 \\
-PFPRNet{[}2{]} & 2025 & 0.819 & 0.741 & 0.843 & 0.882 & 0.915 & ? &
+PFPRNet~\cite{pfprnet} & 2025 & 0.819 & 0.741 & 0.843 & 0.882 & 0.915 & ? &
 0.028 \\
-PraNet-V2{[}11-3{]} & 2025 & 0.702 & 0.620 & ? & ? & ? & ? & 0.044 \\
-MLB-Net{[}1{]} & 2026 & \textbf{0.832} & 0.757 & 0.825 & 0.886 & 0.924 &
+PraNet-V2~\cite{pranetv2} & 2025 & 0.702 & 0.620 & ? & ? & ? & ? & 0.044 \\
+MLB-Net~\cite{mlbnet} & 2026 & \textbf{0.832} & 0.757 & 0.825 & 0.886 & 0.924 &
 0.931 & 0.023 \\
-MSPN{[}3{]} & 2026 & 0.811 & 0.734 & ? & ? & ? & ? & 0.029 \\
-DVFIP-Net{[}4{]} & 2026 & 0.826 & 0.746 & ? & ? & ? & ? & ? \\
+MSPN~\cite{mspn} & 2026 & 0.811 & 0.734 & ? & ? & ? & ? & 0.029 \\
+DVFIP-Net~\cite{dvfipnet} & 2026 & 0.826 & 0.746 & ? & ? & ? & ? & ? \\
 Ours & - & 79.74 & 69.20 & 0.759 & 0.869 & 0.885 & 0.903 & 0.035 \\
 \end{longtable}
 
@@ -510,27 +510,27 @@ MAE
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-CTNet{[}20-1{]} & 2024 & 0.908 & 0.844 & 0.894 & 0.975 & 0.975 & 0.982 &
+CTNet~\cite{ctnet} & 2024 & 0.908 & 0.844 & 0.894 & 0.975 & 0.975 & 0.982 &
 0.006 \\
-MEGANet{[}47-1{]} & 2024 & 0.899 & 0.834 & 0.882 & 0.935 & 0.966 & 0.969
+MEGANet~\cite{meganet} & 2024 & 0.899 & 0.834 & 0.882 & 0.935 & 0.966 & 0.969
 & 0.007 \\
-Polyp-Mamba{[}48-1{]} & 2025 & 0.906 & 0.840 & 0.888 & 0.936 & - & 0.975
+Polyp-Mamba~\cite{polypmamba} & 2025 & 0.906 & 0.840 & 0.888 & 0.936 & - & 0.975
 & 0.006 \\
-MEIN{[}25-1{]} & 2025 & 0.893 & 0.828 & 0.880 & 0.930 & - & 0.965 &
+MEIN~\cite{mein} & 2025 & 0.893 & 0.828 & 0.880 & 0.930 & - & 0.965 &
 0.007 \\
-MF-Net{[}2{]} & 2025 & 0.897 & 0.836 & 0.918 & 0.941 & 0.966 & ? &
+MF-Net~\cite{mfnet} & 2025 & 0.897 & 0.836 & 0.918 & 0.941 & 0.966 & ? &
 0.007 \\
-MSBP-Net{[}2{]} & 2025 & 0.903 & 0.859 & 0.927 & 0.942 & 0.967 & ? &
+MSBP-Net~\cite{msbpnet} & 2025 & 0.903 & 0.859 & 0.927 & 0.942 & 0.967 & ? &
 0.019 \\
-CIFFormer{[}2{]} & 2025 & 0.883 & 0.822 & 0.912 & 0.939 & 0.961 & ? &
+CIFFormer~\cite{cifformer} & 2025 & 0.883 & 0.822 & 0.912 & 0.939 & 0.961 & ? &
 0.10 \\
-PFPRNet{[}2{]} & 2025 & 0.891 & 0.833 & 0.917 & 0.928 & 0.950 & ? &
+PFPRNet~\cite{pfprnet} & 2025 & 0.891 & 0.833 & 0.917 & 0.928 & 0.950 & ? &
 0.013 \\
-PraNet-V2{[}11-3{]} & 2025 & 0.873 & 0.795 & & & & & 0.007 \\
-MLB-Net{[}1{]} & 2026 & 0.915 & 0.852 & 0.909 & 0.974 & 0.974 & 0.978 &
+PraNet-V2~\cite{pranetv2} & 2025 & 0.873 & 0.795 & & & & & 0.007 \\
+MLB-Net~\cite{mlbnet} & 2026 & 0.915 & 0.852 & 0.909 & 0.974 & 0.974 & 0.978 &
 0.005 \\
-MSPN{[}3{]} & 2026 & 0.907 & 0.840 & & & & & 0.006 \\
-DVFIP-Net{[}4{]} & 2026 & 0.900 & 0.833 & ? & ? & ? & ? & ? \\
+MSPN~\cite{mspn} & 2026 & 0.907 & 0.840 & & & & & 0.006 \\
+DVFIP-Net~\cite{dvfipnet} & 2026 & 0.900 & 0.833 & ? & ? & ? & ? & ? \\
 Ours & - & \textbf{0.916} & \textbf{0.845} & 0.848 & 0.939 & 0.951 &
 0.969 & 0.007 \\
 \end{longtable}
@@ -708,4 +708,3 @@ ETIS & mDice \(\uparrow\) & & & & & & \\
 GDF = Gated Detail Fusion; DS = Deep Supervision. Baseline denotes the
 ConvNeXt-Tiny encoder with the lightweight decoder and final prediction
 head, without MSC, BSEI, DB, GDF, or DS.
-

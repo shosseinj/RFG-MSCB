@@ -1,0 +1,182 @@
+\begin{thebibliography}{10}
+
+\bibitem{unet}
+Olaf Ronneberger, Philipp Fischer, and Thomas Brox.
+\newblock U-net: Convolutional networks for biomedical image segmentation.
+\newblock In {\em Medical Image Computing and Computer-Assisted Intervention --
+  MICCAI 2015}, pages 234--241. Springer, 2015.
+
+\bibitem{unetpp}
+Zongwei Zhou, Md~Mahfuzur~Rahman Siddiquee, Nima Tajbakhsh, and Jianming Liang.
+\newblock {UNet++}: Redesigning skip connections to exploit multiscale features
+  in image segmentation.
+\newblock {\em IEEE Transactions on Medical Imaging}, 39(6):1856--1867, 2020.
+
+\bibitem{transunet}
+Jieneng Chen, Yongyi Lu, Qihang Yu, Xiangde Luo, Ehsan Adeli, Yan Wang, Le~Lu,
+  Alan~L. Yuille, and Yuyin Zhou.
+\newblock {TransUNet}: Transformers make strong encoders for medical image
+  segmentation, 2021.
+
+\bibitem{polyppvt}
+Bo~Dong, Wenhai Wang, Deng-Ping Fan, Jinpeng Li, Huazhu Fu, and Ling Shao.
+\newblock {Polyp-PVT}: Polyp segmentation with pyramid vision transformers.
+\newblock {\em CAAI Artificial Intelligence Research}, page 9150015, 2023.
+
+\bibitem{convnext}
+Zhuang Liu, Hanzi Mao, Chao-Yuan Wu, Christoph Feichtenhofer, Trevor Darrell,
+  and Saining Xie.
+\newblock A convnet for the 2020s.
+\newblock In {\em Proceedings of the IEEE/CVF Conference on Computer Vision and
+  Pattern Recognition}, pages 11966--11976, 2022.
+
+\bibitem{hardnetmseg}
+Chien-Hsiang Huang, Hung-Yu Wu, and Youn-Long Lin.
+\newblock {HarDNet-MSEG}: A simple encoder-decoder polyp segmentation neural
+  network that achieves over 0.9 mean dice and 86 fps, 2021.
+
+\bibitem{pranet}
+Deng-Ping Fan, Ge-Peng Ji, Tao Zhou, Geng Chen, Huazhu Fu, Jianbing Shen, and
+  Ling Shao.
+\newblock {PraNet}: Parallel reverse attention network for polyp segmentation.
+\newblock In {\em Medical Image Computing and Computer-Assisted Intervention --
+  MICCAI 2020}, pages 263--273. Springer, 2020.
+
+\bibitem{polypmamba}
+Xingguo Zhu, Wei Wang, Chen Zhang, and Haifeng Wang.
+\newblock {Polyp-Mamba}: A hybrid multi-frequency perception gated selection
+  network for polyp segmentation.
+\newblock {\em Information Fusion}, 115:102759, 2025.
+
+\bibitem{meganet}
+Nhat-Tan Bui, Dinh-Hieu Hoang, Quang-Thuc Nguyen, Minh-Triet Tran, and Ngan Le.
+\newblock {MEGANet}: Multi-scale edge-guided attention network for weak
+  boundary polyp segmentation.
+\newblock In {\em Proceedings of the IEEE/CVF Winter Conference on Applications
+  of Computer Vision}, pages 7985--7994, 2024.
+
+\bibitem{msbpnet}
+Xing-Liang Pan, Ju-Rong Ding, Xia Li, Shuo Liu, Jie Wang, Bo~Hua, Guo-Zhi Tang,
+  and Chang-Hua Zhong.
+\newblock {MSBP-Net}: A multi-scale boundary prediction network for automated
+  polyp segmentation.
+\newblock {\em Pattern Recognition}, 170:112101, 2026.
+
+\bibitem{kvasirseg}
+Debesh Jha, Pia~H. Smedsrud, Michael~A. Riegler, Pål Halvorsen, Thomas
+  de~Lange, Dag Johansen, and Håvard~D. Johansen.
+\newblock {Kvasir-SEG}: A segmented polyp dataset.
+\newblock In {\em MultiMedia Modeling}, pages 451--462. Springer, 2020.
+
+\bibitem{cvcclinicdb}
+Jorge Bernal, F.~Javier Sánchez, Gloria Fernández-Esparrach, Debora Gil,
+  Cristina Rodríguez, and Fernando Vilariño.
+\newblock {WM-DOVA} maps for accurate polyp highlighting in colonoscopy:
+  Validation versus saliency maps from physicians.
+\newblock {\em Computerized Medical Imaging and Graphics}, 43:99--111, 2015.
+
+\bibitem{etis}
+Juan Silva, Aymeric Histace, Olivier Romain, Xavier Dray, and Bertrand Granado.
+\newblock Toward embedded detection of polyps in {WCE} images for early
+  diagnosis of colorectal cancer.
+\newblock {\em International Journal of Computer Assisted Radiology and
+  Surgery}, 9(2):283--293, 2014.
+
+\bibitem{cvccolondb}
+Nima Tajbakhsh, Suryakanth~R. Gurudu, and Jianming Liang.
+\newblock Automated polyp detection in colonoscopy videos using shape and
+  context information.
+\newblock {\em IEEE Transactions on Medical Imaging}, 35(2):630--644, 2016.
+
+\bibitem{cvc300}
+David Vázquez, Jorge Bernal, F.~Javier Sánchez, Gloria Fernández-Esparrach,
+  Antonio~M. López, Adriana Romero, Michal Drozdzal, and Aaron Courville.
+\newblock A benchmark for endoluminal scene segmentation of colonoscopy images.
+\newblock {\em Journal of Healthcare Engineering}, 2017:1--9, 2017.
+
+\bibitem{smeasure}
+Deng-Ping Fan, Ming-Ming Cheng, Yun Liu, Tao Li, and Ali Borji.
+\newblock Structure-measure: A new way to evaluate foreground maps.
+\newblock In {\em Proceedings of the IEEE International Conference on Computer
+  Vision}, pages 4558--4567, 2017.
+
+\bibitem{emeasure}
+Deng-Ping Fan, Cheng Gong, Yang Cao, Bo~Ren, Ming-Ming Cheng, and Ali Borji.
+\newblock Enhanced-alignment measure for binary foreground map evaluation.
+\newblock In {\em Proceedings of the Twenty-Seventh International Joint
+  Conference on Artificial Intelligence}, pages 698--704, 2018.
+
+\bibitem{saliencyfilters}
+Federico Perazzi, Philipp Krähenbühl, Yael Pritch, and Alexander Hornung.
+\newblock Saliency filters: Contrast based filtering for salient region
+  detection.
+\newblock In {\em Proceedings of the IEEE Conference on Computer Vision and
+  Pattern Recognition}, pages 733--740, 2012.
+
+\bibitem{ctnet}
+Bin Xiao, Jinwu Hu, Weisheng Li, Chi-Man Pun, and Xiuli Bi.
+\newblock {CTNet}: Contrastive transformer network for polyp segmentation.
+\newblock {\em IEEE Transactions on Cybernetics}, 54:5040--5053, 2024.
+
+\bibitem{cafenet}
+{CAFÉ-Net}, 2024.
+\newblock Incomplete manuscript citation; authors and venue require manual
+  verification.
+
+\bibitem{polyplvt}
+{Polyp-LVT}, 2024.
+\newblock Incomplete manuscript citation; authors and venue require manual
+  verification.
+
+\bibitem{mein}
+Xiaolu Kang, Zhuoqi Ma, Kang Liu, Yunan Li, and Qiguang Miao.
+\newblock Modeling multi-scale uncertainty with evidence integration for
+  reliable polyp segmentation.
+\newblock {\em Neural Networks}, 189:107553, 2025.
+
+\bibitem{mfnet}
+Shuangyuan Wang, Shengmao Lin, Fujia Sun, and Xiaobo Li.
+\newblock Multi-feature fusion for accurate polyp segmentation using pyramid
+  visual transformers.
+\newblock {\em Expert Systems with Applications}, 280:127558, 2025.
+
+\bibitem{cifformer}
+Cunlu Xu, Long Lin, Bin Wang, and Jun Liu.
+\newblock {CIFFormer}: A contextual information flow guided transformer for
+  colorectal polyp segmentation.
+\newblock {\em Neurocomputing}, 644:130413, 2025.
+
+\bibitem{pfprnet}
+Jinghui Chu, Wangtao Liu, Qi~Tian, and Wei Lu.
+\newblock {PFPRNet}: A phase-wise feature pyramid with retention network for
+  polyp segmentation.
+\newblock {\em IEEE Journal of Biomedical and Health Informatics},
+  29:1137--1150, 2025.
+
+\bibitem{pranetv2}
+Bo-Cheng Hu, Ge-Peng Ji, Dian Shao, and Deng-Ping Fan.
+\newblock {PraNet-V2}: Dual-supervised reverse attention for medical image
+  segmentation, 2025.
+
+\bibitem{mlbnet}
+{MLB-Net}, 2026.
+\newblock Incomplete manuscript citation; authors and venue require manual
+  verification.
+
+\bibitem{mspn}
+From coarse to fine: Multi-stage progressive network for colon polyp
+  segmentation, 2026.
+\newblock Incomplete manuscript citation; authors and venue require manual
+  verification.
+
+\bibitem{dvfipnet}
+{DVFIP-Net}, 2026.
+\newblock Incomplete manuscript citation; authors and venue require manual
+  verification.
+
+\bibitem{hcanet}
+{HCA-Net}.
+\newblock Incomplete manuscript reference placeholder; authors, venue, and year
+  require manual verification.
+
+\end{thebibliography}
