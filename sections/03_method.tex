@@ -495,4 +495,9 @@ $$
 
 parameters.
 
+The total parameter count is also 30,057,415. Complexity measurement on
+a $1\times3\times352\times352$ input gives 13.909244496 GMACs and
+27.818488992 GFLOPs under the project convention
+$\mathrm{FLOPs}=2\times\mathrm{MACs}$.
+
 The additional frequency-guided mechanism is introduced only at the first decoder--encoder fusion stage. The remaining decoder retains lightweight depthwise-separable convolution and conventional skip fusion, limiting the architectural modification to the stage at which high-level semantic information is first combined with the relatively high-resolution $F_3$ representation.

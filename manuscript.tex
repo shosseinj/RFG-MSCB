@@ -93,6 +93,7 @@
 \date{}
 
 \providecommand{\RL}[1]{#1}
+\newcommand{\meanstd}[2]{\shortstack{#1\\[-1pt]{\scriptsize$\pm$#2}}}
 \begin{document}
 
 \begin{longtable}[]{@{}
@@ -131,9 +132,9 @@ DVFIP-Net & 2026 & \RL{45.62} & \RL{92.20} & \RL{87.40} & 352*352 \\
 SAM2-FNet & 2026 & \RL{27.2} & \RL{92.40} & 87.40 & 352*352 \\
 MLB-Net & 2026 & 87.7 & 92.60 & 87.80 & 352*352 \\
 MSPN & 2026 & 28.56 & 92.70 & 87.90 & 352*352 \\
-HCA-Net & 2026 & 89.70 & 93.60 & 89.7 & 352*352 \\
-Ours & 2026 & 38.5 & 93.89 & 88.66 & 352*352 \\
-PolyMamba-Net~(6) & 2026 & 25.3 & 94.2 & 89.1 & 352*352 \\
+HCA-Net & 2026 & 89.70 & \underline{93.60} & \textbf{89.7} & 352*352 \\
+Ours & 2026 & 30.06 & -- & -- & 352*352 \\
+PolyMamba-Net~(6) & 2026 & 25.3 & \textbf{94.2} & \underline{89.1} & 352*352 \\
 \end{longtable}
 
 \begin{enumerate}
@@ -301,13 +302,14 @@ iou
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-HCA-Net & 93.6 & 89.7 & 95.6 & 90.9 & 91.2 & 87.3 & 83.4 & 76.9 & 83.3 &
-78.9 & \\
-Ours & 92.40 & 86.08 & 95.19 & 90.84 & \textbf{91.49} & 84.32 & 81.26 &
-70.44 & \textbf{87.39} & \textbf{77.61} & \textbf{1370} \\
-Ours-2 & 92.58 & 86.41 & 95.31 & 91.04 & & & 81.45 & 70.95 & & &
-\textbf{1405} \\
-& 92.03 & & 95.27 & 90.97 & & & 83.34 & 73.75 & & & \\
+HCA-Net & \textbf{93.6} & \textbf{89.7} & \textbf{95.6} & \textbf{90.9} &
+\textbf{91.2} & \textbf{87.3} & \textbf{83.4} & \textbf{76.9} &
+\textbf{83.3} & \textbf{78.9} & -- \\
+Ours & \underline{\meanstd{93.13}{0.44}} & \underline{\meanstd{88.26}{0.62}} &
+\underline{\meanstd{93.70}{0.24}} & \underline{\meanstd{88.77}{0.38}} &
+\underline{\meanstd{88.21}{0.16}} & \underline{\meanstd{81.04}{0.18}} &
+\underline{\meanstd{79.44}{0.89}} & \underline{\meanstd{71.42}{0.86}} &
+\underline{\meanstd{78.70}{1.13}} & \underline{\meanstd{70.71}{1.20}} & -- \\
 \end{longtable}
 
 \begin{longtable}[]{@{}
@@ -385,21 +387,14 @@ iou
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-HCA-Net & 93.6 & 89.7 & 95.6 & 90.9 & 91.2 & 87.3 & 83.4 & 76.9 & 83.3 &
-78.9 & \\
-& 93.49 & 87.77 & 95.31 & 91.04 & \textbf{91.61} & 84.52 & 83.34 & 73.75
-& \textbf{88.69} & \textbf{79.67} & \\
-Our & \hl{93.49} & \hl{87.77} & 94.92 & 90.33 & \textbf{90.33} & 82.52 &
-79.72 & 69.16 & \textbf{\hl{88.69}} & \textbf{\hl{79.67}} &
-\textbf{100} \\
-Ours & 92.58 & 86.41 & \hl{95.31} & \hl{91.04} & \textbf{91.49} & 84.32
-& \hl{83.34} & \hl{73.75} & \textbf{87.39} & \textbf{77.61} &
-\textbf{1370} \\
-Ours-93.04 & \RL{92.30} & & & & \textbf{\RL{91.25}} & \RL{83.91} & & &
-\textbf{84.96} & \textbf{73.85} & \\
-Ours-93.66 & 92.75 & 86.48 & 95.20 & 90.83 & \textbf{\hl{91.61}} &
-\hl{84.52} & 82.81 & 72.96 & \textbf{85.39} & \textbf{74.50} &
-\textbf{2836} \\
+HCA-Net & \textbf{93.6} & \textbf{89.7} & \textbf{95.6} & \textbf{90.9} &
+\textbf{91.2} & \textbf{87.3} & \textbf{83.4} & \textbf{76.9} &
+\textbf{83.3} & \textbf{78.9} & -- \\
+Ours & \underline{\meanstd{93.13}{0.44}} & \underline{\meanstd{88.26}{0.62}} &
+\underline{\meanstd{93.70}{0.24}} & \underline{\meanstd{88.77}{0.38}} &
+\underline{\meanstd{88.21}{0.16}} & \underline{\meanstd{81.04}{0.18}} &
+\underline{\meanstd{79.44}{0.89}} & \underline{\meanstd{71.42}{0.86}} &
+\underline{\meanstd{78.70}{1.13}} & \underline{\meanstd{70.71}{1.20}} & -- \\
 \end{longtable}
 
 \input{sections/01_introduction}
@@ -457,8 +452,13 @@ PraNet-V2~\cite{pranetv2} & 2025 & & \\
 MLB-Net~\cite{mlbnet} & 2026 & 87.70 & \\
 MSPN~\cite{mspn} & 2026 & 28.56 & 13.21 \\
 DVFIP-Net~\cite{dvfipnet} & 2026 & 46.62 & 19.37 \\
-Ours & - & 29.60 & 14.57 \\
+Ours & -- & 30.06 & 27.82 \\
 \end{longtable}
+
+For our model, complexity was measured at input size
+$1\times3\times352\times352$. The exact counts are 30,057,415 trainable
+and total parameters, 13.909244496 GMACs, and 27.818488992 GFLOPs under
+the project convention $\mathrm{FLOPs}=2\times\mathrm{MACs}$.
 
 \includegraphics[width=9.06377in,height=5.55286in]{media/image1.png}
 
