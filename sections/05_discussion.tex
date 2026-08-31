@@ -1,2 +1,60 @@
 \section{Discussion}\label{discussion}
 
+\subsection{Main Quantitative Findings}
+
+The final model (Exp45) achieves a Kvasir-SEG mDice of 0.9313 ± 0.0044 and mIoU of 0.8826 ± 0.0062 across three random seeds (42, 6543, 7777). On the held-out CVC-ClinicDB, it reaches 0.9370 ± 0.0024 mDice and 0.8877 ± 0.0038 mIoU. These results are reported as mean ± sample standard deviation (ddof=1). On external datasets, the model obtains 0.8821 ± 0.0016 mDice on CVC-300, 0.7944 ± 0.0089 on CVC-ColonDB, and 0.7870 ± 0.0113 on ETIS-LaribPolypDB. The model does not attain the highest reported mDice on any external dataset when compared against recent published methods; its performance is comparable to or below several state-of-the-art approaches on CVC-300, CVC-ColonDB, and ETIS-LaribPolypDB. No statistical significance testing was performed; all comparisons are descriptive.
+
+\subsection{Effect of FAFEM (Exp33 vs. Baseline)}
+
+The ablation chain begins with Exp33, which adds the FAFEM module to the baseline ConvNeXt-Tiny U-Net. FAFEM is a prior work, not a novel contribution of this paper; we include it to verify reproducibility under our training protocol. Under the same protocol, the Kvasir-SEG mDice increases from 0.9095 (baseline) to 0.9260. This improvement is consistent across all five polyp datasets. FAFEM provides a solid feature enhancement foundation for subsequent ablations.
+
+\subsection{Effect of Stage-3 MSCB-Lite (Exp33 vs. Exp37)}
+
+Exp37 adds a Stage-3 MSCB-lite layer to the FAFEM-enhanced backbone. MSCB-lite is a prior multi-scale refinement module without frequency-guided coupling. On Kvasir-SEG, the three-seed mean mDice increases from 0.9260 (Exp33) to 0.9294 (Exp37), a change of +0.34 percentage points. The mIoU increases by +0.13 pp, while MAE increases marginally from 0.0324 to 0.0327. Improvements are observed across all external datasets, indicating that spatial multi-scale refinement at Stage 3 improves feature representation for diverse polyp appearances and imaging protocols. This experiment establishes the baseline against which our frequency-guided variant is evaluated.
+
+\subsection{Effect of Residual Frequency-Guided Coupling (Exp37 vs. Exp45)}
+
+Exp45 introduces the residual frequency-guided coupling on top of the MSCB-lite Stage-3 layer. This is the principal architecture change proposed in this work. The Kvasir-SEG mDice increases from 0.9294 (Exp37) to 0.9313 (Exp45), a change of +0.19 percentage points. The mIoU increases by +0.24 pp, and MAE decreases from 0.0327 to 0.0306 (-0.0021 absolute). The total improvement from Exp33 (FAFEM only) to Exp45 is +0.53 pp in mDice and +0.37 pp in mIoU on Kvasir-SEG. A single-seed experiment (Exp43) tested frequency guidance without the residual coupling; its preliminary Kvasir-SEG results did not exceed the Stage-3 MSCB-lite configuration, suggesting that the coupled residual mechanism contributes more than frequency guidance in isolation under the tested setup.
+
+\subsection{Why Residual Frequency-Guided Multi-Scale Refinement May Help}
+
+The residual formulation bounds the guidance signal to a controlled interpolation between uniform and predicted branch weights (initial strength 0.05, init std 0.0). This design may mitigate instability observed in direct frequency guidance by providing a stable initialization and gradual adaptation during training. The frequency descriptor from FAFEM conditions the branch weighting in the MSCB-lite, potentially aligning multi-scale spatial features with complementary frequency-domain information. However, this interpretation is post-hoc; the ablation isolates the combined effect of the coupled mechanism but does not disentangle individual components (residual form, initialization strength, frequency conditioning).
+
+\subsection{Cross-Dataset Behavior}
+
+The performance trend is consistent across datasets: Kvasir-SEG and CVC-ClinicDB (held-out) show the highest absolute mDice (~0.93), CVC-300 is moderately high (~0.88), while CVC-ColonDB (~0.79) and ETIS-LaribPolypDB (~0.79) are substantially lower. Between-seed variability is lowest on CVC-300 (mDice SD 0.0016) and highest on ETIS-LaribPolypDB (mDice SD 0.0113), reflecting the smaller size and greater domain shift of the latter. The improvements from Exp33→Exp37 and Exp37→Exp45 are observed on all five datasets, suggesting the architectural changes have broad applicability across polyp imaging conditions.
+
+\subsection{Cases and Datasets Where the Model Is Weaker}
+
+The model's weakest performance is on CVC-ColonDB and ETIS-LaribPolypDB, where mDice drops to ~0.79 and between-seed variability is highest (0.0089 and 0.0113 respectively). These datasets involve different endoscopic systems and polyp morphology distributions compared to the training data (Kvasir-SEG and CVC-ClinicDB). On ETIS, the mIoU SD of 0.0120 indicates substantial sensitivity to random initialization. The model does not outperform several recent methods on these datasets, suggesting that further domain adaptation or data augmentation strategies may be needed for stronger generalization.
+
+\subsection{Model Complexity and Practical Trade-offs}
+
+The final model has 30.06M parameters (all trainable), 13.91 GMACs, and 27.82 GFLOPs at 1×3×352×352 input under the FLOPs = 2×MACs convention. The ablation adds approximately 0.6M parameters from Exp33 (29.36M) to Exp45 (30.06M), a 2.4% increase. Training uses AMP FP16 with batch size 24 and completes in ~5000 seconds per seed on a single GPU. Inference latency is suitable for real-time clinical assistance. The parameter overhead of the RFG-MSCB module is minimal relative to the backbone.
+
+\subsection{Placement Analysis}
+
+The multi-scale refinement layer is placed at encoder Stage 3 in the final configuration (Exp45). This placement was selected based on observed results from the ablation chain. A single-seed exploratory experiment (Exp49) tested an all-skip configuration with batch size 32 (vs. 24 in the main protocol); results did not improve relative to the Stage-3 configuration. However, the Exp49 comparison is limited by single-seed evaluation, batch-size mismatch, and incomplete training, so it does not support a general conclusion about optimal placement. The Stage-3 placement provides a favorable trade-off between performance and computational cost in our experiments.
+
+\subsection{Limitations}
+
+\begin{itemize}
+\item \textbf{No statistical significance testing:} All reported differences are descriptive means over three seeds; no hypothesis testing was performed.
+\item \textbf{Single-seed placement evidence:} The all-skip placement comparison (Exp49) is single-seed and uses a different batch size; it cannot establish a general placement rule.
+\item \textbf{No disentanglement of RFG-MSCB components:} The ablation isolates the combined residual frequency-guided coupling; individual contributions of the residual formulation, initialization strength, and frequency conditioning are not separately measured.
+\item \textbf{Incomplete experiments:} Exp44 (default initialization) did not complete training; its potential findings are unavailable.
+\item \textbf{Domain gap on external datasets:} Performance drops substantially on CVC-ColonDB and ETIS-LaribPolypDB, indicating limited out-of-distribution generalization.
+\item \textbf{Hardware and software not fully verified:} GPU model, CUDA/cuDNN versions, and \texttt{py\_sod\_metrics} version are not formally recorded.
+\item \textbf{Training duration:} Seed 7777 stopped early at epoch 167 (patience 30), while seeds 42 and 6543 reached epoch 199; this asymmetry may affect the mean estimate.
+\end{itemize}
+
+\subsection{Future Work}
+
+\begin{itemize}
+\item Systematic multi-seed placement ablation with controlled batch size and learning rate.
+\item Disentanglement of the RFG-MSCB components (residual form, initialization schedule, frequency conditioning) via factorial experiments.
+\item Investigation of initialization sensitivity using completed runs of Exp44.
+\item Domain adaptation or targeted augmentation to improve generalization on CVC-ColonDB and ETIS-LaribPolypDB.
+\item Statistical significance testing with larger seed ensembles or bootstrap confidence intervals.
+\item Formal recording of hardware, software, and dependency versions for full reproducibility.
+\end{itemize}

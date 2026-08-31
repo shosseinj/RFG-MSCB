@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.12) (preloaded format=xelatex 2026.8.31)  31 AUG 2026 15:08
+This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.12) (preloaded format=xelatex 2026.8.31)  31 AUG 2026 15:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1245,8 +1245,14 @@ Missing character: There is no 𝛽 in font [lmroman7-bold]:mapping=tex-text;!
 Missing character: There is no 𝛼 in font [lmroman7-bold]:mapping=tex-text;!
 Missing character: There is no 𝜉 in font [lmroman7-bold]:mapping=tex-text;!
 Missing character: There is no 𝜉 in font [lmroman7-bold]:mapping=tex-text;!
-) (sections/05_discussion.tex) (sections/06_conclusion.tex) (manuscript.bbl
-[18] [19]) [20]
+) (sections/05_discussion.tex [18] [19]
+Underfull \hbox (badness 1253) in paragraph at lines 47--48
+[]\TU/lmr/bx/n/10 Hardware and software not fully verified: \TU/lmr/m/n/10 GPU 
+model, CUDA/cuDNN versions, and
+ []
+
+) (sections/06_conclusion.tex) (manuscript.bbl [20] [21])
+ignored error: Infinite glue shrinkage found in box being split [22]
 File: media/image1.png Graphic file (type bmp)
 <media/image1.png>
 
@@ -1254,6 +1260,7 @@ Overfull \hbox (185.31169pt too wide) in paragraph at lines 463--464
 [][] 
  []
 
+[23]
 File: media/image2.png Graphic file (type bmp)
 <media/image2.png>
 
@@ -1268,10 +1275,9 @@ Overfull \hbox (90.41432pt too wide) in paragraph at lines 479--480
 [][] 
  []
 
-[21]
 File: media/image4.png Graphic file (type bmp)
 <media/image4.png>
- [22]
+[24]
 File: media/image5.png Graphic file (type bmp)
 <media/image5.png>
 
@@ -1279,19 +1285,19 @@ Overfull \hbox (186.80754pt too wide) in paragraph at lines 483--484
 [][] 
  []
 
-[23] [24] (manuscript.aux)
+[25] [26] (manuscript.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 19433 strings out of 402987
- 350108 string characters out of 5452871
+ 19444 strings out of 402987
+ 350174 string characters out of 5452871
  1004879 words of memory out of 5000000
- 47860 multiletter control sequences out of 15000+600000
+ 47871 multiletter control sequences out of 15000+600000
  635002 words of font info for 100 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  90i,15n,114p,1009b,495s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on manuscript.pdf (24 pages).
+Output written on manuscript.pdf (26 pages).
