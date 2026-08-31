@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.8.31)  31 AUG 2026 17:44
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.8.31)  31 AUG 2026 17:48
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -522,140 +522,132 @@ File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 Package hyperref Info: Link coloring OFF on input line 97.
-LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 135.
-(C:\Program Files\MiKTeX\tex/latex/lm\ot1lmr.fd
+(sections/01_introduction.tex
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 15.
+ (C:\Program Files\MiKTeX\tex/latex/lm\ot1lmr.fd
 File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 135.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 15.
  (C:\Program Files\MiKTeX\tex/latex/lm\omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 135.
+LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 15.
  (C:\Program Files\MiKTeX\tex/latex/lm\omslmsy.fd
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 135.
+LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 15.
  (C:\Program Files\MiKTeX\tex/latex/lm\omxlmex.fd
 File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 135.
+(Font)              <10> on input line 15.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 135.
+(Font)              <7> on input line 15.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 135.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 135.
+(Font)              <5> on input line 15.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 15.
  (C:\Program Files\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 ) (C:\Users\jafari.h\AppData\Roaming\MiKTeX\tex/latex/microtype\mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 135.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 15.
  (C:\Program Files\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) (C:\Users\jafari.h\AppData\Roaming\MiKTeX\tex/latex/microtype\mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
-)
-LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 170.
- (C:\Program Files\MiKTeX\tex/latex/lm\ts1lmr.fd
-File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ) [1
 
-{C:/Users/jafari.h/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}{C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}]
-Overfull \hbox (2.5576pt too wide) in paragraph at lines 255--256
-[]\T1/lmr/bx/n/10 (-20) Epoch  
- []
-
-
-Overfull \hbox (2.4906pt too wide) in paragraph at lines 340--341
-[]\T1/lmr/bx/n/10 (-20) Epoch  
- []
-
-(sections/01_introduction.tex [2{C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}] [3{C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}{C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}]) (sections/02_related_work.tex [4]) (sections/03_method.tex [5] [6{C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-mathex.enc}] [7] [8] [9] [10]) (sections/04_experiments.tex [11]
+{C:/Users/jafari.h/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}{C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}{C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}]
+LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 23.
+ (C:\Program Files\MiKTeX\tex/latex/lm\ts1lmr.fd
+File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)) (sections/02_related_work.tex [2{C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}] [3]) (sections/03_method.tex [4{C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}] [5{C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-mathex.enc}] [6] [7] [8] [9]) (sections/04_experiments.tex [10]
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 59.
  (C:\Program Files\MiKTeX\tex/latex/lm\t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-) [12]
+)
 
 Package hyperref Warning: Suppressing empty link on input line 131.
 
-(sections/04_ablation_experiments.tex [13]
+[11] (sections/04_ablation_experiments.tex [12]
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <9> on input line 34.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <6> on input line 34.
- [14])
+)
 Overfull \hbox (2.4236pt too wide) in paragraph at lines 184--185
 []\T1/lmr/bx/n/10 (-20) Epoch  
  []
 
-sections/04_experiments.tex:315: ignored error: Infinite glue shrinkage found in box being split [15] [16]) (sections/05_discussion.tex [17] [18]) (sections/06_conclusion.tex [19]) (manuscript.bbl [20] [21])
-<media/image1.png, id=366, 654.94687pt x 401.24907pt>
+[13]
+sections/04_experiments.tex:384: ignored error: Infinite glue shrinkage found in box being split [14] [15]) (sections/05_discussion.tex [16] [17]) (sections/06_conclusion.tex [18]) (manuscript.bbl [19] [20])
+<media/image1.png, id=351, 654.94687pt x 401.24907pt>
 File: media/image1.png Graphic file (type png)
 <use media/image1.png>
-Package pdftex.def Info: media/image1.png  used on input line 463.
+Package pdftex.def Info: media/image1.png  used on input line 169.
 (pdftex.def)             Requested size: 655.04521pt x 401.3093pt.
 
-Overfull \hbox (185.29019pt too wide) in paragraph at lines 463--464
+Overfull \hbox (185.29019pt too wide) in paragraph at lines 169--170
 [][] 
  []
 
-[22]
-<media/image2.png, id=374, 670.75594pt x 112.16907pt>
+[21]
+<media/image2.png, id=359, 670.75594pt x 112.16907pt>
 File: media/image2.png Graphic file (type png)
 <use media/image2.png>
-Package pdftex.def Info: media/image2.png  used on input line 477.
+Package pdftex.def Info: media/image2.png  used on input line 183.
 (pdftex.def)             Requested size: 670.84639pt x 112.18417pt.
 
-Overfull \hbox (201.09137pt too wide) in paragraph at lines 477--478
+Overfull \hbox (201.09137pt too wide) in paragraph at lines 183--184
 [][] 
  []
 
-<media/image3.png, id=375, 560.0925pt x 460.72125pt>
+<media/image3.png, id=360, 560.0925pt x 460.72125pt>
 File: media/image3.png Graphic file (type png)
 <use media/image3.png>
-Package pdftex.def Info: media/image3.png  used on input line 479.
+Package pdftex.def Info: media/image3.png  used on input line 185.
 (pdftex.def)             Requested size: 560.16803pt x 460.78339pt.
 
-Overfull \hbox (90.41301pt too wide) in paragraph at lines 479--480
+Overfull \hbox (90.41301pt too wide) in paragraph at lines 185--186
 [][] 
  []
 
-[23 <./media/image1.png> <./media/image2.png>]
-<media/image4.png, id=382, 309.40594pt x 225.84375pt>
+[22 <./media/image1.png> <./media/image2.png>]
+<media/image4.png, id=367, 309.40594pt x 225.84375pt>
 File: media/image4.png Graphic file (type png)
 <use media/image4.png>
-Package pdftex.def Info: media/image4.png  used on input line 481.
+Package pdftex.def Info: media/image4.png  used on input line 187.
 (pdftex.def)             Requested size: 309.46655pt x 225.88797pt.
- [24 <./media/image3.png>]
-<media/image5.png, id=388, 656.4525pt x 350.81062pt>
+ [23 <./media/image3.png>]
+<media/image5.png, id=373, 656.4525pt x 350.81062pt>
 File: media/image5.png Graphic file (type png)
 <use media/image5.png>
-Package pdftex.def Info: media/image5.png  used on input line 483.
+Package pdftex.def Info: media/image5.png  used on input line 189.
 (pdftex.def)             Requested size: 656.55106pt x 350.86328pt.
 
-Overfull \hbox (186.79604pt too wide) in paragraph at lines 483--484
+Overfull \hbox (186.79604pt too wide) in paragraph at lines 189--190
 [][] 
  []
 
-[25 <./media/image4.png> <./media/image5.png>] [26] (manuscript.aux)
+[24 <./media/image4.png> <./media/image5.png>] [25] (manuscript.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 14798 strings out of 467871
- 232112 string characters out of 5428434
- 754791 words of memory out of 5000000
- 43038 multiletter control sequences out of 15000+600000
+ 14782 strings out of 467871
+ 231992 string characters out of 5428434
+ 751306 words of memory out of 5000000
+ 43034 multiletter control sequences out of 15000+600000
  703683 words of font info for 192 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  77i,15n,81p,1060b,606s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbx7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmex10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmmi10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmmi7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmmib10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr9.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmsy7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on manuscript.pdf (26 pages, 1852218 bytes).
+Output written on manuscript.pdf (25 pages, 1845392 bytes).
 PDF statistics:
- 662 PDF objects out of 1000 (max. 8388607)
- 164 named destinations out of 1000 (max. 500000)
+ 645 PDF objects out of 1000 (max. 8388607)
+ 152 named destinations out of 1000 (max. 500000)
  41386 words of extra memory for PDF output out of 42996 (max. 10000000)
 

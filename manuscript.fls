@@ -175,6 +175,13 @@ INPUT C:\Program Files\MiKTeX\tex\latex\00miktex\epstopdf-sys.cfg
 INPUT C:\Program Files\MiKTeX\tex\latex\00miktex\epstopdf-sys.cfg
 INPUT C:\Program Files\MiKTeX\tex\latex\00miktex\epstopdf-sys.cfg
 OUTPUT manuscript.pdf
+INPUT .\sections\01_introduction.tex
+INPUT .\sections\01_introduction.tex
+INPUT .\sections\01_introduction.tex
+INPUT .\sections\01_introduction.tex
+INPUT sections\01_introduction.tex
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\ec-lmr12.tfm
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\ec-lmbx12.tfm
 INPUT C:\Program Files\MiKTeX\tex\latex\lm\ot1lmr.fd
 INPUT C:\Program Files\MiKTeX\tex\latex\lm\ot1lmr.fd
 INPUT C:\Program Files\MiKTeX\tex\latex\lm\ot1lmr.fd
@@ -215,25 +222,14 @@ INPUT C:\Users\jafari.h\AppData\Roaming\MiKTeX\tex\latex\microtype\mt-msb.cfg
 INPUT C:\Users\jafari.h\AppData\Roaming\MiKTeX\tex\latex\microtype\mt-msb.cfg
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm7.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm5.tfm
-INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\ec-lmbx10.tfm
+INPUT C:\Users\jafari.h\AppData\Local\MiKTeX\fonts\map\pdftex\pdftex.map
+INPUT C:\Program Files\MiKTeX\fonts\enc\dvips\lm\lm-ec.enc
+INPUT C:\Program Files\MiKTeX\fonts\enc\dvips\lm\lm-mathit.enc
+INPUT C:\Program Files\MiKTeX\fonts\enc\dvips\lm\lm-rm.enc
 INPUT C:\Program Files\MiKTeX\tex\latex\lm\ts1lmr.fd
 INPUT C:\Program Files\MiKTeX\tex\latex\lm\ts1lmr.fd
 INPUT C:\Program Files\MiKTeX\tex\latex\lm\ts1lmr.fd
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\ts1-lmr10.tfm
-INPUT C:\Users\jafari.h\AppData\Local\MiKTeX\fonts\map\pdftex\pdftex.map
-INPUT C:\Program Files\MiKTeX\fonts\enc\dvips\lm\lm-ec.enc
-INPUT C:\Program Files\MiKTeX\fonts\enc\dvips\lm\lm-ts1.enc
-INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\ec-lmr7.tfm
-INPUT .\sections\01_introduction.tex
-INPUT .\sections\01_introduction.tex
-INPUT .\sections\01_introduction.tex
-INPUT .\sections\01_introduction.tex
-INPUT sections\01_introduction.tex
-INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\ec-lmr12.tfm
-INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\ec-lmbx12.tfm
-INPUT C:\Program Files\MiKTeX\fonts\enc\dvips\lm\lm-mathsy.enc
-INPUT C:\Program Files\MiKTeX\fonts\enc\dvips\lm\lm-mathit.enc
-INPUT C:\Program Files\MiKTeX\fonts\enc\dvips\lm\lm-rm.enc
 INPUT .\sections\02_related_work.tex
 INPUT .\sections\02_related_work.tex
 INPUT .\sections\02_related_work.tex
@@ -241,21 +237,23 @@ INPUT .\sections\02_related_work.tex
 INPUT sections\02_related_work.tex
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\ec-lmr12.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\ec-lmbx12.tfm
+INPUT C:\Program Files\MiKTeX\fonts\enc\dvips\lm\lm-ts1.enc
 INPUT .\sections\03_method.tex
 INPUT .\sections\03_method.tex
 INPUT .\sections\03_method.tex
 INPUT .\sections\03_method.tex
 INPUT sections\03_method.tex
+INPUT C:\Program Files\MiKTeX\fonts\enc\dvips\lm\lm-mathsy.enc
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\rm-lmbx10.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\rm-lmbx7.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\rm-lmbx5.tfm
-INPUT C:\Program Files\MiKTeX\fonts\enc\dvips\lm\lm-mathex.enc
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\lmmib10.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\lmmib7.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\lmmib5.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\lmbsy10.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\lmbsy7.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\lmbsy5.tfm
+INPUT C:\Program Files\MiKTeX\fonts\enc\dvips\lm\lm-mathex.enc
 INPUT .\sections\04_experiments.tex
 INPUT .\sections\04_experiments.tex
 INPUT .\sections\04_experiments.tex
@@ -283,6 +281,8 @@ INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\symbols\msam10.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\symbols\msam7.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm7.tfm
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\ec-lmr7.tfm
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\ec-lmbx10.tfm
 INPUT .\sections\05_discussion.tex
 INPUT .\sections\05_discussion.tex
 INPUT .\sections\05_discussion.tex
