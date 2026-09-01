@@ -2,14 +2,15 @@
 
 \subsection{Quantitative and Ablation Interpretation}
 
-The model obtained higher scores on the two held-out validation subsets used for
-checkpoint selection than on CVC-ColonDB and ETIS-LaribPolypDB. The complete
-numerical results and uncertainty estimates are reported in the quantitative-analysis
-subsection and comparison tables. This pattern is consistent with the architectural
-motivation: the model retains a convolutional multi-scale pathway for efficient
-decoding while adding sample-dependent guidance intended to adapt that pathway to
-image content.
+The evaluation protocol separates seen-domain testing on Kvasir-SEG and
+CVC-ClinicDB from external testing on CVC-300, CVC-ColonDB, and
+ETIS-LaribPolypDB. All five test sets are isolated from checkpoint selection, which
+uses only the internal validation subset of the combined development pool.
+% TODO: insert the new seen-test and external-test interpretation after the final three-seed run.
+This design evaluates the sample-dependent guidance while retaining a convolutional
+multi-scale pathway for efficient decoding.
 
+% TODO: update result-dependent ablation interpretation after the protocol-matched rerun.
 FAFEM establishes the bottleneck feature-enhancement reference, MSCB-lite adds
 multi-scale refinement at Stage 3, and RFG-MSCB adds adaptive branch modulation to
 that path. The final increment is small, consistent with a localized refinement of the
@@ -24,15 +25,15 @@ discarding the established multi-scale response or modifying the full decoder.
 
 \subsection{Cross-Dataset Generalization}
 
-Generalization was assessed on CVC-300, CVC-ColonDB, and ETIS-LaribPolypDB, which
-did not influence checkpoint selection. Their lower scores may reflect differences in
-acquisition, annotation, case mix, or polyp morphology relative to the training data.
-In the paired single-seed comparison, the effect of guidance was mixed across these
-external datasets.
+CVC-300, CVC-ColonDB, and ETIS-LaribPolypDB are reserved for external
+generalization evaluation and do not influence model development. Differences in
+acquisition, annotation, case mix, and polyp morphology make these datasets a distinct
+test of transfer beyond the Kvasir-SEG/CVC-ClinicDB development domain.
+% TODO: insert the new external-generalization findings after the final three-seed run.
 
-The weaker performance on CVC-ColonDB and ETIS-LaribPolypDB, together with the
-observed variability on ETIS, highlights the remaining domain gap and motivates domain
-adaptation or targeted augmentation.
+Although the main comparison is restricted to methods with closely matched dataset
+partitioning, differences in optimization, augmentation, backbone initialization,
+model-selection criteria, and implementation details remain.
 
 \subsection{Practical Trade-offs and Placement}
 
@@ -49,6 +50,7 @@ batch size. Deployment-oriented placement and latency optimization remain future
 \begin{itemize}
 \item \textbf{No statistical significance testing:} All reported differences are descriptive; no hypothesis testing was performed.
 \item \textbf{Hardware and software records:} Exact hardware and dependency versions were not recorded.
+% TODO: replace the seed-wise training-duration limitation after the final three-seed run.
 \item \textbf{Training duration:} With zero-based epoch indices, seed 7777 stopped after epoch 167 (168 completed epochs; patience 30), while seeds 42 and 6543 completed epochs 0--199; this asymmetry may affect the mean estimate.
 \end{itemize}
 

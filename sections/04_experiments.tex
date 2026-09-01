@@ -5,31 +5,36 @@
 To evaluate the proposed framework under a fixed training and evaluation design, we
 used Kvasir-SEG \cite{kvasirseg}, CVC-ClinicDB \cite{cvcclinicdb},
 CVC-300 \cite{cvc300}, CVC-ColonDB \cite{cvccolondb}, and
-ETIS-LaribPolypDB \cite{etis}. Kvasir-SEG and CVC-ClinicDB were split
-independently with a 90:10 ratio using shuffled sampling with random seed
-42. Their training subsets were merged, giving 900 Kvasir-SEG and 550
-CVC-ClinicDB images for training. The corresponding held-out validation subsets of
-100 and 62 images were merged for checkpoint selection and were also evaluated
-separately for reporting. CVC-300, CVC-ColonDB, and ETIS-LaribPolypDB
-were used only for external evaluation; none influenced training or
-checkpoint selection.
+ETIS-LaribPolypDB \cite{etis}. Following a PraNet-style data partition,
+100 of the 1000 Kvasir-SEG images and 62 of the 612 CVC-ClinicDB images
+were reserved as final seen test sets. The remaining 900 Kvasir-SEG and
+550 CVC-ClinicDB images formed a combined 1450-image train/validation pool.
+This pool was split deterministically into 1305 training images and 145 internal
+validation images using shuffled sampling with \texttt{random\_state=42}; dataset
+membership was identical across all training seeds.
+
+The final Kvasir-SEG and CVC-ClinicDB test images were excluded from training,
+validation, checkpoint selection, early stopping, threshold tuning, hyperparameter
+tuning, and architecture selection. CVC-300, CVC-ColonDB, and
+ETIS-LaribPolypDB were used exclusively as external test sets and did not influence
+model selection.
 
 \begin{table}[htbp]
 \centering
-\caption{Dataset use in the final experiment.}
+\caption{Dataset partition used in the experiments.}
 \label{tab:dataset-splits}
 \small
 \setlength{\tabcolsep}{4pt}
 \renewcommand{\arraystretch}{1.1}
-\begin{tabular}{lrrrr}
+\begin{tabular}{lrrr}
 \toprule
-Dataset & Total & Train & Validation & External test \\
+Dataset & Total & Train & Test \\
 \midrule
-Kvasir-SEG & 1000 & 900 & 100 & -- \\
-CVC-ClinicDB & 612 & 550 & 62 & -- \\
-CVC-300 & 60 & -- & -- & 60 \\
-CVC-ColonDB & 380 & -- & -- & 380 \\
-ETIS-LaribPolypDB & 196 & -- & -- & 196 \\
+Kvasir-SEG & 1000 & 900 & 100 \\
+CVC-ClinicDB & 612 & 550 & 62 \\
+CVC-300 & 60 & -- & 60 \\
+CVC-ColonDB & 380 & -- & 380 \\
+ETIS-LaribPolypDB & 196 & -- & 196 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -42,7 +47,7 @@ deviation $(0.229,0.224,0.225)$.
 
 \subsection{Implementation Details}\label{implementation-details}
 
-The three final runs used seeds 42, 6543, and 7777. All final and ablation
+The final protocol uses seeds 42, 6543, and 7777. All final and ablation
 results are reported as the mean $\pm$ sample standard deviation (ddof=1) across
 these seeds unless otherwise noted. The runs were implemented
 in PyTorch 2.5.1+cu124 on Windows, with a maximum of 200 epochs and batch size 24.
@@ -69,6 +74,7 @@ from the start of training. Seeds 42 and 6543 completed the maximum 200
 epochs, corresponding to zero-based epochs 0--199; seed 7777 stopped after
 epoch 167 (168 completed epochs). Model complexity and
 its measurement convention are reported in Table~\ref{tab:model-complexity}.
+% TODO: replace seed-wise training completion details after the final PraNet-style split three-seed run.
 
 Training augmentation applied horizontal and vertical flips independently
 with probability 0.5, rotation in $[-15^{\circ},15^{\circ}]$ with
@@ -136,16 +142,19 @@ reported.
 \subsection{Model Selection and Evaluation Protocol}
 \label{model-selection}
 
-At each epoch, EMA weights were evaluated on the merged held-out
-Kvasir-SEG and CVC-ClinicDB validation set. Probabilities were obtained
-with one sigmoid operation and binarized using the strict rule
-$p>0.45$. A checkpoint was saved only when validation IoU was strictly
-greater than the previous best. The selected checkpoints were epochs
-184, 175, and 137 for seeds 42, 6543, and 7777, respectively. Final
-evaluation loaded each best checkpoint strictly and evaluated the two
-held-out subsets separately, followed by the full CVC-300,
-CVC-ColonDB, and ETIS-LaribPolypDB sets. Test-time augmentation was
-disabled, and external test results did not affect checkpoint selection.
+At each epoch, EMA weights were evaluated only on the 145-image internal
+validation subset. Probabilities were obtained with one sigmoid operation and
+binarized using the strict rule $p>0.45$. A checkpoint was saved only when
+internal-validation IoU was strictly greater than the previous best. Best
+checkpoints were selected independently for each seed according to
+internal-validation IoU.
+% TODO: insert selected epochs after the final PraNet-style split three-seed run.
+
+After model selection, each best checkpoint was loaded strictly and evaluated on the
+100-image Kvasir-SEG and 62-image CVC-ClinicDB seen test sets, followed by the full
+CVC-300, CVC-ColonDB, and ETIS-LaribPolypDB external test sets. Test-time
+augmentation was disabled. Neither the seen nor external test results influenced
+checkpoint selection or other model-development decisions.
 
 \subsection{Experimental Study}\label{experimental-study}
 
@@ -160,11 +169,13 @@ comparative tables.
 \subsection{Comparative study}\label{comparative-study}
 
 After the component-level analysis, the comparative study evaluates the complete model
-on the held-out validation subsets and external datasets and places its performance
-alongside published baselines. The quantitative results are presented below.
+on the Kvasir-SEG and CVC-ClinicDB seen test sets and on three external test sets,
+and places its performance alongside published baselines. The quantitative results
+are presented below.
 
 \subsubsection{Quantitative analysis}\label{quantitative-analysis}
 
+% TODO: replace with new PraNet-style split three-seed results and recompute all rank statements.
 On Kvasir-SEG, the proposed model achieved the highest displayed mDice and mIoU,
 reaching $0.931\pm0.004$ and $0.883\pm0.006$, respectively. The closest displayed
 method, PFPRNet, reported mDice of 0.930 and mIoU of 0.881. On CVC-ClinicDB,
@@ -172,16 +183,21 @@ the proposed model achieved $0.937\pm0.002$ mDice and $0.888\pm0.004$ mIoU.
 PFPRNet reported higher values for these two metrics, while the proposed model
 remained competitive across the displayed comparison.
 
-The Kvasir-SEG and CVC-ClinicDB values come from held-out validation subsets involved
-in checkpoint selection, whereas published methods may use different training and test
-protocols. Across the comparison tables, the best and second-best displayed values
-are shown in bold and underlined, respectively.
+The 100 Kvasir-SEG and 62 CVC-ClinicDB images were reserved exclusively for final
+seen-set testing and did not participate in training, validation, checkpoint selection,
+or hyperparameter tuning. Checkpoint selection was performed exclusively on the
+145-image internal validation subset sampled from the combined 1450-image
+Kvasir-SEG/CVC-ClinicDB train/validation pool.
 
-To improve protocol comparability, the main quantitative comparison is restricted to
-methods with closely matched Kvasir-SEG and CVC-ClinicDB training/test settings.
-Methods using materially different data partitions remain discussed in Related Work
-but are omitted from the main performance tables.
+The main comparison is restricted to methods using comparable PraNet-style data
+protocols with closely matched Kvasir-SEG and CVC-ClinicDB partitioning. Methods
+using materially different data partitions remain discussed in Related Work but are
+omitted from the main performance tables. Differences in optimization, augmentation,
+backbone initialization, model-selection criteria, and implementation details remain.
+Across the comparison tables, the best and second-best displayed values are shown in
+bold and underlined, respectively.
 
+% TODO: replace external-dataset results and variability statement after the final three-seed run.
 On the external datasets, mDice/mIoU were
 $0.882\pm0.002$/$0.810\pm0.002$ on CVC-300,
 $0.794\pm0.009$/$0.714\pm0.009$ on CVC-ColonDB, and
@@ -191,6 +207,7 @@ variation in mDice and mIoU occurred on ETIS.
 \small
 \setlength{\tabcolsep}{5pt}
 \renewcommand{\arraystretch}{1.1}
+% TODO: replace Ours with new PraNet-style split three-seed results and recompute Kvasir-SEG rankings.
 \begin{longtable}{@{}p{0.24\textwidth}*{8}{>{\centering\arraybackslash}c}@{}}
 \caption{Quantitative comparison on Kvasir-SEG.}\label{tab:kvasir-comparison}\\
 \toprule\noalign{}
@@ -247,6 +264,7 @@ DVFIP-Net~\cite{dvfipnet} & 2026 & 0.922 & 0.874 & -- & -- & -- & -- & -- \\
 
 
 
+% TODO: replace Ours with new PraNet-style split three-seed results and recompute CVC-ClinicDB rankings.
 \begin{longtable}{@{}p{0.24\textwidth}*{8}{>{\centering\arraybackslash}c}@{}}
 \caption{Quantitative comparison on CVC-ClinicDB.}\label{tab:clinicdb-comparison}\\
 \toprule\noalign{}
@@ -284,6 +302,7 @@ DVFIP-Net~\cite{dvfipnet} & 2026 & 0.942 & 0.896 & -- & -- & -- & -- & -- \\
 \meanstd{0.011}{0.0003} \\
 \end{longtable}
 
+% TODO: replace Ours with new PraNet-style split three-seed results and recompute ETIS rankings.
 \begin{longtable}{@{}p{0.24\textwidth}*{8}{>{\centering\arraybackslash}c}@{}}
 \caption{Quantitative comparison on ETIS-LaribPolypDB.}\label{tab:etis-comparison}\\
 \toprule\noalign{}
@@ -319,6 +338,7 @@ DVFIP-Net~\cite{dvfipnet} & 2026 & 0.811 & 0.730 & -- & -- & -- & -- & -- \\
 \meanstd{0.015}{0.001} \\
 \end{longtable}
 
+% TODO: replace Ours with new PraNet-style split three-seed results and recompute CVC-ColonDB rankings.
 \begin{longtable}{@{}p{0.24\textwidth}*{8}{>{\centering\arraybackslash}c}@{}}
 \caption{Quantitative comparison on CVC-ColonDB.}\label{tab:colondb-comparison}\\
 \toprule\noalign{}
@@ -353,6 +373,7 @@ DVFIP-Net~\cite{dvfipnet} & 2026 & \underline{0.826} & \underline{0.746} & -- & 
 \meanstd{0.035}{0.001} \\
 \end{longtable}
 
+% TODO: replace Ours with new PraNet-style split three-seed results and recompute CVC-300 rankings.
 \begin{longtable}{@{}p{0.24\textwidth}*{8}{>{\centering\arraybackslash}c}@{}}
 \caption{Quantitative comparison on CVC-300 (EndoScene).}\label{tab:cvc300-comparison}\\
 \toprule\noalign{}

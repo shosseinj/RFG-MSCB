@@ -1,16 +1,15 @@
 \section{Ablation Study}\label{ablation-study}
 
-We compare three configurations under the common experimental protocol: FAFEM,
-FAFEM + MSCB, and FAFEM + RFG-MSCB. The sequence provides protocol-matched references
-for the additions made after FAFEM, but it does not measure FAFEM against a no-FAFEM
-model under the final protocol or independently isolate all components of RFG-MSCB.
+The ablation design compares three configurations: FAFEM, FAFEM + MSCB, and
+FAFEM + RFG-MSCB. The sequence defines references for the additions made after
+FAFEM, but it does not include a no-FAFEM configuration or independently isolate all
+components of RFG-MSCB.
 
 \subsection{Ablation Results}
 
 The sequence begins with FAFEM as the bottleneck enhancement module. The FAFEM-only
-configuration contains no multi-scale refinement layers and provides the final-protocol
-reference. Older no-FAFEM measurements used a different protocol and are excluded
-from this comparison.
+configuration contains no multi-scale refinement layers and provides the
+feature-enhancement reference.
 
 Adding a Stage-3 MSCB-lite layer introduces parallel multi-scale refinement without
 frequency guidance. This configuration supplies the appropriate reference for the
@@ -22,7 +21,9 @@ Table~\ref{tab:ablation}.
 A single-seed direct frequency-guidance configuration tested the mechanism without
 residual coupling. Its Kvasir-SEG result was lower than that of Stage-3 MSCB-lite in
 the paired seed-42 comparison.
+% TODO: replace the direct-guidance comparison after rerunning it under the final data protocol.
 
+% TODO: replace all Table 3 values with protocol-matched three-seed ablation results.
 \begin{table*}[htbp]
 \centering
 \caption{Ablation study on Kvasir-SEG.}\label{tab:ablation}
@@ -42,6 +43,7 @@ FAFEM + MSCB & 29.98 & \meanstd{0.930}{0.002} & \meanstd{0.881}{0.003} & \meanst
 
 \subsection{Ablation Interpretation}
 
+% TODO: update ablation interpretation after the protocol-matched three-seed rerun.
 FAFEM provides the bottleneck feature-enhancement reference. MSCB-lite adds
 multi-scale refinement at Stage 3, and RFG-MSCB introduces frequency-conditioned
 adaptive branch modulation along this path. The final gain is small and is accompanied
@@ -49,6 +51,7 @@ by the parameter increase reported in Table~\ref{tab:ablation}.
 
 \subsection{Stage Placement and Generalization}
 
+% TODO: update placement and cross-dataset observations after the final reruns.
 Stage 3 is used in the selected configuration. The exploratory all-skip
 experiment used a single seed, was incomplete, and used batch size 32 with the same
 learning rate. Its training result was lower than that of the Stage-3 configuration.
