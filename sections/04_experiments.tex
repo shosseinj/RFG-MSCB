@@ -193,20 +193,10 @@ descriptive; no statistical significance test between methods was performed.
 
 
 
-\begin{landscape}
 \small
-\setlength{\tabcolsep}{4pt}
+\setlength{\tabcolsep}{5pt}
 \renewcommand{\arraystretch}{1.1}
-\begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1951}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.0840}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1061}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1019}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.0998}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.0998}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.0998}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1130}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1006}}@{}}
+\begin{longtable}{@{}p{0.24\textwidth}*{8}{>{\centering\arraybackslash}c}@{}}
 \caption{Quantitative comparison on Kvasir-SEG.}\label{tab:kvasir-comparison}\\
 \toprule\noalign{}
 Methods & Year & mDice & mIoU & $F_{\beta}^{w}$ & $S_{\alpha}$ & $mE_{\phi}$ & $\max E_{\phi}$ & MAE \\
@@ -224,45 +214,62 @@ Methods & Year & mDice & mIoU & $F_{\beta}^{w}$ & $S_{\alpha}$ & $mE_{\phi}$ & $
 \endlastfoot
 CTNet~\cite{ctnet} & 2024 & 0.917 & 0.863 & 0.910 & 0.928 & 0.959 & 0.964 &
 0.023 \\
-MEGANet~\cite{meganet} & 2024 & 0.913 & 0.863 & 0.907 & 0.918 & 0.956 & 0.959
-& 0.025 \\
-CAFE-Net~\cite{cafenet} & 2024 & \textbf{0.933} & \textbf{0.889} & 0.927 &
-\underline{0.939} & 0.967 & -- & \textbf{0.019} \\
+
+MEGANet~\cite{meganet} & 2024 & 0.913 & 0.863 & 0.907 & 0.918 & 0.956 & 0.959 &
+0.025 \\
+
 Polyp-LVT~\cite{polyplvt} & 2024 & 0.909 & 0.851 & 0.913 & 0.922 & 0.941 & -- &
 0.024 \\
-Polyp-Mamba~\cite{polypmamba} & 2025 & 0.919 & 0.867 & 0.912 & \textbf{0.951} &
--- & \underline{0.968} & \underline{0.021} \\
+
+Polyp-Mamba~\cite{polypmamba} & 2025 & 0.919 & 0.867 & 0.912 &
+\textbf{0.951} & -- & \underline{0.968} & \underline{0.021} \\
+
 MEIN~\cite{mein} & 2025 & 0.905 & 0.847 & 0.905 & 0.914 & -- & 0.964 &
 0.026 \\
+
 MF-Net~\cite{mfnet} & 2025 & 0.915 & 0.863 & \textbf{0.939} & 0.924 & 0.962 & -- &
 0.022 \\
+
 MSBP-Net~\cite{msbpnet} & 2026 & 0.919 & 0.868 & 0.916 & 0.926 & 0.961 & -- &
 0.023 \\
+
 CIFFormer~\cite{cifformer} & 2025 & 0.926 & 0.876 & \underline{0.929} &
 \underline{0.939} & 0.967 & -- & \textbf{0.019} \\
-PFPRNet~\cite{pfprnet} & 2025 & 0.930 & 0.881 & 0.920 & 0.935 & \textbf{0.971} &
--- & \textbf{0.019} \\
+
+PFPRNet~\cite{pfprnet} & 2025 &
+\underline{0.930} &
+\underline{0.881} &
+0.920 &
+0.935 &
+\textbf{0.971} &
+-- &
+\textbf{0.019} \\
+
 PraNet-V2~\cite{pranetv2} & 2026 & 0.907 & 0.853 & -- & -- & -- & -- & 0.025 \\
-MLB-Net~\cite{mlbnet} & 2026 & 0.926 & 0.878 & 0.921 & 0.938 & \underline{0.969} &
-\textbf{0.975} & \underline{0.021} \\
-MSPN~\cite{mspn} & 2026 & 0.927 & 0.879 & -- & -- & -- & -- & \underline{0.021} \\
+
+MLB-Net~\cite{mlbnet} & 2026 & 0.926 & 0.878 & 0.921 & 0.938 &
+\underline{0.969} & \textbf{0.975} & \underline{0.021} \\
+
+MSPN~\cite{mspn} & 2026 & 0.927 & 0.879 & -- & -- & -- & -- &
+\underline{0.021} \\
+
 DVFIP-Net~\cite{dvfipnet} & 2026 & 0.922 & 0.874 & -- & -- & -- & -- & -- \\
-\textbf{Ours} & -- & \underline{\meanstd{0.931}{0.004}} &
-\underline{\meanstd{0.883}{0.006}} & \meanstd{0.911}{0.005} &
-\meanstd{0.933}{0.003} & \meanstd{0.960}{0.003} &
-\meanstd{0.967}{0.003} & \meanstd{0.024}{0.001} \\
+
+\textbf{Ours} & -- &
+\textbf{\meanstd{0.931}{0.004}} &
+\textbf{\meanstd{0.883}{0.006}} &
+\meanstd{0.911}{0.005} &
+\meanstd{0.933}{0.003} &
+\meanstd{0.960}{0.003} &
+\meanstd{0.967}{0.003} &
+\meanstd{0.024}{0.001} \\
 \end{longtable}
 
-\begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1954}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.0841}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1061}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1019}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.0999}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.0999}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.0998}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1130}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.0999}}@{}}
+
+
+
+
+\begin{longtable}{@{}p{0.24\textwidth}*{8}{>{\centering\arraybackslash}c}@{}}
 \caption{Quantitative comparison on CVC-ClinicDB.}\label{tab:clinicdb-comparison}\\
 \toprule\noalign{}
 Methods & Year & mDice & mIoU & $F_{\beta}^{w}$ & $S_{\alpha}$ & $mE_{\phi}$ & $\max E_{\phi}$ & MAE \\
@@ -309,16 +316,7 @@ DVFIP-Net~\cite{dvfipnet} & 2026 & 0.942 & 0.896 & -- & -- & -- & -- & -- \\
 \meanstd{0.011}{0.0003} \\
 \end{longtable}
 
-\begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1953}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.0841}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1061}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1019}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.0999}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.0999}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.0999}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1130}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.0999}}@{}}
+\begin{longtable}{@{}p{0.24\textwidth}*{8}{>{\centering\arraybackslash}c}@{}}
 \caption{Quantitative comparison on ETIS-LaribPolypDB.}\label{tab:etis-comparison}\\
 \toprule\noalign{}
 Methods & Year & mDice & mIoU & $F_{\beta}^{w}$ & $S_{\alpha}$ & $mE_{\phi}$ & $\max E_{\phi}$ & MAE \\
@@ -364,16 +362,7 @@ DVFIP-Net~\cite{dvfipnet} & 2026 & 0.811 & 0.730 & -- & -- & -- & -- & -- \\
 \meanstd{0.015}{0.001} \\
 \end{longtable}
 
-\begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1921}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.0844}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1066}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1024}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1003}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1003}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1003}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1134}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1003}}@{}}
+\begin{longtable}{@{}p{0.24\textwidth}*{8}{>{\centering\arraybackslash}c}@{}}
 \caption{Quantitative comparison on CVC-ColonDB.}\label{tab:colondb-comparison}\\
 \toprule\noalign{}
 Methods & Year & mDice & mIoU & $F_{\beta}^{w}$ & $S_{\alpha}$ & $mE_{\phi}$ & $\max E_{\phi}$ & MAE \\
@@ -417,16 +406,7 @@ DVFIP-Net~\cite{dvfipnet} & 2026 & \underline{0.826} & 0.746 & -- & -- & -- & --
 \meanstd{0.035}{0.001} \\
 \end{longtable}
 
-\begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1928}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.0889}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1055}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.0889}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1023}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1017}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1036}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1169}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.0994}}@{}}
+\begin{longtable}{@{}p{0.24\textwidth}*{8}{>{\centering\arraybackslash}c}@{}}
 \caption{Quantitative comparison on CVC-300 (EndoScene).}\label{tab:cvc300-comparison}\\
 \toprule\noalign{}
 Methods & Year & mDice & mIoU & $F_{\beta}^{w}$ & $S_{\alpha}$ & $mE_{\phi}$ & $\max E_{\phi}$ & MAE \\
@@ -468,8 +448,6 @@ DVFIP-Net~\cite{dvfipnet} & 2026 & 0.900 & 0.833 & -- & -- & -- & -- & -- \\
 \meanstd{0.956}{0.005} & \meanstd{0.971}{0.002} &
 \meanstd{0.007}{0.0003} \\
 \end{longtable}
-
-\end{landscape}
 
 % Qualitative analysis is reserved for the pending figure-generation stage.
 % \subsubsection{Qualitative analysis}\label{qualitative-analysis}

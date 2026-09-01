@@ -186,13 +186,6 @@ Federico Perazzi, Philipp Krähenbühl, Yael Pritch, and Alexander Hornung.
 \newblock In {\em Proceedings of the IEEE Conference on Computer Vision and
   Pattern Recognition}, pages 733--740, 2012.
 
-\bibitem{cafenet}
-Guoqi Liu, Sheng Yao, Dong Liu, Baofang Chang, Zongyu Chen, Jiajia Wang, and
-  Jiangqi Wei.
-\newblock {CAFE-Net}: Cross-attention and feature exploration network for polyp
-  segmentation.
-\newblock {\em Expert Systems with Applications}, 238:121754, 2024.
-
 \bibitem{polyplvt}
 Long Lin, Guangzu Lv, Bin Wang, Cunlu Xu, and Jun Liu.
 \newblock {Polyp-LVT}: Polyp segmentation with lightweight vision transformers.

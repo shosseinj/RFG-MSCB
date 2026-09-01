@@ -95,7 +95,12 @@
 \date{}
 
 \providecommand{\RL}[1]{#1}
-\newcommand{\meanstd}[2]{$#1\,\pm\,#2$}
+\newcommand{\meanstd}[2]{%
+\begin{tabular}[c]{@{}c@{}}
+#1\\[-1pt]
+{\scriptsize $\pm$ #2}
+\end{tabular}%
+}
 \begin{document}
 
 \maketitle
