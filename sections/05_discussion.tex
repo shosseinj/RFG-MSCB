@@ -2,19 +2,19 @@
 
 \subsection{Main Quantitative Findings}
 
-The final FAFEM + RFG-MSCB model achieves a Kvasir-SEG mDice of 0.9313 ± 0.0044 and mIoU of 0.8826 ± 0.0062 across three random seeds (42, 6543, 7777). On the held-out CVC-ClinicDB, it reaches 0.9370 ± 0.0024 mDice and 0.8877 ± 0.0038 mIoU. These results are reported as mean ± sample standard deviation (ddof=1). On external datasets, the model obtains 0.8821 ± 0.0016 mDice on CVC-300, 0.7944 ± 0.0089 on CVC-ColonDB, and 0.7870 ± 0.0113 on ETIS-LaribPolypDB. Comparisons with the listed published methods are descriptive; no statistical significance testing was performed.
+The final FAFEM + RFG-MSCB model achieves a Kvasir-SEG mDice of 0.931 ± 0.004 and mIoU of 0.883 ± 0.006 across three random seeds (42, 6543, 7777). On the held-out CVC-ClinicDB, it reaches 0.937 ± 0.002 mDice and 0.888 ± 0.004 mIoU. These results are reported as mean ± sample standard deviation (ddof=1). On external datasets, the model obtains 0.882 ± 0.002 mDice on CVC-300, 0.794 ± 0.009 on CVC-ColonDB, and 0.787 ± 0.011 on ETIS-LaribPolypDB. Comparisons with the listed published methods are descriptive; no statistical significance testing was performed.
 
 \subsection{Effect of FAFEM}
 
-We adopt FAFEM as the bottleneck enhancement module. The FAFEM-only configuration provides the final-protocol reference, with Kvasir-SEG means of 0.925958 mDice, 0.875879 mIoU, and 0.024832 MAE. A no-FAFEM baseline under this protocol was not available; older baseline measurements used a different training protocol.
+We adopt FAFEM as the bottleneck enhancement module. The FAFEM-only configuration provides the final-protocol reference, with Kvasir-SEG means of 0.926 mDice, 0.876 mIoU, and 0.025 MAE. A no-FAFEM baseline under this protocol was not available; older baseline measurements used a different training protocol.
 
 \subsection{Effect of Stage-3 MSCB-Lite}
 
-Building on FAFEM, MSCB-lite supplies parallel multi-scale refinement at Stage 3 without frequency guidance. On Kvasir-SEG, the three-seed mean mDice changes from 0.925958 to 0.930440 (+0.448 percentage points); mIoU changes by +0.550 percentage points and MAE by -0.000345. This configuration is the reference for the guided variant.
+Building on FAFEM, MSCB-lite supplies parallel multi-scale refinement at Stage 3 without frequency guidance. On Kvasir-SEG, the three-seed mean mDice changes from 0.926 to 0.930 (+0.45 percentage points); mIoU changes by +0.55 percentage points and MAE decreases slightly, from 0.025 to 0.024. This configuration is the reference for the guided variant.
 
 \subsection{Effect of Residual Frequency-Guided Coupling}
 
-The new RFG-MSCB coupling adds frequency-conditioned residual guidance to the Stage-3 multi-scale layer. From raw three-seed values, Kvasir-SEG mDice changes from 0.930440 for FAFEM + MSCB to 0.931284 (+0.084 percentage points); mIoU changes by +0.122 percentage points and MAE by -0.000527. The total FAFEM-to-final changes are +0.533 percentage points in mDice and +0.672 percentage points in mIoU. In the paired seed-42 comparison, direct frequency guidance without residual coupling did not exceed MSCB-lite; that single-seed result does not separate the effects of residualization and frequency conditioning.
+The new RFG-MSCB coupling adds frequency-conditioned residual guidance to the Stage-3 multi-scale layer. From the underlying three-seed values, Kvasir-SEG mDice changes from 0.930 for FAFEM + MSCB to 0.931 (+0.08 percentage points); mIoU changes by +0.12 percentage points and MAE by -0.001. The total FAFEM-to-final changes are +0.53 percentage points in mDice and +0.67 percentage points in mIoU. In the paired seed-42 comparison, direct frequency guidance without residual coupling did not exceed MSCB-lite; that single-seed result does not separate the effects of residualization and frequency conditioning.
 
 \subsection{Why Residual Frequency-Guided Multi-Scale Refinement May Help}
 
@@ -22,11 +22,11 @@ The residual formulation interpolates between uniform and predicted branch weigh
 
 \subsection{Cross-Dataset Behavior}
 
-The final model's absolute performance is highest on Kvasir-SEG and held-out CVC-ClinicDB (~0.93), intermediate on CVC-300 (~0.88), and lower on CVC-ColonDB and ETIS-LaribPolypDB (~0.79). Between-seed variability is lowest on CVC-300 (mDice SD 0.0016) and highest on ETIS-LaribPolypDB (mDice SD 0.0113). Relative to FAFEM + MSCB, the final guidance change is not uniformly positive across datasets in the paired seed-42 evidence, so broad cross-dataset generalization should not be inferred.
+The final model's absolute performance is highest on Kvasir-SEG and held-out CVC-ClinicDB (~0.930), intermediate on CVC-300 (~0.880), and lower on CVC-ColonDB and ETIS-LaribPolypDB (~0.790). Between-seed variability is lowest on CVC-300 (mDice SD 0.002) and highest on ETIS-LaribPolypDB (mDice SD 0.011). Relative to FAFEM + MSCB, the final guidance change is not uniformly positive across datasets in the paired seed-42 evidence, so broad cross-dataset generalization should not be inferred.
 
 \subsection{Cases and Datasets Where the Model Is Weaker}
 
-The model's weakest performance is on CVC-ColonDB and ETIS-LaribPolypDB, where mDice drops to ~0.79 and between-seed variability is highest (0.0089 and 0.0113 respectively). These datasets involve different endoscopic systems and polyp morphology distributions compared to the training data (Kvasir-SEG and CVC-ClinicDB). On ETIS, the mIoU SD of 0.0120 indicates substantial sensitivity to random initialization. The model does not outperform several recent methods on these datasets, suggesting that further domain adaptation or data augmentation strategies may be needed for stronger generalization.
+The model's weakest performance is on CVC-ColonDB and ETIS-LaribPolypDB, where mDice drops to ~0.790 and between-seed variability is highest (0.009 and 0.011 respectively). These datasets involve different endoscopic systems and polyp morphology distributions compared to the training data (Kvasir-SEG and CVC-ClinicDB). On ETIS, the mIoU SD of 0.012 indicates substantial sensitivity to random initialization. The model does not outperform several recent methods on these datasets, suggesting that further domain adaptation or data augmentation strategies may be needed for stronger generalization.
 
 \subsection{Model Complexity and Practical Trade-offs}
 
@@ -34,7 +34,7 @@ As summarized in Table~\ref{tab:model-complexity}, the final architecture has a 
 
 \subsection{Placement Analysis}
 
-The multi-scale refinement layer is placed at encoder Stage 3 in the final FAFEM + RFG-MSCB configuration. This placement was selected based on observed results from the ablation chain. A single-seed exploratory all-skip configuration used batch size 32 rather than 24 in the main protocol; the available training evidence did not improve relative to the Stage-3 configuration. However, this comparison is limited by incomplete training and the batch-size mismatch, so it does not support a general conclusion about optimal placement. The Stage-3 placement localizes the added guidance mechanism; the measured final model has 30,057,415 parameters and 27.818 GFLOPs under the reported convention, but no latency benchmark was performed.
+The multi-scale refinement layer is placed at encoder Stage 3 in the final FAFEM + RFG-MSCB configuration. This placement was selected based on observed results from the ablation chain. A single-seed exploratory all-skip configuration used batch size 32 rather than 24 in the main protocol; the available training evidence did not improve relative to the Stage-3 configuration. However, this comparison is limited by incomplete training and the batch-size mismatch, so it does not support a general conclusion about optimal placement. The Stage-3 placement localizes the added guidance mechanism; the measured final model has 30.06 M parameters and 27.82 GFLOPs under the reported convention, but no latency benchmark was performed.
 
 \subsection{Limitations}
 

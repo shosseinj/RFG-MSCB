@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.8.31)  1 SEP 2026 09:18
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.8.31)  1 SEP 2026 09:33
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -694,8 +694,7 @@ Overfull \hbox (185.29019pt too wide) in paragraph at lines 137--138
 [][] 
  []
 
-[20 <./media/image1.png>]
-<media/image2.png, id=370, 670.75594pt x 112.16907pt>
+<media/image2.png, id=364, 670.75594pt x 112.16907pt>
 File: media/image2.png Graphic file (type png)
 <use media/image2.png>
 Package pdftex.def Info: media/image2.png  used on input line 151.
@@ -705,6 +704,7 @@ Overfull \hbox (201.09137pt too wide) in paragraph at lines 151--152
 [][] 
  []
 
+[20 <./media/image1.png>]
 <media/image3.png, id=371, 560.0925pt x 460.72125pt>
 File: media/image3.png Graphic file (type png)
 <use media/image3.png>
@@ -715,14 +715,13 @@ Overfull \hbox (90.41301pt too wide) in paragraph at lines 153--154
 [][] 
  []
 
-[21 <./media/image2.png>]
-<media/image4.png, id=377, 309.40594pt x 225.84375pt>
+<media/image4.png, id=372, 309.40594pt x 225.84375pt>
 File: media/image4.png Graphic file (type png)
 <use media/image4.png>
 Package pdftex.def Info: media/image4.png  used on input line 155.
 (pdftex.def)             Requested size: 309.46655pt x 225.88797pt.
- [22 <./media/image3.png>]
-<media/image5.png, id=383, 656.4525pt x 350.81062pt>
+[21 <./media/image2.png> <./media/image3.png>]
+<media/image5.png, id=379, 656.4525pt x 350.81062pt>
 File: media/image5.png Graphic file (type png)
 <use media/image5.png>
 Package pdftex.def Info: media/image5.png  used on input line 157.
@@ -732,20 +731,20 @@ Overfull \hbox (186.79604pt too wide) in paragraph at lines 157--158
 [][] 
  []
 
-[23 <./media/image4.png> <./media/image5.png>] [24] (manuscript.aux)
+[22 <./media/image4.png> <./media/image5.png>] [23] (manuscript.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 14871 strings out of 467871
- 233087 string characters out of 5428434
+ 14872 strings out of 467871
+ 233102 string characters out of 5428434
  750484 words of memory out of 5000000
  43068 multiletter control sequences out of 15000+600000
- 725905 words of font info for 231 fonts, out of 8000000 for 9000
+ 725970 words of font info for 232 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 77i,15n,81p,1837b,606s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 77i,15n,81p,1814b,606s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Program Files/M
 iKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Program Files/MiKTeX/fonts/type1/pub
 lic/lm/lmbx7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbx9.pfb><C:/P
@@ -764,9 +763,9 @@ s/MiKTeX/fonts/type1/public/lm/lmsy7.pfb><C:/Program Files/MiKTeX/fonts/type1/p
 ublic/lm/lmsy8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmsy9.pfb><C:
 /Program Files/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/Program Files/MiKTeX
 /fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on manuscript.pdf (24 pages, 1975919 bytes).
+Output written on manuscript.pdf (23 pages, 1975225 bytes).
 PDF statistics:
- 693 PDF objects out of 1000 (max. 8388607)
- 150 named destinations out of 1000 (max. 500000)
+ 689 PDF objects out of 1000 (max. 8388607)
+ 149 named destinations out of 1000 (max. 500000)
  53674 words of extra memory for PDF output out of 61914 (max. 10000000)
 
