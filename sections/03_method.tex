@@ -334,17 +334,13 @@ The selected architecture does not employ auxiliary prediction heads or deep sup
 \subsection{Model Complexity}
 \label{model-complexity}
 
-The complete model has 30.06 M trainable and total parameters. Profiling
-with THOP on a $1\times3\times352\times352$ input gives 13.91
-GMACs, corresponding to 27.82 GFLOPs under the project convention
-$\mathrm{FLOPs}=2\times\mathrm{MACs}$. Table~\ref{tab:model-complexity}
-places these measurements alongside the current comparison values. The reported
-GFLOPs remain descriptive because papers may use different input resolutions and
-FLOP-counting conventions.
+The complete model has 30.06 M parameters and requires 27.82 GFLOPs for a
+$352\times352$ input. RFG-MSCB is localized to the Stage-3 encoder--decoder
+fusion, while the remaining decoder retains depthwise-separable convolution.
 
 \begin{table}[htbp]
 \centering
-\caption{Computational complexity comparison. Parameter counts and computational cost are taken from original publications or official implementations where available. Reported GFLOPs may use different input resolutions and counting conventions; `--' denotes an unavailable or unverified value.}
+\caption{Computational complexity comparison. Parameter counts and computational cost are taken from original publications or official implementations where available; `--' denotes an unavailable or unverified value.}
 \label{tab:model-complexity}
 \small
 \setlength{\tabcolsep}{4pt}
@@ -372,12 +368,3 @@ DVFIP-Net~\cite{dvfipnet} & 2026 & $352^2$ & 45.62 & 19.37 \\
 \vspace{2pt}
 \parbox{0.96\linewidth}{\footnotesize $^{\dagger}$Our value uses 13.91 GMACs and the explicit convention $\mathrm{FLOPs}=2\times\mathrm{MACs}$. Competitor values are preserved in source terminology and are not convention-normalized.}
 \end{table}
-
-The expanded table provides parameter counts and GFLOPs for most listed methods,
-although MEIN and MF-Net do not have values reported here and MLB-Net lacks a
-GFLOP value. The final model has fewer parameters than the listed MEGANet,
-PFPRNet, MLB-Net, and DVFIP-Net entries, but its 27.82-GFLOP value should not be
-interpreted as directly higher or lower than competitor values because FLOP
-counting conventions may differ between papers.
-
-The additional frequency-guided mechanism is introduced only at the first decoder--encoder fusion stage. The remaining decoder retains depthwise-separable convolution and conventional skip fusion, limiting the architectural modification to the stage at which high-level semantic information is first combined with the relatively high-resolution $F_3$ representation.

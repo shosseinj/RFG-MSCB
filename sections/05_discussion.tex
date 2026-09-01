@@ -10,67 +10,43 @@ motivation: the model retains a convolutional multi-scale pathway for efficient
 decoding while adding sample-dependent guidance intended to adapt that pathway to
 image content.
 
-The ablation provides a more specific interpretation of the contribution. FAFEM
-establishes the bottleneck feature-enhancement reference, MSCB-lite adds multi-scale
-refinement at Stage 3 without frequency guidance, and RFG-MSCB adds adaptive branch
-modulation to that reference path. The final increment is small, indicating that the
-proposed coupling is a controlled refinement rather than a wholesale change in the
-decoder. The paired single-seed comparison with direct frequency guidance also did
-not show an advantage without residual coupling; consequently, the available evidence
-does not disentangle residualization from frequency conditioning. These observations
-support the feasibility of the combined mechanism but leave its individual causal
-components unresolved.
+FAFEM establishes the bottleneck feature-enhancement reference, MSCB-lite adds
+multi-scale refinement at Stage 3, and RFG-MSCB adds adaptive branch modulation to
+that path. The final increment is small, consistent with a localized refinement of the
+decoder. In the paired single-seed comparison, direct frequency guidance without
+residual coupling produced a lower result than MSCB-lite.
 
-The bounded residual formulation may explain why the added mechanism can be introduced
-without discarding the ordinary multi-scale response. By interpolating between uniform
-and predicted branch weights, it provides a conservative path from the established
-MSCB behavior to sample-dependent refinement. This is a post hoc interpretation rather
-than a separately tested mechanism-level conclusion, because the ablation measures the
-combined design.
+The bounded residual design preserves the conventional MSCB response while allowing
+sample-dependent branch modulation. Because residualization and frequency conditioning
+were not evaluated independently, their individual contributions remain unresolved.
 
 \subsection{Cross-Dataset Generalization}
 
-Independent generalization is assessed on CVC-300, CVC-ColonDB, and
-ETIS-LaribPolypDB, which did not influence checkpoint selection. Their lower scores
-may reflect differences in acquisition, annotation, case mix, or polyp morphology
-relative to the training data. The guidance change is also not
-uniformly positive across the external datasets in the paired single-seed evidence.
-Thus, the results support transfer across the evaluated datasets only in a limited,
-descriptive sense and do not establish broad out-of-distribution generalization.
+Generalization was assessed on CVC-300, CVC-ColonDB, and ETIS-LaribPolypDB, which
+did not influence checkpoint selection. Their lower scores may reflect differences in
+acquisition, annotation, case mix, or polyp morphology relative to the training data.
+In the paired single-seed comparison, the effect of guidance was mixed across these
+external datasets.
 
-The weaker behavior on CVC-ColonDB and ETIS-LaribPolypDB, together with the observed
-variability on ETIS, suggests that domain adaptation or targeted augmentation may be
-needed. The model also does not outperform several recent methods on these datasets,
-which reinforces that the proposed frequency-guided refinement does not remove the
-underlying domain-shift challenge.
+The weaker performance on CVC-ColonDB and ETIS-LaribPolypDB, together with the
+observed variability on ETIS, highlights the remaining domain gap and motivates domain
+adaptation or targeted augmentation.
 
 \subsection{Practical Trade-offs and Placement}
 
-As summarized in Table~\ref{tab:model-complexity}, the final architecture has a
-moderate parameter count within the verifiable subset. Computational-cost rankings
-remain uncertain because most competitor reports do not provide a verified input
-resolution together with an explicit FLOP-counting convention. No matched-hardware
-latency benchmark was performed, so the present evidence does not establish real-time
-inference suitability.
+As summarized in Table~\ref{tab:model-complexity}, the final architecture has
+30.06 M parameters and requires 27.82 GFLOPs at $352\times352$. Matched-hardware
+latency was not measured.
 
-The final design keeps the new guidance localized to the Stage-3 decoder--encoder
-fusion. The exploratory all-skip
-comparison was single-seed, incomplete, and used a different batch size, so it does
-not support a general conclusion about optimal placement. Together, the complexity and
-placement results describe a constrained architectural trade-off, but they do not
-establish the best deployment configuration.
-
-These interpretive limits motivate the following limitations and future-work priorities.
+The final model uses the new guidance at the Stage-3 decoder--encoder fusion. The
+all-skip experiment was exploratory, single-seed, incomplete, and used a different
+batch size. Deployment-oriented placement and latency optimization remain future work.
 
 \subsection{Limitations}
 
 \begin{itemize}
 \item \textbf{No statistical significance testing:} All reported differences are descriptive; no hypothesis testing was performed.
-\item \textbf{Single-seed placement evidence:} The exploratory all-skip placement run is single-seed, incomplete, and uses a different batch size; it cannot establish a general placement rule.
-\item \textbf{No disentanglement of RFG-MSCB components:} The ablation isolates the combined residual frequency-guided coupling; individual contributions of the residual formulation, initialization strength, and frequency conditioning are not separately measured.
-\item \textbf{Incomplete experiments:} The residual-guidance run with default initialization did not complete training; its potential findings are unavailable.
-\item \textbf{Domain gap on external datasets:} Performance drops substantially on CVC-ColonDB and ETIS-LaribPolypDB, indicating limited out-of-distribution generalization.
-\item \textbf{Hardware and software not fully verified:} GPU model, CUDA/cuDNN versions, and \texttt{py\_sod\_metrics} version are not formally recorded.
+\item \textbf{Hardware and software records:} Exact hardware and dependency versions were not recorded.
 \item \textbf{Training duration:} With zero-based epoch indices, seed 7777 stopped after epoch 167 (168 completed epochs; patience 30), while seeds 42 and 6543 completed epochs 0--199; this asymmetry may affect the mean estimate.
 \end{itemize}
 
@@ -81,6 +57,6 @@ These interpretive limits motivate the following limitations and future-work pri
 \item Disentanglement of the RFG-MSCB components (residual form, initialization schedule, frequency conditioning) via factorial experiments.
 \item Investigation of initialization sensitivity using completed default-initialization runs.
 \item Domain adaptation or targeted augmentation to improve generalization on CVC-ColonDB and ETIS-LaribPolypDB.
-\item Statistical significance testing with larger seed ensembles or bootstrap confidence intervals.
-\item Formal recording of hardware, software, and dependency versions for full reproducibility.
+\item Evaluate between-configuration differences using larger seed ensembles or bootstrap confidence intervals.
+\item Record hardware and software configurations systematically in future experiments.
 \end{itemize}

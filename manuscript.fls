@@ -310,7 +310,6 @@ INPUT .\sections\05_discussion.tex
 INPUT .\sections\05_discussion.tex
 INPUT sections\05_discussion.tex
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\ts1-lmr9.tfm
-INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\ec-lmtt9.tfm
 INPUT .\sections\06_conclusion.tex
 INPUT .\sections\06_conclusion.tex
 INPUT .\sections\06_conclusion.tex
@@ -367,7 +366,5 @@ INPUT C:\Program Files\MiKTeX\fonts\type1\public\lm\lmsy9.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\lm\lmsy9.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\lm\lmtt10.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\lm\lmtt10.pfb
-INPUT C:\Program Files\MiKTeX\fonts\type1\public\lm\lmtt9.pfb
-INPUT C:\Program Files\MiKTeX\fonts\type1\public\lm\lmtt9.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\symbols\msbm10.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\symbols\msbm10.pfb

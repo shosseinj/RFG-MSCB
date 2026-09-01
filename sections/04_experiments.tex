@@ -79,11 +79,8 @@ $[0.85,1.15]$ and saturation in $[0.9,1.1]$ were applied with probability
 deviation 0.015 were applied with probabilities 0.15 and 0.25,
 respectively.
 
-Python, GPU, driver/runtime CUDA, cuDNN, THOP, and
-\texttt{py\_sod\_metrics} versions were not recorded in the available run artifacts.
-The code seeded Python, NumPy, PyTorch CPU, and all CUDA random-number generators, but
-the available source does not set deterministic CUDA algorithms or cuDNN deterministic
-backend flags.
+The code seeded Python, NumPy, PyTorch CPU, and all CUDA random-number generators.
+Deterministic CUDA algorithms and cuDNN deterministic backend flags were not enabled.
 
 \subsection{Loss Function}\label{loss-function}
 
@@ -111,8 +108,8 @@ For probability $p=\sigma(P)$ and target $y$, the term was
 \label{eq:boundary_loss}
 \end{equation}
 with $\epsilon=10^{-6}$ and batch averaging for the weighted IoU component. The
-available focal-Tversky term had weight zero and therefore did not contribute to
-training.
+focal-Tversky term was assigned zero weight and therefore did not contribute to the
+final objective.
 
 \subsection{Evaluation Metrics}\label{evaluation-metrics}
 
@@ -172,26 +169,19 @@ Using the reporting convention defined in Implementation Details, the method
 obtained mDice/mIoU of
 $0.931\pm0.004$/$0.883\pm0.006$ on Kvasir-SEG and
 $0.937\pm0.002$/$0.888\pm0.004$ on CVC-ClinicDB. In the displayed
-comparisons, its Kvasir-SEG mDice was 0.17 percentage points below CAFE-Net, while its
-mIoU was 0.64 percentage points below CAFE-Net and higher than the remaining listed
-methods. On CVC-ClinicDB, PFPRNet exceeded the model by 1.20
-percentage points in mDice and 1.53 percentage points in mIoU.
+comparisons, PFPRNet exceeded the model on CVC-ClinicDB by 1.20 percentage
+points in mDice and 1.53 percentage points in mIoU.
 
 The Kvasir-SEG and CVC-ClinicDB values come from held-out validation subsets involved
 in checkpoint selection, whereas published methods may use different training and test
-protocols. These literature comparisons are therefore descriptive. Across the
-comparison tables, the best and second-best displayed values are shown in bold and
-underlined, respectively.
+protocols. Across the comparison tables, the best and second-best displayed values
+are shown in bold and underlined, respectively.
 
 On the external datasets, mDice/mIoU were
 $0.882\pm0.002$/$0.810\pm0.002$ on CVC-300,
 $0.794\pm0.009$/$0.714\pm0.009$ on CVC-ColonDB, and
-$0.787\pm0.011$/$0.707\pm0.012$ on ETIS-LaribPolypDB. The model did not
-attain the highest displayed external-dataset mean. Its largest between-seed
-variation in mDice and mIoU occurred on ETIS. These comparisons are
-descriptive; no statistical significance test between methods was performed.
-
-
+$0.787\pm0.011$/$0.707\pm0.012$ on ETIS-LaribPolypDB. The largest between-seed
+variation in mDice and mIoU occurred on ETIS.
 
 \small
 \setlength{\tabcolsep}{5pt}

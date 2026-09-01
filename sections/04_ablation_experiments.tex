@@ -9,22 +9,20 @@ model under the final protocol or independently isolate all components of RFG-MS
 
 The sequence begins with FAFEM as the bottleneck enhancement module. The FAFEM-only
 configuration contains no multi-scale refinement layers and provides the final-protocol
-reference. A no-FAFEM baseline under the final training protocol is not available;
-older baseline measurements used a different protocol and are therefore excluded from
-this comparison.
+reference. Older no-FAFEM measurements used a different protocol and are excluded
+from this comparison.
 
 Adding a Stage-3 MSCB-lite layer introduces parallel multi-scale refinement without
 frequency guidance. This configuration supplies the appropriate reference for the
 proposed guided variant because it preserves the multi-scale path while omitting the
 cross-level conditioning. The final configuration then adds residual frequency-guided
 coupling to that Stage-3 layer. The complete numerical comparison is given in
-Table~\ref{tab:ablation}; these results are descriptive and no significance test was
-performed.
+Table~\ref{tab:ablation}.
 
 A single-seed direct frequency-guidance configuration tested the mechanism without
-residual coupling. Its Kvasir-SEG result did not exceed the Stage-3 MSCB-lite result
-in the paired seed-42 comparison, so this experiment does not isolate the independent
-effects of residualization and frequency conditioning.
+residual coupling. Its Kvasir-SEG result was lower than that of Stage-3 MSCB-lite in
+the paired seed-42 comparison. Residualization and frequency conditioning were not
+evaluated independently.
 
 \begin{table*}[htbp]
 \centering
@@ -38,36 +36,28 @@ Method & Params (M) & mDice & mIoU & $F_{\beta}^{w}$ & $S_{\alpha}$ & $mE_{\phi}
 \midrule
 FAFEM & 29.36 & \meanstd{0.926}{0.002} & \meanstd{0.876}{0.003} & \meanstd{0.905}{0.003} & \meanstd{0.931}{0.002} & \meanstd{0.957}{0.003} & \meanstd{0.964}{0.002} & \meanstd{0.0248}{0.0004} \\
 FAFEM + MSCB & 29.98 & \meanstd{0.930}{0.002} & \meanstd{0.881}{0.003} & \meanstd{0.910}{0.004} & \meanstd{0.933}{0.001} & \meanstd{0.960}{0.001} & \meanstd{0.966}{0.001} & \meanstd{0.0245}{0.0004} \\
-\textbf{Ours} & 30.06 & \meanstd{0.931}{0.004} & \meanstd{0.882}{0.006} & \meanstd{0.911}{0.005} & \meanstd{0.933}{0.003} & \meanstd{0.960}{0.003} & \meanstd{0.966}{0.003} & \meanstd{0.0240}{0.0007} \\
+\textbf{Ours} & 30.06 & \meanstd{0.931}{0.004} & \meanstd{0.883}{0.006} & \meanstd{0.911}{0.005} & \meanstd{0.933}{0.003} & \meanstd{0.960}{0.003} & \meanstd{0.967}{0.003} & \meanstd{0.0240}{0.0007} \\
 \bottomrule
 \end{tabular}
 \end{table*}
 
 \subsection{Ablation Interpretation}
 
-The three-seed comparison supports a staged description of the tested configurations.
-FAFEM establishes the feature-enhanced reference, MSCB-lite adds multi-scale refinement
-at Stage 3, and RFG-MSCB adds adaptive branch modulation to that reference path. The
-increment associated with the final coupling is small, so the ablation supports the
-feasibility of the proposed refinement but not a claim of broad or statistically
-superior improvement. The parameter increase shown in the table is correspondingly
-the cost of adding the refinement components rather than evidence that the full
-architecture is uniformly preferable.
+FAFEM provides the bottleneck feature-enhancement reference. MSCB-lite adds
+multi-scale refinement at Stage 3, and RFG-MSCB introduces frequency-conditioned
+adaptive branch modulation along this path. The final gain is small and is accompanied
+by the parameter increase reported in Table~\ref{tab:ablation}.
 
 \subsection{Stage Placement and Generalization}
 
-The placement of the multi-scale refinement layer was also examined exploratorily.
-In the final configuration, it is applied only at encoder Stage 3. A
-single-seed exploratory all-skip configuration used batch size 32 and the same
-learning rate; the available training evidence did not improve relative to the
-Stage-3 configuration. Because the run was incomplete and differed in batch size,
-it neither isolates placement for RFG-MSCB nor supports a conclusion about optimal
-placement.
+Stage 3 is used in the selected configuration. The exploratory all-skip
+experiment used a single seed, was incomplete, and used batch size 32 with the same
+learning rate. Its training result was lower than that of the Stage-3 configuration.
+A controlled multi-seed placement study remains future work.
 
 On the four additional datasets, the change from FAFEM + MSCB to the final guidance
-configuration was mixed in the paired seed-42 evidence: mDice decreased on
-CVC-ClinicDB and CVC-300 and increased on CVC-ColonDB and ETIS. These comparisons do
-not establish uniform cross-dataset improvement. The residual-coupling configuration
+configuration was mixed in the paired seed-42 comparison: mDice decreased on
+CVC-ClinicDB and CVC-300 and increased on CVC-ColonDB and ETIS. The residual-coupling configuration
 with default initialization did not complete training and is therefore excluded from
 the quantitative ablation; initialization sensitivity remains a subject for future
 work.

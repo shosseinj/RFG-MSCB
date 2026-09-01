@@ -15,8 +15,8 @@ adapt its receptive-field mixture to the image-specific content of a polyp.
 
 Polyp-specific convolutional models have explored efficient alternatives to
 large attention-based designs. HarDNet-MSEG combines a low-memory-traffic
-convolutional backbone with a lightweight decoder and reports strong
-polyp segmentation can be obtained without a transformer-heavy architecture
+convolutional backbone with a lightweight decoder and demonstrates that strong
+polyp segmentation performance can be achieved without a transformer-heavy architecture
 \cite{hardnetmseg}. PraNet introduced a parallel partial decoder and reverse
 attention to progressively refine uncertain polyp regions \cite{pranet}. These
 methods highlight the value of efficient decoding and iterative refinement, but
@@ -85,9 +85,9 @@ frequency-informed channel attention. RFG-MSCB instead forms a low/high
 spatial-frequency proxy at the bottleneck, transfers its descriptor across levels to
 the Stage-3 decoder fusion, and targets the aggregation of the MSCB multi-kernel
 branches. The ordinary MSCB sum remains explicit, and the guided response enters only
-through bounded residual interpolation. Generic descriptor-driven branch weighting is
-therefore established prior art; the proposed mechanism is this cross-level, bounded
-coupling to the MSCB reference path.
+through bounded residual interpolation. The resulting mechanism combines established
+descriptor-driven branch weighting with cross-level, bounded coupling to the MSCB
+reference path.
 
 \subsection{Boundary and recent polyp-segmentation refinements}
 
@@ -100,10 +100,8 @@ prediction to improve contour delineation \cite{msbpnet}. Other recent methods
 model uncertainty, contextual flow, and multi-stage refinement
 \cite{mein,cifformer,pranetv2}.
 
-The network does not add an explicit boundary branch or edge label; it uses the
-boundary-aware loss described in the Experiments section. Boundary-specific
-improvement is not evaluated separately, so the frequency-guided decoder should
-not be described as a dedicated boundary module.
+Boundary awareness is introduced through the training objective rather than an
+explicit boundary-refinement branch.
 
 \subsection{Positioning of the method}
 

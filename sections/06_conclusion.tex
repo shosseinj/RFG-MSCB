@@ -11,12 +11,10 @@ path.
 The three-seed configuration comparison indicates that the complete residual
 frequency-guidance design produces a small change relative to the FAFEM + MSCB
 reference, while results on the independent external datasets are lower than those on
-the validation subsets used for model selection. The complexity comparison and localized placement describe a
-moderate architectural trade-off, but the available experiments do not establish
-uniform gains, component-level causality, or real-time suitability.
+the validation subsets used for model selection. The Stage-3 placement localizes the
+architectural change, and residualization, frequency conditioning, and deployment
+latency remain priorities for further evaluation.
 
-These findings motivate systematic multi-seed placement experiments, disentanglement
-of residualization and frequency conditioning, and domain-adaptation strategies for
-the more challenging external datasets. The incomplete default-initialization run,
-single-seed placement evidence, and absence of significance testing should be resolved
-before making stronger claims about generalization or superiority.
+Future work should examine placement across multiple seeds, separate residualization
+from frequency conditioning, and evaluate domain-adaptation strategies for the
+challenging external datasets.
