@@ -125,7 +125,7 @@ disabled, and external test results did not affect checkpoint selection.
 
 \subsection{Experimental Study}\label{experimental-study}
 
-We evaluate the final FAFEM + RFG-MSCB model quantitatively and qualitatively on five polyp segmentation datasets using random seeds 42, 6543, and 7777. The ablation experiments are described separately in \ref{ablation-study}.
+We evaluate the final FAFEM + RFG-MSCB model quantitatively and qualitatively on five polyp segmentation datasets using random seeds 42, 6543, and 7777. The ablation experiments are described separately in the ablation-study subsection.
 
 \input{sections/04_ablation_experiments}
 
@@ -155,10 +155,6 @@ methods was performed.
 
 
 
-Table 1 Quantitative comparison of various models on the Kvasir-SEG
-dataset. Best and second-best values are shown in bold and underlined,
-respectively; values for this model are mean $\pm$ sample standard deviation.
-
 \begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1951}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.0840}}
@@ -169,6 +165,7 @@ respectively; values for this model are mean $\pm$ sample standard deviation.
   >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.0998}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1130}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1006}}@{}}
+\caption{Quantitative comparison on Kvasir-SEG. Best and second-best values are shown in bold and underlined.}\label{tab:kvasir-comparison}\\
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 Methods
@@ -189,6 +186,7 @@ mIOU
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 MAE
 \end{minipage} \\
+\endfirsthead
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
@@ -224,10 +222,6 @@ Ours & -- & \underline{\meanstd{0.931}{0.004}} &
 \meanstd{0.967}{0.003} & \meanstd{0.024}{0.001} \\
 \end{longtable}
 
-Table 2 Quantitative comparison of various models on the CVC-ClinicDB
-dataset. Best and second-best values are shown in bold and underlined,
-respectively; values for this model are mean $\pm$ sample standard deviation.
-
 \begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1954}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.0841}}
@@ -238,6 +232,7 @@ respectively; values for this model are mean $\pm$ sample standard deviation.
   >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.0998}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1130}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.0999}}@{}}
+\caption{Quantitative comparison on CVC-ClinicDB. Best and second-best values are shown in bold and underlined.}\label{tab:clinicdb-comparison}\\
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 Methods
@@ -258,6 +253,7 @@ mIOU
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 MAE
 \end{minipage} \\
+\endfirsthead
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
@@ -290,13 +286,8 @@ DVFIP-Net~\cite{dvfipnet} & 2026 & 0.942 & 0.896 & ? & ? & ? & ? & ? \\
 Ours & -- & \meanstd{0.937}{0.002} & \meanstd{0.888}{0.004} &
 \meanstd{0.925}{0.003} & \meanstd{0.947}{0.001} &
 \meanstd{0.978}{0.001} & \meanstd{0.983}{0.001} &
-\meanstd{0.011}{0.000} \\
+\meanstd{0.011}{0.0003} \\
 \end{longtable}
-
-Table 3 Quantitative comparison of various models on the
-ETIS-LaribPolypDB dataset. Best and second-best values are shown in bold
-and underlined, respectively; values for this model are mean $\pm$ sample standard
-deviation.
 
 \begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1953}}
@@ -308,6 +299,7 @@ deviation.
   >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.0999}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1130}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.0999}}@{}}
+\caption{Quantitative comparison on ETIS-LaribPolypDB. Best and second-best values are shown in bold and underlined.}\label{tab:etis-comparison}\\
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 Methods
@@ -328,6 +320,7 @@ mIOU
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 MAE
 \end{minipage} \\
+\endfirsthead
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
@@ -362,10 +355,6 @@ Ours & -- & \meanstd{0.787}{0.011} & \meanstd{0.707}{0.012} &
 \meanstd{0.015}{0.001} \\
 \end{longtable}
 
-Table 4 Quantitative comparison of various models on the CVC-ColonDB
-dataset. Best and second-best values are shown in bold and underlined,
-respectively; values for this model are mean $\pm$ sample standard deviation.
-
 \begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1921}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.0844}}
@@ -376,6 +365,7 @@ respectively; values for this model are mean $\pm$ sample standard deviation.
   >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1003}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1134}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1003}}@{}}
+\caption{Quantitative comparison on CVC-ColonDB. Best and second-best values are shown in bold and underlined.}\label{tab:colondb-comparison}\\
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 Methods
@@ -396,6 +386,7 @@ mIOU
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 MAE
 \end{minipage} \\
+\endfirsthead
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
@@ -428,11 +419,6 @@ Ours & -- & \meanstd{0.794}{0.009} & \meanstd{0.714}{0.009} &
 \meanstd{0.035}{0.001} \\
 \end{longtable}
 
-Table 5 Quantitative comparison of various models on the
-CVC-300 (EndoScene) dataset. Best and second-best values are shown in
-bold and underlined, respectively; values for this model are mean $\pm$ sample
-standard deviation.
-
 \begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1928}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.0889}}
@@ -443,6 +429,7 @@ standard deviation.
   >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1036}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1169}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.0994}}@{}}
+\caption{Quantitative comparison on CVC-300 (EndoScene). Best and second-best values are shown in bold and underlined.}\label{tab:cvc300-comparison}\\
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 Methods
@@ -463,6 +450,7 @@ mIOU
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 MAE
 \end{minipage} \\
+\endfirsthead
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
@@ -491,7 +479,7 @@ DVFIP-Net~\cite{dvfipnet} & 2026 & 0.900 & 0.833 & ? & ? & ? & ? & ? \\
 Ours & -- & \meanstd{0.882}{0.002} & \meanstd{0.810}{0.002} &
 \meanstd{0.857}{0.001} & \meanstd{0.928}{0.003} &
 \meanstd{0.956}{0.005} & \meanstd{0.971}{0.002} &
-\meanstd{0.007}{0.000} \\
+\meanstd{0.007}{0.0003} \\
 \end{longtable}
 
 \subsubsection{Qualitative analysis}\label{qualitative-analysis}

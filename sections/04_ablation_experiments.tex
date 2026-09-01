@@ -28,14 +28,14 @@ Table~\ref{tab:ablation} presents the ablation results across the three verified
 
 \begin{table*}[t]
 \centering
-\caption{Ablation study: Three-seed mean $\pm$ SD results on Kvasir-SEG.\label{tab:ablation}}
+\caption{Ablation study on Kvasir-SEG. Best and second-best values are shown in bold and underlined.}\label{tab:ablation}
 \small
 \renewcommand{\arraystretch}{1.2}
 \begin{tabular}{lcccc}
 \toprule
 Method & Params (M) & mDice & mIoU & MAE \\\midrule
-FAFEM & 29.40 & \meanstd{0.926}{0.002} & \meanstd{0.876}{0.003} & \meanstd{0.025}{0.000} \\\midrule
-FAFEM + MSCB & 30.00 & \meanstd{0.930}{0.002} & \meanstd{0.881}{0.003} & \meanstd{0.024}{0.000} \\\midrule
+FAFEM & 29.40 & \meanstd{0.926}{0.002} & \meanstd{0.876}{0.003} & \meanstd{0.025}{0.0004} \\\midrule
+FAFEM + MSCB & 30.00 & \meanstd{0.930}{0.002} & \meanstd{0.881}{0.003} & \meanstd{0.024}{0.0004} \\\midrule
 FAFEM + RFG-MSCB (Ours) & 30.10 & \meanstd{0.931}{0.004} & \meanstd{0.883}{0.006} & \meanstd{0.024}{0.001} \\\bottomrule
 \end{tabular}
 \end{table*}

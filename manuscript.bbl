@@ -123,20 +123,23 @@ Bo-Cheng Hu, Ge-Peng Ji, Dian Shao, and Deng-Ping Fan.
   segmentation, 2025.
 
 \bibitem{mlbnet}
-{MLB-Net}, 2026.
-\newblock Incomplete manuscript citation; authors and venue require manual
-  verification.
+Juntong Ti, Lijun Liu, Lijun Liu, Xiaobing Yang, Li~Liu, Li~Liu, and Wei Peng.
+\newblock {MLB-Net}: A multi-level lesion-aware and boundary-enhanced network
+  for polyp segmentation.
+\newblock {\em Journal of Imaging Informatics in Medicine}, 2026.
 
 \bibitem{mspn}
-From coarse to fine: Multi-stage progressive network for colon polyp
-  segmentation, 2026.
-\newblock Incomplete manuscript citation; authors and venue require manual
-  verification.
+Yang Yang, Junlong Cheng, Taotao Zhu, and Min Zhu.
+\newblock From coarse to fine: Multi-stage progressive network for colon polyp
+  segmentation.
+\newblock In {\em 2026 IEEE International Conference on Acoustics, Speech and
+  Signal Processing (ICASSP)}, pages 7652--7656, 2026.
 
 \bibitem{dvfipnet}
-{DVFIP-Net}, 2026.
-\newblock Incomplete manuscript citation; authors and venue require manual
-  verification.
+Haijiao Yun, Chao Wang, Jinyang Luan, Ziqing Han, Qingyu Du, and Mingjing Li.
+\newblock {DVFIP-Net}: Dual view feature interaction propagation network for
+  polyp segmentation.
+\newblock {\em IEEE Access}, 14:31995--32008, 2026.
 
 \bibitem{kvasirseg}
 Debesh Jha, Pia~H. Smedsrud, Michael~A. Riegler, Pål Halvorsen, Thomas
@@ -190,18 +193,15 @@ Federico Perazzi, Philipp Krähenbühl, Yael Pritch, and Alexander Hornung.
   Pattern Recognition}, pages 733--740, 2012.
 
 \bibitem{cafenet}
-{CAFÉ-Net}, 2024.
-\newblock Incomplete manuscript citation; authors and venue require manual
-  verification.
+Guoqi Liu, Sheng Yao, Dong Liu, Baofang Chang, Zongyu Chen, Jiajia Wang, and
+  Jiangqi Wei.
+\newblock {CAFE-Net}: Cross-attention and feature exploration network for polyp
+  segmentation.
+\newblock {\em Expert Systems with Applications}, 238:121754, 2024.
 
 \bibitem{polyplvt}
-{Polyp-LVT}, 2024.
-\newblock Incomplete manuscript citation; authors and venue require manual
-  verification.
-
-\bibitem{hcanet}
-{HCA-Net}.
-\newblock Incomplete manuscript reference placeholder; authors, venue, and year
-  require manual verification.
+Long Lin, Guangzu Lv, Bin Wang, Cunlu Xu, and Jun Liu.
+\newblock Polyp-lvt: Polyp segmentation with lightweight vision transformers.
+\newblock {\em Knowledge-Based Systems}, 300:112181, 2024.
 
 \end{thebibliography}
