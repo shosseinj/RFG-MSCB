@@ -297,11 +297,17 @@ INPUT .\sections\04_ablation_experiments.tex
 INPUT sections\04_ablation_experiments.tex
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\ec-lmr7.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\ec-lmbx10.tfm
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\lmmib10.tfm
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\lmmib7.tfm
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\lmbsy10.tfm
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\lmbsy7.tfm
 INPUT .\sections\05_discussion.tex
 INPUT .\sections\05_discussion.tex
 INPUT .\sections\05_discussion.tex
 INPUT .\sections\05_discussion.tex
 INPUT sections\05_discussion.tex
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\ts1-lmr9.tfm
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\ec-lmtt9.tfm
 INPUT .\sections\06_conclusion.tex
 INPUT .\sections\06_conclusion.tex
 INPUT .\sections\06_conclusion.tex
@@ -310,49 +316,14 @@ INPUT sections\06_conclusion.tex
 INPUT .\manuscript.bbl
 INPUT .\manuscript.bbl
 INPUT manuscript.bbl
-INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\ec-lmri10.tfm
-INPUT .\media\image1.png
-INPUT .\media\image1.png
-INPUT .\media\image1.png
-INPUT .\media\image1.png
-INPUT .\media\image1.png
-INPUT .\media\image1.png
-INPUT .\media\image1.png
-INPUT .\media\image2.png
-INPUT .\media\image2.png
-INPUT .\media\image2.png
-INPUT .\media\image2.png
-INPUT .\media\image2.png
-INPUT .\media\image2.png
-INPUT .\media\image2.png
-INPUT .\media\image3.png
-INPUT .\media\image3.png
-INPUT .\media\image3.png
-INPUT .\media\image3.png
-INPUT .\media\image3.png
-INPUT .\media\image3.png
-INPUT .\media\image3.png
-INPUT .\media\image4.png
-INPUT .\media\image4.png
-INPUT .\media\image4.png
-INPUT .\media\image4.png
-INPUT .\media\image4.png
-INPUT .\media\image4.png
-INPUT .\media\image4.png
-INPUT .\media\image5.png
-INPUT .\media\image5.png
-INPUT .\media\image5.png
-INPUT .\media\image5.png
-INPUT .\media\image5.png
-INPUT .\media\image5.png
-INPUT .\media\image5.png
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\ec-lmri9.tfm
 INPUT manuscript.aux
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\lm\lmbx10.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\lm\lmbx10.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\lm\lmbx12.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\lm\lmbx12.pfb
-INPUT C:\Program Files\MiKTeX\fonts\type1\public\lm\lmbx7.pfb
-INPUT C:\Program Files\MiKTeX\fonts\type1\public\lm\lmbx7.pfb
+INPUT C:\Program Files\MiKTeX\fonts\type1\public\lm\lmbx6.pfb
+INPUT C:\Program Files\MiKTeX\fonts\type1\public\lm\lmbx6.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\lm\lmbx9.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\lm\lmbx9.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\lm\lmex10.pfb
@@ -379,8 +350,8 @@ INPUT C:\Program Files\MiKTeX\fonts\type1\public\lm\lmr8.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\lm\lmr8.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\lm\lmr9.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\lm\lmr9.pfb
-INPUT C:\Program Files\MiKTeX\fonts\type1\public\lm\lmri10.pfb
-INPUT C:\Program Files\MiKTeX\fonts\type1\public\lm\lmri10.pfb
+INPUT C:\Program Files\MiKTeX\fonts\type1\public\lm\lmri9.pfb
+INPUT C:\Program Files\MiKTeX\fonts\type1\public\lm\lmri9.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\lm\lmsy10.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\lm\lmsy10.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\lm\lmsy6.pfb
@@ -393,5 +364,7 @@ INPUT C:\Program Files\MiKTeX\fonts\type1\public\lm\lmsy9.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\lm\lmsy9.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\lm\lmtt10.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\lm\lmtt10.pfb
+INPUT C:\Program Files\MiKTeX\fonts\type1\public\lm\lmtt9.pfb
+INPUT C:\Program Files\MiKTeX\fonts\type1\public\lm\lmtt9.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\symbols\msbm10.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\symbols\msbm10.pfb

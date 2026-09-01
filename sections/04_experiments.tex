@@ -18,6 +18,9 @@ checkpoint selection.
 \centering
 \caption{Dataset use in the final experiment.}
 \label{tab:dataset-splits}
+\small
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.1}
 \begin{tabular}{lrrrr}
 \toprule
 Dataset & Total & Train & Validation & External test \\
@@ -167,6 +170,9 @@ descriptive; no statistical significance test between methods was performed.
 
 
 
+\small
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.1}
 \begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1951}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.0840}}
@@ -208,27 +214,27 @@ CTNet~\cite{ctnet} & 2024 & 0.917 & 0.863 & 0.910 & 0.928 & 0.959 & 0.964 &
 MEGANet~\cite{meganet} & 2024 & 0.913 & 0.863 & 0.907 & 0.918 & 0.956 & 0.959
 & 0.025 \\
 CAFÉ-Net~\cite{cafenet} & 2024 & \textbf{0.933} & \textbf{0.889} & 0.927 &
-\underline{0.939} & 0.967 & ? & \textbf{0.019} \\
-Polyp-LVT~\cite{polyplvt} & 2024 & 0.909 & 0.851 & 0.913 & 0.922 & 0.941 & ? &
+\underline{0.939} & 0.967 & -- & \textbf{0.019} \\
+Polyp-LVT~\cite{polyplvt} & 2024 & 0.909 & 0.851 & 0.913 & 0.922 & 0.941 & -- &
 0.024 \\
 Polyp-Mamba~\cite{polypmamba} & 2025 & 0.919 & 0.867 & 0.912 & \textbf{0.951} &
 - & \underline{0.968} & \underline{0.021} \\
-MEIN~\cite{mein} & 2025 & 0.905 & 0.847 & 0.905 & 0.914 & - & 0.964 &
+MEIN~\cite{mein} & 2025 & 0.905 & 0.847 & 0.905 & 0.914 & -- & 0.964 &
 0.026 \\
-MF-Net~\cite{mfnet} & 2025 & 0.915 & 0.863 & \textbf{0.939} & 0.924 & 0.962 & ? &
+MF-Net~\cite{mfnet} & 2025 & 0.915 & 0.863 & \textbf{0.939} & 0.924 & 0.962 & -- &
 0.022 \\
-MSBP-Net~\cite{msbpnet} & 2025 & 0.919 & 0.868 & 0.916 & 0.926 & 0.961 & ? &
+MSBP-Net~\cite{msbpnet} & 2025 & 0.919 & 0.868 & 0.916 & 0.926 & 0.961 & -- &
 0.023 \\
 CIFFormer~\cite{cifformer} & 2025 & 0.926 & 0.876 & \underline{0.929} &
-\underline{0.939} & 0.967 & ? & \textbf{0.019} \\
+\underline{0.939} & 0.967 & -- & \textbf{0.019} \\
 PFPRNet~\cite{pfprnet} & 2025 & 0.930 & 0.881 & 0.920 & 0.935 & \textbf{0.971} &
-? & \textbf{0.019} \\
-PraNet-V2~\cite{pranetv2} & 2025 & 0.907 & 0.853 & ? & ? & ? & ? & 0.025 \\
+-- & \textbf{0.019} \\
+PraNet-V2~\cite{pranetv2} & 2025 & 0.907 & 0.853 & -- & -- & -- & -- & 0.025 \\
 MLB-Net~\cite{mlbnet} & 2026 & 0.926 & 0.878 & 0.921 & 0.938 & \underline{0.969} &
 \textbf{0.975} & \underline{0.021} \\
-MSPN~\cite{mspn} & 2026 & 0.927 & 0.879 & ? & ? & ? & ? & \underline{0.021} \\
-DVFIP-Net~\cite{dvfipnet} & 2026 & 0.922 & 0.874 & ? & ? & ? & ? & ? \\
-Ours & -- & \underline{\meanstd{0.931}{0.004}} &
+MSPN~\cite{mspn} & 2026 & 0.927 & 0.879 & -- & -- & -- & -- & \underline{0.021} \\
+DVFIP-Net~\cite{dvfipnet} & 2026 & 0.922 & 0.874 & -- & -- & -- & -- & -- \\
+\textbf{Ours} & -- & \underline{\meanstd{0.931}{0.004}} &
 \underline{\meanstd{0.883}{0.006}} & \meanstd{0.911}{0.005} &
 \meanstd{0.933}{0.003} & \meanstd{0.960}{0.003} &
 \meanstd{0.967}{0.003} & \meanstd{0.024}{0.001} \\
@@ -272,30 +278,30 @@ MAE
 \endlastfoot
 CTNet~\cite{ctnet} & 2024 & 0.936 & 0.887 & 0.934 & 0.952 & \underline{0.983} & 0.986 &
 \textbf{0.006} \\
-MEGANet~\cite{meganet} & 2024 & 0.938 & 0.894 & 0.940 & 0.950 & - &
+MEGANet~\cite{meganet} & 2024 & 0.938 & 0.894 & 0.940 & 0.950 & -- &
 \underline{0.987} & \underline{0.007} \\
 Polyp-Mamba~\cite{polypmamba} & 2025 & 0.941 & 0.896 & 0.936 & \textbf{0.970} &
 - & 0.970 & 0.008 \\
-MEIN~\cite{mein} & 2025 & 0.923 & 0.878 & 0.928 & 0.944 & - & 0.970 &
+MEIN~\cite{mein} & 2025 & 0.923 & 0.878 & 0.928 & 0.944 & -- & 0.970 &
 0.008 \\
 MF-Net~\cite{mfnet} & 2025 & 0.931 & 0.884 & \textbf{0.953} & 0.949 &
-\underline{0.983} & ? &
+\underline{0.983} & -- &
 \textbf{0.006} \\
-MSBP-Net~\cite{msbpnet} & 2025 & 0.940 & 0.892 & 0.927 & 0.939 & 0.976 & ? &
+MSBP-Net~\cite{msbpnet} & 2025 & 0.940 & 0.892 & 0.927 & 0.939 & 0.976 & -- &
 \underline{0.007} \\
-CIFFormer~\cite{cifformer} & 2025 & 0.944 & 0.897 & 0.941 & 0.934 & 0.972 & ? &
+CIFFormer~\cite{cifformer} & 2025 & 0.944 & 0.897 & 0.941 & 0.934 & 0.972 & -- &
 \underline{0.007} \\
 PFPRNet~\cite{pfprnet} & 2025 & \textbf{0.949} & \textbf{0.903} & 0.947 & 0.957 &
-\textbf{0.989} & ? &
+\textbf{0.989} & -- &
 \textbf{0.006} \\
-PraNet-V2~\cite{pranetv2} & 2025 & 0.929 & 0.880 & ? & ? & ? & ? & 0.009 \\
+PraNet-V2~\cite{pranetv2} & 2025 & 0.929 & 0.880 & -- & -- & -- & -- & 0.009 \\
 MLB-Net~\cite{mlbnet} & 2026 & \underline{0.945} & \underline{0.902} &
 \underline{0.948} & \underline{0.958} & \textbf{0.989} &
 \textbf{0.992} & \textbf{0.006} \\
-MSPN~\cite{mspn} & 2026 & 0.943 & \underline{0.902} & ? & ? & ? & ? &
+MSPN~\cite{mspn} & 2026 & 0.943 & \underline{0.902} & -- & -- & -- & -- &
 \textbf{0.006} \\
-DVFIP-Net~\cite{dvfipnet} & 2026 & 0.942 & 0.896 & ? & ? & ? & ? & ? \\
-Ours & -- & \meanstd{0.937}{0.002} & \meanstd{0.888}{0.004} &
+DVFIP-Net~\cite{dvfipnet} & 2026 & 0.942 & 0.896 & -- & -- & -- & -- & -- \\
+\textbf{Ours} & -- & \meanstd{0.937}{0.002} & \meanstd{0.888}{0.004} &
 \meanstd{0.925}{0.003} & \meanstd{0.947}{0.001} &
 \meanstd{0.978}{0.001} & \meanstd{0.983}{0.001} &
 \meanstd{0.011}{0.0003} \\
@@ -342,26 +348,26 @@ CTNet~\cite{ctnet} & 2024 & 0.810 & 0.734 & 0.776 & 0.886 & 0.913 &
 0.014 \\
 MEGANet~\cite{meganet} & 2024 & 0.789 & 0.709 & 0.753 & 0.866 & 0.855 & 0.915
 & 0.015 \\
-Polyp-Mamba~\cite{polypmamba} & 2025 & 0.756 & 0.668 & 0.756 & 0.887 & - & 0.872
+Polyp-Mamba~\cite{polypmamba} & 2025 & 0.756 & 0.668 & 0.756 & 0.887 & -- & 0.872
 & 0.014 \\
-MEIN~\cite{mein} & 2025 & 0.788 & 0.711 & 0.764 & 0.870 & - & 0.902 &
+MEIN~\cite{mein} & 2025 & 0.788 & 0.711 & 0.764 & 0.870 & -- & 0.902 &
 0.018 \\
 MF-Net~\cite{mfnet} & 2025 & \underline{0.821} & \underline{0.750} &
-\underline{0.850} & \underline{0.901} & \underline{0.925} & ? &
+\underline{0.850} & \underline{0.901} & \underline{0.925} & -- &
 \textbf{0.011} \\
-MSBP-Net~\cite{msbpnet} & 2025 & 0.795 & 0.718 & 0.770 & 0.873 & 0.899 & ? &
+MSBP-Net~\cite{msbpnet} & 2025 & 0.795 & 0.718 & 0.770 & 0.873 & 0.899 & -- &
 0.019 \\
 CIFFormer~\cite{cifformer} & 2025 & 0.810 & 0.746 & \textbf{0.858} & 0.889 & 0.918
-& ? & 0.013 \\
+& -- & 0.013 \\
 PFPRNet~\cite{pfprnet} & 2025 & \textbf{0.828} & \textbf{0.764} & 0.839 &
 \textbf{0.908} &
-\textbf{0.935} & ? & \underline{0.012} \\
-PraNet-V2~\cite{pranetv2} & 2025 & 0.713 & 0.633 & ? & ? & ? & ? & 0.021 \\
+\textbf{0.935} & -- & \underline{0.012} \\
+PraNet-V2~\cite{pranetv2} & 2025 & 0.713 & 0.633 & -- & -- & -- & -- & 0.021 \\
 MLB-Net~\cite{mlbnet} & 2026 & \underline{0.821} & 0.744 & 0.780 & 0.899 & 0.914 &
 \textbf{0.935} & 0.013 \\
-MSPN~\cite{mspn} & 2026 & 0.798 & 0.717 & ? & ? & ? & ? & 0.017 \\
-DVFIP-Net~\cite{dvfipnet} & 2026 & 0.811 & 0.730 & ? & ? & ? & ? & ? \\
-Ours & -- & \meanstd{0.787}{0.011} & \meanstd{0.707}{0.012} &
+MSPN~\cite{mspn} & 2026 & 0.798 & 0.717 & -- & -- & -- & -- & 0.017 \\
+DVFIP-Net~\cite{dvfipnet} & 2026 & 0.811 & 0.730 & -- & -- & -- & -- & -- \\
+\textbf{Ours} & -- & \meanstd{0.787}{0.011} & \meanstd{0.707}{0.012} &
 \meanstd{0.753}{0.007} & \meanstd{0.878}{0.004} &
 \meanstd{0.902}{0.002} & \meanstd{0.916}{0.003} &
 \meanstd{0.015}{0.001} \\
@@ -408,24 +414,24 @@ CTNet~\cite{ctnet} & 2024 & 0.813 & 0.734 & 0.801 & 0.874 & 0.915 &
 0.040 \\
 MEGANet~\cite{meganet} & 2024 & 0.793 & 0.714 & 0.779 & 0.854 & 0.892 & 0.895
 & 0.034 \\
-Polyp-Mamba~\cite{polypmamba} & 2025 & 0.791 & 0.713 & 0.765 & 0.846 & - & 0.902
+Polyp-Mamba~\cite{polypmamba} & 2025 & 0.791 & 0.713 & 0.765 & 0.846 & -- & 0.902
 & 0.034 \\
-MEIN~\cite{mein} & 2025 & 0.791 & 0.715 & 0.785 & 0.856 & - & 0.897 &
+MEIN~\cite{mein} & 2025 & 0.791 & 0.715 & 0.785 & 0.856 & -- & 0.897 &
 0.034 \\
 MF-Net~\cite{mfnet} & 2025 & 0.825 & \underline{0.751} & \textbf{0.864} &
-\textbf{0.887} & \textbf{0.929} & ? & \underline{0.024} \\
-MSBP-Net~\cite{msbpnet} & 2025 & 0.810 & 0.731 & 0.810 & 0.861 & 0.912 & ? &
+\textbf{0.887} & \textbf{0.929} & -- & \underline{0.024} \\
+MSBP-Net~\cite{msbpnet} & 2025 & 0.810 & 0.731 & 0.810 & 0.861 & 0.912 & -- &
 0.029 \\
-CIFFormer~\cite{cifformer} & 2025 & 0.823 & 0.741 & \underline{0.851} & 0.874 & 0.918 & ? &
+CIFFormer~\cite{cifformer} & 2025 & 0.823 & 0.741 & \underline{0.851} & 0.874 & 0.918 & -- &
 0.026 \\
-PFPRNet~\cite{pfprnet} & 2025 & 0.819 & 0.741 & 0.843 & 0.882 & 0.915 & ? &
+PFPRNet~\cite{pfprnet} & 2025 & 0.819 & 0.741 & 0.843 & 0.882 & 0.915 & -- &
 0.028 \\
-PraNet-V2~\cite{pranetv2} & 2025 & 0.702 & 0.620 & ? & ? & ? & ? & 0.044 \\
+PraNet-V2~\cite{pranetv2} & 2025 & 0.702 & 0.620 & -- & -- & -- & -- & 0.044 \\
 MLB-Net~\cite{mlbnet} & 2026 & \textbf{0.832} & \textbf{0.757} & 0.825 &
 \underline{0.886} & \underline{0.924} & \textbf{0.931} & \textbf{0.023} \\
-MSPN~\cite{mspn} & 2026 & 0.811 & 0.734 & ? & ? & ? & ? & 0.029 \\
-DVFIP-Net~\cite{dvfipnet} & 2026 & \underline{0.826} & 0.746 & ? & ? & ? & ? & ? \\
-Ours & -- & \meanstd{0.794}{0.009} & \meanstd{0.714}{0.009} &
+MSPN~\cite{mspn} & 2026 & 0.811 & 0.734 & -- & -- & -- & -- & 0.029 \\
+DVFIP-Net~\cite{dvfipnet} & 2026 & \underline{0.826} & 0.746 & -- & -- & -- & -- & -- \\
+\textbf{Ours} & -- & \meanstd{0.794}{0.009} & \meanstd{0.714}{0.009} &
 \meanstd{0.772}{0.007} & \meanstd{0.861}{0.006} &
 \meanstd{0.898}{0.004} & \meanstd{0.905}{0.004} &
 \meanstd{0.035}{0.001} \\
@@ -471,27 +477,28 @@ CTNet~\cite{ctnet} & 2024 & \underline{0.908} & 0.844 & 0.894 & \textbf{0.975} &
 \textbf{0.975} & \textbf{0.982} & \underline{0.006} \\
 MEGANet~\cite{meganet} & 2024 & 0.899 & 0.834 & 0.882 & 0.935 & 0.966 & 0.969
 & 0.007 \\
-Polyp-Mamba~\cite{polypmamba} & 2025 & 0.906 & 0.840 & 0.888 & 0.936 & - & 0.975
+Polyp-Mamba~\cite{polypmamba} & 2025 & 0.906 & 0.840 & 0.888 & 0.936 & -- & 0.975
 & \underline{0.006} \\
-MEIN~\cite{mein} & 2025 & 0.893 & 0.828 & 0.880 & 0.930 & - & 0.965 &
+MEIN~\cite{mein} & 2025 & 0.893 & 0.828 & 0.880 & 0.930 & -- & 0.965 &
 0.007 \\
-MF-Net~\cite{mfnet} & 2025 & 0.897 & 0.836 & \underline{0.918} & 0.941 & 0.966 & ? &
+MF-Net~\cite{mfnet} & 2025 & 0.897 & 0.836 & \underline{0.918} & 0.941 & 0.966 & -- &
 0.007 \\
-MSBP-Net~\cite{msbpnet} & 2025 & 0.903 & \textbf{0.859} & \textbf{0.927} & 0.942 & 0.967 & ? &
+MSBP-Net~\cite{msbpnet} & 2025 & 0.903 & \textbf{0.859} & \textbf{0.927} & 0.942 & 0.967 & -- &
 0.019 \\
-CIFFormer~\cite{cifformer} & 2025 & 0.883 & 0.822 & 0.912 & 0.939 & 0.961 & ? &
+CIFFormer~\cite{cifformer} & 2025 & 0.883 & 0.822 & 0.912 & 0.939 & 0.961 & -- &
 0.100 \\
-PFPRNet~\cite{pfprnet} & 2025 & 0.891 & 0.833 & 0.917 & 0.928 & 0.950 & ? &
+PFPRNet~\cite{pfprnet} & 2025 & 0.891 & 0.833 & 0.917 & 0.928 & 0.950 & -- &
 0.013 \\
-PraNet-V2~\cite{pranetv2} & 2025 & 0.873 & 0.795 & & & & & 0.007 \\
+PraNet-V2~\cite{pranetv2} & 2025 & 0.873 & 0.795 & -- & -- & -- & -- & 0.007 \\
 MLB-Net~\cite{mlbnet} & 2026 & \textbf{0.915} & \underline{0.852} & 0.909 &
 \underline{0.974} & \underline{0.974} & \underline{0.978} & \textbf{0.005} \\
-MSPN~\cite{mspn} & 2026 & 0.907 & 0.840 & & & & & \underline{0.006} \\
-DVFIP-Net~\cite{dvfipnet} & 2026 & 0.900 & 0.833 & ? & ? & ? & ? & ? \\
-Ours & -- & \meanstd{0.882}{0.002} & \meanstd{0.810}{0.002} &
+MSPN~\cite{mspn} & 2026 & 0.907 & 0.840 & -- & -- & -- & -- & \underline{0.006} \\
+DVFIP-Net~\cite{dvfipnet} & 2026 & 0.900 & 0.833 & -- & -- & -- & -- & -- \\
+\textbf{Ours} & -- & \meanstd{0.882}{0.002} & \meanstd{0.810}{0.002} &
 \meanstd{0.857}{0.001} & \meanstd{0.928}{0.003} &
 \meanstd{0.956}{0.005} & \meanstd{0.971}{0.002} &
 \meanstd{0.007}{0.0003} \\
 \end{longtable}
 
-\subsubsection{Qualitative analysis}\label{qualitative-analysis}
+% Qualitative analysis is reserved for the pending figure-generation stage.
+% \subsubsection{Qualitative analysis}\label{qualitative-analysis}

@@ -100,7 +100,7 @@
 \maketitle
 
 \begin{abstract}
-Accurate colorectal polyp segmentation remains challenging because lesions vary in scale, morphology, contrast, and boundary appearance. Conventional multi-scale convolution blocks aggregate different receptive fields without explicitly using sample-specific frequency information from deep semantic features. We present a ConvNeXt-Tiny U-shaped framework that builds on prior Frequency-Aware Feature Enhancement (FAFEM) and Multi-Scale Convolution Block (MSCB) modules, and introduce residual frequency-guided coupling between them. The resulting RFG-MSCB reuses the low- and high-frequency descriptor produced by bottleneck FAFEM to assign sample-dependent weights to MSCB multi-kernel branches at the Stage-3 encoder--decoder fusion. The guided response is a bounded residual deviation from ordinary MSCB aggregation, preserving the conventional multi-scale path as a reference. We evaluated the model on Kvasir-SEG, CVC-ClinicDB, CVC-300, CVC-ColonDB, and ETIS-LaribPolypDB over three random seeds. The model obtained mDice/mIoU of $0.931\pm0.004$/$0.883\pm0.006$ on Kvasir-SEG and $0.937\pm0.002$/$0.888\pm0.004$ on CVC-ClinicDB. On the three external datasets, mDice ranged from $0.787\pm0.011$ on ETIS-LaribPolypDB to $0.882\pm0.002$ on CVC-300. In the raw three-seed ablation, adding residual frequency-guided coupling to FAFEM + MSCB changed Kvasir-SEG mDice from 0.930 to 0.931, an observed difference of +0.08 percentage points; mIoU changed by +0.12 percentage points and MAE by -0.001. The final model adds 2.4\% parameters relative to FAFEM alone. The ablation therefore measures a small change under the tested protocol, while lower performance on the more challenging external datasets indicates remaining generalization limitations.
+Accurate colorectal polyp segmentation remains challenging because lesions vary in scale, morphology, contrast, and boundary appearance. Conventional multi-scale convolution blocks aggregate different receptive fields without explicitly using sample-specific frequency information from deep semantic features. We present a ConvNeXt-Tiny U-shaped framework that builds on prior Frequency-Aware Feature Enhancement (FAFEM) and Multi-Scale Convolution Block (MSCB) modules, and introduce residual frequency-guided coupling between them. The resulting RFG-MSCB reuses the low- and high-frequency descriptor produced by bottleneck FAFEM to assign sample-dependent weights to MSCB multi-kernel branches at the Stage-3 encoder--decoder fusion. The guided response is a bounded residual deviation from ordinary MSCB aggregation, preserving the conventional multi-scale path as a reference. We evaluated the model on Kvasir-SEG, CVC-ClinicDB, CVC-300, CVC-ColonDB, and ETIS-LaribPolypDB over three random seeds. The model obtained mDice/mIoU of $0.931\pm0.004$/$0.883\pm0.006$ on Kvasir-SEG and $0.937\pm0.002$/$0.888\pm0.004$ on CVC-ClinicDB. On the three external datasets, mDice ranged from $0.787\pm0.011$ on ETIS-LaribPolypDB to $0.882\pm0.002$ on CVC-300. In the raw three-seed ablation, adding residual frequency-guided coupling to FAFEM + MSCB changed Kvasir-SEG mDice from 0.930 to 0.931, an observed difference of +0.08 percentage points; mIoU changed by +0.12 percentage points, while MAE decreased slightly. The final model adds 2.4\% parameters relative to FAFEM alone. The ablation therefore measures a small change under the tested protocol, while lower performance on the more challenging external datasets indicates remaining generalization limitations.
 \end{abstract}
 
 
@@ -136,41 +136,5 @@ maintained locally and are not currently available from a public repository.
 \addcontentsline{toc}{section}{References}
 \bibliographystyle{unsrt}
 \bibliography{references}
-
-\includegraphics[width=9.06377in,height=5.55286in]{media/image1.png}
-
-\begin{itemize}
-\item \textbf{MultiScaleContext}: tests whether multi-scale/global context
-helps.
-
-\item \textbf{BSEI}: tests boundary-aware feature enhancement.
-
-\item \textbf{DetailBranch}: tests high-resolution spatial detail recovery.
-
-\item \textbf{GatedDetailFusion}: tests whether adaptive fusion is better
-than simple fusion.
-\end{itemize}
-
-\includegraphics[width=9.28255in,height=1.5523in]{media/image2.png}
-
-\includegraphics[width=7.75108in,height=6.37589in]{media/image3.png}
-
-\includegraphics[width=4.28185in,height=3.12544in]{media/image4.png}
-
-\includegraphics[width=9.0846in,height=4.85484in]{media/image5.png}
-
-\begin{itemize}
-\item
-  Image(Diagram) of the model with related Modules -\textgreater{} two
-  images
-\item
-  Heatmap of the model in ablation study with 6 samples
-\item
-  Heatmap of the model for some stages
-\item
-  Heatmap of the model in comparison with other models
-\item
-  Table of the ablation study
-\end{itemize}
 
 \end{document}
