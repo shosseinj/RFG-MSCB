@@ -2,19 +2,19 @@
 
 \subsection{Main Quantitative Findings}
 
-The final FAFEM + RFG-MSCB model achieves a Kvasir-SEG mDice of 0.9313 ± 0.0044 and mIoU of 0.8826 ± 0.0062 across three random seeds (42, 6543, 7777). On the held-out CVC-ClinicDB, it reaches 0.9370 ± 0.0024 mDice and 0.8877 ± 0.0038 mIoU. These results are reported as mean ± sample standard deviation (ddof=1). On external datasets, the model obtains 0.8821 ± 0.0016 mDice on CVC-300, 0.7944 ± 0.0089 on CVC-ColonDB, and 0.7870 ± 0.0113 on ETIS-LaribPolypDB. The model does not attain the highest reported mDice on any external dataset when compared against recent published methods; its performance is comparable to or below several state-of-the-art approaches on CVC-300, CVC-ColonDB, and ETIS-LaribPolypDB. No statistical significance testing was performed; all comparisons are descriptive.
+The final FAFEM + RFG-MSCB model achieves a Kvasir-SEG mDice of 0.9313 ± 0.0044 and mIoU of 0.8826 ± 0.0062 across three random seeds (42, 6543, 7777). On the held-out CVC-ClinicDB, it reaches 0.9370 ± 0.0024 mDice and 0.8877 ± 0.0038 mIoU. These results are reported as mean ± sample standard deviation (ddof=1). On external datasets, the model obtains 0.8821 ± 0.0016 mDice on CVC-300, 0.7944 ± 0.0089 on CVC-ColonDB, and 0.7870 ± 0.0113 on ETIS-LaribPolypDB. It does not attain the highest displayed mDice on the external datasets relative to the listed published comparators. No statistical significance testing was performed; all comparisons are descriptive.
 
 \subsection{Effect of FAFEM}
 
-The ablation chain begins with the FAFEM configuration, which adds the FAFEM module to the baseline ConvNeXt-Tiny U-Net. FAFEM is prior work, not a novel contribution of this paper; we include it to verify reproducibility under our training protocol. Under the same protocol, the Kvasir-SEG mDice increases from 0.9095 (baseline) to 0.9260. This improvement is consistent across all five polyp datasets. FAFEM provides a solid feature enhancement foundation for subsequent ablations.
+The ablation chain begins with the FAFEM-only configuration. FAFEM is prior work, not a novel contribution of this paper; it is included to establish the final-protocol reference. Its Kvasir-SEG means are 0.925958 mDice, 0.875879 mIoU, and 0.024832 MAE. A no-FAFEM baseline under this final protocol is unavailable; older baseline measurements are protocol-mismatched and are not used here.
 
 \subsection{Effect of Stage-3 MSCB-Lite}
 
-Adding a Stage-3 MSCB-lite layer to the FAFEM-enhanced backbone gives the FAFEM + MSCB configuration. MSCB-lite is a prior multi-scale refinement module without frequency-guided coupling. On Kvasir-SEG, the three-seed mean mDice increases from 0.9260 for FAFEM to 0.9294 for FAFEM + MSCB, a change of +0.34 percentage points. The mIoU increases by +0.13 pp, while MAE increases marginally from 0.0324 to 0.0327. Improvements are observed across all external datasets, indicating that spatial multi-scale refinement at Stage 3 improves feature representation for diverse polyp appearances and imaging protocols. This configuration establishes the baseline against which our frequency-guided variant is evaluated.
+Adding a Stage-3 MSCB-lite layer to the FAFEM-enhanced backbone gives the FAFEM + MSCB configuration. MSCB-lite is a prior multi-scale refinement module without frequency-guided coupling. On Kvasir-SEG, the three-seed mean mDice changes from 0.925958 for FAFEM to 0.930440 for FAFEM + MSCB (+0.448 percentage points). The mIoU changes by +0.550 percentage points and MAE by -0.000345. This configuration establishes the baseline against which the frequency-guided variant is evaluated.
 
 \subsection{Effect of Residual Frequency-Guided Coupling}
 
-The final FAFEM + RFG-MSCB model introduces residual frequency-guided coupling on top of the Stage-3 multi-scale layer. This is the principal architecture change proposed in this work. The Kvasir-SEG mDice increases from 0.9294 for FAFEM + MSCB to 0.9313 for the RFG-MSCB model, a change of +0.19 percentage points. The mIoU increases by +0.24 pp, and MAE decreases from 0.0327 to 0.0306 (-0.0021 absolute). The total improvement from FAFEM to the final model is +0.53 pp in mDice and +0.37 pp in mIoU on Kvasir-SEG. A single-seed direct frequency-guidance configuration tested the mechanism without residual coupling; its preliminary Kvasir-SEG results did not exceed the Stage-3 MSCB-lite configuration, suggesting that the coupled residual mechanism contributes more than frequency guidance in isolation under the tested setup.
+The final FAFEM + RFG-MSCB model introduces residual frequency-guided coupling on top of the Stage-3 multi-scale layer. This is the principal architecture change proposed in this work. From raw three-seed values, Kvasir-SEG mDice changes from 0.930440 for FAFEM + MSCB to 0.931284 for RFG-MSCB (+0.084 percentage points); mIoU changes by +0.122 percentage points and MAE changes by -0.000527. The total FAFEM-to-final changes are +0.533 percentage points in mDice and +0.672 percentage points in mIoU. A single-seed direct frequency-guidance configuration did not exceed the Stage-3 MSCB-lite configuration in the paired seed-42 comparison, but this does not disentangle residualization from frequency conditioning.
 
 \subsection{Why Residual Frequency-Guided Multi-Scale Refinement May Help}
 
@@ -22,7 +22,7 @@ The residual formulation bounds the guidance signal to a controlled interpolatio
 
 \subsection{Cross-Dataset Behavior}
 
-The performance trend is consistent across datasets: Kvasir-SEG and CVC-ClinicDB (held-out) show the highest absolute mDice (~0.93), CVC-300 is moderately high (~0.88), while CVC-ColonDB (~0.79) and ETIS-LaribPolypDB (~0.79) are substantially lower. Between-seed variability is lowest on CVC-300 (mDice SD 0.0016) and highest on ETIS-LaribPolypDB (mDice SD 0.0113), reflecting the smaller size and greater domain shift of the latter. The improvements from FAFEM to FAFEM + MSCB and then to FAFEM + RFG-MSCB are observed on all five datasets, suggesting the architectural changes have broad applicability across polyp imaging conditions.
+The final model's absolute performance is highest on Kvasir-SEG and held-out CVC-ClinicDB (~0.93), intermediate on CVC-300 (~0.88), and lower on CVC-ColonDB and ETIS-LaribPolypDB (~0.79). Between-seed variability is lowest on CVC-300 (mDice SD 0.0016) and highest on ETIS-LaribPolypDB (mDice SD 0.0113). Relative to FAFEM + MSCB, the final guidance change is not uniformly positive across datasets in the paired seed-42 evidence, so broad cross-dataset generalization should not be inferred.
 
 \subsection{Cases and Datasets Where the Model Is Weaker}
 
@@ -34,7 +34,7 @@ As summarized in Table~\ref{tab:model-complexity}, the final architecture has a 
 
 \subsection{Placement Analysis}
 
-The multi-scale refinement layer is placed at encoder Stage 3 in the final FAFEM + RFG-MSCB configuration. This placement was selected based on observed results from the ablation chain. A single-seed exploratory all-skip configuration used batch size 32 rather than 24 in the main protocol; the available training evidence did not improve relative to the Stage-3 configuration. However, this comparison is limited by incomplete training and the batch-size mismatch, so it does not support a general conclusion about optimal placement. The Stage-3 placement provides a favorable trade-off between performance and computational cost in our experiments.
+The multi-scale refinement layer is placed at encoder Stage 3 in the final FAFEM + RFG-MSCB configuration. This placement was selected based on observed results from the ablation chain. A single-seed exploratory all-skip configuration used batch size 32 rather than 24 in the main protocol; the available training evidence did not improve relative to the Stage-3 configuration. However, this comparison is limited by incomplete training and the batch-size mismatch, so it does not support a general conclusion about optimal placement. The Stage-3 placement localizes the added guidance mechanism; the measured final model has 30,057,415 parameters and 27.818 GFLOPs under the reported convention, but no latency benchmark was performed.
 
 \subsection{Limitations}
 
