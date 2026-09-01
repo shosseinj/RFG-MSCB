@@ -74,11 +74,9 @@ reweighting and adaptive receptive-field selection are established ideas.
 
 Frequency-aware attention provides a closer conceptual link. FcaNet interprets
 channel attention through frequency analysis and uses frequency components for
-channel attention \cite{fcanet}. In polyp segmentation, Polyp-Mamba combines
-multi-frequency perception with a gated selection mechanism to model
-frequency-sensitive representations \cite{polypmamba}. These studies motivate
-frequency-aware recalibration, while the present work applies that idea to the
-relationship between bottleneck enhancement and decoder refinement.
+channel attention \cite{fcanet}. This line of work motivates frequency-aware
+recalibration, while the present work applies that idea to the relationship
+between bottleneck enhancement and decoder refinement.
 
 RFG-MSCB differs from these precedents in where its descriptor is formed and how it
 is applied. SE recalibrates channels, Selective Kernel Networks weight receptive-field
@@ -99,8 +97,8 @@ auxiliary contour branches, image-pyramid high-frequency cues, or reverse
 attention. MEGANet employs multi-scale edge-guided attention for weak-boundary
 polyp segmentation \cite{meganet}, and MSBP-Net performs multi-scale boundary
 prediction to improve contour delineation \cite{msbpnet}. Other recent methods
-model uncertainty, contextual flow, frequency-sensitive representations, and
-multi-stage refinement \cite{mein,cifformer,polypmamba,pranetv2}.
+model uncertainty, contextual flow, and multi-stage refinement
+\cite{mein,cifformer,pranetv2}.
 
 The network does not add an explicit boundary branch or edge label; it uses the
 boundary-aware loss described in the Experiments section. Boundary-specific

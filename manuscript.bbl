@@ -91,12 +91,6 @@ Zequn Qin, Pengyi Zhang, Fei Wu, and Xi~Li.
 \newblock In {\em Proceedings of the IEEE/CVF International Conference on
   Computer Vision}, pages 763--772, 2021.
 
-\bibitem{polypmamba}
-Xingguo Zhu, Wei Wang, Chen Zhang, and Haifeng Wang.
-\newblock {Polyp-Mamba}: A hybrid multi-frequency perception gated selection
-  network for polyp segmentation.
-\newblock {\em Information Fusion}, 115:102759, 2025.
-
 \bibitem{meganet}
 Nhat-Tan Bui, Dinh-Hieu Hoang, Quang-Thuc Nguyen, Minh-Triet Tran, and Ngan Le.
 \newblock {MEGANet}: Multi-scale edge-guided attention network for weak

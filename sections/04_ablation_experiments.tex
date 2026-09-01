@@ -30,15 +30,15 @@ effects of residualization and frequency conditioning.
 \centering
 \caption{Ablation study on Kvasir-SEG.}\label{tab:ablation}
 \small
-\setlength{\tabcolsep}{4pt}
+\setlength{\tabcolsep}{3pt}
 \renewcommand{\arraystretch}{1.1}
-\begin{tabular}{lcccc}
+\begin{tabular}{@{}lcccccccc@{}}
 \toprule
-Method & Params (M) & mDice & mIoU & MAE \\
+Method & Params (M) & mDice & mIoU & $F_{\beta}^{w}$ & $S_{\alpha}$ & $mE_{\phi}$ & $\max E_{\phi}$ & MAE \\
 \midrule
-FAFEM & 29.36 & \meanstd{0.926}{0.002} & \meanstd{0.876}{0.003} & \meanstd{0.0248}{0.0004} \\
-FAFEM + MSCB & 29.98 & \meanstd{0.930}{0.002} & \meanstd{0.881}{0.003} & \meanstd{0.0245}{0.0004} \\
-\textbf{Ours} & 30.06 & \meanstd{0.931}{0.004} & \meanstd{0.883}{0.006} & \meanstd{0.0240}{0.0010} \\
+FAFEM & 29.36 & \meanstd{0.926}{0.002} & \meanstd{0.876}{0.003} & \meanstd{0.905}{0.003} & \meanstd{0.931}{0.002} & \meanstd{0.957}{0.003} & \meanstd{0.964}{0.002} & \meanstd{0.0248}{0.0004} \\
+FAFEM + MSCB & 29.98 & \meanstd{0.930}{0.002} & \meanstd{0.881}{0.003} & \meanstd{0.910}{0.004} & \meanstd{0.933}{0.001} & \meanstd{0.960}{0.001} & \meanstd{0.966}{0.001} & \meanstd{0.0245}{0.0004} \\
+\textbf{Ours} & 30.06 & \meanstd{0.931}{0.004} & \meanstd{0.882}{0.006} & \meanstd{0.911}{0.005} & \meanstd{0.933}{0.003} & \meanstd{0.960}{0.003} & \meanstd{0.966}{0.003} & \meanstd{0.0240}{0.0007} \\
 \bottomrule
 \end{tabular}
 \end{table*}
