@@ -117,6 +117,24 @@ Bo-Cheng Hu, Ge-Peng Ji, Dian Shao, and Deng-Ping Fan.
   segmentation.
 \newblock {\em Computational Visual Media}, 12(2):493--500, 2026.
 
+\bibitem{polyplvt}
+Long Lin, Guangzu Lv, Bin Wang, Cunlu Xu, and Jun Liu.
+\newblock {Polyp-LVT}: Polyp segmentation with lightweight vision transformers.
+\newblock {\em Knowledge-Based Systems}, 300:112181, 2024.
+
+\bibitem{mlbnet}
+Juntong Ti, Lijun Liu, Xiaobing Yang, Li~Liu, and Wei Peng.
+\newblock {MLB-Net}: A multi-level lesion-aware and boundary-enhanced network
+  for polyp segmentation.
+\newblock {\em Journal of Imaging Informatics in Medicine}, 2026.
+
+\bibitem{mspn}
+Yi~Yang, Junlong Cheng, Taotao Zhu, and Min Zhu.
+\newblock From coarse to fine: Multi-stage progressive network for colon polyp
+  segmentation.
+\newblock In {\em 2026 IEEE International Conference on Acoustics, Speech and
+  Signal Processing (ICASSP)}, pages 7652--7656, 2026.
+
 \bibitem{dvfipnet}
 Haijiao Yun, Chao Wang, Jinyang Luan, Ziqing Han, Qingyu Du, and Mingjing Li.
 \newblock {DVFIP-Net}: Dual view feature interaction propagation network for
@@ -179,23 +197,5 @@ Federico Perazzi, Philipp Krähenbühl, Yael Pritch, and Alexander Hornung.
   detection.
 \newblock In {\em Proceedings of the IEEE Conference on Computer Vision and
   Pattern Recognition}, pages 733--740, 2012.
-
-\bibitem{polyplvt}
-Long Lin, Guangzu Lv, Bin Wang, Cunlu Xu, and Jun Liu.
-\newblock {Polyp-LVT}: Polyp segmentation with lightweight vision transformers.
-\newblock {\em Knowledge-Based Systems}, 300:112181, 2024.
-
-\bibitem{mlbnet}
-Juntong Ti, Lijun Liu, Xiaobing Yang, Li~Liu, and Wei Peng.
-\newblock {MLB-Net}: A multi-level lesion-aware and boundary-enhanced network
-  for polyp segmentation.
-\newblock {\em Journal of Imaging Informatics in Medicine}, 2026.
-
-\bibitem{mspn}
-Yi~Yang, Junlong Cheng, Taotao Zhu, and Min Zhu.
-\newblock From coarse to fine: Multi-stage progressive network for colon polyp
-  segmentation.
-\newblock In {\em 2026 IEEE International Conference on Acoustics, Speech and
-  Signal Processing (ICASSP)}, pages 7652--7656, 2026.
 
 \end{thebibliography}

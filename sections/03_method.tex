@@ -338,8 +338,9 @@ The complete model has 30.06 M trainable and total parameters. Profiling
 with THOP on a $1\times3\times352\times352$ input gives 13.91
 GMACs, corresponding to 27.82 GFLOPs under the project convention
 $\mathrm{FLOPs}=2\times\mathrm{MACs}$. Table~\ref{tab:model-complexity}
-places these measurements alongside complexity values that could be verified
-from original publications or official implementations.
+places these measurements alongside the current comparison values. The reported
+GFLOPs remain descriptive because papers may use different input resolutions and
+FLOP-counting conventions.
 
 \begin{table}[htbp]
 \centering
@@ -350,10 +351,20 @@ from original publications or official implementations.
 \renewcommand{\arraystretch}{1.1}
 \begin{tabular}{lcccc}
 \toprule
-Method & Year & Input & Params (M) & Reported GFLOPs \\
+Method & Year & Input & Params (M) & GFLOPs \\
 \midrule
-MEGANet (Res2Net-50)~\cite{meganet} & 2024 & $352^2$ & 44.19 & -- \\
-DVFIP-Net~\cite{dvfipnet} & 2026 & -- & -- & 19.37 \\
+CTNet~\cite{ctnet} & 2024 & $352^2$ & 44.19 & 15.20 \\
+MEGANet (Res2Net-50)~\cite{meganet} & 2024 & $352^2$ & 44.19 & 28.85 \\
+Polyp-LVT~\cite{polyplvt} & 2024 & -- & 25.11 & 13.21 \\
+MEIN~\cite{mein} & 2025 & -- & -- & -- \\
+MF-Net~\cite{mfnet} & 2025 & $352^2$ & -- & -- \\
+MSBP-Net~\cite{msbpnet} & 2026 & $352^2$ & 25.52 & 12.86 \\
+CIFFormer~\cite{cifformer} & 2025 & $352^2$ & 32.44 & 13.14 \\
+PFPRNet~\cite{pfprnet} & 2025 & $352^2$ & 118.52 & 39.39 \\
+PraNet-V2 (Res2Net-50)~\cite{pranetv2} & 2026 & $352^2$ & 30.80 & 11.23 \\
+MLB-Net~\cite{mlbnet} & 2026 & $352^2$ & 87.70 & -- \\
+MSPN~\cite{mspn} & 2026 & $352^2$ & 28.56 & 13.21 \\
+DVFIP-Net~\cite{dvfipnet} & 2026 & $352^2$ & 45.62 & 19.37 \\
 \textbf{Ours} & -- & $352^2$ & 30.06 & 27.82$^{\dagger}$ \\
 \bottomrule
 \end{tabular}
@@ -362,13 +373,11 @@ DVFIP-Net~\cite{dvfipnet} & 2026 & -- & -- & 19.37 \\
 \parbox{0.96\linewidth}{\footnotesize $^{\dagger}$Our value uses 13.91 GMACs and the explicit convention $\mathrm{FLOPs}=2\times\mathrm{MACs}$. Competitor values are preserved in source terminology and are not convention-normalized.}
 \end{table}
 
-Among rows with verified parameter counts, the model is smaller than
-the Res2Net-50 variant of MEGANet. The available evidence is too sparse to rank
-all methods by parameter count or computational cost: several publications do
-not expose both values in accessible primary material, and DVFIP-Net's reported
-GFLOPs lack a verified input resolution and counting convention. The final model
-therefore has a moderate parameter count within the verifiable subset, but its
-27.82-GFLOP value should not be interpreted as directly higher or lower than
-competitor values measured under unspecified protocols.
+The expanded table provides parameter counts and GFLOPs for most listed methods,
+although MEIN and MF-Net do not have values reported here and MLB-Net lacks a
+GFLOP value. The final model has fewer parameters than the listed MEGANet,
+PFPRNet, MLB-Net, and DVFIP-Net entries, but its 27.82-GFLOP value should not be
+interpreted as directly higher or lower than competitor values because FLOP
+counting conventions may differ between papers.
 
 The additional frequency-guided mechanism is introduced only at the first decoder--encoder fusion stage. The remaining decoder retains depthwise-separable convolution and conventional skip fusion, limiting the architectural modification to the stage at which high-level semantic information is first combined with the relatively high-resolution $F_3$ representation.
