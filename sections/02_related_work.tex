@@ -80,6 +80,17 @@ frequency-sensitive representations \cite{polypmamba}. These studies motivate
 frequency-aware recalibration, while the present work applies that idea to the
 relationship between bottleneck enhancement and decoder refinement.
 
+RFG-MSCB differs from these precedents in where its descriptor is formed and how it
+is applied. SE recalibrates channels, Selective Kernel Networks weight receptive-field
+branches using a descriptor from the same feature level, and FcaNet constructs
+frequency-informed channel attention. RFG-MSCB instead forms a low/high
+spatial-frequency proxy at the bottleneck, transfers its descriptor across levels to
+the Stage-3 decoder fusion, and targets the aggregation of the MSCB multi-kernel
+branches. The ordinary MSCB sum remains explicit, and the guided response enters only
+through bounded residual interpolation. Generic descriptor-driven branch weighting is
+therefore established prior art; the proposed mechanism is this cross-level, bounded
+coupling to the MSCB reference path.
+
 \subsection{Boundary and recent polyp-segmentation refinements}
 
 Weak and visually ambiguous lesion boundaries remain a major challenge in polyp
@@ -104,7 +115,7 @@ decoding, frequency-aware representation learning, and boundary-aware
 refinement. The method is positioned at the intersection of efficient
 multi-scale convolution and frequency-aware recalibration.
 
-Specifically, the final model combines a ConvNeXt-Tiny encoder, bottleneck
-frequency enhancement, and efficient multi-scale decoding. We adopt the FAFEM
-and MSCB structures; the new contribution is their cross-level coupling at the
-Stage-3 fusion, which is developed technically in the next section.
+Specifically, the final model combines a ConvNeXt-Tiny encoder, a locally implemented
+bottleneck FAFEM, and multi-scale decoding based on the MSCB structure \cite{emcad}.
+We introduce cross-level bounded residual modulation of the MSCB branches using the
+bottleneck descriptor, as developed technically in the next section.

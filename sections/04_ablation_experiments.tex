@@ -1,10 +1,9 @@
 \section{Ablation Study}\label{ablation-study}
 
-We first examine the contribution of the bottleneck enhancement, multi-scale
-refinement, and residual frequency guidance under the common experimental protocol.
-The variants differ only in their architectural components, allowing the final model
-to be interpreted relative to a sequence of increasingly expressive reference
-configurations.
+We compare three configurations under the common experimental protocol: FAFEM,
+FAFEM + MSCB, and FAFEM + RFG-MSCB. The sequence provides protocol-matched references
+for the additions made after FAFEM, but it does not measure FAFEM against a no-FAFEM
+model under the final protocol or independently isolate all components of RFG-MSCB.
 
 \subsection{Ablation Results}
 
@@ -35,18 +34,20 @@ effects of residualization and frequency conditioning.
 \renewcommand{\arraystretch}{1.1}
 \begin{tabular}{lcccc}
 \toprule
-Method & Params (M) & mDice & mIoU & MAE \\\midrule
-FAFEM & 29.40 & \meanstd{0.926}{0.002} & \meanstd{0.876}{0.003} & \meanstd{0.025}{0.0004} \\\midrule
-FAFEM + MSCB & 30.00 & \meanstd{0.930}{0.002} & \meanstd{0.881}{0.003} & \meanstd{0.024}{0.0004} \\\midrule
-\textbf{Ours} & 30.06 & \meanstd{0.931}{0.004} & \meanstd{0.883}{0.006} & \meanstd{0.024}{0.001} \\\bottomrule
+Method & Params (M) & mDice & mIoU & MAE \\
+\midrule
+FAFEM & 29.36 & \meanstd{0.926}{0.002} & \meanstd{0.876}{0.003} & \meanstd{0.0248}{0.0004} \\
+FAFEM + MSCB & 29.98 & \meanstd{0.930}{0.002} & \meanstd{0.881}{0.003} & \meanstd{0.0245}{0.0004} \\
+\textbf{Ours} & 30.06 & \meanstd{0.931}{0.004} & \meanstd{0.883}{0.006} & \meanstd{0.0240}{0.0010} \\
+\bottomrule
 \end{tabular}
 \end{table*}
 
 \subsection{Ablation Interpretation}
 
-The ablation supports a staged interpretation of the design. FAFEM establishes the
-feature-enhanced reference, MSCB-lite adds multi-scale refinement at Stage 3, and
-RFG-MSCB introduces adaptive branch modulation on top of that reference path. The
+The three-seed comparison supports a staged description of the tested configurations.
+FAFEM establishes the feature-enhanced reference, MSCB-lite adds multi-scale refinement
+at Stage 3, and RFG-MSCB adds adaptive branch modulation to that reference path. The
 increment associated with the final coupling is small, so the ablation supports the
 feasibility of the proposed refinement but not a claim of broad or statistically
 superior improvement. The parameter increase shown in the table is correspondingly
@@ -55,13 +56,13 @@ architecture is uniformly preferable.
 
 \subsection{Stage Placement and Generalization}
 
-The placement of the multi-scale refinement layer was also examined experimentally.
-In the final configuration, it is applied only at encoder Stage 3, a choice selected
-from the available ablation evidence rather than from a theoretical assumption. A
+The placement of the multi-scale refinement layer was also examined exploratorily.
+In the final configuration, it is applied only at encoder Stage 3. A
 single-seed exploratory all-skip configuration used batch size 32 and the same
 learning rate; the available training evidence did not improve relative to the
 Stage-3 configuration. Because the run was incomplete and differed in batch size,
-it does not support a general conclusion about optimal placement.
+it neither isolates placement for RFG-MSCB nor supports a conclusion about optimal
+placement.
 
 On the four additional datasets, the change from FAFEM + MSCB to the final guidance
 configuration was mixed in the paired seed-42 evidence: mDice decreased on

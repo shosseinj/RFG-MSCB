@@ -1,17 +1,17 @@
 \section{Conclusion}\label{conclusion}
 
-Taken together, the experiments support a cautious conclusion. We presented a
-ConvNeXt-Tiny U-shaped segmentation framework that couples prior FAFEM
-and MSCB modules through RFG-MSCB at the Stage-3 encoder--decoder fusion. The design
+We presented a ConvNeXt-Tiny U-shaped segmentation framework that uses a locally
+implemented bottleneck FAFEM and couples its descriptor to the MSCB structure through
+RFG-MSCB at the Stage-3 encoder--decoder fusion. The design
 extends bottleneck frequency enhancement into decoder refinement while preserving the
 ordinary multi-scale pathway as a reference, thereby addressing the motivation for
 sample-dependent receptive-field selection without replacing the established decoder
 path.
 
-The empirical evidence supports a cautious interpretation. The ablation indicates
-that the added residual frequency guidance produces a small change relative to the
-FAFEM + MSCB reference, while the external-dataset results are less consistent than
-the held-out results. The complexity comparison and localized placement describe a
+The three-seed configuration comparison indicates that the complete residual
+frequency-guidance design produces a small change relative to the FAFEM + MSCB
+reference, while results on the independent external datasets are lower than those on
+the validation subsets used for model selection. The complexity comparison and localized placement describe a
 moderate architectural trade-off, but the available experiments do not establish
 uniform gains, component-level causality, or real-time suitability.
 

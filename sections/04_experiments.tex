@@ -8,8 +8,8 @@ CVC-300 \cite{cvc300}, CVC-ColonDB \cite{cvccolondb}, and
 ETIS-LaribPolypDB \cite{etis}. Kvasir-SEG and CVC-ClinicDB were split
 independently with a 90:10 ratio using shuffled sampling with random seed
 42. Their training subsets were merged, giving 900 Kvasir-SEG and 550
-CVC-ClinicDB images for training. The corresponding held-out subsets of
-100 and 62 images were merged for validation and were also evaluated
+CVC-ClinicDB images for training. The corresponding held-out validation subsets of
+100 and 62 images were merged for checkpoint selection and were also evaluated
 separately for reporting. CVC-300, CVC-ColonDB, and ETIS-LaribPolypDB
 were used only for external evaluation; none influenced training or
 checkpoint selection.
@@ -45,7 +45,7 @@ deviation $(0.229,0.224,0.225)$.
 The three final runs used seeds 42, 6543, and 7777. All final and ablation
 results are reported as the mean $\pm$ sample standard deviation (ddof=1) across
 these seeds unless otherwise noted. The runs were implemented
-in PyTorch 2.5.1+cu124 with a maximum of 200 epochs and batch size 24.
+in PyTorch 2.5.1+cu124 on Windows, with a maximum of 200 epochs and batch size 24.
 AdamW with betas
 $(0.9,0.999)$ used separate parameter groups. The maximum learning rates
 were $3.0\times10^{-4}$ for the decoder and $4.5\times10^{-4}$ for the
@@ -66,7 +66,8 @@ or decoder-only warmup was used. The encoder was initialized from
 weights. Deep supervision and frequency augmentation were disabled, and
 sampling was uniform. Early stopping was configured with patience 30
 from the start of training. Seeds 42 and 6543 completed the maximum 200
-epochs; seed 7777 stopped early at final epoch 167. Model complexity and
+epochs, corresponding to zero-based epochs 0--199; seed 7777 stopped after
+epoch 167 (168 completed epochs). Model complexity and
 its measurement convention are reported in Table~\ref{tab:model-complexity}.
 
 Training augmentation applied horizontal and vertical flips independently
@@ -77,6 +78,12 @@ $[0.85,1.15]$ and saturation in $[0.9,1.1]$ were applied with probability
 0.5. A $3\times3$ Gaussian blur and additive Gaussian noise with standard
 deviation 0.015 were applied with probabilities 0.15 and 0.25,
 respectively.
+
+Python, GPU, driver/runtime CUDA, cuDNN, THOP, and
+\texttt{py\_sod\_metrics} versions were not recorded in the available run artifacts.
+The code seeded Python, NumPy, PyTorch CPU, and all CUDA random-number generators, but
+the available source does not set deterministic CUDA algorithms or cuDNN deterministic
+backend flags.
 
 \subsection{Loss Function}\label{loss-function}
 
@@ -90,14 +97,28 @@ The final objective was
 The objective in Eq.~\eqref{eq:loss} uses a soft Dice term with a smoothing constant of 1.0. The BCE-with-logits
 term used targets smoothed as
 $y_{\mathrm{BCE}}=0.98y+0.01$, corresponding to label smoothing 0.02.
-The boundary-aware term used $\kappa=5$. The available focal-Tversky term
-had weight zero and therefore did not contribute to training.
+For the boundary-aware term, fixed Sobel filters were applied to each binary mask to
+obtain $g=\sqrt{g_x^2+g_y^2}$. The magnitude was normalized per image as
+$a=g/\max(\max(g),10^{-6})$, and the pixel weights were
+$w=1+\kappa a$ with $\kappa=5$; consequently, the weights range from 1 to 6.
+For probability $p=\sigma(P)$ and target $y$, the term was
+\begin{equation}
+\mathcal{L}_{\mathrm{boundary}}
+=-\frac{\sum_i w_i[y_i\log(p_i+\epsilon)+(1-y_i)\log(1-p_i+\epsilon)]}
+{\sum_i w_i+\epsilon}
++1-\frac{\sum_i w_i y_i p_i+\epsilon}
+{\sum_i w_i(y_i+p_i-y_ip_i)+\epsilon},
+\label{eq:boundary_loss}
+\end{equation}
+with $\epsilon=10^{-6}$ and batch averaging for the weighted IoU component. The
+available focal-Tversky term had weight zero and therefore did not contribute to
+training.
 
 \subsection{Evaluation Metrics}\label{evaluation-metrics}
 
 We report mean Dice (mDice), mean intersection over union (mIoU),
 S-measure $S_{\alpha}$ \cite{smeasure}, weighted F-measure
-$F_{\beta}^{w}$, mean and maximum E-measure ($mE_{\phi}$ and
+$F_{\beta}^{w}$ \cite{weightedfmeasure}, mean and maximum E-measure ($mE_{\phi}$ and
 $\max E_{\phi}$) \cite{emeasure}, and mean absolute error (MAE)
 \cite{saliencyfilters}. For each image, the thresholded prediction $P$
 and binary ground truth $G$ were flattened and evaluated as
@@ -142,9 +163,8 @@ comparative tables.
 \subsection{Comparative study}\label{comparative-study}
 
 After the component-level analysis, the comparative study evaluates the complete model
-on the held-out and external datasets and places its performance alongside published
-baselines. The quantitative results are presented first, followed by the qualitative
-analysis section reserved for visual evidence.
+on the held-out validation subsets and external datasets and places its performance
+alongside published baselines. The quantitative results are presented below.
 
 \subsubsection{Quantitative analysis}\label{quantitative-analysis}
 
@@ -152,12 +172,15 @@ Using the reporting convention defined in Implementation Details, the method
 obtained mDice/mIoU of
 $0.931\pm0.004$/$0.883\pm0.006$ on Kvasir-SEG and
 $0.937\pm0.002$/$0.888\pm0.004$ on CVC-ClinicDB. In the displayed
-comparisons, its Kvasir-SEG mDice was 0.17 percentage points below CAFÉ-Net, while its
-mIoU was 0.64 percentage points below CAFÉ-Net and higher than the remaining listed
+comparisons, its Kvasir-SEG mDice was 0.17 percentage points below CAFE-Net, while its
+mIoU was 0.64 percentage points below CAFE-Net and higher than the remaining listed
 methods. On CVC-ClinicDB, PFPRNet exceeded the model by 1.20
 percentage points in mDice and 1.53 percentage points in mIoU.
 
-Across the comparison tables, the best and second-best values are shown in bold and
+The Kvasir-SEG and CVC-ClinicDB values come from held-out validation subsets involved
+in checkpoint selection, whereas published methods may use different training and test
+protocols. These literature comparisons are therefore descriptive. Across the
+comparison tables, the best and second-best displayed values are shown in bold and
 underlined, respectively.
 
 On the external datasets, mDice/mIoU were
@@ -170,6 +193,7 @@ descriptive; no statistical significance test between methods was performed.
 
 
 
+\begin{landscape}
 \small
 \setlength{\tabcolsep}{4pt}
 \renewcommand{\arraystretch}{1.1}
@@ -185,51 +209,40 @@ descriptive; no statistical significance test between methods was performed.
   >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1006}}@{}}
 \caption{Quantitative comparison on Kvasir-SEG.}\label{tab:kvasir-comparison}\\
 \toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\raggedright
-Methods
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Year
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-mDice
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-mIOU
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-\[\mathbf{F}_{\boldsymbol{\beta}}^{\mathbf{w}}\]
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-\[\mathbf{S}_{\boldsymbol{\alpha}}\]
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-\[\mathbf{m}\mathbf{E}_{\boldsymbol{\xi}}\]
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-\[\mathbf{\max}\mathbf{E}_{\boldsymbol{\xi}}\]
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-MAE
-\end{minipage} \\
+Methods & Year & mDice & mIoU & $F_{\beta}^{w}$ & $S_{\alpha}$ & $mE_{\phi}$ & $\max E_{\phi}$ & MAE \\
+\midrule\noalign{}
 \endfirsthead
+\caption[]{Quantitative comparison on Kvasir-SEG (continued).}\\
+\toprule\noalign{}
+Methods & Year & mDice & mIoU & $F_{\beta}^{w}$ & $S_{\alpha}$ & $mE_{\phi}$ & $\max E_{\phi}$ & MAE \\
 \midrule\noalign{}
 \endhead
+\midrule\noalign{}
+\multicolumn{9}{r}{Continued on next page} \\
+\endfoot
 \bottomrule\noalign{}
 \endlastfoot
 CTNet~\cite{ctnet} & 2024 & 0.917 & 0.863 & 0.910 & 0.928 & 0.959 & 0.964 &
 0.023 \\
 MEGANet~\cite{meganet} & 2024 & 0.913 & 0.863 & 0.907 & 0.918 & 0.956 & 0.959
 & 0.025 \\
-CAFÉ-Net~\cite{cafenet} & 2024 & \textbf{0.933} & \textbf{0.889} & 0.927 &
+CAFE-Net~\cite{cafenet} & 2024 & \textbf{0.933} & \textbf{0.889} & 0.927 &
 \underline{0.939} & 0.967 & -- & \textbf{0.019} \\
 Polyp-LVT~\cite{polyplvt} & 2024 & 0.909 & 0.851 & 0.913 & 0.922 & 0.941 & -- &
 0.024 \\
 Polyp-Mamba~\cite{polypmamba} & 2025 & 0.919 & 0.867 & 0.912 & \textbf{0.951} &
-- & \underline{0.968} & \underline{0.021} \\
+-- & \underline{0.968} & \underline{0.021} \\
 MEIN~\cite{mein} & 2025 & 0.905 & 0.847 & 0.905 & 0.914 & -- & 0.964 &
 0.026 \\
 MF-Net~\cite{mfnet} & 2025 & 0.915 & 0.863 & \textbf{0.939} & 0.924 & 0.962 & -- &
 0.022 \\
-MSBP-Net~\cite{msbpnet} & 2025 & 0.919 & 0.868 & 0.916 & 0.926 & 0.961 & -- &
+MSBP-Net~\cite{msbpnet} & 2026 & 0.919 & 0.868 & 0.916 & 0.926 & 0.961 & -- &
 0.023 \\
 CIFFormer~\cite{cifformer} & 2025 & 0.926 & 0.876 & \underline{0.929} &
 \underline{0.939} & 0.967 & -- & \textbf{0.019} \\
 PFPRNet~\cite{pfprnet} & 2025 & 0.930 & 0.881 & 0.920 & 0.935 & \textbf{0.971} &
 -- & \textbf{0.019} \\
-PraNet-V2~\cite{pranetv2} & 2025 & 0.907 & 0.853 & -- & -- & -- & -- & 0.025 \\
+PraNet-V2~\cite{pranetv2} & 2026 & 0.907 & 0.853 & -- & -- & -- & -- & 0.025 \\
 MLB-Net~\cite{mlbnet} & 2026 & 0.926 & 0.878 & 0.921 & 0.938 & \underline{0.969} &
 \textbf{0.975} & \underline{0.021} \\
 MSPN~\cite{mspn} & 2026 & 0.927 & 0.879 & -- & -- & -- & -- & \underline{0.021} \\
@@ -252,28 +265,17 @@ DVFIP-Net~\cite{dvfipnet} & 2026 & 0.922 & 0.874 & -- & -- & -- & -- & -- \\
   >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.0999}}@{}}
 \caption{Quantitative comparison on CVC-ClinicDB.}\label{tab:clinicdb-comparison}\\
 \toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\raggedright
-Methods
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Year
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-mDice
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-mIOU
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-\[\mathbf{F}_{\boldsymbol{\beta}}^{\mathbf{w}}\]
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-\[\mathbf{S}_{\boldsymbol{\alpha}}\]
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-\[\mathbf{m}\mathbf{E}_{\boldsymbol{\xi}}\]
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-\[\mathbf{\max}\mathbf{E}_{\boldsymbol{\xi}}\]
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-MAE
-\end{minipage} \\
+Methods & Year & mDice & mIoU & $F_{\beta}^{w}$ & $S_{\alpha}$ & $mE_{\phi}$ & $\max E_{\phi}$ & MAE \\
+\midrule\noalign{}
 \endfirsthead
+\caption[]{Quantitative comparison on CVC-ClinicDB (continued).}\\
+\toprule\noalign{}
+Methods & Year & mDice & mIoU & $F_{\beta}^{w}$ & $S_{\alpha}$ & $mE_{\phi}$ & $\max E_{\phi}$ & MAE \\
 \midrule\noalign{}
 \endhead
+\midrule\noalign{}
+\multicolumn{9}{r}{Continued on next page} \\
+\endfoot
 \bottomrule\noalign{}
 \endlastfoot
 CTNet~\cite{ctnet} & 2024 & 0.936 & 0.887 & 0.934 & 0.952 & \underline{0.983} & 0.986 &
@@ -281,20 +283,20 @@ CTNet~\cite{ctnet} & 2024 & 0.936 & 0.887 & 0.934 & 0.952 & \underline{0.983} & 
 MEGANet~\cite{meganet} & 2024 & 0.938 & 0.894 & 0.940 & 0.950 & -- &
 \underline{0.987} & \underline{0.007} \\
 Polyp-Mamba~\cite{polypmamba} & 2025 & 0.941 & 0.896 & 0.936 & \textbf{0.970} &
-- & 0.970 & 0.008 \\
+-- & 0.970 & 0.008 \\
 MEIN~\cite{mein} & 2025 & 0.923 & 0.878 & 0.928 & 0.944 & -- & 0.970 &
 0.008 \\
 MF-Net~\cite{mfnet} & 2025 & 0.931 & 0.884 & \textbf{0.953} & 0.949 &
 \underline{0.983} & -- &
 \textbf{0.006} \\
-MSBP-Net~\cite{msbpnet} & 2025 & 0.940 & 0.892 & 0.927 & 0.939 & 0.976 & -- &
+MSBP-Net~\cite{msbpnet} & 2026 & 0.940 & 0.892 & 0.927 & 0.939 & 0.976 & -- &
 \underline{0.007} \\
 CIFFormer~\cite{cifformer} & 2025 & 0.944 & 0.897 & 0.941 & 0.934 & 0.972 & -- &
 \underline{0.007} \\
 PFPRNet~\cite{pfprnet} & 2025 & \textbf{0.949} & \textbf{0.903} & 0.947 & 0.957 &
 \textbf{0.989} & -- &
 \textbf{0.006} \\
-PraNet-V2~\cite{pranetv2} & 2025 & 0.929 & 0.880 & -- & -- & -- & -- & 0.009 \\
+PraNet-V2~\cite{pranetv2} & 2026 & 0.929 & 0.880 & -- & -- & -- & -- & 0.009 \\
 MLB-Net~\cite{mlbnet} & 2026 & \underline{0.945} & \underline{0.902} &
 \underline{0.948} & \underline{0.958} & \textbf{0.989} &
 \textbf{0.992} & \textbf{0.006} \\
@@ -319,28 +321,17 @@ DVFIP-Net~\cite{dvfipnet} & 2026 & 0.942 & 0.896 & -- & -- & -- & -- & -- \\
   >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.0999}}@{}}
 \caption{Quantitative comparison on ETIS-LaribPolypDB.}\label{tab:etis-comparison}\\
 \toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\raggedright
-Methods
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Year
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-mDice
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-mIOU
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-\[\mathbf{F}_{\boldsymbol{\beta}}^{\mathbf{w}}\]
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-\[\mathbf{S}_{\boldsymbol{\alpha}}\]
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-\[\mathbf{m}\mathbf{E}_{\boldsymbol{\xi}}\]
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-\[\mathbf{\max}\mathbf{E}_{\boldsymbol{\xi}}\]
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-MAE
-\end{minipage} \\
+Methods & Year & mDice & mIoU & $F_{\beta}^{w}$ & $S_{\alpha}$ & $mE_{\phi}$ & $\max E_{\phi}$ & MAE \\
+\midrule\noalign{}
 \endfirsthead
+\caption[]{Quantitative comparison on ETIS-LaribPolypDB (continued).}\\
+\toprule\noalign{}
+Methods & Year & mDice & mIoU & $F_{\beta}^{w}$ & $S_{\alpha}$ & $mE_{\phi}$ & $\max E_{\phi}$ & MAE \\
 \midrule\noalign{}
 \endhead
+\midrule\noalign{}
+\multicolumn{9}{r}{Continued on next page} \\
+\endfoot
 \bottomrule\noalign{}
 \endlastfoot
 CTNet~\cite{ctnet} & 2024 & 0.810 & 0.734 & 0.776 & 0.886 & 0.913 &
@@ -355,14 +346,14 @@ MEIN~\cite{mein} & 2025 & 0.788 & 0.711 & 0.764 & 0.870 & -- & 0.902 &
 MF-Net~\cite{mfnet} & 2025 & \underline{0.821} & \underline{0.750} &
 \underline{0.850} & \underline{0.901} & \underline{0.925} & -- &
 \textbf{0.011} \\
-MSBP-Net~\cite{msbpnet} & 2025 & 0.795 & 0.718 & 0.770 & 0.873 & 0.899 & -- &
+MSBP-Net~\cite{msbpnet} & 2026 & 0.795 & 0.718 & 0.770 & 0.873 & 0.899 & -- &
 0.019 \\
 CIFFormer~\cite{cifformer} & 2025 & 0.810 & 0.746 & \textbf{0.858} & 0.889 & 0.918
 & -- & 0.013 \\
 PFPRNet~\cite{pfprnet} & 2025 & \textbf{0.828} & \textbf{0.764} & 0.839 &
 \textbf{0.908} &
 \textbf{0.935} & -- & \underline{0.012} \\
-PraNet-V2~\cite{pranetv2} & 2025 & 0.713 & 0.633 & -- & -- & -- & -- & 0.021 \\
+PraNet-V2~\cite{pranetv2} & 2026 & 0.713 & 0.633 & -- & -- & -- & -- & 0.021 \\
 MLB-Net~\cite{mlbnet} & 2026 & \underline{0.821} & 0.744 & 0.780 & 0.899 & 0.914 &
 \textbf{0.935} & 0.013 \\
 MSPN~\cite{mspn} & 2026 & 0.798 & 0.717 & -- & -- & -- & -- & 0.017 \\
@@ -385,28 +376,17 @@ DVFIP-Net~\cite{dvfipnet} & 2026 & 0.811 & 0.730 & -- & -- & -- & -- & -- \\
   >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1003}}@{}}
 \caption{Quantitative comparison on CVC-ColonDB.}\label{tab:colondb-comparison}\\
 \toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\raggedright
-Methods
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Year
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-mDice
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-mIOU
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-\[\mathbf{F}_{\boldsymbol{\beta}}^{\mathbf{w}}\]
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-\[\mathbf{S}_{\boldsymbol{\alpha}}\]
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-\[\mathbf{m}\mathbf{E}_{\boldsymbol{\xi}}\]
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-\[\mathbf{\max}\mathbf{E}_{\boldsymbol{\xi}}\]
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-MAE
-\end{minipage} \\
+Methods & Year & mDice & mIoU & $F_{\beta}^{w}$ & $S_{\alpha}$ & $mE_{\phi}$ & $\max E_{\phi}$ & MAE \\
+\midrule\noalign{}
 \endfirsthead
+\caption[]{Quantitative comparison on CVC-ColonDB (continued).}\\
+\toprule\noalign{}
+Methods & Year & mDice & mIoU & $F_{\beta}^{w}$ & $S_{\alpha}$ & $mE_{\phi}$ & $\max E_{\phi}$ & MAE \\
 \midrule\noalign{}
 \endhead
+\midrule\noalign{}
+\multicolumn{9}{r}{Continued on next page} \\
+\endfoot
 \bottomrule\noalign{}
 \endlastfoot
 CTNet~\cite{ctnet} & 2024 & 0.813 & 0.734 & 0.801 & 0.874 & 0.915 &
@@ -420,13 +400,13 @@ MEIN~\cite{mein} & 2025 & 0.791 & 0.715 & 0.785 & 0.856 & -- & 0.897 &
 0.034 \\
 MF-Net~\cite{mfnet} & 2025 & 0.825 & \underline{0.751} & \textbf{0.864} &
 \textbf{0.887} & \textbf{0.929} & -- & \underline{0.024} \\
-MSBP-Net~\cite{msbpnet} & 2025 & 0.810 & 0.731 & 0.810 & 0.861 & 0.912 & -- &
+MSBP-Net~\cite{msbpnet} & 2026 & 0.810 & 0.731 & 0.810 & 0.861 & 0.912 & -- &
 0.029 \\
 CIFFormer~\cite{cifformer} & 2025 & 0.823 & 0.741 & \underline{0.851} & 0.874 & 0.918 & -- &
 0.026 \\
 PFPRNet~\cite{pfprnet} & 2025 & 0.819 & 0.741 & 0.843 & 0.882 & 0.915 & -- &
 0.028 \\
-PraNet-V2~\cite{pranetv2} & 2025 & 0.702 & 0.620 & -- & -- & -- & -- & 0.044 \\
+PraNet-V2~\cite{pranetv2} & 2026 & 0.702 & 0.620 & -- & -- & -- & -- & 0.044 \\
 MLB-Net~\cite{mlbnet} & 2026 & \textbf{0.832} & \textbf{0.757} & 0.825 &
 \underline{0.886} & \underline{0.924} & \textbf{0.931} & \textbf{0.023} \\
 MSPN~\cite{mspn} & 2026 & 0.811 & 0.734 & -- & -- & -- & -- & 0.029 \\
@@ -449,28 +429,17 @@ DVFIP-Net~\cite{dvfipnet} & 2026 & \underline{0.826} & 0.746 & -- & -- & -- & --
   >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.0994}}@{}}
 \caption{Quantitative comparison on CVC-300 (EndoScene).}\label{tab:cvc300-comparison}\\
 \toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\raggedright
-Methods
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Year
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-mDice
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-mIOU
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-\[\mathbf{F}_{\boldsymbol{\beta}}^{\mathbf{w}}\]
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-\[\mathbf{S}_{\boldsymbol{\alpha}}\]
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-\[\mathbf{m}\mathbf{E}_{\boldsymbol{\xi}}\]
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-\[\mathbf{\max}\mathbf{E}_{\boldsymbol{\xi}}\]
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-MAE
-\end{minipage} \\
+Methods & Year & mDice & mIoU & $F_{\beta}^{w}$ & $S_{\alpha}$ & $mE_{\phi}$ & $\max E_{\phi}$ & MAE \\
+\midrule\noalign{}
 \endfirsthead
+\caption[]{Quantitative comparison on CVC-300 (EndoScene; continued).}\\
+\toprule\noalign{}
+Methods & Year & mDice & mIoU & $F_{\beta}^{w}$ & $S_{\alpha}$ & $mE_{\phi}$ & $\max E_{\phi}$ & MAE \\
 \midrule\noalign{}
 \endhead
+\midrule\noalign{}
+\multicolumn{9}{r}{Continued on next page} \\
+\endfoot
 \bottomrule\noalign{}
 \endlastfoot
 CTNet~\cite{ctnet} & 2024 & \underline{0.908} & 0.844 & 0.894 & \textbf{0.975} &
@@ -483,13 +452,13 @@ MEIN~\cite{mein} & 2025 & 0.893 & 0.828 & 0.880 & 0.930 & -- & 0.965 &
 0.007 \\
 MF-Net~\cite{mfnet} & 2025 & 0.897 & 0.836 & \underline{0.918} & 0.941 & 0.966 & -- &
 0.007 \\
-MSBP-Net~\cite{msbpnet} & 2025 & 0.903 & \textbf{0.859} & \textbf{0.927} & 0.942 & 0.967 & -- &
+MSBP-Net~\cite{msbpnet} & 2026 & 0.903 & \textbf{0.859} & \textbf{0.927} & 0.942 & 0.967 & -- &
 0.019 \\
 CIFFormer~\cite{cifformer} & 2025 & 0.883 & 0.822 & 0.912 & 0.939 & 0.961 & -- &
 0.100 \\
 PFPRNet~\cite{pfprnet} & 2025 & 0.891 & 0.833 & 0.917 & 0.928 & 0.950 & -- &
 0.013 \\
-PraNet-V2~\cite{pranetv2} & 2025 & 0.873 & 0.795 & -- & -- & -- & -- & 0.007 \\
+PraNet-V2~\cite{pranetv2} & 2026 & 0.873 & 0.795 & -- & -- & -- & -- & 0.007 \\
 MLB-Net~\cite{mlbnet} & 2026 & \textbf{0.915} & \underline{0.852} & 0.909 &
 \underline{0.974} & \underline{0.974} & \underline{0.978} & \textbf{0.005} \\
 MSPN~\cite{mspn} & 2026 & 0.907 & 0.840 & -- & -- & -- & -- & \underline{0.006} \\
@@ -499,6 +468,8 @@ DVFIP-Net~\cite{dvfipnet} & 2026 & 0.900 & 0.833 & -- & -- & -- & -- & -- \\
 \meanstd{0.956}{0.005} & \meanstd{0.971}{0.002} &
 \meanstd{0.007}{0.0003} \\
 \end{longtable}
+
+\end{landscape}
 
 % Qualitative analysis is reserved for the pending figure-generation stage.
 % \subsubsection{Qualitative analysis}\label{qualitative-analysis}

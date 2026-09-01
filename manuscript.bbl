@@ -30,6 +30,13 @@ Zhuang Liu, Hanzi Mao, Chao-Yuan Wu, Christoph Feichtenhofer, Trevor Darrell,
 \newblock In {\em Proceedings of the IEEE/CVF Conference on Computer Vision and
   Pattern Recognition}, pages 11966--11976, 2022.
 
+\bibitem{emcad}
+Md~Mostafijur Rahman, Mustafa Munir, and Radu Marculescu.
+\newblock {EMCAD}: Efficient multi-scale convolutional attention decoding for
+  medical image segmentation.
+\newblock In {\em Proceedings of the IEEE/CVF Conference on Computer Vision and
+  Pattern Recognition}, pages 11769--11779, 2024.
+
 \bibitem{hardnetmseg}
 Chien-Hsiang Huang, Hung-Yu Wu, and Youn-Long Lin.
 \newblock {HarDNet-MSEG}: A simple encoder-decoder polyp segmentation neural
@@ -65,13 +72,6 @@ Shuangyuan Wang, Shengmao Lin, Fujia Sun, and Xiaobo Li.
 \newblock Multi-feature fusion for accurate polyp segmentation using pyramid
   visual transformers.
 \newblock {\em Expert Systems with Applications}, 280:127558, 2025.
-
-\bibitem{emcad}
-Md~Mostafijur Rahman, Mustafa Munir, and Radu Marculescu.
-\newblock {EMCAD}: Efficient multi-scale convolutional attention decoding for
-  medical image segmentation.
-\newblock In {\em Proceedings of the IEEE/CVF Conference on Computer Vision and
-  Pattern Recognition}, pages 11769--11779, 2024.
 
 \bibitem{senet}
 Jie Hu, Li~Shen, and Gang Sun.
@@ -120,20 +120,8 @@ Xiaolu Kang, Zhuoqi Ma, Kang Liu, Yunan Li, and Qiguang Miao.
 \bibitem{pranetv2}
 Bo-Cheng Hu, Ge-Peng Ji, Dian Shao, and Deng-Ping Fan.
 \newblock {PraNet-V2}: Dual-supervised reverse attention for medical image
-  segmentation, 2025.
-
-\bibitem{mlbnet}
-Juntong Ti, Lijun Liu, Lijun Liu, Xiaobing Yang, Li~Liu, Li~Liu, and Wei Peng.
-\newblock {MLB-Net}: A multi-level lesion-aware and boundary-enhanced network
-  for polyp segmentation.
-\newblock {\em Journal of Imaging Informatics in Medicine}, 2026.
-
-\bibitem{mspn}
-Yang Yang, Junlong Cheng, Taotao Zhu, and Min Zhu.
-\newblock From coarse to fine: Multi-stage progressive network for colon polyp
   segmentation.
-\newblock In {\em 2026 IEEE International Conference on Acoustics, Speech and
-  Signal Processing (ICASSP)}, pages 7652--7656, 2026.
+\newblock {\em Computational Visual Media}, 12(2):493--500, 2026.
 
 \bibitem{dvfipnet}
 Haijiao Yun, Chao Wang, Jinyang Luan, Ziqing Han, Qingyu Du, and Mingjing Li.
@@ -179,6 +167,12 @@ Deng-Ping Fan, Ming-Ming Cheng, Yun Liu, Tao Li, and Ali Borji.
 \newblock In {\em Proceedings of the IEEE International Conference on Computer
   Vision}, pages 4558--4567, 2017.
 
+\bibitem{weightedfmeasure}
+Ran Margolin, Lihi Zelnik-Manor, and Ayellet Tal.
+\newblock How to evaluate foreground maps.
+\newblock In {\em Proceedings of the IEEE Conference on Computer Vision and
+  Pattern Recognition}, pages 248--255, 2014.
+
 \bibitem{emeasure}
 Deng-Ping Fan, Cheng Gong, Yang Cao, Bo~Ren, Ming-Ming Cheng, and Ali Borji.
 \newblock Enhanced-alignment measure for binary foreground map evaluation.
@@ -201,7 +195,20 @@ Guoqi Liu, Sheng Yao, Dong Liu, Baofang Chang, Zongyu Chen, Jiajia Wang, and
 
 \bibitem{polyplvt}
 Long Lin, Guangzu Lv, Bin Wang, Cunlu Xu, and Jun Liu.
-\newblock Polyp-lvt: Polyp segmentation with lightweight vision transformers.
+\newblock {Polyp-LVT}: Polyp segmentation with lightweight vision transformers.
 \newblock {\em Knowledge-Based Systems}, 300:112181, 2024.
+
+\bibitem{mlbnet}
+Juntong Ti, Lijun Liu, Xiaobing Yang, Li~Liu, and Wei Peng.
+\newblock {MLB-Net}: A multi-level lesion-aware and boundary-enhanced network
+  for polyp segmentation.
+\newblock {\em Journal of Imaging Informatics in Medicine}, 2026.
+
+\bibitem{mspn}
+Yi~Yang, Junlong Cheng, Taotao Zhu, and Min Zhu.
+\newblock From coarse to fine: Multi-stage progressive network for colon polyp
+  segmentation.
+\newblock In {\em 2026 IEEE International Conference on Acoustics, Speech and
+  Signal Processing (ICASSP)}, pages 7652--7656, 2026.
 
 \end{thebibliography}

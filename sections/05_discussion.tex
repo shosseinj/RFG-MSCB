@@ -2,8 +2,8 @@
 
 \subsection{Quantitative and Ablation Interpretation}
 
-The comparative results indicate strong performance on the two held-out datasets,
-whereas performance is less consistent on the external datasets. The complete
+The model obtained higher scores on the two held-out validation subsets used for
+checkpoint selection than on CVC-ColonDB and ETIS-LaribPolypDB. The complete
 numerical results and uncertainty estimates are reported in the quantitative-analysis
 subsection and comparison tables. This pattern is consistent with the architectural
 motivation: the model retains a convolutional multi-scale pathway for efficient
@@ -30,9 +30,10 @@ combined design.
 
 \subsection{Cross-Dataset Generalization}
 
-The model performs more consistently on the held-out datasets than on the external
-datasets, where differences in endoscopic systems and polyp-morphology distributions
-create a stronger domain shift from the training data. The guidance change is also not
+Independent generalization is assessed on CVC-300, CVC-ColonDB, and
+ETIS-LaribPolypDB, which did not influence checkpoint selection. Their lower scores
+may reflect differences in acquisition, annotation, case mix, or polyp morphology
+relative to the training data. The guidance change is also not
 uniformly positive across the external datasets in the paired single-seed evidence.
 Thus, the results support transfer across the evaluated datasets only in a limited,
 descriptive sense and do not establish broad out-of-distribution generalization.
@@ -52,8 +53,8 @@ resolution together with an explicit FLOP-counting convention. No matched-hardwa
 latency benchmark was performed, so the present evidence does not establish real-time
 inference suitability.
 
-The Stage-3 placement was selected from the available ablation evidence and keeps the
-new guidance localized to the first decoder--encoder fusion. The exploratory all-skip
+The final design keeps the new guidance localized to the Stage-3 decoder--encoder
+fusion. The exploratory all-skip
 comparison was single-seed, incomplete, and used a different batch size, so it does
 not support a general conclusion about optimal placement. Together, the complexity and
 placement results describe a constrained architectural trade-off, but they do not
@@ -70,7 +71,7 @@ These interpretive limits motivate the following limitations and future-work pri
 \item \textbf{Incomplete experiments:} The residual-guidance run with default initialization did not complete training; its potential findings are unavailable.
 \item \textbf{Domain gap on external datasets:} Performance drops substantially on CVC-ColonDB and ETIS-LaribPolypDB, indicating limited out-of-distribution generalization.
 \item \textbf{Hardware and software not fully verified:} GPU model, CUDA/cuDNN versions, and \texttt{py\_sod\_metrics} version are not formally recorded.
-\item \textbf{Training duration:} Seed 7777 stopped early at epoch 167 (patience 30), while seeds 42 and 6543 reached epoch 199; this asymmetry may affect the mean estimate.
+\item \textbf{Training duration:} With zero-based epoch indices, seed 7777 stopped after epoch 167 (168 completed epochs; patience 30), while seeds 42 and 6543 completed epochs 0--199; this asymmetry may affect the mean estimate.
 \end{itemize}
 
 \subsection{Future Work}

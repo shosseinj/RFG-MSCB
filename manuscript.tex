@@ -50,6 +50,7 @@
 \IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
 \makesavenoteenv{longtable}
 \usepackage{graphicx}
+\usepackage{pdflscape}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
 \def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
@@ -94,13 +95,13 @@
 \date{}
 
 \providecommand{\RL}[1]{#1}
-\newcommand{\meanstd}[2]{\shortstack{#1\\[-1pt]{\scriptsize$\pm$#2}}}
+\newcommand{\meanstd}[2]{$#1\,\pm\,#2$}
 \begin{document}
 
 \maketitle
 
 \begin{abstract}
-Accurate colorectal polyp segmentation remains challenging because lesions vary in scale, morphology, contrast, and boundary appearance. Conventional multi-scale convolution blocks aggregate different receptive fields without explicitly using sample-specific frequency information from deep semantic features. We present a ConvNeXt-Tiny U-shaped framework that builds on prior Frequency-Aware Feature Enhancement (FAFEM) and Multi-Scale Convolution Block (MSCB) modules, and introduce residual frequency-guided coupling between them. The resulting RFG-MSCB reuses the low- and high-frequency descriptor produced by bottleneck FAFEM to assign sample-dependent weights to MSCB multi-kernel branches at the Stage-3 encoder--decoder fusion. The guided response is a bounded residual deviation from ordinary MSCB aggregation, preserving the conventional multi-scale path as a reference. We evaluated the model on Kvasir-SEG, CVC-ClinicDB, CVC-300, CVC-ColonDB, and ETIS-LaribPolypDB over three random seeds. The model obtained mDice/mIoU of $0.931\pm0.004$/$0.883\pm0.006$ on Kvasir-SEG and $0.937\pm0.002$/$0.888\pm0.004$ on CVC-ClinicDB. On the three external datasets, mDice ranged from $0.787\pm0.011$ on ETIS-LaribPolypDB to $0.882\pm0.002$ on CVC-300. In the raw three-seed ablation, adding residual frequency-guided coupling to FAFEM + MSCB changed Kvasir-SEG mDice from 0.930 to 0.931, an observed difference of +0.08 percentage points; mIoU changed by +0.12 percentage points, while MAE decreased slightly. The final model adds 2.4\% parameters relative to FAFEM alone. The ablation therefore measures a small change under the tested protocol, while lower performance on the more challenging external datasets indicates remaining generalization limitations.
+Accurate colorectal polyp segmentation remains challenging because lesions vary in scale, morphology, contrast, and boundary appearance. Conventional multi-scale convolution blocks aggregate different receptive fields without explicitly using sample-specific frequency information from deep semantic features. We present a ConvNeXt-Tiny U-shaped framework with bottleneck Frequency-Aware Feature Enhancement (FAFEM) and introduce residual frequency-guided coupling to the Multi-Scale Convolution Block (MSCB) structure. The resulting RFG-MSCB reuses the low- and high-frequency descriptor produced by bottleneck FAFEM to assign sample-dependent weights to MSCB multi-kernel branches at the Stage-3 encoder--decoder fusion. The guided response is a bounded residual deviation from ordinary MSCB aggregation, preserving the conventional multi-scale path as a reference. We evaluated the model on Kvasir-SEG, CVC-ClinicDB, CVC-300, CVC-ColonDB, and ETIS-LaribPolypDB over three random seeds. On the held-out validation subsets used for checkpoint selection, the model obtained mDice/mIoU of $0.931\pm0.004$/$0.883\pm0.006$ for Kvasir-SEG and $0.937\pm0.002$/$0.888\pm0.004$ for CVC-ClinicDB. On the three external datasets, mDice ranged from $0.787\pm0.011$ on ETIS-LaribPolypDB to $0.882\pm0.002$ on CVC-300. In the raw three-seed configuration comparison, adding residual frequency-guided coupling to FAFEM + MSCB changed Kvasir-SEG mDice from 0.930 to 0.931, an observed difference of +0.08 percentage points; mIoU changed by +0.12 percentage points, while MAE decreased slightly. The final model adds 2.4\% parameters relative to FAFEM alone. The comparison therefore measures a small change under the tested protocol, while lower performance on the external datasets indicates remaining generalization limitations.
 \end{abstract}
 
 

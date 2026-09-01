@@ -77,7 +77,7 @@ A stochastic-depth rate of 0.25 is used throughout the encoder. Feature dropout 
 
 The deepest encoder representation $F_4$ contains strong semantic information but has undergone substantial spatial downsampling. To expose complementary frequency characteristics of this representation, FAFEM is applied exclusively at the bottleneck.
 
-Given $X=F_4$, a local low-frequency approximation is obtained using $3\times3$ average pooling,
+Given $X=F_4$, a local low-frequency approximation is obtained using $3\times3$ average pooling with stride 1 and padding 1,
 
 \begin{align}
 X_L&=\mathrm{AvgPool}_{3\times3}(X),
@@ -112,7 +112,12 @@ The two components are concatenated and globally pooled to obtain the frequency 
 
 Since $C=768$ at the bottleneck, $\mathbf{z}_f\in\mathbb{R}^{1536}$.
 
-A lightweight channel-gating network generates adaptive weights for the low- and high-frequency representations. Their weighted combination is spatially refined and introduced through a residual connection:
+A lightweight channel-gating network applies global average pooling to
+$[\widehat{X}_L,\widehat{X}_H]$, followed by $1\times1$ transformations
+$1536\rightarrow48\rightarrow1536$, GELU after the first transformation, and a
+sigmoid after the second. Splitting the output channel-wise gives
+$w_L,w_H\in(0,1)^{768}$; these weights are not normalized to sum to one. Their
+weighted combination is spatially refined and introduced through a residual connection:
 
 \begin{equation}
 \widetilde{F}_4
@@ -126,7 +131,9 @@ w_H\odot\widehat{X}_H
 \label{eq:fafem_residual_output}
 \end{equation}
 
-where $\gamma_f$ is a learnable scalar initialized to zero.
+where $\mathcal{R}_f$ is a bias-free $3\times3$ depthwise convolution with stride 1
+and padding 1, and $\gamma_f$ is a learnable scalar initialized to zero. The descriptor
+$\mathbf{z}_f$ is pooled before the channel weights are applied.
 
 \subsection{Lightweight Residual Bottleneck}
 
@@ -140,7 +147,11 @@ X_r=\mathrm{GELU}\left(\mathrm{LN}\left(
 \label{eq:bottleneck_reduction}
 \end{equation}
 
-A $3\times3$ depthwise-separable convolution performs spatial transformation in the reduced feature space. The representation is subsequently projected back to 768 channels.
+A bias-free $3\times3$ depthwise-separable convolution with padding 1 performs spatial
+transformation in the reduced feature space, followed by channels-first Layer
+Normalization ($\epsilon=10^{-6}$), GELU, and spatial dropout with probability 0.2.
+A bias-free $1\times1$ convolution then projects the representation back to 768
+channels and is followed by channels-first Layer Normalization.
 
 The bottleneck output is formulated as
 
@@ -250,13 +261,18 @@ M_{\mathrm{guide}}-M_{\mathrm{ord}}
 
 where $0\leq s\leq0.5$.
 
-The learnable guidance-strength parameter $s$ is initialized to 0.05.
+The implementation stores an unconstrained learnable scalar $\theta_s$, initialized to
+0.05, and uses the hard-clamped effective strength
+$s=\operatorname{clamp}(\theta_s,0,0.5)$ in Eq.~\eqref{eq:rfg_residual}.
 
 The final guidance-layer weights and biases are initialized so that the branch logits are equal. Thus, at initialization, $\alpha_1=\alpha_3=\alpha_5=1$ and $M_{\mathrm{guide}}=M_{\mathrm{ord}}$.
 
 The module thus initially reproduces the conventional multi-scale path, while optimization is allowed to learn image-dependent deviations from uniform branch weighting.
 
-The resulting feature is processed using channel shuffle and a $1\times1$ projection from $2C$ back to $C$, followed by Batch Normalization. A final residual connection preserves the input representation:
+The resulting feature is processed using channel shuffle with
+$\gcd(2C,C)=384$ groups and a bias-free $1\times1$ projection from $2C$ back to
+$C$, followed by Batch Normalization. This sequence defines $\mathcal P$ below. A
+final residual connection preserves the input representation:
 
 \begin{equation}
 Y_3
@@ -281,7 +297,14 @@ The subsequent decoder stages follow Eqs.~\eqref{eq:decoder_stage2}--\eqref{eq:d
 
 For a $352\times352$ input, the decoder dimensions are $D_4:384\times22\times22$, $D_3:192\times44\times44$, $D_2:96\times88\times88$, and $D_1:96\times176\times176$.
 
-At the $F_2$ and $F_1$ skip levels, the upsampled decoder representation is concatenated with the corresponding encoder feature and processed by a lightweight fusion block containing a $1\times1$ projection followed by a depthwise-separable $3\times3$ convolution.
+At each skip level, the decoder feature is resized to the skip-feature shape when
+needed using bilinear interpolation with \texttt{align\_corners=False}, concatenated
+with the corresponding encoder feature, and processed by a lightweight fusion block.
+The fusion block contains a bias-free $1\times1$ projection, channels-first Layer
+Normalization ($\epsilon=10^{-6}$), GELU, a bias-free depthwise-separable $3\times3$
+convolution with padding 1, a second channels-first Layer Normalization and GELU, and
+spatial dropout with probability 0.2. The primary twofold upsampling inside each
+decoder block uses bilinear interpolation with \texttt{align\_corners=True}.
 
 No additional attention mechanism, frequency module, MSCB, or boundary-specific refinement block is applied at these decoder stages.
 
@@ -302,7 +325,7 @@ P&=\mathrm{Up}_{H,W}(P_0),
 \label{eq:prediction_probability}
 \end{align}
 
-The prediction in Eq.~\eqref{eq:prediction_resize} is bilinearly resized from $H/2\times W/2$ to the original input resolution. The network directly returns logits; during inference, Eq.~\eqref{eq:prediction_probability} gives the foreground probability map,
+The prediction in Eq.~\eqref{eq:prediction_resize} is bilinearly resized from $H/2\times W/2$ to the original input resolution with \texttt{align\_corners=False}. The network directly returns logits; during inference, Eq.~\eqref{eq:prediction_probability} gives the foreground probability map,
 
 where $\sigma(\cdot)$ denotes the sigmoid function.
 
@@ -329,19 +352,9 @@ from original publications or official implementations.
 \toprule
 Method & Year & Input & Params (M) & Reported GFLOPs \\
 \midrule
-CTNet~\cite{ctnet} & 2024 & $352^2$ & -- & -- \\
 MEGANet (Res2Net-50)~\cite{meganet} & 2024 & $352^2$ & 44.19 & -- \\
-Polyp-Mamba~\cite{polypmamba} & 2025 & -- & -- & -- \\
-MEIN~\cite{mein} & 2025 & -- & -- & -- \\
-MF-Net~\cite{mfnet} & 2025 & -- & -- & -- \\
-MSBP-Net~\cite{msbpnet} & 2026 & -- & -- & -- \\
-CIFFormer~\cite{cifformer} & 2025 & -- & -- & -- \\
-PFPRNet~\cite{pfprnet} & 2025 & -- & -- & -- \\
-PraNet-V2 (Res2Net-50)~\cite{pranetv2} & 2025 & $352^2$ & -- & -- \\
-MLB-Net~\cite{mlbnet} & 2026 & -- & -- & -- \\
-MSPN~\cite{mspn} & 2026 & -- & -- & -- \\
 DVFIP-Net~\cite{dvfipnet} & 2026 & -- & -- & 19.37 \\
-\textbf{Ours} & -- & $352^2$ & \textbf{30.06} & \textbf{27.82}$^{\dagger}$ \\
+\textbf{Ours} & -- & $352^2$ & 30.06 & 27.82$^{\dagger}$ \\
 \bottomrule
 \end{tabular}
 
