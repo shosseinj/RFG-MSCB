@@ -1,20 +1,20 @@
 \section{Ablation Study}\label{ablation-study}
 
-We perform ablation studies to quantify the effect of our proposed frequency-guided residual coupling mechanism when added to the FAFEM-enhanced backbone. We also analyze the placement of the multi-scale refinement layer.
+We quantify the effect of frequency-guided residual coupling on the FAFEM-enhanced backbone and examine the placement of multi-scale refinement.
 
 The ablation experiments use the same training and evaluation protocol as the final FAFEM + RFG-MSCB model, with variations in the architecture only. Unless otherwise noted, results are reported as mean $\pm$ standard deviation over three random seeds.
 
 \subsection{Effect of FAFEM}
 
-We first establish the FAFEM-only configuration, which contains no multi-scale refinement layers. Its three-seed Kvasir-SEG results are 0.925958 mDice, 0.875879 mIoU, and 0.024832 MAE. FAFEM is prior work, not a contribution of this paper. A no-FAFEM baseline under the final training protocol is not available; the older baseline measurements are protocol-mismatched and are therefore not used for a quantitative final-protocol comparison.
+We adopt FAFEM as the bottleneck enhancement module. The FAFEM-only configuration contains no multi-scale refinement layers; its three-seed Kvasir-SEG results are 0.925958 mDice, 0.875879 mIoU, and 0.024832 MAE. A no-FAFEM baseline under the final training protocol is not available; older baseline measurements use a different protocol and are excluded from this comparison.
 
 \subsection{Effect of Stage-3 MSCB-Lite}
 
-Adding a Stage-3 MSCB-lite layer to the FAFEM-enhanced backbone gives the FAFEM + MSCB configuration. MSCB-lite is prior multi-scale refinement without frequency-guided coupling. The three-seed Kvasir-SEG mDice changes from 0.925958 to 0.930440 (+0.448 percentage points); mIoU changes from 0.875879 to 0.881375 (+0.550 percentage points), and MAE changes from 0.024832 to 0.024487 (-0.000345). This configuration establishes the baseline for the frequency-guided variant.
+Adding a Stage-3 MSCB-lite layer to the FAFEM-enhanced backbone gives the FAFEM + MSCB configuration. MSCB-lite supplies the multi-scale reference without frequency-guided coupling. The three-seed Kvasir-SEG mDice changes from 0.925958 to 0.930440 (+0.448 percentage points); mIoU changes from 0.875879 to 0.881375 (+0.550 percentage points), and MAE changes from 0.024832 to 0.024487 (-0.000345). This configuration serves as the reference for the frequency-guided variant.
 
 \subsection{Effect of Residual Frequency-Guided Coupling}
 
-The final FAFEM + RFG-MSCB model adds residual frequency-guided coupling to the Stage-3 multi-scale layer. This is the principal architecture change relative to the FAFEM + MSCB configuration. Using the raw three-seed values, Kvasir-SEG mDice changes from 0.930440 to 0.931284 (+0.084 percentage points), mIoU changes from 0.881375 to 0.882594 (+0.122 percentage points), and MAE changes from 0.024487 to 0.023960 (-0.000527). The small descriptive differences should not be interpreted as evidence of statistical significance.
+The final FAFEM + RFG-MSCB model adds residual frequency-guided coupling to the Stage-3 multi-scale layer. This is the principal architecture change relative to the FAFEM + MSCB configuration. Using the raw three-seed values, Kvasir-SEG mDice changes from 0.930440 to 0.931284 (+0.084 percentage points), mIoU changes from 0.881375 to 0.882594 (+0.122 percentage points), and MAE changes from 0.024487 to 0.023960 (-0.000527). These are descriptive differences; no significance test was performed.
 
 A single-seed direct frequency-guidance configuration tested the mechanism without residual coupling; its Kvasir-SEG result did not exceed the Stage-3 MSCB-lite result in that paired seed-42 comparison. Because it is single-seed, this result does not isolate the independent effect of residualization.
 
@@ -42,7 +42,7 @@ FAFEM + RFG-MSCB (Ours) & 30.1 & \meanstd{0.9313}{0.0044} & \meanstd{0.8826}{0.0
 
 \subsection{Ablation Discussion}
 
-Our three-seed ablation shows that:
+The three-seed ablation gives the following sequence:
 \begin{enumerate}
 \item FAFEM provides the verified feature-enhanced baseline (0.9260 mDice on Kvasir-SEG).
 \item Adding MSCB-lite at Stage 3 changes mDice to 0.9304, a +0.448 percentage-point difference relative to FAFEM.
@@ -53,6 +53,6 @@ The parameter count increases from 29.4M for FAFEM to 30.0M for FAFEM + MSCB and
 
 \subsection{Generalization Evaluation}
 
-The final RFG-MSCB model is evaluated on the four additional datasets, but its change relative to FAFEM + MSCB is mixed: paired seed-42 mDice decreases on CVC-ClinicDB and CVC-300 and increases on CVC-ColonDB and ETIS. Therefore, the ablation does not establish uniform cross-dataset improvement or broad generalization of the guidance mechanism.
+On the four additional datasets, the final RFG-MSCB change relative to FAFEM + MSCB is mixed: paired seed-42 mDice decreases on CVC-ClinicDB and CVC-300 and increases on CVC-ColonDB and ETIS. These comparisons do not establish uniform cross-dataset improvement.
 
 The residual-coupling configuration with default initialization did not complete training, so it is excluded from the quantitative ablation. Future work may examine sensitivity to initialization strength in more detail.

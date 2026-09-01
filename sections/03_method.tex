@@ -2,7 +2,7 @@
 
 \subsection{Overall Architecture}
 
-The proposed framework follows a U-shaped encoder--decoder architecture built upon a ConvNeXt-Tiny encoder. The central objective is to exploit frequency information extracted from deep semantic features to adaptively regulate multi-scale feature processing during decoding. Rather than independently applying frequency enhancement and multi-scale convolution, the proposed model establishes a cross-level interaction between the bottleneck and the first decoder stage.
+The network uses a U-shaped encoder--decoder architecture built upon a ConvNeXt-Tiny encoder. Frequency information extracted from deep semantic features regulates multi-scale processing during decoding. Frequency enhancement and multi-scale convolution are linked through a cross-level connection between the bottleneck and the first decoder stage.
 
 Let
 
@@ -60,7 +60,7 @@ D_1&=\mathcal{D}_1(D_2).
 \label{eq:decoder_final}
 \end{align}
 
-Here, $\mathcal{D}_i$ denotes a decoder block, $\mathcal{S}_i$ denotes the corresponding skip-feature fusion operation, $\mathbf{z}_f$ is the frequency descriptor extracted at the bottleneck, and $\mathcal{M}_{\mathrm{RFG}}$ denotes the proposed residual frequency-guided multi-scale refinement mechanism. Equations~\eqref{eq:overall_stage3}--\eqref{eq:decoder_final} summarize the decoder path.
+Here, $\mathcal{D}_i$ denotes a decoder block, $\mathcal{S}_i$ denotes the corresponding skip-feature fusion operation, $\mathbf{z}_f$ is the frequency descriptor extracted at the bottleneck, and $\mathcal{M}_{\mathrm{RFG}}$ denotes the residual frequency-guided multi-scale refinement mechanism. Equations~\eqref{eq:overall_stage3}--\eqref{eq:decoder_final} summarize the decoder path.
 
 The final prediction head transforms $D_1$ into a single-channel segmentation logit map, which is bilinearly resized to the original image resolution.
 
@@ -174,7 +174,7 @@ w_H\odot\widehat{X}_H
 
 where $\gamma_f$ is a learnable scalar initialized to zero.
 
-Importantly, FAFEM itself is not introduced in this work. In the proposed architecture, its frequency descriptor $\mathbf{z}_f$ is additionally reused to condition multi-scale processing at a later decoder stage.
+We adopt FAFEM at the bottleneck and reuse its frequency descriptor $\mathbf{z}_f$ to condition multi-scale processing at a later decoder stage.
 
 \subsection{Lightweight Residual Bottleneck}
 
@@ -257,7 +257,7 @@ B_1+B_3+B_5.
 \label{eq:mscb_ordinary_aggregation}
 \end{equation}
 
-Instead of treating the three receptive fields identically for every image, the proposed mechanism conditions their relative contributions on the bottleneck frequency descriptor $\mathbf{z}_f$.
+The new mechanism conditions the relative contributions of the three receptive fields on the bottleneck frequency descriptor $\mathbf{z}_f$.
 
 A lightweight guidance network maps the 1536-dimensional descriptor to three branch logits:
 
@@ -308,7 +308,7 @@ M_{\mathrm{guide}}
 \label{eq:rfg_guided_aggregation}
 \end{equation}
 
-Directly replacing the conventional multi-scale response with the guided response may excessively perturb an already effective MSCB representation. We therefore introduce the guidance as a bounded residual deviation:
+We introduce the guidance as a bounded residual deviation from the conventional multi-scale response:
 
 \begin{equation}
 M_{\mathrm{RFG}}
@@ -357,7 +357,7 @@ X_3+
 \label{eq:rfg_final_output}
 \end{equation}
 
-This formulation establishes an explicit cross-level connection between deep frequency information extracted at the bottleneck and multi-scale spatial refinement performed at $H/16$ resolution.
+This formulation connects the bottleneck frequency descriptor to multi-scale spatial refinement at $H/16$ resolution.
 
 \subsection{Progressive Decoder and Skip Fusion}
 
@@ -466,7 +466,7 @@ DVFIP-Net~\cite{dvfipnet} & 2026 & -- & -- & 19.37 \\
 \parbox{0.96\linewidth}{\footnotesize $^{\dagger}$Our value uses 13.91 GMACs and the explicit convention $\mathrm{FLOPs}=2\times\mathrm{MACs}$. Competitor values are preserved in source terminology and are not convention-normalized.}
 \end{table}
 
-Among rows with verified parameter counts, the proposed model is smaller than
+Among rows with verified parameter counts, the model is smaller than
 the Res2Net-50 variant of MEGANet. The available evidence is too sparse to rank
 all methods by parameter count or computational cost: several publications do
 not expose both values in accessible primary material, and DVFIP-Net's reported

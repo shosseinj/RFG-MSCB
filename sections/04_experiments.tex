@@ -125,7 +125,7 @@ disabled, and external test results did not affect checkpoint selection.
 
 \subsection{Experimental Study}\label{experimental-study}
 
-We present the quantitative and qualitative evaluation of the proposed architecture across five polyp segmentation datasets. The final FAFEM + RFG-MSCB model is reported over the three random seeds 42, 6543, and 7777. Ablation experiments are described separately in \ref{ablation-study}.
+We evaluate the final FAFEM + RFG-MSCB model quantitatively and qualitatively on five polyp segmentation datasets using random seeds 42, 6543, and 7777. The ablation experiments are described separately in \ref{ablation-study}.
 
 \input{sections/04_ablation_experiments}
 
@@ -133,21 +133,21 @@ We present the quantitative and qualitative evaluation of the proposed architect
 
 \subsubsection{Quantitative analysis}\label{quantitative-analysis}
 
-Results for the proposed method are reported as the mean $\pm$ sample
+Results for the model are reported as the mean $\pm$ sample
 standard deviation over seeds 42, 6543, and 7777. On the two held-out
 datasets, the method obtained mDice/mIoU of
 $0.9313\pm0.0044$/$0.8826\pm0.0062$ on Kvasir-SEG and
 $0.9370\pm0.0024$/$0.8877\pm0.0038$ on CVC-ClinicDB. In the displayed
 comparisons, its Kvasir-SEG mDice was 0.0017 below CAFÉ-Net, while its
 mIoU was 0.0064 below CAFÉ-Net and higher than the remaining listed
-methods. On CVC-ClinicDB, PFPRNet exceeded the proposed method by 0.0120
+methods. On CVC-ClinicDB, PFPRNet exceeded the model by 0.0120
 mDice and 0.0153 mIoU.
 
 On the external datasets, mDice/mIoU were
 $0.8821\pm0.0016$/$0.8104\pm0.0018$ on CVC-300,
 $0.7944\pm0.0089$/$0.7142\pm0.0086$ on CVC-ColonDB, and
-$0.7870\pm0.0113$/$0.7071\pm0.0120$ on ETIS-LaribPolypDB. The proposed
-method did not attain the highest displayed external-dataset mean. Its
+$0.7870\pm0.0113$/$0.7071\pm0.0120$ on ETIS-LaribPolypDB. The model did not
+attain the highest displayed external-dataset mean. Its
 largest between-seed variation in mDice and mIoU occurred on ETIS, with
 sample standard deviations of 0.0113 and 0.0120, respectively. These
 comparisons are descriptive; no statistical significance test between
@@ -157,7 +157,7 @@ methods was performed.
 
 Table 1 Quantitative comparison of various models on the Kvasir-SEG
 dataset. Best and second-best values are shown in bold and underlined,
-respectively; our values are mean $\pm$ sample standard deviation.
+respectively; values for this model are mean $\pm$ sample standard deviation.
 
 \begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1951}}
@@ -226,7 +226,7 @@ Ours & -- & \underline{\meanstd{0.9313}{0.0044}} &
 
 Table 2 Quantitative comparison of various models on the CVC-ClinicDB
 dataset. Best and second-best values are shown in bold and underlined,
-respectively; our values are mean $\pm$ sample standard deviation.
+respectively; values for this model are mean $\pm$ sample standard deviation.
 
 \begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1954}}
@@ -295,7 +295,7 @@ Ours & -- & \meanstd{0.9370}{0.0024} & \meanstd{0.8877}{0.0038} &
 
 Table 3 Quantitative comparison of various models on the
 ETIS-LaribPolypDB dataset. Best and second-best values are shown in bold
-and underlined, respectively; our values are mean $\pm$ sample standard
+and underlined, respectively; values for this model are mean $\pm$ sample standard
 deviation.
 
 \begin{longtable}[]{@{}
@@ -364,7 +364,7 @@ Ours & -- & \meanstd{0.7870}{0.0113} & \meanstd{0.7071}{0.0120} &
 
 Table 4 Quantitative comparison of various models on the CVC-ColonDB
 dataset. Best and second-best values are shown in bold and underlined,
-respectively; our values are mean $\pm$ sample standard deviation.
+respectively; values for this model are mean $\pm$ sample standard deviation.
 
 \begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1921}}
@@ -430,7 +430,7 @@ Ours & -- & \meanstd{0.7944}{0.0089} & \meanstd{0.7142}{0.0086} &
 
 Table 5 Quantitative comparison of various models on the
 CVC-300 (EndoScene) dataset. Best and second-best values are shown in
-bold and underlined, respectively; our values are mean $\pm$ sample
+bold and underlined, respectively; values for this model are mean $\pm$ sample
 standard deviation.
 
 \begin{longtable}[]{@{}

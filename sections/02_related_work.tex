@@ -15,7 +15,7 @@ adapt its receptive-field mixture to the image-specific content of a polyp.
 
 Polyp-specific convolutional models have explored efficient alternatives to
 large attention-based designs. HarDNet-MSEG combines a low-memory-traffic
-convolutional backbone with a lightweight decoder and demonstrates that strong
+convolutional backbone with a lightweight decoder and reports strong
 polyp segmentation can be obtained without a transformer-heavy architecture
 \cite{hardnetmseg}. PraNet introduced a parallel partial decoder and reverse
 attention to progressively refine uncertain polyp regions \cite{pranet}. These
@@ -28,10 +28,9 @@ Modern convolutional encoders provide another route to high-capacity dense
 prediction. ConvNeXt revisits convolutional network design with large-kernel
 depthwise convolution, inverted channel expansion, Layer Normalization, GELU
 activation, layer scaling, and stochastic depth, producing a hierarchical
-backbone with strong representation capacity \cite{convnext}. In this work,
-ConvNeXt-Tiny is used as the encoder, while the novelty is concentrated in the
-decoder interaction between bottleneck frequency information and Stage-3
-multi-scale convolution.
+backbone with strong representation capacity \cite{convnext}. We use
+ConvNeXt-Tiny as the encoder and focus the new mechanism on the interaction
+between bottleneck frequency information and Stage-3 multi-scale convolution.
 
 \subsection{Transformer and contextual polyp segmentation}
 
@@ -48,9 +47,9 @@ fusion \cite{ctnet,cifformer,pfprnet,mfnet}.
 
 These approaches show that global context and cross-level interaction are useful
 for polyp segmentation. However, attention-based or multi-stage contextual
-architectures can introduce additional architectural complexity. The present
-model therefore keeps a convolutional encoder--decoder form and asks a narrower
-question: whether a compact bottleneck frequency descriptor can guide the
+architectures can introduce additional architectural complexity. The network
+therefore keeps a convolutional encoder--decoder form and examines whether a
+compact bottleneck frequency descriptor can guide the
 relative weighting of efficient multi-scale convolutional branches in the first
 decoder fusion stage.
 
@@ -65,8 +64,7 @@ uses Multi-Scale Convolution Blocks (MSCBs) as part of its lightweight decoding
 design \cite{emcad}. In an MSCB, multiple convolutional branches provide
 different receptive fields and are combined to form a multi-scale response.
 
-MSCB is prior work and is not introduced in this paper. The limitation relevant
-to the present method is that a conventional MSCB aggregation treats the branch
+MSCB serves as the multi-scale reference path. A conventional MSCB aggregation treats the branch
 mixture as fixed by the block design rather than conditioning the branch weights
 on the image-specific frequency characteristics extracted at the bottleneck. Our
 RFG-MSCB retains the ordinary MSCB path as a reference and adds only a bounded,
@@ -92,11 +90,10 @@ specific coupling used here: a frequency descriptor produced by a bottleneck
 FAFEM is transferred across levels and used to regulate Stage-3 MSCB branch
 weights.
 
-The Frequency-Aware Feature Enhancement Module (FAFEM) is also treated as prior
-work in this paper. It is adopted at the bottleneck to enhance deep features and
-produce a low-/high-frequency descriptor. The contribution of this work is not
-FAFEM itself, but the reuse of its descriptor as cross-level guidance for
-multi-scale convolution in the decoder. The exact original FAFEM citation should
+We adopt the Frequency-Aware Feature Enhancement Module (FAFEM) at the bottleneck
+to enhance deep features and produce a low-/high-frequency descriptor. Its
+descriptor is reused as cross-level guidance for multi-scale convolution in the
+decoder. The exact original FAFEM citation should
 be inserted once the source title, DOI, arXiv identifier, or publisher record is
 verified.
 
@@ -111,27 +108,27 @@ prediction to improve contour delineation \cite{msbpnet}. Other recent methods
 model uncertainty, contextual flow, frequency-sensitive representations, and
 multi-stage refinement \cite{mein,cifformer,polypmamba,pranetv2}.
 
-The proposed architecture does not add an explicit boundary branch, edge label,
+The network does not add an explicit boundary branch, edge label,
 or boundary loss. Boundary accuracy is instead expected to benefit indirectly
 from adaptive multi-scale decoding and from the use of frequency-guided branch
 weights at the first decoder fusion stage. Consequently, claims about boundary
 improvement should be supported by the experimental results rather than by
 describing a dedicated boundary module.
 
-\subsection{Positioning of the proposed method}
+\subsection{Positioning of the method}
 
 Existing work has improved polyp segmentation through U-shaped skip reuse,
 reverse attention, transformer-based context modeling, efficient convolutional
 decoding, frequency-aware representation learning, and boundary-aware
-refinement. The proposed method is positioned at the intersection of efficient
+refinement. The method is positioned at the intersection of efficient
 multi-scale convolution and frequency-aware recalibration.
 
 Specifically, the final model uses a ConvNeXt-Tiny encoder, a bottleneck FAFEM,
-a lightweight residual bottleneck, Stage-3 SimpleFusion, the proposed
-Residual Frequency-Guided MSCB, and standard remaining decoder stages. FAFEM and
-MSCB are reused prior modules. The proposed contribution is the coupling between
-them: the bottleneck FAFEM frequency descriptor adaptively weights MSCB branches
+a lightweight residual bottleneck, Stage-3 SimpleFusion, the Residual
+Frequency-Guided MSCB, and standard remaining decoder stages. We adopt FAFEM and
+the MSCB structure; the new component is their coupling: the bottleneck FAFEM
+frequency descriptor adaptively weights MSCB branches
 at Stage 3, the guided response is introduced as a bounded residual deviation
 from ordinary MSCB aggregation, and the guidance forms a bottleneck-to-Stage-3
-cross-level connection. This framing separates the new RFG-MSCB mechanism from
-the prior components on which it is built.
+cross-level connection. This separates the RFG-MSCB mechanism from the components
+on which it is built.
