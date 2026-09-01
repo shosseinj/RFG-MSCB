@@ -1,6 +1,6 @@
-PWD G:\RFG-MSCB
+PWD g:\RFG-MSCB
 INPUT C:\Users\hosse\AppData\Local\MiKTeX\miktex\data\le\pdftex\pdflatex.fmt
-INPUT manuscript.tex
+INPUT g:\RFG-MSCB\manuscript.tex
 OUTPUT manuscript.log
 INPUT C:\Program Files\MiKTeX\tex\latex\hyperref\hyperref.sty
 INPUT C:\Program Files\MiKTeX\tex\latex\url\url.sty
