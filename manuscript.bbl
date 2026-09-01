@@ -117,11 +117,6 @@ Bo-Cheng Hu, Ge-Peng Ji, Dian Shao, and Deng-Ping Fan.
   segmentation.
 \newblock {\em Computational Visual Media}, 12(2):493--500, 2026.
 
-\bibitem{polyplvt}
-Long Lin, Guangzu Lv, Bin Wang, Cunlu Xu, and Jun Liu.
-\newblock {Polyp-LVT}: Polyp segmentation with lightweight vision transformers.
-\newblock {\em Knowledge-Based Systems}, 300:112181, 2024.
-
 \bibitem{mlbnet}
 Juntong Ti, Lijun Liu, Xiaobing Yang, Li~Liu, and Wei Peng.
 \newblock {MLB-Net}: A multi-level lesion-aware and boundary-enhanced network
