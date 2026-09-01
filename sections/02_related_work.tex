@@ -93,9 +93,7 @@ weights.
 We adopt the Frequency-Aware Feature Enhancement Module (FAFEM) at the bottleneck
 to enhance deep features and produce a low-/high-frequency descriptor. Its
 descriptor is reused as cross-level guidance for multi-scale convolution in the
-decoder. The exact original FAFEM citation should
-be inserted once the source title, DOI, arXiv identifier, or publisher record is
-verified.
+decoder.
 
 \subsection{Boundary and recent polyp-segmentation refinements}
 
@@ -108,12 +106,10 @@ prediction to improve contour delineation \cite{msbpnet}. Other recent methods
 model uncertainty, contextual flow, frequency-sensitive representations, and
 multi-stage refinement \cite{mein,cifformer,polypmamba,pranetv2}.
 
-The network does not add an explicit boundary branch, edge label,
-or boundary loss. Boundary accuracy is instead expected to benefit indirectly
-from adaptive multi-scale decoding and from the use of frequency-guided branch
-weights at the first decoder fusion stage. Consequently, claims about boundary
-improvement should be supported by the experimental results rather than by
-describing a dedicated boundary module.
+The network does not add an explicit boundary branch or edge label; it uses the
+boundary-aware loss described in the Experiments section. Boundary-specific
+improvement is not evaluated separately, so the frequency-guided decoder should
+not be described as a dedicated boundary module.
 
 \subsection{Positioning of the method}
 

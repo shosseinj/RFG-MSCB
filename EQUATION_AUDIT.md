@@ -77,7 +77,7 @@ The following displays remain unnumbered because they document fixed values or s
 - concrete decoder tensor dimensions;
 - exact and rounded parameter counts.
 
-The input tensor domain, ConvNeXt stage depths/channels, bottleneck descriptor size, MSCB kernel set, prediction-head channel progression, and other simple standalone values could be inline, but remain unnumbered displays where the surrounding layout benefits from separation. The metric symbols displayed inside comparison-table headers are formatting constructs, not equations, and are intentionally not numbered.
+The input tensor domain, ConvNeXt stage depths/channels, bottleneck descriptor size, concrete tensor shapes, MSCB kernel set, prediction-head channel progression, guidance-network dimensions, scalar bounds, and initialization identities are inline. The metric symbols displayed inside comparison-table headers are formatting constructs, not equations, and are intentionally not numbered.
 
 ## Duplicate or Redundant Displays
 
@@ -97,6 +97,6 @@ The input tensor domain, ConvNeXt stage depths/channels, bottleneck descriptor s
 
 ## Build Result
 
-`build_windows.bat` completed successfully and generated a 26-page `manuscript.pdf`. No undefined equation references, duplicate-label warnings, or LaTeX equation errors remain.
+Two-pass `pdflatex` compilation completed successfully and generated a 24-page `manuscript.pdf`. No undefined equation references, duplicate-label warnings, or LaTeX equation errors remain.
 
 Remaining warnings are unrelated to equation numbering: small overfull `Epoch` headers, missing bold Greek glyphs in comparison-table headers, longtable infinite-glue warnings, an underfull Discussion line, overfull bibliography/image boxes, an empty-link warning near the ablation cross-reference, and the MiKTeX update notice.
