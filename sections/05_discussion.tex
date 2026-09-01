@@ -1,45 +1,70 @@
 \section{Discussion}\label{discussion}
 
-\subsection{Main Quantitative Findings}
+\subsection{Quantitative and Ablation Interpretation}
 
-The final FAFEM + RFG-MSCB model achieves a Kvasir-SEG mDice of 0.931 ± 0.004 and mIoU of 0.883 ± 0.006 across three random seeds (42, 6543, 7777). On the held-out CVC-ClinicDB, it reaches 0.937 ± 0.002 mDice and 0.888 ± 0.004 mIoU. These results are reported as mean ± sample standard deviation (ddof=1). On external datasets, the model obtains 0.882 ± 0.002 mDice on CVC-300, 0.794 ± 0.009 on CVC-ColonDB, and 0.787 ± 0.011 on ETIS-LaribPolypDB. Comparisons with the listed published methods are descriptive; no statistical significance testing was performed.
+The comparative results indicate strong performance on the two held-out datasets,
+whereas performance is less consistent on the external datasets. The complete
+numerical results and uncertainty estimates are reported in the quantitative-analysis
+subsection and comparison tables. This pattern is consistent with the architectural
+motivation: the model retains a convolutional multi-scale pathway for efficient
+decoding while adding sample-dependent guidance intended to adapt that pathway to
+image content.
 
-\subsection{Effect of FAFEM}
+The ablation provides a more specific interpretation of the contribution. FAFEM
+establishes the bottleneck feature-enhancement reference, MSCB-lite adds multi-scale
+refinement at Stage 3 without frequency guidance, and RFG-MSCB adds adaptive branch
+modulation to that reference path. The final increment is small, indicating that the
+proposed coupling is a controlled refinement rather than a wholesale change in the
+decoder. The paired single-seed comparison with direct frequency guidance also did
+not show an advantage without residual coupling; consequently, the available evidence
+does not disentangle residualization from frequency conditioning. These observations
+support the feasibility of the combined mechanism but leave its individual causal
+components unresolved.
 
-We adopt FAFEM as the bottleneck enhancement module. The FAFEM-only configuration provides the final-protocol reference, with Kvasir-SEG means of 0.926 mDice, 0.876 mIoU, and 0.025 MAE. A no-FAFEM baseline under this protocol was not available; older baseline measurements used a different training protocol.
+The bounded residual formulation may explain why the added mechanism can be introduced
+without discarding the ordinary multi-scale response. By interpolating between uniform
+and predicted branch weights, it provides a conservative path from the established
+MSCB behavior to sample-dependent refinement. This is a post hoc interpretation rather
+than a separately tested mechanism-level conclusion, because the ablation measures the
+combined design.
 
-\subsection{Effect of Stage-3 MSCB-Lite}
+\subsection{Cross-Dataset Generalization}
 
-Building on FAFEM, MSCB-lite supplies parallel multi-scale refinement at Stage 3 without frequency guidance. On Kvasir-SEG, the three-seed mean mDice changes from 0.926 to 0.930 (+0.45 percentage points); mIoU changes by +0.55 percentage points and MAE decreases slightly, from 0.025 to 0.024. This configuration is the reference for the guided variant.
+The model performs more consistently on the held-out datasets than on the external
+datasets, where differences in endoscopic systems and polyp-morphology distributions
+create a stronger domain shift from the training data. The guidance change is also not
+uniformly positive across the external datasets in the paired single-seed evidence.
+Thus, the results support transfer across the evaluated datasets only in a limited,
+descriptive sense and do not establish broad out-of-distribution generalization.
 
-\subsection{Effect of Residual Frequency-Guided Coupling}
+The weaker behavior on CVC-ColonDB and ETIS-LaribPolypDB, together with the observed
+variability on ETIS, suggests that domain adaptation or targeted augmentation may be
+needed. The model also does not outperform several recent methods on these datasets,
+which reinforces that the proposed frequency-guided refinement does not remove the
+underlying domain-shift challenge.
 
-The new RFG-MSCB coupling adds frequency-conditioned residual guidance to the Stage-3 multi-scale layer. From the underlying three-seed values, Kvasir-SEG mDice changes from 0.930 for FAFEM + MSCB to 0.931 (+0.08 percentage points); mIoU changes by +0.12 percentage points and MAE by -0.001. The total FAFEM-to-final changes are +0.53 percentage points in mDice and +0.67 percentage points in mIoU. In the paired seed-42 comparison, direct frequency guidance without residual coupling did not exceed MSCB-lite; that single-seed result does not separate the effects of residualization and frequency conditioning.
+\subsection{Practical Trade-offs and Placement}
 
-\subsection{Why Residual Frequency-Guided Multi-Scale Refinement May Help}
+As summarized in Table~\ref{tab:model-complexity}, the final architecture has a
+moderate parameter count within the verifiable subset. Computational-cost rankings
+remain uncertain because most competitor reports do not provide a verified input
+resolution together with an explicit FLOP-counting convention. No matched-hardware
+latency benchmark was performed, so the present evidence does not establish real-time
+inference suitability.
 
-The residual formulation interpolates between uniform and predicted branch weights, with initial strength 0.05 and init std 0.0. This initialization provides a conservative entry point for the guidance signal. The FAFEM descriptor conditions MSCB-lite branch weighting, linking bottleneck frequency information to multi-scale spatial processing. These interpretations are post hoc: the ablation measures the combined mechanism and does not separate residualization, initialization strength, and frequency conditioning.
+The Stage-3 placement was selected from the available ablation evidence and keeps the
+new guidance localized to the first decoder--encoder fusion. The exploratory all-skip
+comparison was single-seed, incomplete, and used a different batch size, so it does
+not support a general conclusion about optimal placement. Together, the complexity and
+placement results describe a constrained architectural trade-off, but they do not
+establish the best deployment configuration.
 
-\subsection{Cross-Dataset Behavior}
-
-The final model's absolute performance is highest on Kvasir-SEG and held-out CVC-ClinicDB (~0.930), intermediate on CVC-300 (~0.880), and lower on CVC-ColonDB and ETIS-LaribPolypDB (~0.790). Between-seed variability is lowest on CVC-300 (mDice SD 0.002) and highest on ETIS-LaribPolypDB (mDice SD 0.011). Relative to FAFEM + MSCB, the final guidance change is not uniformly positive across datasets in the paired seed-42 evidence, so broad cross-dataset generalization should not be inferred.
-
-\subsection{Cases and Datasets Where the Model Is Weaker}
-
-The model's weakest performance is on CVC-ColonDB and ETIS-LaribPolypDB, where mDice drops to ~0.790 and between-seed variability is highest (0.009 and 0.011 respectively). These datasets involve different endoscopic systems and polyp morphology distributions compared to the training data (Kvasir-SEG and CVC-ClinicDB). On ETIS, the mIoU SD of 0.012 indicates substantial sensitivity to random initialization. The model does not outperform several recent methods on these datasets, suggesting that further domain adaptation or data augmentation strategies may be needed for stronger generalization.
-
-\subsection{Model Complexity and Practical Trade-offs}
-
-As summarized in Table~\ref{tab:model-complexity}, the final architecture has a moderate parameter count within the small subset of methods for which primary-source counts could be verified. The ablation indicates a 2.4\% parameter increase from the FAFEM configuration to the final model. Computational-cost rankings remain uncertain because most competitor reports do not provide a verified input resolution together with an explicit FLOP-counting convention. No matched-hardware latency benchmark was performed, so the present evidence does not establish real-time inference suitability.
-
-\subsection{Placement Analysis}
-
-The multi-scale refinement layer is placed at encoder Stage 3 in the final FAFEM + RFG-MSCB configuration. This placement was selected based on observed results from the ablation chain. A single-seed exploratory all-skip configuration used batch size 32 rather than 24 in the main protocol; the available training evidence did not improve relative to the Stage-3 configuration. However, this comparison is limited by incomplete training and the batch-size mismatch, so it does not support a general conclusion about optimal placement. The Stage-3 placement localizes the added guidance mechanism; the measured final model has 30.06 M parameters and 27.82 GFLOPs under the reported convention, but no latency benchmark was performed.
+These interpretive limits motivate the following limitations and future-work priorities.
 
 \subsection{Limitations}
 
 \begin{itemize}
-\item \textbf{No statistical significance testing:} All reported differences are descriptive means over three seeds; no hypothesis testing was performed.
+\item \textbf{No statistical significance testing:} All reported differences are descriptive; no hypothesis testing was performed.
 \item \textbf{Single-seed placement evidence:} The exploratory all-skip placement run is single-seed, incomplete, and uses a different batch size; it cannot establish a general placement rule.
 \item \textbf{No disentanglement of RFG-MSCB components:} The ablation isolates the combined residual frequency-guided coupling; individual contributions of the residual formulation, initialization strength, and frequency conditioning are not separately measured.
 \item \textbf{Incomplete experiments:} The residual-guidance run with default initialization did not complete training; its potential findings are unavailable.

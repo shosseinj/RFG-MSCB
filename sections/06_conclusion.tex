@@ -1,11 +1,22 @@
 \section{Conclusion}\label{conclusion}
 
-We presented a ConvNeXt-Tiny U-shaped segmentation framework that introduces cross-level frequency-guided coupling between prior FAFEM and MSCB modules. The RFG-MSCB mechanism is placed at the Stage-3 encoder--decoder fusion, where the FAFEM frequency descriptor conditions MSCB branch weights through a bounded residual formulation.
+Taken together, the experiments support a cautious conclusion. We presented a
+ConvNeXt-Tiny U-shaped segmentation framework that couples prior FAFEM
+and MSCB modules through RFG-MSCB at the Stage-3 encoder--decoder fusion. The design
+extends bottleneck frequency enhancement into decoder refinement while preserving the
+ordinary multi-scale pathway as a reference, thereby addressing the motivation for
+sample-dependent receptive-field selection without replacing the established decoder
+path.
 
-The RFG-MSCB preserves the conventional multi-scale pathway as a reference and learns a controlled, sample-dependent deviation guided by the frequency descriptor. This coupling connects deep semantic frequency information with higher-resolution spatial feature processing, while the architectural modification remains localized to Stage 3.
+The empirical evidence supports a cautious interpretation. The ablation indicates
+that the added residual frequency guidance produces a small change relative to the
+FAFEM + MSCB reference, while the external-dataset results are less consistent than
+the held-out results. The complexity comparison and localized placement describe a
+moderate architectural trade-off, but the available experiments do not establish
+uniform gains, component-level causality, or real-time suitability.
 
-Ablation experiments using three random seeds show that adding Stage-3 MSCB-lite changes Kvasir-SEG mDice from 0.926 to 0.930 (+0.45 percentage points). Adding residual frequency-guided coupling then changes the raw three-seed mean from 0.930 to 0.931 (+0.08 percentage points), with a +0.12 percentage-point mIoU change and a -0.001 MAE change. On external datasets, the final model achieves mDice of 0.937 on CVC-ClinicDB, 0.882 on CVC-300, 0.794 on CVC-ColonDB, and 0.787 on ETIS-LaribPolypDB. Performance on CVC-ColonDB and ETIS remains lower, indicating limited out-of-distribution generalization.
-
-The final architecture adds 2.4\% in parameters relative to the FAFEM-only configuration; its detailed complexity and measurement convention are reported in Table~\ref{tab:model-complexity}. All performance values are descriptive means over three seeds; no statistical significance testing was performed.
-
-The study combines cross-level frequency guidance, adaptive MSCB branch weighting, and bounded residual interpolation in a localized Stage-3 modification. The measured parameter increase is moderate, and the descriptive ablation provides a basis for further testing rather than evidence of uniform gains or statistical superiority. Future work includes systematic placement ablation, component disentanglement of RFG-MSCB, and domain adaptation for challenging external datasets.
+These findings motivate systematic multi-seed placement experiments, disentanglement
+of residualization and frequency conditioning, and domain-adaptation strategies for
+the more challenging external datasets. The incomplete default-initialization run,
+single-seed placement evidence, and absence of significance testing should be resolved
+before making stronger claims about generalization or superiority.

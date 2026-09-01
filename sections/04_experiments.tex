@@ -2,7 +2,8 @@
 
 \subsection{Datasets and Data Splits}\label{dataset}
 
-We used Kvasir-SEG \cite{kvasirseg}, CVC-ClinicDB \cite{cvcclinicdb},
+To evaluate the proposed framework under a fixed training and evaluation design, we
+used Kvasir-SEG \cite{kvasirseg}, CVC-ClinicDB \cite{cvcclinicdb},
 CVC-300 \cite{cvc300}, CVC-ColonDB \cite{cvccolondb}, and
 ETIS-LaribPolypDB \cite{etis}. Kvasir-SEG and CVC-ClinicDB were split
 independently with a 90:10 ratio using shuffled sampling with random seed
@@ -38,7 +39,9 @@ deviation $(0.229,0.224,0.225)$.
 
 \subsection{Implementation Details}\label{implementation-details}
 
-The three final runs used seeds 42, 6543, and 7777 and were implemented
+The three final runs used seeds 42, 6543, and 7777. All final and ablation
+results are reported as the mean $\pm$ sample standard deviation (ddof=1) across
+these seeds unless otherwise noted. The runs were implemented
 in PyTorch 2.5.1+cu124 with a maximum of 200 epochs and batch size 24.
 AdamW with betas
 $(0.9,0.999)$ used separate parameter groups. The maximum learning rates
@@ -125,17 +128,25 @@ disabled, and external test results did not affect checkpoint selection.
 
 \subsection{Experimental Study}\label{experimental-study}
 
-We evaluate the final FAFEM + RFG-MSCB model quantitatively and qualitatively on five polyp segmentation datasets using random seeds 42, 6543, and 7777. The ablation experiments are described separately in the ablation-study subsection.
+The experimental study first examines the contribution of the architectural components
+under controlled variants and then compares the resulting model with published methods.
+Presenting the ablation before the comparative evaluation establishes the reference
+configuration and clarifies which part of the final design is being assessed in the
+comparative tables.
 
 \input{sections/04_ablation_experiments}
 
 \subsection{Comparative study}\label{comparative-study}
 
+After the component-level analysis, the comparative study evaluates the complete model
+on the held-out and external datasets and places its performance alongside published
+baselines. The quantitative results are presented first, followed by the qualitative
+analysis section reserved for visual evidence.
+
 \subsubsection{Quantitative analysis}\label{quantitative-analysis}
 
-Results for the model are reported as the mean $\pm$ sample
-standard deviation over seeds 42, 6543, and 7777. On the two held-out
-datasets, the method obtained mDice/mIoU of
+Using the reporting convention defined in Implementation Details, the method
+obtained mDice/mIoU of
 $0.931\pm0.004$/$0.883\pm0.006$ on Kvasir-SEG and
 $0.937\pm0.002$/$0.888\pm0.004$ on CVC-ClinicDB. In the displayed
 comparisons, its Kvasir-SEG mDice was 0.17 percentage points below CAFÉ-Net, while its
@@ -150,11 +161,9 @@ On the external datasets, mDice/mIoU were
 $0.882\pm0.002$/$0.810\pm0.002$ on CVC-300,
 $0.794\pm0.009$/$0.714\pm0.009$ on CVC-ColonDB, and
 $0.787\pm0.011$/$0.707\pm0.012$ on ETIS-LaribPolypDB. The model did not
-attain the highest displayed external-dataset mean. Its
-largest between-seed variation in mDice and mIoU occurred on ETIS, with
-sample standard deviations of 0.011 and 0.012, respectively. These
-comparisons are descriptive; no statistical significance test between
-methods was performed.
+attain the highest displayed external-dataset mean. Its largest between-seed
+variation in mDice and mIoU occurred on ETIS. These comparisons are
+descriptive; no statistical significance test between methods was performed.
 
 
 

@@ -45,13 +45,9 @@ continued this direction through contrastive transformer modeling, contextual
 information flow, phase-wise feature pyramids, and pyramid-transformer feature
 fusion \cite{ctnet,cifformer,pfprnet,mfnet}.
 
-These approaches show that global context and cross-level interaction are useful
-for polyp segmentation. However, attention-based or multi-stage contextual
-architectures can introduce additional architectural complexity. The network
-therefore keeps a convolutional encoder--decoder form and examines whether a
-compact bottleneck frequency descriptor can guide the
-relative weighting of efficient multi-scale convolutional branches in the first
-decoder fusion stage.
+These approaches show the value of global context and cross-level interaction,
+while motivating a convolutional alternative to more complex attention-based
+designs.
 
 \subsection{Efficient multi-scale convolutional decoding}
 
@@ -64,11 +60,7 @@ uses Multi-Scale Convolution Blocks (MSCBs) as part of its lightweight decoding
 design \cite{emcad}. In an MSCB, multiple convolutional branches provide
 different receptive fields and are combined to form a multi-scale response.
 
-MSCB serves as the multi-scale reference path. A conventional MSCB aggregation treats the branch
-mixture as fixed by the block design rather than conditioning the branch weights
-on the image-specific frequency characteristics extracted at the bottleneck. Our
-RFG-MSCB retains the ordinary MSCB path as a reference and adds only a bounded,
-frequency-conditioned residual deviation from that path.
+MSCB provides the multi-scale reference path used by the present comparison.
 
 \subsection{Frequency-aware and adaptive feature recalibration}
 
@@ -85,15 +77,8 @@ channel attention through frequency analysis and uses frequency components for
 channel attention \cite{fcanet}. In polyp segmentation, Polyp-Mamba combines
 multi-frequency perception with a gated selection mechanism to model
 frequency-sensitive representations \cite{polypmamba}. These studies motivate
-the usefulness of frequency information, but they do not correspond to the
-specific coupling used here: a frequency descriptor produced by a bottleneck
-FAFEM is transferred across levels and used to regulate Stage-3 MSCB branch
-weights.
-
-We adopt the Frequency-Aware Feature Enhancement Module (FAFEM) at the bottleneck
-to enhance deep features and produce a low-/high-frequency descriptor. Its
-descriptor is reused as cross-level guidance for multi-scale convolution in the
-decoder.
+frequency-aware recalibration, while the present work applies that idea to the
+relationship between bottleneck enhancement and decoder refinement.
 
 \subsection{Boundary and recent polyp-segmentation refinements}
 
@@ -119,12 +104,7 @@ decoding, frequency-aware representation learning, and boundary-aware
 refinement. The method is positioned at the intersection of efficient
 multi-scale convolution and frequency-aware recalibration.
 
-Specifically, the final model uses a ConvNeXt-Tiny encoder, a bottleneck FAFEM,
-a lightweight residual bottleneck, Stage-3 SimpleFusion, the Residual
-Frequency-Guided MSCB, and standard remaining decoder stages. We adopt FAFEM and
-the MSCB structure; the new component is their coupling: the bottleneck FAFEM
-frequency descriptor adaptively weights MSCB branches
-at Stage 3, the guided response is introduced as a bounded residual deviation
-from ordinary MSCB aggregation, and the guidance forms a bottleneck-to-Stage-3
-cross-level connection. This separates the RFG-MSCB mechanism from the components
-on which it is built.
+Specifically, the final model combines a ConvNeXt-Tiny encoder, bottleneck
+frequency enhancement, and efficient multi-scale decoding. We adopt the FAFEM
+and MSCB structures; the new contribution is their cross-level coupling at the
+Stage-3 fusion, which is developed technically in the next section.

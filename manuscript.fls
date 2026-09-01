@@ -255,13 +255,13 @@ INPUT C:\Program Files\MiKTeX\tex\latex\lm\ts1lmr.fd
 INPUT C:\Program Files\MiKTeX\tex\latex\lm\ts1lmr.fd
 INPUT C:\Program Files\MiKTeX\tex\latex\lm\ts1lmr.fd
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\ts1-lmr10.tfm
-INPUT C:\Program Files\MiKTeX\fonts\enc\dvips\lm\lm-ts1.enc
 INPUT .\sections\02_related_work.tex
 INPUT .\sections\02_related_work.tex
 INPUT .\sections\02_related_work.tex
 INPUT .\sections\02_related_work.tex
 INPUT sections\02_related_work.tex
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\ec-lmbx12.tfm
+INPUT C:\Program Files\MiKTeX\fonts\enc\dvips\lm\lm-ts1.enc
 INPUT .\sections\03_method.tex
 INPUT .\sections\03_method.tex
 INPUT .\sections\03_method.tex
