@@ -1,53 +1,52 @@
 \section{Ablation Study}\label{ablation-study}
 
-The ablation design compares three configurations: FAFEM, FAFEM + MSCB, and
-FAFEM + RFG-MSCB. The sequence defines references for the additions made after
-FAFEM, but it does not include a no-FAFEM configuration or independently isolate all
-components of RFG-MSCB.
+The ablation design compares three configurations in sequence: Baseline,
+FAFEM + MSCB, and Residual RFG-MSCB (Ours). This sequence evaluates the
+feature-enhancement and multi-scale components together before assessing the
+additional residual frequency-guided modification.
 
 \subsection{Ablation Results}
 
-The sequence begins with FAFEM as the bottleneck enhancement module. The FAFEM-only
-configuration contains no multi-scale refinement layers and provides the
-feature-enhancement reference.
+The Baseline provides the reference without the added FAFEM and MSCB components.
 
-Adding a Stage-3 MSCB-lite layer introduces parallel multi-scale refinement without
-frequency guidance. This configuration supplies the appropriate reference for the
-proposed guided variant because it preserves the multi-scale path while omitting the
-cross-level conditioning. The final configuration then adds residual frequency-guided
-coupling to that Stage-3 layer. The complete numerical comparison is given in
-Table~\ref{tab:ablation}.
+Adding FAFEM and MSCB improves the baseline across the reported segmentation
+metrics. The final configuration then adds residual frequency-guided coupling to
+the multi-scale configuration. The complete numerical comparison, including
+computational complexity, is given in Table~\ref{tab:ablation}.
 
 A single-seed direct frequency-guidance configuration tested the mechanism without
-residual coupling. Its Kvasir-SEG result was lower than that of Stage-3 MSCB-lite in
+residual coupling. Its Kvasir-SEG result was lower than that of FAFEM + MSCB in
 the paired seed-42 comparison.
 % TODO: replace the direct-guidance comparison after rerunning it under the final data protocol.
 
-% TODO: replace all Table 3 values with protocol-matched three-seed ablation results.
 \begin{table*}[htbp]
 \centering
-\caption{Ablation study on Kvasir-SEG.}\label{tab:ablation}
+\caption{Ablation study of the proposed architectural components on Kvasir-SEG, including segmentation performance and computational complexity.}\label{tab:ablation}
 \small
 \setlength{\tabcolsep}{3pt}
 \renewcommand{\arraystretch}{1.1}
-\begin{tabular}{@{}lcccccccc@{}}
+\begin{tabular}{@{}lrrrrrrrrr@{}}
 \toprule
-Method & Params (M) & mDice & mIoU & $F_{\beta}^{w}$ & $S_{\alpha}$ & $mE_{\phi}$ & $\max E_{\phi}$ & MAE \\
+Model & mDice & mIoU & $F_{\beta}^{w}$ & $S_{\alpha}$ & $mE_{\phi}$ & $\max E_{\phi}$ & MAE & Params (M) & GFLOPs \\
 \midrule
-FAFEM & 29.36 & \meanstd{0.926}{0.002} & \meanstd{0.876}{0.003} & \meanstd{0.905}{0.003} & \meanstd{0.931}{0.002} & \meanstd{0.957}{0.003} & \meanstd{0.964}{0.002} & \meanstd{0.0248}{0.0004} \\
-FAFEM + MSCB & 29.98 & \meanstd{0.930}{0.002} & \meanstd{0.881}{0.003} & \meanstd{0.910}{0.004} & \meanstd{0.933}{0.001} & \meanstd{0.960}{0.001} & \meanstd{0.966}{0.001} & \meanstd{0.0245}{0.0004} \\
-\textbf{Ours} & 30.06 & \meanstd{0.931}{0.004} & \meanstd{0.883}{0.006} & \meanstd{0.911}{0.005} & \meanstd{0.933}{0.003} & \meanstd{0.960}{0.003} & \meanstd{0.967}{0.003} & \meanstd{0.0240}{0.0007} \\
+Baseline & 0.827 & 0.763 & 0.811 & 0.890 & 0.907 & 0.913 & 0.019 & 29.19 & 27.202 \\
+FAFEM + MSCB & 0.869 & 0.803 & 0.845 & 0.910 & 0.937 & 0.947 & 0.018 & 29.98 & 27.818 \\
+\textbf{Residual RFG-MSCB (Ours)} & \textbf{0.875} & \textbf{0.815} & \textbf{0.847} & \textbf{0.913} & \textbf{0.941} & \textbf{0.949} & \textbf{0.017} & 30.06 & 27.818 \\
 \bottomrule
 \end{tabular}
 \end{table*}
 
 \subsection{Ablation Interpretation}
 
-% TODO: update ablation interpretation after the protocol-matched three-seed rerun.
-FAFEM provides the bottleneck feature-enhancement reference. MSCB-lite adds
-multi-scale refinement at Stage 3, and RFG-MSCB introduces frequency-conditioned
-adaptive branch modulation along this path. The final gain is small and is accompanied
-by the parameter increase reported in Table~\ref{tab:ablation}.
+FAFEM + MSCB improves mDice from 0.827 to 0.869, mIoU from 0.763 to
+0.803, and reduces MAE from 0.019 to 0.018 relative to the Baseline. Residual
+RFG-MSCB further changes mDice from 0.869 to 0.875, mIoU from 0.803 to 0.815,
+and MAE from 0.018 to 0.017. The parameter count increases from 29.19 M to
+29.98 M and then 30.06 M, while GFLOPs increase from 27.202 to 27.818 and
+remain 27.818 for the final configuration. Thus, the residual modification adds
+only 0.08 M parameters over FAFEM + MSCB and no additional reported GFLOPs at
+the displayed precision. These are descriptive comparisons; no statistical
+significance is claimed.
 
 \subsection{Stage Placement and Generalization}
 

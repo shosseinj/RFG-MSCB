@@ -1,10 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.9.1)  1 SEP 2026 23:23
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.8.31)  2 SEP 2026 10:09
 entering extended mode
  restricted \write18 enabled.
- file:line:error style messages enabled.
  %&-line parsing enabled.
-**g:/RFG-MSCB/manuscript.tex
-(g:/RFG-MSCB/manuscript.tex
+**./manuscript.tex
+(manuscript.tex
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
 (C:\Program Files\MiKTeX\tex/latex/base\article.cls
@@ -23,21 +22,25 @@ File: size10.clo 2025/01/22 v1.4n Standard LaTeX file (size option)
 \abovecaptionskip=\skip49
 \belowcaptionskip=\skip50
 \bibindent=\dimen148
-) (C:\Program Files\MiKTeX\tex/latex/amsmath\amsmath.sty
+)
+(C:\Program Files\MiKTeX\tex/latex/amsmath\amsmath.sty
 Package: amsmath 2025/07/09 v2.17z AMS math features
 \@mathmargin=\skip51
 
 For additional information on amsmath, use the `?' option.
 (C:\Program Files\MiKTeX\tex/latex/amsmath\amstext.sty
 Package: amstext 2024/11/17 v2.01 AMS text
- (C:\Program Files\MiKTeX\tex/latex/amsmath\amsgen.sty
+
+(C:\Program Files\MiKTeX\tex/latex/amsmath\amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks17
 \ex@=\dimen149
-)) (C:\Program Files\MiKTeX\tex/latex/amsmath\amsbsy.sty
+))
+(C:\Program Files\MiKTeX\tex/latex/amsmath\amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 \pmbraise@=\dimen150
-) (C:\Program Files\MiKTeX\tex/latex/amsmath\amsopn.sty
+)
+(C:\Program Files\MiKTeX\tex/latex/amsmath\amsopn.sty
 Package: amsopn 2022/04/08 v2.04 operator names
 )
 \inf@bad=\count283
@@ -87,26 +90,33 @@ LaTeX Info: Redefining \Relbar on input line 970.
 \mathdisplay@stack=\toks21
 LaTeX Info: Redefining \[ on input line 2950.
 LaTeX Info: Redefining \] on input line 2951.
-) (C:\Program Files\MiKTeX\tex/latex/amsfonts\amssymb.sty
+)
+(C:\Program Files\MiKTeX\tex/latex/amsfonts\amssymb.sty
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
- (C:\Program Files\MiKTeX\tex/latex/amsfonts\amsfonts.sty
+
+(C:\Program Files\MiKTeX\tex/latex/amsfonts\amsfonts.sty
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \symAMSa=\mathgroup4
 \symAMSb=\mathgroup5
 LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
-)) (C:\Program Files\MiKTeX\tex/generic/iftex\iftex.sty
+))
+(C:\Program Files\MiKTeX\tex/generic/iftex\iftex.sty
 Package: iftex 2024/12/12 v1.0g TeX engine tests
-) (C:\Program Files\MiKTeX\tex/latex/base\fontenc.sty
+)
+(C:\Program Files\MiKTeX\tex/latex/base\fontenc.sty
 Package: fontenc 2025/07/18 v2.1d Standard LaTeX package
-) (C:\Program Files\MiKTeX\tex/latex/base\inputenc.sty
+)
+(C:\Program Files\MiKTeX\tex/latex/base\inputenc.sty
 Package: inputenc 2024/02/08 v1.3d Input encoding file
 \inpenc@prehook=\toks22
 \inpenc@posthook=\toks23
-) (C:\Program Files\MiKTeX\tex/latex/base\textcomp.sty
+)
+(C:\Program Files\MiKTeX\tex/latex/base\textcomp.sty
 Package: textcomp 2024/04/24 v2.1b Standard LaTeX package
-) (C:\Program Files\MiKTeX\tex/latex/lm\lmodern.sty
+)
+(C:\Program Files\MiKTeX\tex/latex/lm\lmodern.sty
 Package: lmodern 2015/05/01 v1.6.1 Latin Modern Fonts
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
 (Font)                  OT1/cmr/m/n --> OT1/lmr/m/n on input line 22.
@@ -140,14 +150,19 @@ LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
 (Font)                  OT1/cmr/bx/it --> OT1/lmr/bx/it on input line 37.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 (Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 38.
-) (C:\Users\hosse\AppData\Roaming\MiKTeX\tex/latex/upquote\upquote.sty
-Package: upquote 2012/04/19 v1.3 upright-quote and grave-accent glyphs in verbatim
-) (C:\Users\hosse\AppData\Roaming\MiKTeX\tex/latex/microtype\microtype.sty
+)
+(C:\Users\jafari.h\AppData\Roaming\MiKTeX\tex/latex/upquote\upquote.sty
+Package: upquote 2012/04/19 v1.3 upright-quote and grave-accent glyphs in verba
+tim
+)
+(C:\Users\jafari.h\AppData\Roaming\MiKTeX\tex/latex/microtype\microtype.sty
 Package: microtype 2026/03/01 v3.2d Micro-typographical refinements (RS)
- (C:\Program Files\MiKTeX\tex/latex/graphics\keyval.sty
+
+(C:\Program Files\MiKTeX\tex/latex/graphics\keyval.sty
 Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
 \KV@toks@=\toks24
-) (C:\Program Files\MiKTeX\tex/latex/etoolbox\etoolbox.sty
+)
+(C:\Program Files\MiKTeX\tex/latex/etoolbox\etoolbox.sty
 Package: etoolbox 2025/10/02 v2.5m e-TeX tools for LaTeX (JAW)
 \etb@tempcnta=\count295
 )
@@ -163,34 +178,46 @@ LaTeX Info: Redefining \textls on input line 1449.
 LaTeX Info: Redefining \microtypecontext on input line 2053.
 LaTeX Info: Redefining \textmicrotypecontext on input line 2070.
 \MT@listname@count=\count297
- (C:\Users\hosse\AppData\Roaming\MiKTeX\tex/latex/microtype\microtype-pdftex.def
+
+(C:\Users\jafari.h\AppData\Roaming\MiKTeX\tex/latex/microtype\microtype-pdftex.
+def
 File: microtype-pdftex.def 2026/03/01 v3.2d Definitions specific to pdftex (RS)
+
 LaTeX Info: Redefining \lsstyle on input line 944.
 LaTeX Info: Redefining \lslig on input line 944.
 \MT@outer@space=\skip54
 )
 Package microtype Info: Loading configuration file microtype.cfg.
- (C:\Users\hosse\AppData\Roaming\MiKTeX\tex/latex/microtype\microtype.cfg
+
+(C:\Users\jafari.h\AppData\Roaming\MiKTeX\tex/latex/microtype\microtype.cfg
 File: microtype.cfg 2026/03/01 v3.2d microtype main configuration file (RS)
 )
 LaTeX Info: Redefining \microtypesetup on input line 3065.
-) (C:\Users\hosse\AppData\Roaming\MiKTeX\tex/latex/parskip\parskip.sty
+)
+(C:\Users\jafari.h\AppData\Roaming\MiKTeX\tex/latex/parskip\parskip.sty
 Package: parskip 2021-03-14 v2.0h non-zero parskip adjustments
- (C:\Users\hosse\AppData\Roaming\MiKTeX\tex/latex/kvoptions\kvoptions.sty
+
+(C:\Users\jafari.h\AppData\Roaming\MiKTeX\tex/latex/kvoptions\kvoptions.sty
 Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
- (C:\Users\hosse\AppData\Roaming\MiKTeX\tex/generic/ltxcmds\ltxcmds.sty
+
+(C:\Users\jafari.h\AppData\Roaming\MiKTeX\tex/generic/ltxcmds\ltxcmds.sty
 Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
-) (C:\Users\hosse\AppData\Roaming\MiKTeX\tex/latex/kvsetkeys\kvsetkeys.sty
+)
+(C:\Users\jafari.h\AppData\Roaming\MiKTeX\tex/latex/kvsetkeys\kvsetkeys.sty
 Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
-))) (C:\Program Files\MiKTeX\tex/latex/xcolor\xcolor.sty
+)))
+(C:\Program Files\MiKTeX\tex/latex/xcolor\xcolor.sty
 Package: xcolor 2024/09/29 v3.02 LaTeX color extensions (UK)
- (C:\Program Files\MiKTeX\tex/latex/graphics-cfg\color.cfg
+
+(C:\Program Files\MiKTeX\tex/latex/graphics-cfg\color.cfg
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package xcolor Info: Driver file: pdftex.def on input line 274.
- (C:\Program Files\MiKTeX\tex/latex/graphics-def\pdftex.def
+
+(C:\Program Files\MiKTeX\tex/latex/graphics-def\pdftex.def
 File: pdftex.def 2025/09/29 v1.2d Graphics/color driver for pdftex
-) (C:\Program Files\MiKTeX\tex/latex/graphics\mathcolor.ltx)
+)
+(C:\Program Files\MiKTeX\tex/latex/graphics\mathcolor.ltx)
 Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1349.
 Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1353.
 Package xcolor Info: Model `RGB' extended on input line 1365.
@@ -200,9 +227,11 @@ Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1369.
 Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1370.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1371.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1372.
-) (C:\Users\hosse\AppData\Roaming\MiKTeX\tex/latex/geometry\geometry.sty
+)
+(C:\Users\jafari.h\AppData\Roaming\MiKTeX\tex/latex/geometry\geometry.sty
 Package: geometry 2026/03/07 v6.0 Page Geometry
- (C:\Program Files\MiKTeX\tex/generic/iftex\ifvtex.sty
+
+(C:\Program Files\MiKTeX\tex/generic/iftex\ifvtex.sty
 Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 )
 \Gm@cnth=\count298
@@ -217,7 +246,9 @@ Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 \Gm@layouthoffset=\dimen165
 \Gm@layoutvoffset=\dimen166
 \Gm@dimlist=\toks27
- (C:\Users\hosse\AppData\Roaming\MiKTeX\tex/latex/geometry\geometry.cfg)) (C:\Program Files\MiKTeX\tex/latex/tools\longtable.sty
+
+(C:\Users\jafari.h\AppData\Roaming\MiKTeX\tex/latex/geometry\geometry.cfg))
+(C:\Program Files\MiKTeX\tex/latex/tools\longtable.sty
 Package: longtable 2025-10-13 v4.24 Multi-page Table package (DPC)
 \LTleft=\skip55
 \LTright=\skip56
@@ -235,7 +266,8 @@ Package: longtable 2025-10-13 v4.24 Multi-page Table package (DPC)
 \c@LT@tables=\count304
 \c@LT@chunks=\count305
 \LT@p@ftn=\toks28
-) (C:\Users\hosse\AppData\Roaming\MiKTeX\tex/latex/booktabs\booktabs.sty
+)
+(C:\Users\jafari.h\AppData\Roaming\MiKTeX\tex/latex/booktabs\booktabs.sty
 Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \heavyrulewidth=\dimen168
 \lightrulewidth=\dimen169
@@ -254,7 +286,8 @@ Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \@thisruleclass=\count308
 \@lastruleclass=\count309
 \@thisrulewidth=\dimen180
-) (C:\Program Files\MiKTeX\tex/latex/tools\array.sty
+)
+(C:\Program Files\MiKTeX\tex/latex/tools\array.sty
 Package: array 2025/09/25 v2.6n Tabular extension package (FMi)
 \col@sep=\dimen181
 \ar@mcellbox=\box61
@@ -263,13 +296,15 @@ Package: array 2025/09/25 v2.6n Tabular extension package (FMi)
 \extratabsurround=\skip59
 \backup@length=\skip60
 \ar@cellbox=\box62
-) (C:\Users\hosse\AppData\Roaming\MiKTeX\tex/latex/multirow\multirow.sty
+)
+(C:\Users\jafari.h\AppData\Roaming\MiKTeX\tex/latex/multirow\multirow.sty
 Package: multirow 2024/11/12 v2.9 Span multiple rows of a table
 \multirow@colwidth=\skip61
 \multirow@cntb=\count310
 \multirow@dima=\skip62
 \bigstrutjot=\dimen183
-) (C:\Program Files\MiKTeX\tex/latex/tools\calc.sty
+)
+(C:\Program Files\MiKTeX\tex/latex/tools\calc.sty
 Package: calc 2025/03/01 v4.3b Infix arithmetic (KKT,FJ)
 \calc@Acount=\count311
 \calc@Bcount=\count312
@@ -281,35 +316,46 @@ LaTeX Info: Redefining \setlength on input line 86.
 LaTeX Info: Redefining \addtolength on input line 87.
 \calc@Ccount=\count313
 \calc@Cskip=\skip65
-) (C:\Users\hosse\AppData\Roaming\MiKTeX\tex/latex/footnotehyper\footnotehyper.sty
+)
+(C:\Users\jafari.h\AppData\Roaming\MiKTeX\tex/latex/footnotehyper\footnotehyper
+.sty
 Package: footnotehyper 2025/11/15 v1.1f hyperref aware footnote.sty (JFB)
 \FNH@notes=\box63
 \FNH@width=\dimen186
 \FNH@toks=\toks30
 ) (C:\Program Files\MiKTeX\tex/latex/graphics\graphicx.sty
 Package: graphicx 2024/12/31 v1.2e Enhanced LaTeX Graphics (DPC,SPQR)
- (C:\Program Files\MiKTeX\tex/latex/graphics\graphics.sty
+
+(C:\Program Files\MiKTeX\tex/latex/graphics\graphics.sty
 Package: graphics 2024/08/06 v1.4g Standard LaTeX Graphics (DPC,SPQR)
- (C:\Program Files\MiKTeX\tex/latex/graphics\trig.sty
+
+(C:\Program Files\MiKTeX\tex/latex/graphics\trig.sty
 Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
-) (C:\Program Files\MiKTeX\tex/latex/graphics-cfg\graphics.cfg
+)
+(C:\Program Files\MiKTeX\tex/latex/graphics-cfg\graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 106.
 )
 \Gin@req@height=\dimen187
 \Gin@req@width=\dimen188
-) (C:\Users\hosse\AppData\Roaming\MiKTeX\tex/latex/pdflscape\pdflscape.sty
+)
+(C:\Users\jafari.h\AppData\Roaming\MiKTeX\tex/latex/pdflscape\pdflscape.sty
 Package: pdflscape 2022-10-27 v0.13 Display of landscape pages in PDF
- (C:\Users\hosse\AppData\Roaming\MiKTeX\tex/latex/pdflscape\pdflscape-nometadata.sty
-Package: pdflscape-nometadata 2022-10-28 v0.13 Display of landscape pages in PDF (HO)
+
+(C:\Users\jafari.h\AppData\Roaming\MiKTeX\tex/latex/pdflscape\pdflscape-nometad
+ata.sty
+Package: pdflscape-nometadata 2022-10-28 v0.13 Display of landscape pages in PD
+F (HO)
  (C:\Program Files\MiKTeX\tex/latex/graphics\lscape.sty
 Package: lscape 2020/05/28 v3.02 Landscape Pages (DPC)
 )
 Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
-)) (C:\Users\hosse\AppData\Roaming\MiKTeX\tex/generic/soul\soul.sty
+))
+(C:\Users\jafari.h\AppData\Roaming\MiKTeX\tex/generic/soul\soul.sty
 Package: soul 2026-03-06 v3.2 Permit use of UTF-8 characters in soul (HO)
- (C:\Users\hosse\AppData\Roaming\MiKTeX\tex/generic/soul\soul-ori.sty
+
+(C:\Users\jafari.h\AppData\Roaming\MiKTeX\tex/generic/soul\soul-ori.sty
 Package: soul-ori 2026-03-06 v3.2 letterspacing/underlining (mf)
 \SOUL@word=\toks31
 \SOUL@lasttoken=\toks32
@@ -331,48 +377,67 @@ Package: soul-ori 2026-03-06 v3.2 letterspacing/underlining (mf)
 \SOUL@ttwidth=\dimen195
 \SOUL@uldp=\dimen196
 \SOUL@ulht=\dimen197
-) (C:\Users\hosse\AppData\Roaming\MiKTeX\tex/generic/infwarerr\infwarerr.sty
+)
+(C:\Users\jafari.h\AppData\Roaming\MiKTeX\tex/generic/infwarerr\infwarerr.sty
 Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
-) (C:\Users\hosse\AppData\Roaming\MiKTeX\tex/generic/etexcmds\etexcmds.sty
+)
+(C:\Users\jafari.h\AppData\Roaming\MiKTeX\tex/generic/etexcmds\etexcmds.sty
 Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
-)) (C:\Users\hosse\AppData\Roaming\MiKTeX\tex/latex/bookmark\bookmark.sty
+))
+(C:\Users\jafari.h\AppData\Roaming\MiKTeX\tex/latex/bookmark\bookmark.sty
 Package: bookmark 2026-05-21 v1.32 PDF bookmarks (HO)
- (C:\Program Files\MiKTeX\tex/latex/hyperref\hyperref.sty
+
+(C:\Program Files\MiKTeX\tex/latex/hyperref\hyperref.sty
 Package: hyperref 2025-07-12 v7.01o Hypertext links for LaTeX
- (C:\Users\hosse\AppData\Roaming\MiKTeX\tex/generic/kvdefinekeys\kvdefinekeys.sty
+
+(C:\Users\jafari.h\AppData\Roaming\MiKTeX\tex/generic/kvdefinekeys\kvdefinekeys
+.sty
 Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
-) (C:\Users\hosse\AppData\Roaming\MiKTeX\tex/generic/pdfescape\pdfescape.sty
+)
+(C:\Users\jafari.h\AppData\Roaming\MiKTeX\tex/generic/pdfescape\pdfescape.sty
 Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
- (C:\Program Files\MiKTeX\tex/generic/pdftexcmds\pdftexcmds.sty
-Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO)
+
+(C:\Program Files\MiKTeX\tex/generic/pdftexcmds\pdftexcmds.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
+)
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 Package pdftexcmds Info: \pdfdraftmode found.
-)) (C:\Users\hosse\AppData\Roaming\MiKTeX\tex/latex/hycolor\hycolor.sty
+))
+(C:\Users\jafari.h\AppData\Roaming\MiKTeX\tex/latex/hycolor\hycolor.sty
 Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
-) (C:\Program Files\MiKTeX\tex/latex/hyperref\nameref.sty
+)
+(C:\Program Files\MiKTeX\tex/latex/hyperref\nameref.sty
 Package: nameref 2025-06-21 v2.57 Cross-referencing by name of section
- (C:\Users\hosse\AppData\Roaming\MiKTeX\tex/latex/refcount\refcount.sty
+
+(C:\Users\jafari.h\AppData\Roaming\MiKTeX\tex/latex/refcount\refcount.sty
 Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
-) (C:\Users\hosse\AppData\Roaming\MiKTeX\tex/generic/gettitlestring\gettitlestring.sty
+)
+(C:\Users\jafari.h\AppData\Roaming\MiKTeX\tex/generic/gettitlestring\gettitlest
+ring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count318
-) (C:\Users\hosse\AppData\Roaming\MiKTeX\tex/generic/stringenc\stringenc.sty
-Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO)
+)
+(C:\Users\jafari.h\AppData\Roaming\MiKTeX\tex/generic/stringenc\stringenc.sty
+Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO
+)
 )
 \@linkdim=\dimen198
 \Hy@linkcounter=\count319
 \Hy@pagecounter=\count320
- (C:\Program Files\MiKTeX\tex/latex/hyperref\pd1enc.def
+
+(C:\Program Files\MiKTeX\tex/latex/hyperref\pd1enc.def
 File: pd1enc.def 2025-07-12 v7.01o Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
 ... no UTF-8 mapping file for font encoding PD1
-) (C:\Users\hosse\AppData\Roaming\MiKTeX\tex/generic/intcalc\intcalc.sty
+)
+(C:\Users\jafari.h\AppData\Roaming\MiKTeX\tex/generic/intcalc\intcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 )
 \Hy@SavedSpaceFactor=\count321
- (C:\Program Files\MiKTeX\tex/latex/hyperref\puenc.def
+
+(C:\Program Files\MiKTeX\tex/latex/hyperref\puenc.def
 File: puenc.def 2025-07-12 v7.01o Hyperref: PDF Unicode definition (HO)
 Now handling font encoding PU ...
 ... no UTF-8 mapping file for font encoding PU
@@ -386,16 +451,20 @@ Package hyperref Info: Backreferencing OFF on input line 4215.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4462.
 \c@Hy@tempcnt=\count322
- (C:\Program Files\MiKTeX\tex/latex/url\url.sty
+
+(C:\Program Files\MiKTeX\tex/latex/url\url.sty
 \Urlmuskip=\muskip18
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 4801.
 \XeTeXLinkMargin=\dimen199
- (C:\Users\hosse\AppData\Roaming\MiKTeX\tex/generic/bitset\bitset.sty
+
+(C:\Users\jafari.h\AppData\Roaming\MiKTeX\tex/generic/bitset\bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
- (C:\Users\hosse\AppData\Roaming\MiKTeX\tex/generic/bigintcalc\bigintcalc.sty
-Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO)
+
+(C:\Users\jafari.h\AppData\Roaming\MiKTeX\tex/generic/bigintcalc\bigintcalc.sty
+Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
+)
 ))
 \Fld@menulength=\count323
 \Field@Width=\dimen256
@@ -416,25 +485,34 @@ Package hyperref Info: Driver (autodetected): hpdftex.
 File: hpdftex.def 2025-07-12 v7.01o Hyperref driver for pdfTeX
 \Fld@listcount=\count327
 \c@bookmark@seq@number=\count328
- (C:\Users\hosse\AppData\Roaming\MiKTeX\tex/latex/rerunfilecheck\rerunfilecheck.sty
+
+(C:\Users\jafari.h\AppData\Roaming\MiKTeX\tex/latex/rerunfilecheck\rerunfileche
+ck.sty
 Package: rerunfilecheck 2025-06-21 v1.11 Rerun checks for auxiliary files (HO)
- (C:\Users\hosse\AppData\Roaming\MiKTeX\tex/generic/uniquecounter\uniquecounter.sty
+
+(C:\Users\jafari.h\AppData\Roaming\MiKTeX\tex/generic/uniquecounter\uniquecount
+er.sty
 Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 )
-Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 284.
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+84.
 )
 \Hy@SectionHShift=\skip67
 ) (C:\Program Files\MiKTeX\tex/latex/l3backend\l3backend-pdftex.def
 File: l3backend-pdftex.def 2025-10-09 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count329
-) (C:\Users\hosse\AppData\Roaming\MiKTeX\tex/latex/bookmark\bkm-pdftex.def
+)
+(C:\Users\jafari.h\AppData\Roaming\MiKTeX\tex/latex/bookmark\bkm-pdftex.def
 File: bkm-pdftex.def 2026-05-21 v1.32 bookmark driver for pdfTeX (HO)
 \BKM@id=\count330
-)) (C:\Users\hosse\AppData\Roaming\MiKTeX\tex/latex/xurl\xurl.sty
+))
+(C:\Users\jafari.h\AppData\Roaming\MiKTeX\tex/latex/xurl\xurl.sty
 Package: xurl 2022/01/09 v 0.10 modify URL breaks
 )
-LaTeX Font Info:    Trying to load font information for T1+lmr on input line 104.
- (C:\Program Files\MiKTeX\tex/latex/lm\t1lmr.fd
+LaTeX Font Info:    Trying to load font information for T1+lmr on input line 10
+4.
+
+(C:\Program Files\MiKTeX\tex/latex/lm\t1lmr.fd
 File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ) (manuscript.aux)
 \openout1 = `manuscript.aux'.
@@ -474,9 +552,12 @@ Package microtype Info: Patching command `\showhyphens'.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of interword spacing.
 Package microtype Info: No adjustment of character kerning.
- (C:\Users\hosse\AppData\Roaming\MiKTeX\tex/latex/microtype\mt-cmr.cfg
-File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman (RS)
-) (C:\Program Files\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
+
+(C:\Users\jafari.h\AppData\Roaming\MiKTeX\tex/latex/microtype\mt-cmr.cfg
+File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
+(RS)
+)
+(C:\Program Files\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count331
 \scratchdimen=\dimen258
@@ -491,8 +572,10 @@ File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
 \everyMPtoPDFconversion=\toks38
 ) (C:\Program Files\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
-Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
- (C:\Program Files\MiKTeX\tex/latex/00miktex\epstopdf-sys.cfg
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
+
+(C:\Program Files\MiKTeX\tex/latex/00miktex\epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
 *geometry* driver: auto-detecting
@@ -530,20 +613,27 @@ File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 Package hyperref Info: Link coloring OFF on input line 104.
-LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 107.
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 1
+07.
 (C:\Program Files\MiKTeX\tex/latex/lm\ot1lmr.fd
 File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 107.
- (C:\Program Files\MiKTeX\tex/latex/lm\omllmm.fd
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 1
+07.
+
+(C:\Program Files\MiKTeX\tex/latex/lm\omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 107.
- (C:\Program Files\MiKTeX\tex/latex/lm\omslmsy.fd
+LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
+107.
+
+(C:\Program Files\MiKTeX\tex/latex/lm\omslmsy.fd
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 107.
- (C:\Program Files\MiKTeX\tex/latex/lm\omxlmex.fd
+LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
+107.
+
+(C:\Program Files\MiKTeX\tex/latex/lm\omxlmex.fd
 File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
@@ -552,55 +642,91 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <8> on input line 107.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <6> on input line 107.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 107.
- (C:\Program Files\MiKTeX\tex/latex/amsfonts\umsa.fd
+LaTeX Font Info:    Trying to load font information for U+msa on input line 107
+.
+
+(C:\Program Files\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-) (C:\Users\hosse\AppData\Roaming\MiKTeX\tex/latex/microtype\mt-msa.cfg
+)
+(C:\Users\jafari.h\AppData\Roaming\MiKTeX\tex/latex/microtype\mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 107.
- (C:\Program Files\MiKTeX\tex/latex/amsfonts\umsb.fd
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) (C:\Users\hosse\AppData\Roaming\MiKTeX\tex/latex/microtype\mt-msb.cfg
-File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
-) (sections/01_introduction.tex [1
+LaTeX Font Info:    Trying to load font information for U+msb on input line 107
+.
 
-{C:/Users/hosse/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}]
+(C:\Program Files\MiKTeX\tex/latex/amsfonts\umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+(C:\Users\jafari.h\AppData\Roaming\MiKTeX\tex/latex/microtype\mt-msb.cfg
+File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+)
+(sections/01_introduction.tex [1
+
+{C:/Users/jafari.h/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Program
+ Files/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}]
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <10> on input line 15.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <7> on input line 15.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <5> on input line 15.
-LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 23.
- (C:\Program Files\MiKTeX\tex/latex/lm\ts1lmr.fd
+LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 2
+3.
+
+(C:\Program Files\MiKTeX\tex/latex/lm\ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-)) (sections/02_related_work.tex [2{C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}{C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}] [3]) (sections/03_method.tex [4{C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}{C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-mathex.enc}] [5] [6] [7]
-LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 301.
+)) (sections/02_related_work.tex [2{C:/Program Files/MiKTeX/fonts/enc/dvips/lm/
+lm-mathit.enc}{C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C:/Program
+ Files/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}] [3]) (sections/03_method.tex [4{C
+:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}{C:/Program Files/MiKTe
+X/fonts/enc/dvips/lm/lm-mathex.enc}] [5] [6] [7]
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 3
+01.
  (C:\Program Files\MiKTeX\tex/latex/lm\t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <9> on input line 348.
-) (sections/04_experiments.tex [8] [9] [10] (sections/04_ablation_experiments.tex) [11]
-sections/04_experiments.tex:303: ignored error: Infinite glue shrinkage found in box being split [12]) (sections/05_discussion.tex [13]) (sections/06_conclusion.tex [14]) (manuscript.bbl [15]) [16] (manuscript.aux)
+)
+(sections/04_experiments.tex [8] [9] [10] (sections/04_ablation_experiments.tex
+) [11]
+ignored error: Infinite glue shrinkage found in box being split [12])
+(sections/05_discussion.tex [13]) (sections/06_conclusion.tex [14])
+(manuscript.bbl [15]) [16] (manuscript.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 14908 strings out of 467871
- 233516 string characters out of 5428444
- 718456 words of memory out of 5000000
+ 14904 strings out of 467871
+ 234290 string characters out of 5428434
+ 718562 words of memory out of 5000000
  43082 multiletter control sequences out of 15000+600000
- 730759 words of font info for 249 fonts, out of 8000000 for 9000
+ 730670 words of font info for 248 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 77i,17n,81p,1422b,612s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbx7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbx9.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmex10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmmi10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmmi6.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmmi7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmmi9.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmmib10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr17.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr6.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr9.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmri9.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmsy6.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmsy7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmsy8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmsy9.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on manuscript.pdf (16 pages, 532787 bytes).
+ 77i,15n,81p,1563b,612s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Program Files/M
+iKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Program Files/MiKTeX/fonts/type1/pub
+lic/lm/lmbx7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbx9.pfb><C:/P
+rogram Files/MiKTeX/fonts/type1/public/lm/lmex10.pfb><C:/Program Files/MiKTeX/f
+onts/type1/public/lm/lmmi10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/
+lmmi6.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmmi7.pfb><C:/Program 
+Files/MiKTeX/fonts/type1/public/lm/lmmi9.pfb><C:/Program Files/MiKTeX/fonts/typ
+e1/public/lm/lmmib10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr10.p
+fb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr17.pfb><C:/Program Files/M
+iKTeX/fonts/type1/public/lm/lmr6.pfb><C:/Program Files/MiKTeX/fonts/type1/publi
+c/lm/lmr7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Progr
+am Files/MiKTeX/fonts/type1/public/lm/lmr9.pfb><C:/Program Files/MiKTeX/fonts/t
+ype1/public/lm/lmri9.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmsy10.
+pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmsy6.pfb><C:/Program Files/
+MiKTeX/fonts/type1/public/lm/lmsy7.pfb><C:/Program Files/MiKTeX/fonts/type1/pub
+lic/lm/lmsy8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmsy9.pfb><C:/P
+rogram Files/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/Program Files/MiKTeX/f
+onts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on manuscript.pdf (16 pages, 534048 bytes).
 PDF statistics:
- 572 PDF objects out of 1000 (max. 8388607)
+ 571 PDF objects out of 1000 (max. 8388607)
  127 named destinations out of 1000 (max. 500000)
  57665 words of extra memory for PDF output out of 61914 (max. 10000000)
 

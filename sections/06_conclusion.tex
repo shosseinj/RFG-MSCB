@@ -12,8 +12,9 @@ The evaluation protocol reserves Kvasir-SEG and CVC-ClinicDB subsets for final
 seen-domain testing and uses CVC-300, CVC-ColonDB, and ETIS-LaribPolypDB only
 for external testing; checkpoint selection is confined to the internal validation split.
 % TODO: insert the final protocol-matched three-seed outcome after the new runs.
-The parameter-efficient modification is localized to Stage 3, adds 2.4\% parameters
-relative to FAFEM for a 30.06 M-parameter architecture, and retains
+The parameter-efficient modification is localized to Stage 3, adds 0.08 M parameters
+over FAFEM + MSCB without additional reported GFLOPs at the displayed precision,
+and retains
 depthwise-separable convolution in the remaining decoder.
 
 Future work should examine placement across multiple seeds, separate residualization
