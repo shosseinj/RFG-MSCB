@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.8.31)  2 SEP 2026 10:09
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.8.31)  2 SEP 2026 12:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -699,11 +699,11 @@ L3 programming layer <2025-12-24>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 14904 strings out of 467871
- 234290 string characters out of 5428434
- 718562 words of memory out of 5000000
+ 14906 strings out of 467871
+ 234312 string characters out of 5428434
+ 719559 words of memory out of 5000000
  43082 multiletter control sequences out of 15000+600000
- 730670 words of font info for 248 fonts, out of 8000000 for 9000
+ 730753 words of font info for 249 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  77i,15n,81p,1563b,612s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Program Files/M
@@ -724,7 +724,7 @@ MiKTeX/fonts/type1/public/lm/lmsy7.pfb><C:/Program Files/MiKTeX/fonts/type1/pub
 lic/lm/lmsy8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmsy9.pfb><C:/P
 rogram Files/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/Program Files/MiKTeX/f
 onts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on manuscript.pdf (16 pages, 534048 bytes).
+Output written on manuscript.pdf (16 pages, 534154 bytes).
 PDF statistics:
  571 PDF objects out of 1000 (max. 8388607)
  127 named destinations out of 1000 (max. 500000)

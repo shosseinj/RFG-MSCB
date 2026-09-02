@@ -177,11 +177,11 @@ are presented below.
 
 % TODO: replace with new PraNet-style split three-seed results and recompute all rank statements.
 On Kvasir-SEG, the proposed model achieved the highest displayed mDice and mIoU,
-reaching $0.931\pm0.004$ and $0.883\pm0.006$, respectively. The closest displayed
-method, PFPRNet, reported mDice of 0.930 and mIoU of 0.881. On CVC-ClinicDB,
-the proposed model achieved $0.937\pm0.002$ mDice and $0.888\pm0.004$ mIoU.
-PFPRNet reported higher values for these two metrics, while the proposed model
-remained competitive across the displayed comparison.
+reaching $0.932\pm0.0044$ and $0.883\pm0.004$, respectively. PFPRNet was
+second-highest for both metrics, with mDice of 0.930 and mIoU of 0.881. On
+CVC-ClinicDB, the proposed model achieved $0.948\pm0.003$ mDice, which was
+second-highest to PFPRNet's 0.949, and the highest displayed mIoU at
+$0.904\pm0.004$.
 
 The 100 Kvasir-SEG and 62 CVC-ClinicDB images were reserved exclusively for final
 seen-set testing and did not participate in training, validation, checkpoint selection,
@@ -197,17 +197,17 @@ backbone initialization, model-selection criteria, and implementation details re
 Across the comparison tables, the best and second-best displayed values are shown in
 bold and underlined, respectively.
 
-% TODO: replace external-dataset results and variability statement after the final three-seed run.
 On the external datasets, mDice/mIoU were
-$0.882\pm0.002$/$0.810\pm0.002$ on CVC-300,
-$0.794\pm0.009$/$0.714\pm0.009$ on CVC-ColonDB, and
-$0.787\pm0.011$/$0.707\pm0.012$ on ETIS-LaribPolypDB. The largest between-seed
-variation in mDice and mIoU occurred on ETIS.
+$0.916\pm0.002$/$0.863\pm0.002$ on CVC-300,
+$0.801\pm0.009$/$0.745\pm0.008$ on CVC-ColonDB, and
+$0.815\pm0.012$/$0.757\pm0.013$ on ETIS-LaribPolypDB. Across these three
+external datasets, the displayed mDice ranged from 0.801 to 0.916 and mIoU
+ranged from 0.745 to 0.863; the largest between-seed variation in both metrics
+occurred on ETIS.
 
 \small
 \setlength{\tabcolsep}{5pt}
 \renewcommand{\arraystretch}{1.1}
-% TODO: replace Ours with new PraNet-style split three-seed results and recompute Kvasir-SEG rankings.
 \begin{longtable}{@{}p{0.24\textwidth}*{8}{>{\centering\arraybackslash}c}@{}}
 \caption{Quantitative comparison on Kvasir-SEG.}\label{tab:kvasir-comparison}\\
 \toprule\noalign{}
@@ -236,7 +236,7 @@ CIFFormer~\cite{cifformer} & 2025 & 0.926 & 0.876 & \textbf{0.929} &
 PFPRNet~\cite{pfprnet} & 2025 &
 \underline{0.930} &
 \underline{0.881} &
-0.920 &
+\underline{0.920} &
 0.935 &
 \textbf{0.971} &
 -- &
@@ -251,20 +251,19 @@ MSPN~\cite{mspn} & 2026 & 0.927 & 0.879 & -- & -- & -- & -- &
 DVFIP-Net~\cite{dvfipnet} & 2026 & 0.922 & 0.874 & -- & -- & -- & -- & -- \\
 
 \textbf{Ours} & -- &
-\textbf{\meanstd{0.931}{0.004}} &
-\textbf{\meanstd{0.883}{0.006}} &
-\meanstd{0.911}{0.005} &
-\meanstd{0.933}{0.003} &
-\meanstd{0.960}{0.003} &
-\underline{\meanstd{0.967}{0.003}} &
-\meanstd{0.024}{0.001} \\
+\textbf{\meanstd{0.932}{0.0044}} &
+\textbf{\meanstd{0.883}{0.004}} &
+\meanstd{0.904}{0.006} &
+\meanstd{0.934}{0.003} &
+\meanstd{0.958}{0.003} &
+\underline{\meanstd{0.968}{0.002}} &
+\meanstd{0.025}{0.001} \\
 \end{longtable}
 
 
 
 
 
-% TODO: replace Ours with new PraNet-style split three-seed results and recompute CVC-ClinicDB rankings.
 \begin{longtable}{@{}p{0.24\textwidth}*{8}{>{\centering\arraybackslash}c}@{}}
 \caption{Quantitative comparison on CVC-ClinicDB.}\label{tab:clinicdb-comparison}\\
 \toprule\noalign{}
@@ -287,22 +286,21 @@ MSBP-Net~\cite{msbpnet} & 2026 & 0.940 & 0.892 & 0.927 & 0.939 & 0.976 & -- &
 \underline{0.007} \\
 CIFFormer~\cite{cifformer} & 2025 & 0.944 & 0.897 & 0.941 & 0.934 & 0.972 & -- &
 \underline{0.007} \\
-PFPRNet~\cite{pfprnet} & 2025 & \textbf{0.949} & \textbf{0.903} & \underline{0.947} & \underline{0.957} &
+PFPRNet~\cite{pfprnet} & 2025 & \textbf{0.949} & \underline{0.903} & \underline{0.947} & \underline{0.957} &
 \textbf{0.989} & -- &
 \textbf{0.006} \\
-MLB-Net~\cite{mlbnet} & 2026 & \underline{0.945} & \underline{0.902} &
+MLB-Net~\cite{mlbnet} & 2026 & \underline{0.945} & 0.902 &
 \textbf{0.948} & \textbf{0.958} & \textbf{0.989} &
 \textbf{0.992} & \textbf{0.006} \\
-MSPN~\cite{mspn} & 2026 & 0.943 & \underline{0.902} & -- & -- & -- & -- &
+MSPN~\cite{mspn} & 2026 & 0.943 & 0.902 & -- & -- & -- & -- &
 \textbf{0.006} \\
 DVFIP-Net~\cite{dvfipnet} & 2026 & 0.942 & 0.896 & -- & -- & -- & -- & -- \\
-\textbf{Ours} & -- & \meanstd{0.937}{0.002} & \meanstd{0.888}{0.004} &
-\meanstd{0.925}{0.003} & \meanstd{0.947}{0.001} &
-\underline{\meanstd{0.978}{0.001}} & \meanstd{0.983}{0.001} &
-\meanstd{0.011}{0.0003} \\
+\textbf{Ours} & -- & \underline{\meanstd{0.948}{0.003}} & \textbf{\meanstd{0.904}{0.004}} &
+\meanstd{0.925}{0.001} & \meanstd{0.952}{0.001} &
+\underline{\meanstd{0.979}{0.001}} & \underline{\meanstd{0.988}{0.002}} &
+\meanstd{0.011}{0.001} \\
 \end{longtable}
 
-% TODO: replace Ours with new PraNet-style split three-seed results and recompute ETIS rankings.
 \begin{longtable}{@{}p{0.24\textwidth}*{8}{>{\centering\arraybackslash}c}@{}}
 \caption{Quantitative comparison on ETIS-LaribPolypDB.}\label{tab:etis-comparison}\\
 \toprule\noalign{}
@@ -323,22 +321,21 @@ MEGANet~\cite{meganet} & 2024 & 0.789 & 0.709 & 0.753 & 0.866 & 0.855 & 0.915
 & 0.015 \\
 MSBP-Net~\cite{msbpnet} & 2026 & 0.795 & 0.718 & 0.770 & 0.873 & 0.899 & -- &
 0.019 \\
-CIFFormer~\cite{cifformer} & 2025 & 0.810 & \underline{0.746} & \textbf{0.858} & 0.889 & \underline{0.918}
+CIFFormer~\cite{cifformer} & 2025 & 0.810 & 0.746 & \textbf{0.858} & 0.889 & \underline{0.918}
 & -- & \underline{0.013} \\
 PFPRNet~\cite{pfprnet} & 2025 & \textbf{0.828} & \textbf{0.764} & \underline{0.839} &
 \textbf{0.908} &
 \textbf{0.935} & -- & \textbf{0.012} \\
-MLB-Net~\cite{mlbnet} & 2026 & \underline{0.821} & 0.744 & 0.780 & \underline{0.899} & 0.914 &
+MLB-Net~\cite{mlbnet} & 2026 & \underline{0.821} & 0.744 & 0.780 & \underline{0.899} & \underline{0.914} &
 \textbf{0.935} & \underline{0.013} \\
 MSPN~\cite{mspn} & 2026 & 0.798 & 0.717 & -- & -- & -- & -- & 0.017 \\
 DVFIP-Net~\cite{dvfipnet} & 2026 & 0.811 & 0.730 & -- & -- & -- & -- & -- \\
-\textbf{Ours} & -- & \meanstd{0.787}{0.011} & \meanstd{0.707}{0.012} &
-\meanstd{0.753}{0.007} & \meanstd{0.878}{0.004} &
-\meanstd{0.902}{0.002} & \underline{\meanstd{0.916}{0.003}} &
-\meanstd{0.015}{0.001} \\
+\textbf{Ours} & -- & \meanstd{0.815}{0.012} & \underline{\meanstd{0.757}{0.013}} &
+\meanstd{0.742}{0.004} & \meanstd{0.879}{0.001} &
+\meanstd{0.901}{0.006} & \underline{\meanstd{0.927}{0.010}} &
+\meanstd{0.016}{0.001} \\
 \end{longtable}
 
-% TODO: replace Ours with new PraNet-style split three-seed results and recompute CVC-ColonDB rankings.
 \begin{longtable}{@{}p{0.24\textwidth}*{8}{>{\centering\arraybackslash}c}@{}}
 \caption{Quantitative comparison on CVC-ColonDB.}\label{tab:colondb-comparison}\\
 \toprule\noalign{}
@@ -367,13 +364,12 @@ MLB-Net~\cite{mlbnet} & 2026 & \textbf{0.832} & \textbf{0.757} & 0.825 &
 \textbf{0.886} & \textbf{0.924} & \textbf{0.931} & \textbf{0.023} \\
 MSPN~\cite{mspn} & 2026 & 0.811 & 0.734 & -- & -- & -- & -- & 0.029 \\
 DVFIP-Net~\cite{dvfipnet} & 2026 & \underline{0.826} & \underline{0.746} & -- & -- & -- & -- & -- \\
-\textbf{Ours} & -- & \meanstd{0.794}{0.009} & \meanstd{0.714}{0.009} &
-\meanstd{0.772}{0.007} & \meanstd{0.861}{0.006} &
-\meanstd{0.898}{0.004} & \underline{\meanstd{0.905}{0.004}} &
-\meanstd{0.035}{0.001} \\
+\textbf{Ours} & -- & \meanstd{0.801}{0.009} & \meanstd{0.745}{0.008} &
+\meanstd{0.762}{0.002} & \meanstd{0.862}{0.004} &
+\meanstd{0.895}{0.002} & \underline{\meanstd{0.911}{0.003}} &
+\meanstd{0.029}{0.001} \\
 \end{longtable}
 
-% TODO: replace Ours with new PraNet-style split three-seed results and recompute CVC-300 rankings.
 \begin{longtable}{@{}p{0.24\textwidth}*{8}{>{\centering\arraybackslash}c}@{}}
 \caption{Quantitative comparison on CVC-300 (EndoScene).}\label{tab:cvc300-comparison}\\
 \toprule\noalign{}
@@ -390,22 +386,22 @@ Methods & Year & mDice & mIoU & $F_{\beta}^{w}$ & $S_{\alpha}$ & $mE_{\phi}$ & $
 \endfoot
 \bottomrule\noalign{}
 \endlastfoot
-MEGANet~\cite{meganet} & 2024 & 0.899 & 0.834 & 0.882 & 0.935 & 0.966 & 0.969
+MEGANet~\cite{meganet} & 2024 & 0.899 & 0.834 & 0.882 & 0.935 & \underline{0.966} & \underline{0.969}
 & 0.007 \\
-MSBP-Net~\cite{msbpnet} & 2026 & 0.903 & \textbf{0.859} & \textbf{0.927} & \underline{0.942} & \underline{0.967} & -- &
+MSBP-Net~\cite{msbpnet} & 2026 & 0.903 & \underline{0.859} & \textbf{0.927} & \underline{0.942} & \underline{0.967} & -- &
 0.019 \\
 CIFFormer~\cite{cifformer} & 2025 & 0.883 & 0.822 & 0.912 & 0.939 & 0.961 & -- &
 0.100 \\
 PFPRNet~\cite{pfprnet} & 2025 & 0.891 & 0.833 & \underline{0.917} & 0.928 & 0.950 & -- &
 0.013 \\
-MLB-Net~\cite{mlbnet} & 2026 & \textbf{0.915} & \underline{0.852} & 0.909 &
+MLB-Net~\cite{mlbnet} & 2026 & \underline{0.915} & 0.852 & 0.909 &
 \textbf{0.974} & \textbf{0.974} & \textbf{0.978} & \textbf{0.005} \\
 MSPN~\cite{mspn} & 2026 & \underline{0.907} & 0.840 & -- & -- & -- & -- & \underline{0.006} \\
 DVFIP-Net~\cite{dvfipnet} & 2026 & 0.900 & 0.833 & -- & -- & -- & -- & -- \\
-\textbf{Ours} & -- & \meanstd{0.882}{0.002} & \meanstd{0.810}{0.002} &
-\meanstd{0.857}{0.001} & \meanstd{0.928}{0.003} &
-\meanstd{0.956}{0.005} & \underline{\meanstd{0.971}{0.002}} &
-\meanstd{0.007}{0.0003} \\
+\textbf{Ours} & -- & \textbf{\meanstd{0.916}{0.002}} & \textbf{\meanstd{0.863}{0.002}} &
+\meanstd{0.847}{0.005} & \meanstd{0.928}{0.004} &
+\meanstd{0.953}{0.004} & \meanstd{0.973}{0.005} &
+\textbf{\meanstd{0.005}{0.001}} \\
 \end{longtable}
 
 % Qualitative analysis is reserved for the pending figure-generation stage.
