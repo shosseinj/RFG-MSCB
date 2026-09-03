@@ -19,8 +19,9 @@ mIoU on Kvasir-SEG and CVC-300, the highest mIoU and second-highest mDice on
 CVC-ClinicDB, and the second-highest mIoU on CVC-ColonDB and ETIS.
 The parameter-efficient modification is localized to Stage 3, adds 0.08 M parameters
 over FAFEM + MSCB without additional reported GFLOPs at the displayed precision,
-and retains
-depthwise-separable convolution in the remaining decoder.
+and retains depthwise-separable convolution in the remaining decoder. In the ablation
+averaged across all five datasets, Residual RFG-MSCB achieved mDice/mIoU/MAE of
+0.887/0.832/0.014, compared with 0.869/0.803/0.018 for FAFEM + MSCB.
 
 Future work should examine placement across multiple seeds, separate residualization
 from frequency conditioning, and evaluate domain-adaptation strategies for the

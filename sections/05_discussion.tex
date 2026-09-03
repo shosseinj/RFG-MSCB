@@ -9,12 +9,13 @@ uses only the internal validation subset of the combined development pool.
 This design evaluates the sample-dependent guidance while retaining a convolutional
 multi-scale pathway for efficient decoding.
 
-% TODO: update result-dependent ablation interpretation after the protocol-matched rerun.
 FAFEM establishes the bottleneck feature-enhancement reference, MSCB-lite adds
 multi-scale refinement at Stage 3, and RFG-MSCB adds adaptive branch modulation to
-that path. The final increment is small, consistent with a localized refinement of the
-decoder. In the paired single-seed comparison, direct frequency guidance without
-residual coupling produced a lower result than MSCB-lite.
+that path. Averaged across all five datasets, the final increment over FAFEM + MSCB
+increases mDice from 0.869 to 0.887 and mIoU from 0.803 to 0.832 while reducing
+MAE from 0.018 to 0.014. This improvement is consistent with a localized refinement
+of the decoder. In the paired single-seed comparison, direct frequency guidance
+without residual coupling produced a lower result than MSCB-lite.
 
 The bounded residual design preserves the conventional MSCB response while allowing
 sample-dependent branch modulation. Because residualization and frequency conditioning
