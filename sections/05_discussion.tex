@@ -6,7 +6,6 @@ The evaluation protocol separates seen-domain testing on Kvasir-SEG and
 CVC-ClinicDB from external testing on CVC-300, CVC-ColonDB, and
 ETIS-LaribPolypDB. All five test sets are isolated from checkpoint selection, which
 uses only the internal validation subset of the combined development pool.
-% TODO: insert the new seen-test and external-test interpretation after the final three-seed run.
 This design evaluates the sample-dependent guidance while retaining a convolutional
 multi-scale pathway for efficient decoding.
 
@@ -32,7 +31,10 @@ test of transfer beyond the Kvasir-SEG/CVC-ClinicDB development domain.
 On the external datasets, the model obtained mDice/mIoU of 0.916/0.863 on
 CVC-300, 0.824/0.747 on CVC-ColonDB, and 0.816/0.763 on ETIS-LaribPolypDB.
 CVC-300 therefore had the strongest external result among the three evaluated
-datasets, while CVC-ColonDB and ETIS remained lower than the seen-domain results.
+datasets and the highest displayed mDice and mIoU in its comparison table. On
+CVC-ColonDB and ETIS, the model's mIoU was second-highest among the displayed
+methods, whereas its mDice was below the two highest displayed values. These results
+indicate uneven transfer across the external datasets rather than uniform superiority.
 
 Although the main comparison is restricted to methods with closely matched dataset
 partitioning, differences in optimization, augmentation, backbone initialization,

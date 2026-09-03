@@ -175,13 +175,14 @@ are presented below.
 
 \subsubsection{Quantitative analysis}\label{quantitative-analysis}
 
-% TODO: replace with new PraNet-style split three-seed results and recompute all rank statements.
 On Kvasir-SEG, the proposed model achieved the highest displayed mDice and mIoU,
 reaching $0.932\pm0.0044$ and $0.883\pm0.004$, respectively. PFPRNet was
 second-highest for both metrics, with mDice of 0.930 and mIoU of 0.881. On
 CVC-ClinicDB, the proposed model achieved $0.948\pm0.003$ mDice, which was
 second-highest to PFPRNet's 0.949, and the highest displayed mIoU at
-$0.904\pm0.004$.
+$0.904\pm0.004$. It also tied for the highest displayed $S_{\alpha}$ on
+CVC-ClinicDB at $0.958\pm0.001$ and was second-highest in $mE_{\phi}$ and
+$\max E_{\phi}$ at $0.979\pm0.001$ and $0.988\pm0.002$, respectively.
 
 The 100 Kvasir-SEG and 62 CVC-ClinicDB images were reserved exclusively for final
 seen-set testing and did not participate in training, validation, checkpoint selection,
@@ -201,9 +202,13 @@ On the external datasets, mDice/mIoU were
 $0.916\pm0.002$/$0.863\pm0.002$ on CVC-300,
 $0.824\pm0.009$/$0.747\pm0.008$ on CVC-ColonDB, and
 $0.816\pm0.012$/$0.763\pm0.013$ on ETIS-LaribPolypDB. Across these three
-external datasets, the displayed mDice ranged from 0.812 to 0.916 and mIoU
-ranged from 0.746 to 0.863; the largest between-seed variation in both metrics
-occurred on ETIS.
+external datasets, the model's mDice ranged from 0.816 to 0.916 and its mIoU
+ranged from 0.747 to 0.863; the largest between-seed variation in both metrics
+occurred on ETIS. On CVC-300, the model achieved the highest displayed mDice,
+mIoU, $S_{\alpha}$, and $\max E_{\phi}$ and tied for the lowest displayed MAE.
+Its mIoU, $mE_{\phi}$, and $\max E_{\phi}$ were second-highest on ETIS, while
+its mIoU and $\max E_{\phi}$ were second-highest and its MAE was second-lowest
+on CVC-ColonDB.
 
 \small
 \setlength{\tabcolsep}{5pt}
@@ -238,7 +243,7 @@ PFPRNet~\cite{pfprnet} & 2025 &
 \underline{0.881} &
 0.920 &
 0.935 &
-0.971 &
+\textbf{0.971} &
 -- &
 \textbf{0.019} \\
 
@@ -246,17 +251,17 @@ MLB-Net~\cite{mlbnet} & 2026 & 0.926 & 0.878 & \underline{0.921} & \underline{0.
 \underline{0.969} & \textbf{0.975} & 0.021 \\
 
 MSPN~\cite{mspn} & 2026 & 0.927 & 0.879 & -- & -- & -- & -- &
-\underline{0.021} \\
+0.021 \\
 
 DVFIP-Net~\cite{dvfipnet} & 2026 & 0.922 & 0.874 & -- & -- & -- & -- & -- \\
 
 \textbf{Ours} & -- &
 \textbf{\meanstd{0.932}{0.0044}} &
 \textbf{\meanstd{0.883}{0.004}} &
-\meanstd{0.904}{0.006} &
+\meanstd{0.914}{0.006} &
 \meanstd{0.936}{0.003} &
-\textbf{\meanstd{0.972}{0.003}} &
-\underline{\meanstd{0.968}{0.002}} &
+\meanstd{0.962}{0.003} &
+\underline{\meanstd{0.974}{0.002}} &
 \underline{\meanstd{0.020}{0.001}} \\
 \end{longtable}
 
@@ -281,7 +286,7 @@ Methods & Year & mDice & mIoU & $F_{\beta}^{w}$ & $S_{\alpha}$ & $mE_{\phi}$ & $
 \bottomrule\noalign{}
 \endlastfoot
 MEGANet~\cite{meganet} & 2024 & 0.938 & 0.894 & 0.940 & 0.950 & -- &
-\underline{0.987} & \underline{0.007} \\
+0.987 & \underline{0.007} \\
 MSBP-Net~\cite{msbpnet} & 2026 & 0.940 & 0.892 & 0.927 & 0.939 & 0.976 & -- &
 \underline{0.007} \\
 CIFFormer~\cite{cifformer} & 2025 & 0.944 & 0.897 & 0.941 & 0.934 & 0.972 & -- &
@@ -289,7 +294,7 @@ CIFFormer~\cite{cifformer} & 2025 & 0.944 & 0.897 & 0.941 & 0.934 & 0.972 & -- &
 PFPRNet~\cite{pfprnet} & 2025 & \textbf{0.949} & \underline{0.903} & \underline{0.947} & \underline{0.957} &
 \textbf{0.989} & -- &
 \textbf{0.006} \\
-MLB-Net~\cite{mlbnet} & 2026 & \underline{0.945} & 0.902 &
+MLB-Net~\cite{mlbnet} & 2026 & 0.945 & 0.902 &
 \textbf{0.948} & \textbf{0.958} & \textbf{0.989} &
 \textbf{0.992} & \textbf{0.006} \\
 MSPN~\cite{mspn} & 2026 & 0.943 & 0.902 & -- & -- & -- & -- &
@@ -321,7 +326,7 @@ MEGANet~\cite{meganet} & 2024 & 0.789 & 0.709 & 0.753 & 0.866 & 0.855 & 0.915
 & 0.015 \\
 MSBP-Net~\cite{msbpnet} & 2026 & 0.795 & 0.718 & 0.770 & 0.873 & 0.899 & -- &
 0.019 \\
-CIFFormer~\cite{cifformer} & 2025 & 0.810 & 0.746 & \textbf{0.858} & 0.889 & \underline{0.918}
+CIFFormer~\cite{cifformer} & 2025 & 0.810 & 0.746 & \textbf{0.858} & 0.889 & 0.918
 & -- & \underline{0.013} \\
 PFPRNet~\cite{pfprnet} & 2025 & \textbf{0.828} & \textbf{0.764} & \underline{0.839} &
 \textbf{0.908} &
@@ -357,7 +362,7 @@ MEGANet~\cite{meganet} & 2024 & 0.793 & 0.714 & 0.779 & 0.854 & 0.892 & 0.895
 MSBP-Net~\cite{msbpnet} & 2026 & 0.810 & 0.731 & 0.810 & 0.861 & 0.912 & -- &
 0.029 \\
 CIFFormer~\cite{cifformer} & 2025 & 0.823 & 0.741 & \textbf{0.851} & 0.874 & \underline{0.918} & -- &
-\underline{0.026} \\
+0.026 \\
 PFPRNet~\cite{pfprnet} & 2025 & 0.819 & 0.741 & \underline{0.843} & \underline{0.882} & 0.915 & -- &
 0.028 \\
 MLB-Net~\cite{mlbnet} & 2026 & \textbf{0.832} & \textbf{0.757} & 0.825 &
@@ -366,7 +371,7 @@ MSPN~\cite{mspn} & 2026 & 0.811 & 0.734 & -- & -- & -- & -- & 0.029 \\
 DVFIP-Net~\cite{dvfipnet} & 2026 & \underline{0.826} & 0.746 & -- & -- & -- & -- & -- \\
 \textbf{Ours} & -- & \meanstd{0.824}{0.009} & \underline{\meanstd{0.747}{0.008}} &
 \meanstd{0.832}{0.002} & \meanstd{0.862}{0.004} &
-\underline{\meanstd{0.919}{0.002}} & \meanstd{0.911}{0.003} &
+\meanstd{0.911}{0.003} & \underline{\meanstd{0.919}{0.002}} &
 \underline{\meanstd{0.025}{0.001}} \\
 \end{longtable}
 
@@ -386,9 +391,9 @@ Methods & Year & mDice & mIoU & $F_{\beta}^{w}$ & $S_{\alpha}$ & $mE_{\phi}$ & $
 \endfoot
 \bottomrule\noalign{}
 \endlastfoot
-MEGANet~\cite{meganet} & 2024 & 0.899 & 0.834 & 0.882 & 0.935 & \underline{0.966} & \underline{0.969}
+MEGANet~\cite{meganet} & 2024 & 0.899 & 0.834 & 0.882 & 0.935 & 0.966 & 0.969
 & 0.007 \\
-MSBP-Net~\cite{msbpnet} & 2026 & 0.903 & \underline{0.859} & \textbf{0.927} & \underline{0.942} & \underline{0.967} & -- &
+MSBP-Net~\cite{msbpnet} & 2026 & 0.903 & \underline{0.859} & \textbf{0.927} & 0.942 & 0.967 & -- &
 0.019 \\
 CIFFormer~\cite{cifformer} & 2025 & 0.883 & 0.822 & 0.912 & 0.939 & 0.961 & -- &
 0.100 \\
@@ -396,7 +401,7 @@ PFPRNet~\cite{pfprnet} & 2025 & 0.891 & 0.833 & \underline{0.917} & 0.928 & 0.95
 0.013 \\
 MLB-Net~\cite{mlbnet} & 2026 & \underline{0.915} & 0.852 & 0.909 &
 \underline{0.974} & \textbf{0.974} & \underline{0.978} & \textbf{0.005} \\
-MSPN~\cite{mspn} & 2026 & \underline{0.907} & 0.840 & -- & -- & -- & -- & \underline{0.006} \\
+MSPN~\cite{mspn} & 2026 & 0.907 & 0.840 & -- & -- & -- & -- & \underline{0.006} \\
 DVFIP-Net~\cite{dvfipnet} & 2026 & 0.900 & 0.833 & -- & -- & -- & -- & -- \\
 \textbf{Ours} & -- & \textbf{\meanstd{0.916}{0.002}} & \textbf{\meanstd{0.863}{0.002}} &
 \meanstd{0.847}{0.005} & \textbf{\meanstd{0.975}{0.004}} &
