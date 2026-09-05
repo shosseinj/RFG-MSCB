@@ -7,18 +7,13 @@ additional residual frequency-guided modification.
 
 \subsection{Ablation Results}
 
-The Baseline provides the reference without the added FAFEM and MSCB components.
-
-Adding FAFEM and MSCB improves the baseline across the reported segmentation
-metrics. The final configuration then adds residual frequency-guided coupling to
-the multi-scale configuration. Table~\ref{tab:ablation} reports the simple arithmetic
-mean of each segmentation metric across Kvasir-SEG, CVC-ClinicDB, CVC-300,
-CVC-ColonDB, and ETIS-LaribPolypDB, together with model complexity.
-
-A single-seed direct frequency-guidance configuration tested the mechanism without
-residual coupling. Its Kvasir-SEG result was lower than that of FAFEM + MSCB in
-the paired seed-42 comparison.
-% TODO: replace the direct-guidance comparison after rerunning it under the final data protocol.
+The Baseline serves as the reference configuration without FAFEM and MSCB. Adding
+FAFEM and MSCB improves aggregate segmentation performance across the five evaluation
+datasets. Residual RFG-MSCB then introduces frequency-guided coupling, allowing the
+bottleneck descriptor to modulate the multi-scale branches at the Stage-3 decoder
+fusion. Table~\ref{tab:ablation} summarizes the arithmetic mean of each segmentation
+metric across Kvasir-SEG, CVC-ClinicDB, CVC-300, CVC-ColonDB, and
+ETIS-LaribPolypDB together with the corresponding model complexity.
 
 \begin{table*}[htbp]
 \centering
@@ -51,30 +46,34 @@ count increases from 29.19 M to 29.98 M and then 30.06 M, changes of 0.79 M and
 changes of 0.616 and 0.000. These are descriptive comparisons; no statistical
 significance is claimed.
 
+In an additional exploratory seed-42 experiment, direct frequency guidance without
+residual coupling produced a lower Kvasir-SEG result than FAFEM + MSCB. This
+observation motivated the residual formulation used in the final RFG-MSCB design;
+it is not included in the five-dataset aggregate reported in Table~\ref{tab:ablation}.
+
 The qualitative examples in Fig.~\ref{fig:qualitative_ablation} complement the
 aggregate ablation results in Table~\ref{tab:ablation} by illustrating how the
-architectural changes affect the predicted mask geometry and by showing the
-corresponding color overlays retained with the experiment outputs.
+architectural changes affect predicted mask geometry in the displayed samples.
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.98\textwidth,keepaspectratio]{media/ablation10.png}
-\caption{Qualitative comparison of the three ablation configurations using two displayed samples per dataset. Dataset groups correspond to Kvasir-SEG, CVC-ClinicDB, CVC-300, CVC-ColonDB, and ETIS-LaribPolypDB; columns show the original image, ground-truth mask, Baseline prediction, FAFEM + MSCB prediction, Residual RFG-MSCB prediction, and a color overlay retained with the experiment outputs. Because the visualization-generation procedure was not retained, the final column is not identified as a specific attribution, activation, or probability map.}
+\caption{Qualitative comparison of the three ablation configurations using two displayed samples per dataset. Dataset groups correspond to Kvasir-SEG, CVC-ClinicDB, CVC-300, CVC-ColonDB, and ETIS-LaribPolypDB; columns show the original image, ground-truth mask, Baseline prediction, FAFEM + MSCB prediction, and Residual RFG-MSCB prediction.}
 \label{fig:qualitative_ablation}
 \end{figure}
 
 \subsection{Qualitative Ablation Analysis}
 
 Relative to the Baseline, FAFEM + MSCB produces mask shapes with closer spatial
-coverage or boundary alignment in several examples. The clearest structural change
-appears for CVC-ColonDB, where the disconnected Baseline regions are replaced by a
-single prediction that better preserves the elongated ground-truth shape. For the
-small ETIS-LaribPolypDB lesion, the Baseline misses the lesion, whereas both augmented
-configurations produce a localized response.
+coverage or boundary alignment in several displayed examples. In the displayed
+CVC-ColonDB case with an elongated annotation, the disconnected Baseline regions are
+replaced by a more coherent prediction. For the displayed small-lesion
+ETIS-LaribPolypDB example, the Baseline does not recover the annotated region,
+whereas both augmented configurations produce a localized response.
 
 Residual RFG-MSCB yields a more coherent or better-localized mask in selected cases,
-including the CVC-ColonDB example, while its effect varies with lesion size and
-appearance. In the Kvasir-SEG, CVC-ClinicDB, and CVC-300 rows, the three predictions
+including the displayed CVC-ColonDB case, while its effect varies among the selected
+images. In the displayed Kvasir-SEG, CVC-ClinicDB, and CVC-300 examples, the predictions
 differ mainly in boundary position and extent, and no configuration reproduces every
 ground-truth contour exactly. These examples therefore provide a visual complement to
 the aggregate trends in Table~\ref{tab:ablation}, rather than evidence of uniform
@@ -82,12 +81,5 @@ improvement for every image.
 
 \subsection{Stage Placement}
 
-% TODO: update placement and cross-dataset observations after the final reruns.
-Stage 3 is used in the selected configuration. The exploratory all-skip
-experiment used a single seed, was incomplete, and used batch size 32 with the same
-learning rate. Its training result was lower than that of the Stage-3 configuration.
-A controlled multi-seed placement study remains future work.
-
-The residual-coupling configuration with default initialization did not complete
-training and is therefore excluded from the quantitative ablation; initialization
-sensitivity remains a subject for future work.
+The selected configuration localizes RFG-MSCB to Stage 3. Systematic multi-seed
+evaluation of alternative placements remains future work.

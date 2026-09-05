@@ -5,17 +5,13 @@ implemented bottleneck FAFEM descriptor to MSCB through RFG-MSCB at the Stage-3
 encoder--decoder fusion. The design extends frequency enhancement into decoder
 refinement while preserving the ordinary multi-scale pathway as a reference.
 
-The final model obtained mDice/mIoU of 0.932/0.883 on Kvasir-SEG and
-0.948/0.904 on CVC-ClinicDB, compared with 0.916/0.863 on CVC-300,
-0.824/0.747 on CVC-ColonDB, and 0.816/0.763 on ETIS-LaribPolypDB.
-The parameter-efficient modification is localized to Stage 3, adds 0.08 M parameters
-over FAFEM + MSCB without additional reported GFLOPs at the displayed precision,
-and retains depthwise-separable convolution elsewhere. In the ablation
-averaged across all five datasets, Residual RFG-MSCB achieved mDice/mIoU/MAE of
-0.887/0.832/0.014, compared with 0.869/0.803/0.018 for FAFEM + MSCB.
+The final model achieved mDice/mIoU of 0.932/0.883 on Kvasir-SEG and transferred
+most strongly to CVC-300 among the three external datasets, with lower performance on
+CVC-ColonDB and ETIS-LaribPolypDB. Across the five-dataset aggregate, Residual
+RFG-MSCB increased mDice from 0.869 to 0.887 over FAFEM + MSCB. The localized
+modification adds 0.08 M parameters without additional reported GFLOPs at the displayed
+precision and leaves the remaining depthwise-separable decoder stages unchanged.
 
-Future work should examine placement across multiple seeds, separate residualization
-from frequency conditioning, and evaluate domain-adaptation strategies for the
-external datasets. Overall, RFG-MSCB connects bottleneck frequency
-information to sample-dependent multi-scale decoding through bounded residual coupling
-that preserves the original MSCB pathway.
+Future work should evaluate alternative placements across multiple seeds, disentangle
+residualization from frequency conditioning, and examine adaptation across acquisition
+domains.

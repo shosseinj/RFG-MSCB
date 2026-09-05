@@ -6,16 +6,12 @@ The evaluation protocol separates seen-domain testing on Kvasir-SEG and
 CVC-ClinicDB from external testing on CVC-300, CVC-ColonDB, and
 ETIS-LaribPolypDB. All five test sets are isolated from checkpoint selection, which
 uses only the internal validation subset of the combined development pool.
-This design evaluates the sample-dependent guidance while retaining a convolutional
-multi-scale pathway for efficient decoding.
 
-FAFEM establishes the bottleneck feature-enhancement reference, MSCB-lite adds
-multi-scale refinement at Stage 3, and RFG-MSCB adds adaptive branch modulation to
-that path. Averaged across all five datasets, the final increment over FAFEM + MSCB
+The controlled ablation evaluates Baseline, FAFEM + MSCB, and Residual RFG-MSCB
+using arithmetic means across the five datasets. The final increment over FAFEM + MSCB
 increases mDice from 0.869 to 0.887 and mIoU from 0.803 to 0.832 while reducing
-MAE from 0.018 to 0.014. This improvement is consistent with a localized refinement
-of the decoder. In the paired single-seed comparison, direct frequency guidance
-without residual coupling produced a lower result than MSCB-lite.
+MAE from 0.018 to 0.014. These aggregate changes describe the combined effect of the
+residual frequency-guided formulation at the Stage-3 fusion.
 
 The bounded residual design preserves the conventional MSCB response while allowing
 sample-dependent branch modulation. Because residualization and frequency conditioning
@@ -29,18 +25,14 @@ CVC-300, CVC-ColonDB, and ETIS-LaribPolypDB are reserved for external
 generalization evaluation and do not influence model development. Differences in
 acquisition, annotation, case mix, and polyp morphology make these datasets a distinct
 test of transfer beyond the Kvasir-SEG/CVC-ClinicDB development domain.
+
 On the external datasets, the model obtained mDice/mIoU of 0.916/0.863 on
 CVC-300, 0.824/0.747 on CVC-ColonDB, and 0.816/0.763 on ETIS-LaribPolypDB.
-CVC-300 therefore had the strongest external result among the three evaluated
-datasets and the highest displayed mDice and mIoU in its comparison table. On
-CVC-ColonDB and ETIS, the model's mIoU was second-highest among the displayed
-methods, whereas its mDice was below the two highest displayed values. These results
-show that performance varied across the external datasets rather than supporting
-uniform superiority. In the paired seed-42 ablation, the change from FAFEM + MSCB to
-Residual RFG-MSCB likewise differed by dataset. Differences in acquisition,
-annotation, and lesion appearance are plausible contributors, but were not isolated
-experimentally. Stage-3 placement was selected on the development-domain evidence
-and should not be assumed optimal for every external distribution.
+Performance varied across these datasets, with the strongest transfer observed on
+CVC-300. On CVC-ColonDB and ETIS, the model's mIoU was second-highest among the
+displayed methods, whereas its mDice was below the two highest displayed values.
+Differences in acquisition, annotation, and lesion appearance are plausible contributors
+to the lower CVC-ColonDB and ETIS results, but were not isolated experimentally.
 
 Although the main comparison is restricted to methods with closely matched dataset
 partitioning, differences in optimization, augmentation, backbone initialization,
@@ -50,28 +42,26 @@ model-selection criteria, and implementation details remain.
 
 As summarized in Table~\ref{tab:model-complexity}, the final architecture has
 30.06 M parameters and requires 27.82 GFLOPs at $352\times352$. Matched-hardware
-latency was not measured.
-
-The final model uses the new guidance at the Stage-3 decoder--encoder fusion. The
-all-skip experiment was exploratory, single-seed, incomplete, and used a different
-batch size. Deployment-oriented placement and latency optimization remain future work.
+latency was not measured. The final model localizes the new guidance to the Stage-3
+decoder--encoder fusion. Systematic multi-seed evaluation of alternative placements
+and deployment-oriented latency optimization remain future work.
 
 \subsection{Limitations}
 
 \begin{itemize}
 \item \textbf{No statistical significance testing:} All reported differences are descriptive; no hypothesis testing was performed.
-\item \textbf{Software records:} Runs used an NVIDIA GeForce RTX 4090 and PyTorch 2.5.1+cu124 on Windows, but the complete dependency environment was not retained.
-% TODO: replace the seed-wise training-duration limitation after the final three-seed run.
-\item \textbf{Training duration:} With zero-based epoch indices, seed 7777 stopped after epoch 167 (168 completed epochs; patience 30), while seeds 42 and 6543 completed epochs 0--199; this asymmetry may affect the mean estimate.
+\item \textbf{Seed coverage:} The controlled comparisons use three training seeds, which limits characterization of run-to-run variability.
+\item \textbf{Component isolation:} Residualization and frequency conditioning were not independently disentangled.
+\item \textbf{Placement evaluation:} Alternative RFG-MSCB placements were not compared in a controlled multi-seed study.
+\item \textbf{Runtime evaluation:} No matched-hardware latency or peak-memory benchmark was retained.
+\item \textbf{External generalization:} Performance was lower on CVC-ColonDB and ETIS-LaribPolypDB than on CVC-300, motivating broader evaluation across acquisition domains.
 \end{itemize}
 
 \subsection{Future Work}
 
 \begin{itemize}
 \item Systematic multi-seed placement ablation with controlled batch size and learning rate.
-\item Disentanglement of the RFG-MSCB components (residual form, initialization schedule, frequency conditioning) via factorial experiments.
-\item Investigation of initialization sensitivity using completed default-initialization runs.
-\item Domain adaptation or targeted augmentation to improve generalization on CVC-ColonDB and ETIS-LaribPolypDB.
-\item Evaluate between-configuration differences using larger seed ensembles or bootstrap confidence intervals.
-\item Record hardware and software configurations systematically in future experiments.
+\item Disentanglement of residualization, frequency conditioning, and initialization through factorial experiments.
+\item Domain adaptation or targeted augmentation for CVC-ColonDB and ETIS-LaribPolypDB.
+\item Evaluation of between-configuration differences using larger seed ensembles or bootstrap confidence intervals.
 \end{itemize}

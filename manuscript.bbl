@@ -17,6 +17,7 @@ Jieneng Chen, Yongyi Lu, Qihang Yu, Xiangde Luo, Ehsan Adeli, Yan Wang, Le~Lu,
   Alan~L. Yuille, and Yuyin Zhou.
 \newblock {TransUNet}: Transformers make strong encoders for medical image
   segmentation, 2021.
+\newblock arXiv preprint arXiv:2102.04306.
 
 \bibitem{polyppvt}
 Bo~Dong, Wenhai Wang, Deng-Ping Fan, Jinpeng Li, Huazhu Fu, and Ling Shao.
@@ -41,6 +42,7 @@ Md~Mostafijur Rahman, Mustafa Munir, and Radu Marculescu.
 Chien-Hsiang Huang, Hung-Yu Wu, and Youn-Long Lin.
 \newblock {HarDNet-MSEG}: A simple encoder-decoder polyp segmentation neural
   network that achieves over 0.9 mean dice and 86 fps, 2021.
+\newblock arXiv preprint arXiv:2101.07172.
 
 \bibitem{pranet}
 Deng-Ping Fan, Ge-Peng Ji, Tao Zhou, Geng Chen, Huazhu Fu, Jianbing Shen, and

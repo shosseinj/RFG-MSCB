@@ -75,7 +75,6 @@ from the start of training. Seeds 42 and 6543 completed the maximum 200
 epochs, corresponding to zero-based epochs 0--199; seed 7777 stopped after
 epoch 167 (168 completed epochs). Model complexity and
 its measurement convention are reported in Table~\ref{tab:model-complexity}.
-% TODO: replace seed-wise training completion details after the final PraNet-style split three-seed run.
 
 Training augmentation applied horizontal and vertical flips independently
 with probability 0.5, rotation in $[-15^{\circ},15^{\circ}]$ with
@@ -149,7 +148,6 @@ binarized using the strict rule $p>0.45$. A checkpoint was saved only when
 internal-validation IoU was strictly greater than the previous best. Best
 checkpoints were selected independently for each seed according to
 internal-validation IoU.
-% TODO: insert selected epochs after the final PraNet-style split three-seed run.
 
 After model selection, each best checkpoint was loaded strictly and evaluated on the
 100-image Kvasir-SEG and 62-image CVC-ClinicDB seen test sets, followed by the full
