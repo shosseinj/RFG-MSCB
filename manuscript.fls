@@ -316,6 +316,7 @@ INPUT .\sections\04_ablation_experiments.tex
 INPUT .\sections\04_ablation_experiments.tex
 INPUT sections\04_ablation_experiments.tex
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\ec-lmr7.tfm
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\ec-lmbx7.tfm
 INPUT .\media\ablation10.png
 INPUT .\media\ablation10.png
 INPUT .\media\ablation10.png
@@ -324,7 +325,6 @@ INPUT .\media\ablation10.png
 INPUT .\media\ablation10.png
 INPUT .\media\ablation10.png
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\ec-lmbx10.tfm
-INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\ec-lmbx7.tfm
 INPUT .\sections\05_discussion.tex
 INPUT .\sections\05_discussion.tex
 INPUT .\sections\05_discussion.tex

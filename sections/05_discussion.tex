@@ -49,7 +49,7 @@ As summarized in Table~\ref{tab:model-complexity}, the final architecture has
 30.057 M parameters and requires 27.818 GFLOPs at $352\times352$. The matched-hardware
 results in Table~\ref{tab:ablation} show modest runtime and memory overhead for the
 residual frequency-guided extension relative to FAFEM + MSCB. The Stage-3 localization is also consistent
-with the single-seed MSCB-lite placement analysis, where Stage 3 gave the best observed
+with the MSCB-lite placement analysis, where Stage 3 gave the best observed
 accuracy--complexity trade-off and extending refinement to additional skip levels
 increased computational cost without improving the five-dataset macro-average overlap
 metrics. This provides empirical motivation for Stage-3 localization but does not
@@ -62,7 +62,7 @@ placement-tested. Deployment-oriented latency optimization remains future work.
 \item \textbf{No statistical significance testing:} All reported differences are descriptive; no hypothesis testing was performed.
 \item \textbf{Seed coverage:} The Table~\ref{tab:ablation} comparisons use three training seeds, which limits characterization of run-to-run variability.
 \item \textbf{Component isolation:} Residualization and frequency conditioning were not independently disentangled.
-\item \textbf{Placement evaluation:} MSCB-lite placement was examined using matched single-seed runs, whereas Residual RFG-MSCB placement was not exhaustively tested across decoder stages or multiple seeds.
+\item \textbf{Placement evaluation:} MSCB-lite placement was evaluated across the reported seeds, whereas Residual RFG-MSCB placement was not exhaustively tested across decoder stages or multiple seeds.
 \item \textbf{Runtime evaluation:} Runtime was measured on one GPU under one FP16, batch-size-1 inference setting; broader deployment evaluation across hardware platforms remains future work.
 \item \textbf{External generalization:} Performance was lower on CVC-ColonDB and ETIS-LaribPolypDB than on CVC-300, motivating broader evaluation across acquisition domains.
 \end{itemize}
