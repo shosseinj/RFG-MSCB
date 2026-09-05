@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.8.31)  5 SEP 2026 10:53
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.8.31)  5 SEP 2026 12:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -677,20 +677,21 @@ LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 2
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )) (sections/02_related_work.tex [2{C:/Program Files/MiKTeX/fonts/enc/dvips/lm/
 lm-mathit.enc}{C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C:/Program
- Files/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}] [3]) (sections/03_method.tex [4{C
-:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}]
-<media/convnext.png, id=95, 1126.2075pt x 1407.2575pt>
+ Files/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}] [3{C:/Program Files/MiKTeX/fonts/
+enc/dvips/lm/lm-mathsy.enc}])
+(sections/03_method.tex [4{C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-mathex
+.enc}]
+<media/convnext.png, id=118, 1126.2075pt x 1407.2575pt>
 File: media/convnext.png Graphic file (type png)
 <use media/convnext.png>
 Package pdftex.def Info: media/convnext.png  used on input line 63.
 (pdftex.def)             Requested size: 319.42587pt x 399.13998pt.
-<media/hosein.png, id=96, 1090.0725pt x 817.55438pt>
+<media/hosein.png, id=119, 1090.0725pt x 817.55438pt>
 File: media/hosein.png Graphic file (type png)
 <use media/hosein.png>
 Package pdftex.def Info: media/hosein.png  used on input line 70.
 (pdftex.def)             Requested size: 460.35556pt x 345.26668pt.
- [5{C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-mathex.enc}] [6 <./media/conv
-next.png (PNG copy)>] [7 <./media/hosein.png>]
+ [5] [6 <./media/convnext.png (PNG copy)>] [7 <./media/hosein.png>]
 [8] [9]
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 3
 34.
@@ -702,28 +703,27 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 )
 (sections/04_experiments.tex [11] [12] (sections/04_ablation_experiments.tex
 [13]
-<media/ablation10.png, id=241, 1128.8574pt x 1343.0175pt>
+<media/ablation10.png, id=256, 1128.8574pt x 1343.0175pt>
 File: media/ablation10.png Graphic file (type png)
 <use media/ablation10.png>
 Package pdftex.def Info: media/ablation10.png  used on input line 61.
 (pdftex.def)             Requested size: 460.35414pt x 547.68979pt.
-) [14] [15 <./media/ablation10.png>]
-ignored error: Infinite glue shrinkage found in box being split [16])
-(sections/05_discussion.tex [17]) (sections/06_conclusion.tex [18])
-(manuscript.bbl [19]) [20] (manuscript.aux)
+) [14] [15 <./media/ablation10.png>] [16]) (sections/05_discussion.tex
+[17]) (sections/06_conclusion.tex) [18] (manuscript.bbl [19]) [20]
+(manuscript.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 14963 strings out of 467871
- 235267 string characters out of 5428434
- 717118 words of memory out of 5000000
- 43109 multiletter control sequences out of 15000+600000
- 731714 words of font info for 260 fonts, out of 8000000 for 9000
+ 14975 strings out of 467871
+ 235417 string characters out of 5428434
+ 725279 words of memory out of 5000000
+ 43113 multiletter control sequences out of 15000+600000
+ 731880 words of font info for 262 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 77i,15n,81p,1801b,612s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 77i,15n,81p,1801b,587s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Program Files/M
 iKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Program Files/MiKTeX/fonts/type1/pub
 lic/lm/lmbx7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbx9.pfb><C:/P
@@ -742,9 +742,9 @@ MiKTeX/fonts/type1/public/lm/lmsy7.pfb><C:/Program Files/MiKTeX/fonts/type1/pub
 lic/lm/lmsy8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmsy9.pfb><C:/P
 rogram Files/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/Program Files/MiKTeX/f
 onts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on manuscript.pdf (20 pages, 15664328 bytes).
+Output written on manuscript.pdf (20 pages, 15668632 bytes).
 PDF statistics:
- 607 PDF objects out of 1000 (max. 8388607)
- 135 named destinations out of 1000 (max. 500000)
- 57688 words of extra memory for PDF output out of 61914 (max. 10000000)
+ 620 PDF objects out of 1000 (max. 8388607)
+ 139 named destinations out of 1000 (max. 500000)
+ 57680 words of extra memory for PDF output out of 61914 (max. 10000000)
 

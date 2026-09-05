@@ -1,117 +1,111 @@
 \section{Related work}\label{related-work}
 
-\subsection{Encoder--decoder architectures for medical image segmentation}
+\subsection{Encoder--decoder architectures for polyp segmentation}
 
-Fully convolutional encoder--decoder networks remain a central design pattern
-for biomedical image segmentation. U-Net introduced a symmetric contracting
-and expanding architecture in which high-resolution encoder features are
-transferred to the decoder through skip connections, allowing semantic context
-and spatial detail to be combined during prediction \cite{unet}. UNet++ further
-showed that the structure of skip pathways is important by using nested dense
-connections to reduce the semantic discrepancy between encoder and decoder
-representations \cite{unetpp}. These works established the importance of
-hierarchical feature reuse, but they do not prescribe how the decoder should
-adapt its receptive-field mixture to the image-specific content of a polyp.
+Fully convolutional encoder--decoder networks remain a central design pattern for
+biomedical segmentation. U-Net combines semantic context with spatial detail through
+skip connections, while UNet++ uses nested dense pathways to reduce the semantic gap
+between encoder and decoder representations \cite{unet,unetpp}. Polyp-specific
+convolutional networks subsequently developed this pattern in different directions:
+HarDNet-MSEG couples a low-memory-traffic backbone with lightweight decoding, whereas
+PraNet combines a parallel partial decoder with reverse attention for progressive
+region refinement \cite{hardnetmseg,pranet}. More recent designs emphasize
+cross-attention and feature exploration, multi-level lesion awareness, progressive
+coarse-to-fine decoding, or dual-view feature propagation
+\cite{cafenet,mlbnet,mspn,dvfipnet}. These studies demonstrate that cross-level reuse
+and staged refinement are important for heterogeneous polyp appearance. They do not,
+however, establish the specific bottleneck-to-decoder interaction considered here, in
+which a deep frequency descriptor controls the receptive-field mixture at an earlier
+decoder fusion.
 
-Polyp-specific convolutional models have explored efficient alternatives to
-large attention-based designs. HarDNet-MSEG combines a low-memory-traffic
-convolutional backbone with a lightweight decoder and demonstrates that strong
-polyp segmentation performance can be achieved without a transformer-heavy architecture
-\cite{hardnetmseg}. PraNet introduced a parallel partial decoder and reverse
-attention to progressively refine uncertain polyp regions \cite{pranet}. These
-methods highlight the value of efficient decoding and iterative refinement, but
-their main mechanisms are not designed to use frequency information from the
-bottleneck to regulate multi-scale convolutional branches at an earlier decoder
-stage.
+Modern convolutional encoders offer a complementary way to strengthen this design
+without replacing the full hierarchy by self-attention. ConvNeXt modernizes a ConvNet
+using large-kernel depthwise convolution, inverted channel expansion, Layer
+Normalization, GELU, layer scaling, and stochastic depth \cite{convnext}. Its
+hierarchical outputs are suitable for U-shaped feature reuse, while depthwise spatial
+operators also support economical dense prediction. The present framework therefore
+uses ConvNeXt-Tiny as an established encoder and localizes its contribution to the
+coupling between bottleneck frequency processing and Stage-3 decoder refinement.
 
-Modern convolutional encoders provide another route to high-capacity dense
-prediction. ConvNeXt revisits convolutional network design with large-kernel
-depthwise convolution, inverted channel expansion, Layer Normalization, GELU
-activation, layer scaling, and stochastic depth, producing a hierarchical
-backbone with strong representation capacity \cite{convnext}. We use
-ConvNeXt-Tiny as the encoder and focus the new mechanism on the interaction
-between bottleneck frequency information and Stage-3 multi-scale convolution.
+\subsection{Transformer and hybrid contextual segmentation}
 
-\subsection{Transformer and contextual polyp segmentation}
-
-The large variation in polyp size, shape, color, and boundary contrast motivates
-architectures that capture both local appearance and broader anatomical context.
-Transformer-based approaches address this need by modeling long-range spatial
-relationships. TransUNet combines convolutional feature extraction with a
-transformer encoder for medical image segmentation \cite{transunet}, and
-Polyp-PVT applies pyramid vision transformer features and specialized fusion to
-polyp segmentation \cite{polyppvt}. Recent polyp-segmentation studies have
-continued this direction through contrastive transformer modeling, contextual
-information flow, phase-wise feature pyramids, and pyramid-transformer feature
-fusion \cite{ctnet,cifformer,pfprnet,mfnet}.
-
-These approaches show the value of global context and cross-level interaction,
-while motivating a convolutional alternative to more complex attention-based
-designs.
+Transformer and hybrid models address the broad variation in polyp size, morphology,
+and contrast by combining local appearance with long-range context. TransUNet provides
+an influential CNN--transformer formulation for medical segmentation, and Polyp-PVT
+adapts hierarchical pyramid-transformer features to polyp segmentation
+\cite{transunet,polyppvt}. Recent polyp methods extend this direction through
+contrastive transformer representations in CTNet, lightweight vision transformers in
+Polyp-LVT, contextual information flow in CIFFormer, and phase-wise feature-pyramid
+retention in PFPRNet \cite{ctnet,polyplvt,cifformer,pfprnet}. Multi-feature pyramid
+fusion has likewise been combined with visual transformers in MF-Net
+\cite{mfnet}. Collectively, these methods prioritize global dependency modeling and
+cross-scale semantic exchange, but often employ attention or transformer machinery
+throughout substantial parts of the network. Our method instead retains a
+convolutional ConvNeXt encoder--decoder and introduces one lightweight, descriptor-
+conditioned multi-scale refinement at Stage 3.
 
 \subsection{Efficient multi-scale convolutional decoding}
 
-Multi-scale convolution is widely used because polyps may appear as small,
-subtle lesions or occupy a large image region. Parallel kernels and dilated or
-depthwise branches allow a decoder to aggregate local and broader responses
-without relying entirely on self-attention. EMCAD introduced an efficient
-multi-scale convolutional attention decoder for medical image segmentation and
-uses Multi-Scale Convolution Blocks (MSCBs) as part of its lightweight decoding
-design \cite{emcad}. In an MSCB, multiple convolutional branches provide
-different receptive fields and are combined to form a multi-scale response.
+Multi-scale decoding is particularly relevant to polyps, which may be small and
+low-contrast or occupy much of the endoscopic frame. Parallel kernels provide
+different effective receptive fields, while depthwise convolution limits the cost of
+spatial filtering. EMCAD formalized this principle in an efficient medical-image
+decoder whose Multi-Scale Convolution Blocks (MSCBs) expand the feature, process it
+with multiple depthwise kernels, aggregate the branch responses, shuffle channels,
+and project the result \cite{emcad}. We adopt the lightweight MSCB topology as the
+ordinary multi-scale reference path rather than presenting it as a new block.
 
-MSCB provides the multi-scale reference path used by the present comparison.
+The broader adaptive-convolution literature shows that receptive fields need not be
+combined uniformly. Selective Kernel Networks use a feature descriptor to select
+among kernel scales, and Dynamic Convolution forms input-dependent mixtures over
+convolution kernels \cite{sknet,dynamicconv}. These mechanisms provide direct
+precedent for adaptive branch weighting, but their routing signals are formed from
+the features being transformed at the same level. RFG-MSCB instead transfers a
+low/high-frequency descriptor from the bottleneck to the Stage-3 decoder fusion. It
+uses this cross-level signal to weight the adopted MSCB's $1\times1$, $3\times3$, and
+$5\times5$ depthwise branches, while retaining their ordinary sum as an explicit
+reference response.
 
 \subsection{Frequency-aware and adaptive feature recalibration}
 
-Attention and recalibration mechanisms provide a general precedent for using
-compact descriptors to control feature responses. Squeeze-and-Excitation
-Networks use global channel descriptors to recalibrate convolutional features
-\cite{senet}, while Selective Kernel Networks adaptively weight convolutional
-branches with different receptive fields \cite{sknet}. These methods establish
-descriptor-driven recalibration and adaptive receptive-field selection as relevant
-precedents.
+Compact descriptors are widely used to recalibrate convolutional representations.
+Squeeze-and-Excitation Networks learn channel-wise gates from global pooled features,
+whereas FcaNet interprets channel attention in terms of selected frequency components
+\cite{senet,fcanet}. Frequency-aware processing has also moved beyond channel
+attention: Frequency-Aware Feature Fusion addresses the loss of high-frequency detail
+and inconsistency introduced when fusing features of different resolutions in dense
+prediction \cite{freqfusion}. In polyp segmentation, Polyp-Mamba combines
+multi-frequency perception with gated selection, providing a recent domain-specific
+example of frequency-sensitive contextual modeling \cite{polypmamba}.
 
-Frequency-aware attention provides a closer conceptual link. FcaNet interprets
-channel attention through frequency analysis and uses frequency components for
-channel attention \cite{fcanet}. This line of work motivates frequency-aware
-recalibration, while the present work applies that idea to the relationship
-between bottleneck enhancement and decoder refinement.
+These precedents differ from the role assigned to frequency information in the
+present framework. The adopted bottleneck FAFEM produces local low-pass and residual
+high-pass responses and a pooled descriptor $\mathbf{z}_f$. Rather than using that
+descriptor only for channel or spatial recalibration at its source level, RFG-MSCB
+propagates it across levels to control the Stage-3 multi-kernel mixture. Moreover, the
+guided mixture does not replace ordinary MSCB aggregation: it is introduced as a
+bounded residual deviation around that path. Thus, the claimed contribution is the
+cross-level residual frequency-guided coupling, not frequency decomposition,
+descriptor-based attention, or MSCB individually.
 
-RFG-MSCB differs from these precedents in where its descriptor is formed and how it
-is applied. SE recalibrates channels, Selective Kernel Networks weight receptive-field
-branches using a descriptor from the same feature level, and FcaNet constructs
-frequency-informed channel attention. RFG-MSCB instead forms a low/high
-spatial-frequency proxy at the bottleneck, transfers its descriptor across levels to
-the Stage-3 decoder fusion, and targets the aggregation of the MSCB multi-kernel
-branches. The ordinary MSCB sum remains explicit, and the guided response enters only
-through bounded residual interpolation. The resulting mechanism combines established
-descriptor-driven branch weighting with cross-level, bounded coupling to the MSCB
-reference path.
+\subsection{Boundary-aware and recent polyp-specific refinement}
 
-\subsection{Boundary and recent polyp-segmentation refinements}
+Weak boundaries and ambiguous foreground appearance have motivated complementary
+polyp-specific refinement strategies. MEGANet applies multi-scale edge-guided
+attention, while MSBP-Net predicts boundaries at multiple scales
+\cite{meganet,msbpnet}. MLB-Net combines lesion-aware and boundary-enhanced
+processing, and PraNet-V2 extends reverse attention with dual supervision
+\cite{mlbnet,pranetv2}. Reliability has also received increasing attention: MEIN
+models multi-scale uncertainty through evidence integration rather than treating all
+predictions as equally certain \cite{mein}. Together with CIFFormer, PFPRNet, MSPN,
+and DVFIP-Net, these 2025--2026 methods illustrate a shift toward explicit contextual
+flow, hierarchical refinement, uncertainty modeling, and targeted boundary recovery
+\cite{cifformer,pfprnet,mspn,dvfipnet}.
 
-Weak and visually ambiguous lesion boundaries remain a major challenge in polyp
-segmentation. Boundary-aware methods often introduce explicit edge supervision,
-auxiliary contour branches, image-pyramid high-frequency cues, or reverse
-attention. MEGANet employs multi-scale edge-guided attention for weak-boundary
-polyp segmentation \cite{meganet}, and MSBP-Net performs multi-scale boundary
-prediction to improve contour delineation \cite{msbpnet}. Other recent methods
-model uncertainty, contextual flow, and multi-stage refinement
-\cite{mein,cifformer,pranetv2}.
-
-Boundary awareness is introduced through the training objective rather than an
-explicit boundary-refinement branch.
-
-\subsection{Positioning of the method}
-
-Existing work has improved polyp segmentation through U-shaped skip reuse,
-reverse attention, transformer-based context modeling, efficient convolutional
-decoding, frequency-aware representation learning, and boundary-aware
-refinement. The method is positioned at the intersection of efficient
-multi-scale convolution and frequency-aware recalibration.
-
-Specifically, the final model combines a ConvNeXt-Tiny encoder, a locally implemented
-bottleneck FAFEM, and multi-scale decoding based on the MSCB structure \cite{emcad}.
-We introduce cross-level bounded residual modulation of the MSCB branches using the
-bottleneck descriptor, as developed technically in the next section.
+Our architecture does not add an edge branch, contour decoder, or uncertainty head;
+boundary emphasis is supplied by the training objective. Architecturally, it addresses
+a different question: how bottleneck frequency composition can condition receptive-
+field selection at a specific decoder level without discarding a standard efficient
+multi-scale path. Accordingly, we adopt ConvNeXt-Tiny, a locally implemented FAFEM,
+and the MSCB structure from EMCAD, and propose only their cross-level, bounded
+residual frequency-guided coupling developed in the next section.
