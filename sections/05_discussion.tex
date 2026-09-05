@@ -7,11 +7,13 @@ CVC-ClinicDB from external testing on CVC-300, CVC-ColonDB, and
 ETIS-LaribPolypDB. All five test sets are isolated from checkpoint selection, which
 uses only the internal validation subset of the combined development pool.
 
-The controlled ablation evaluates Baseline, FAFEM + MSCB, and Residual RFG-MSCB
-using arithmetic means across the five datasets. The final increment over FAFEM + MSCB
-increases mDice from 0.869 to 0.887 and mIoU from 0.803 to 0.832 while reducing
-MAE from 0.018 to 0.014. These aggregate changes describe the combined effect of the
-residual frequency-guided formulation at the Stage-3 fusion.
+The controlled ablation evaluates Baseline, FAFEM, FAFEM + MSCB, and Residual RFG-MSCB
+using unweighted five-dataset macro averages and three training seeds. FAFEM
+raises mean mDice from 0.827 to 0.864, and FAFEM + MSCB reaches 0.867.
+Residual RFG-MSCB reaches 0.866 mDice and 0.800 mIoU, while providing the
+highest $mE_{\phi}$ (0.939) and $\max E_{\phi}$ (0.948). These aggregate
+changes describe the combined effect of the residual frequency-guided
+formulation at the Stage-3 fusion without implying uniform improvement.
 
 The bounded residual design preserves the conventional MSCB response while allowing
 sample-dependent branch modulation. Because residualization and frequency conditioning

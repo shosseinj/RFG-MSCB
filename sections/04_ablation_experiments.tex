@@ -1,50 +1,44 @@
 \section{Ablation Study}\label{ablation-study}
 
-The ablation design compares three configurations in sequence: Baseline,
-FAFEM + MSCB, and Residual RFG-MSCB (Ours). This sequence evaluates the
-feature-enhancement and multi-scale components together before assessing the
-additional residual frequency-guided modification.
+The ablation design compares four configurations in sequence: Baseline,
+FAFEM, FAFEM + MSCB, and Residual RFG-MSCB (Ours). This sequence first isolates
+bottleneck frequency-aware enhancement, then adds Stage-3 multi-scale refinement,
+and finally assesses the residual frequency-guided modification.
 
 \subsection{Ablation Results}
 
 The Baseline serves as the reference configuration without FAFEM and MSCB. Adding
-FAFEM and MSCB improves aggregate segmentation performance across the five evaluation
-datasets. Residual RFG-MSCB then introduces frequency-guided coupling, allowing the
-bottleneck descriptor to modulate the multi-scale branches at the Stage-3 decoder
-fusion. Table~\ref{tab:ablation} summarizes the arithmetic mean of each segmentation
-metric across Kvasir-SEG, CVC-ClinicDB, CVC-300, CVC-ColonDB, and
-ETIS-LaribPolypDB together with the corresponding model complexity.
+FAFEM introduces bottleneck frequency-aware enhancement, while FAFEM + MSCB further
+adds Stage-3 multi-scale convolutional refinement. Residual RFG-MSCB then introduces
+cross-level frequency-guided coupling, allowing the bottleneck descriptor to modulate
+the multi-scale branches at the Stage-3 decoder fusion. Table~\ref{tab:ablation}
+reports mean $\pm$ sample standard deviation across three seed-level macro
+averages. Each seed-level value is the unweighted arithmetic mean across
+Kvasir-SEG, CVC-ClinicDB, CVC-300, CVC-ColonDB, and ETIS-LaribPolypDB.
 
 \begin{table*}[htbp]
 \centering
 \caption{Ablation comparison averaged across the five polyp segmentation datasets, with computational complexity.}\label{tab:ablation}
-\small
-\setlength{\tabcolsep}{3pt}
+\footnotesize
+\setlength{\tabcolsep}{2pt}
 \renewcommand{\arraystretch}{1.1}
+\resizebox{\textwidth}{!}{%
 \begin{tabular}{@{}lrrrrrrrrr@{}}
 \toprule
 Model & mDice & mIoU & $F_{\beta}^{w}$ & $S_{\alpha}$ & $mE_{\phi}$ & $\max E_{\phi}$ & MAE & Params (M) & GFLOPs \\
 \midrule
-Baseline & 0.827 & 0.763 & 0.811 & 0.890 & 0.907 & 0.913 & 0.019 & 29.19 & 27.202 \\
-FAFEM + MSCB & \underline{0.869} & \underline{0.803} & \underline{0.845} & \underline{0.910} & \underline{0.937} & \underline{0.947} & \underline{0.018} & 29.98 & 27.818 \\
-\textbf{Residual RFG-MSCB (Ours)} & \textbf{0.887} & \textbf{0.832} & \textbf{0.864} & \textbf{0.923} & \textbf{0.952} & \textbf{0.956} & \textbf{0.014} & 30.06 & 27.818 \\
+Baseline & \meanstd{0.827}{0.007} & \meanstd{0.762}{0.008} & \meanstd{0.811}{0.006} & \meanstd{0.890}{0.004} & \meanstd{0.907}{0.005} & \meanstd{0.916}{0.005} & \meanstd{0.019}{0.000} & 29.19 & 27.202 \\
+FAFEM & \meanstd{0.864}{0.002} & \meanstd{0.797}{0.001} & \meanstd{0.841}{0.003} & \meanstd{0.908}{0.001} & \meanstd{0.934}{0.002} & \meanstd{0.945}{0.002} & \meanstd{0.018}{0.000} & 29.36 & 27.208 \\
+\textbf{FAFEM + MSCB} & \textbf{\meanstd{0.867}{0.002}} & \textbf{\meanstd{0.802}{0.003}} & \textbf{\meanstd{0.845}{0.003}} & \textbf{\meanstd{0.910}{0.002}} & \underline{\meanstd{0.937}{0.001}} & \underline{\meanstd{0.946}{0.001}} & \textbf{\meanstd{0.018}{0.000}} & 29.98 & 27.818 \\
+Residual RFG-MSCB (Ours) & \underline{\meanstd{0.866}{0.004}} & \underline{\meanstd{0.800}{0.004}} & \underline{\meanstd{0.844}{0.003}} & \underline{\meanstd{0.909}{0.003}} & \textbf{\meanstd{0.939}{0.001}} & \textbf{\meanstd{0.948}{0.001}} & \underline{\meanstd{0.018}{0.000}} & 30.06 & 27.818 \\
 \bottomrule
-\end{tabular}
+\end{tabular}%
+}
 \end{table*}
 
 \subsection{Ablation Interpretation}
 
-Across the five-dataset averages, FAFEM + MSCB increases mDice, mIoU,
-$F_{\beta}^{w}$, $S_{\alpha}$, $mE_{\phi}$, and $\max E_{\phi}$ over the Baseline
-by 0.042, 0.040, 0.034, 0.020, 0.030, and 0.034, respectively, corresponding to
-gains of 4.2, 4.0, 3.4, 2.0, 3.0, and 3.4 percentage points. It reduces MAE by
-0.001. Residual RFG-MSCB further increases these six metrics over FAFEM + MSCB
-by 0.018, 0.029, 0.019, 0.013, 0.015, and 0.009, respectively (1.8, 2.9, 1.9,
-1.3, 1.5, and 0.9 percentage points), and reduces MAE by 0.004. The parameter
-count increases from 29.19 M to 29.98 M and then 30.06 M, changes of 0.79 M and
-0.08 M, while GFLOPs increase from 27.202 to 27.818 and then remain unchanged,
-changes of 0.616 and 0.000. These are descriptive comparisons; no statistical
-significance is claimed.
+Across the five-dataset averages, FAFEM raises mean mDice from 0.827 to 0.864 and mIoU from 0.762 to 0.797 relative to the Baseline. Adding MSCB gives a further increase to 0.867 and 0.802, respectively. Residual RFG-MSCB is slightly lower on these overlap measures (0.866 and 0.800) but has the highest $mE_{\phi}$ and $\max E_{\phi}$ means, 0.939 and 0.948. These are descriptive comparisons; no statistical significance is claimed. The verified parameter counts are 29.19 M, 29.36 M, 29.98 M, and 30.06 M, while the verified GFLOPs are 27.202, 27.208, 27.818, and 27.818, respectively.
 
 The qualitative examples in Fig.~\ref{fig:qualitative_ablation} complement the
 aggregate ablation results in Table~\ref{tab:ablation} by illustrating how the
@@ -53,7 +47,7 @@ architectural changes affect predicted mask geometry in the displayed samples.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.98\textwidth,keepaspectratio]{media/ablation10.png}
-\caption{Qualitative comparison of the three ablation configurations using two displayed samples per dataset. Dataset groups correspond to Kvasir-SEG, CVC-ClinicDB, CVC-300, CVC-ColonDB, and ETIS-LaribPolypDB; columns show the original image, ground-truth mask, Baseline prediction, FAFEM + MSCB prediction, and Residual RFG-MSCB prediction.}
+\caption{Qualitative comparison of the ablation configurations using two displayed samples per dataset. Dataset groups correspond to Kvasir-SEG, CVC-ClinicDB, CVC-300, CVC-ColonDB, and ETIS-LaribPolypDB; columns show the original image, ground-truth mask, Baseline prediction, FAFEM + MSCB prediction, and Residual RFG-MSCB prediction.}
 \label{fig:qualitative_ablation}
 \end{figure}
 
