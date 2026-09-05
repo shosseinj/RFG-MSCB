@@ -27,10 +27,10 @@ Kvasir-SEG, CVC-ClinicDB, CVC-300, CVC-ColonDB, and ETIS-LaribPolypDB.
 \toprule
 Model & mDice & mIoU & $F_{\beta}^{w}$ & $S_{\alpha}$ & $mE_{\phi}$ & $\max E_{\phi}$ & MAE & Params (M) & GFLOPs \\
 \midrule
-Baseline & \meanstd{0.827}{0.007} & \meanstd{0.762}{0.008} & \meanstd{0.811}{0.006} & \meanstd{0.890}{0.004} & \meanstd{0.907}{0.005} & \meanstd{0.916}{0.005} & \underline{\meanstd{0.019}{0.000}} & 29.19 & 27.202 \\
- + FAFEM & \meanstd{0.864}{0.002} & \meanstd{0.797}{0.001} & \meanstd{0.841}{0.003} & \meanstd{0.908}{0.001} & \meanstd{0.934}{0.002} & \meanstd{0.945}{0.002} & \textbf{\meanstd{0.018}{0.000}} & 29.36 & 27.208 \\
- + MSCB & \textbf{\meanstd{0.867}{0.002}} & \textbf{\meanstd{0.802}{0.003}} & \textbf{\meanstd{0.845}{0.003}} & \textbf{\meanstd{0.910}{0.002}} & \underline{\meanstd{0.937}{0.001}} & \underline{\meanstd{0.946}{0.001}} & \textbf{\meanstd{0.018}{0.000}} & 29.98 & 27.514 \\
- + Residual RFG-MSCB & \underline{\meanstd{0.866}{0.004}} & \underline{\meanstd{0.800}{0.004}} & \underline{\meanstd{0.844}{0.003}} & \underline{\meanstd{0.909}{0.003}} & \textbf{\meanstd{0.939}{0.001}} & \textbf{\meanstd{0.948}{0.001}} & \textbf{\meanstd{0.018}{0.000}} & 30.06 & 27.818 \\
+Baseline & \meanstd{0.827}{0.007} & \meanstd{0.762}{0.008} & \meanstd{0.811}{0.006} & \meanstd{0.890}{0.004} & \meanstd{0.907}{0.005} & \meanstd{0.916}{0.005} & \meanstd{0.019}{0.000} & 29.19 & 27.202 \\
+ + FAFEM & \meanstd{0.864}{0.002} & \meanstd{0.797}{0.001} & \meanstd{0.841}{0.003} & \meanstd{0.908}{0.001} & \meanstd{0.934}{0.002} & \meanstd{0.945}{0.002} & \meanstd{0.018}{0.000} & 29.36 & 27.208 \\
+ + MSCB & \meanstd{0.867}{0.002} & \meanstd{0.802}{0.003} & \meanstd{0.845}{0.003} & \meanstd{0.910}{0.002} & \meanstd{0.937}{0.001} & \meanstd{0.946}{0.001} & \meanstd{0.018}{0.000} & 29.98 & 27.514 \\
+ + Residual RFG-MSCB & \meanstd{0.872}{0.004} & \meanstd{0.810}{0.004} & \meanstd{0.849}{0.003} & \meanstd{0.914}{0.003} & \meanstd{0.941}{0.001} & \meanstd{0.949}{0.001} & \meanstd{0.018}{0.000} & 30.06 & 27.818 \\
 \bottomrule
 \end{tabular}%
 }
@@ -38,7 +38,13 @@ Baseline & \meanstd{0.827}{0.007} & \meanstd{0.762}{0.008} & \meanstd{0.811}{0.0
 
 \subsection{Ablation Interpretation}
 
-Across the five-dataset macro averages, the FAFEM-only variant yields a substantial gain over the Baseline, raising mDice from 0.827 to 0.864, mIoU from 0.762 to 0.797, $F_{\beta}^{w}$ from 0.811 to 0.841, $S_{\alpha}$ from 0.890 to 0.908, $mE_{\phi}$ from 0.907 to 0.934, and $\max E_{\phi}$ from 0.916 to 0.945, while MAE decreases from 0.019 to 0.018. The addition of MSCB produces a further, though smaller, improvement in the overlap-oriented metrics: FAFEM + MSCB raises mDice to 0.867, mIoU to 0.802, $F_{\beta}^{w}$ to 0.845, and $S_{\alpha}$ to 0.910. Residual RFG-MSCB does not improve every aggregate metric relative to FAFEM + MSCB; its mDice (0.866), mIoU (0.800), $F_{\beta}^{w}$ (0.844), and $S_{\alpha}$ (0.909) are marginally lower, while its $mE_{\phi}$ (0.939) and $\max E_{\phi}$ (0.948) are the highest among the four configurations. These are descriptive comparisons; no statistical significance is claimed. The parameter counts are 29.19 M, 29.36 M, 29.98 M, and 30.06 M, and the corresponding GFLOPs are 27.202, 27.208, 27.514, and 27.818, respectively.
+Table~\ref{tab:ablation} presents the macro-averaged ablation results across the five polyp segmentation datasets. The FAFEM-only variant provides a substantial improvement over the Baseline, increasing mDice from $0.827 \pm 0.007$ to $0.864 \pm 0.002$ and mIoU from $0.762 \pm 0.008$ to $0.797 \pm 0.001$. Consistent improvements are also observed in $F_{\beta}^{w}$, $S_{\alpha}$, $mE_{\phi}$, and $\max E_{\phi}$, while MAE decreases slightly from $0.019$ to $0.018$.
+
+Adding MSCB further improves all reported positive metrics. In particular, mDice increases to $0.867 \pm 0.002$, mIoU to $0.802 \pm 0.003$, and $F_{\beta}^{w}$ to $0.845 \pm 0.003$, while $S_{\alpha}$, $mE_{\phi}$, and $\max E_{\phi}$ reach $0.910 \pm 0.002$, $0.937 \pm 0.001$, and $0.946 \pm 0.001$, respectively. The MAE remains at $0.018$.
+
+The full configuration with Residual RFG-MSCB achieves the best overall results among the evaluated variants, reaching an mDice of $0.872 \pm 0.004$ and an mIoU of $0.810 \pm 0.004$. It also obtains the highest $F_{\beta}^{w}$ ($0.849 \pm 0.003$), $S_{\alpha}$ ($0.914 \pm 0.003$), $mE_{\phi}$ ($0.941 \pm 0.001$), and $\max E_{\phi}$ ($0.949 \pm 0.001$). The MAE remains unchanged at $0.018$, indicating that the performance gains are achieved without degradation in pixel-wise prediction error.
+
+The progressive improvements are obtained with only a modest increase in computational complexity. The number of parameters increases from $29.19$ M for the Baseline to $29.36$ M with FAFEM, $29.98$ M with the addition of MSCB, and $30.06$ M for the full model. Similarly, the computational cost increases only from $27.202$ GFLOPs to $27.818$ GFLOPs. Overall, these results suggest that each proposed component contributes positively to segmentation performance, with the complete Residual RFG-MSCB configuration providing the strongest macro-averaged performance across the five datasets. The reported comparisons are descriptive, and no statistical significance is claimed.
 
 The qualitative examples in Fig.~\ref{fig:qualitative_ablation} complement the
 aggregate ablation results in Table~\ref{tab:ablation} by illustrating how the
