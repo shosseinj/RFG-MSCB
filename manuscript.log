@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.8.31)  5 SEP 2026 13:29
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.8.31)  5 SEP 2026 13:56
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -594,18 +594,17 @@ File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <9> on input line 386.
 ) (sections/04_experiments.tex [10] [11] (sections/04_ablation_experiments.tex [12]
-<media/ablation10.png, id=252, 954.2049pt x 1343.0175pt>
+<media/ablation10.png, id=251, 954.2049pt x 1343.0175pt>
 File: media/ablation10.png Graphic file (type png)
 <use media/ablation10.png>
-Package pdftex.def Info: media/ablation10.png  used on input line 60.
+Package pdftex.def Info: media/ablation10.png  used on input line 55.
 (pdftex.def)             Requested size: 460.3573pt x 647.94043pt.
 
 
-LaTeX Warning: Float too large for page by 57.45485pt on input line 63.
+LaTeX Warning: Float too large for page by 57.45485pt on input line 58.
 
 ) [13] [14 <./media/ablation10.png>]
-sections/04_experiments.tex:300: ignored error: Infinite glue shrinkage found in box being split [15]
-sections/04_experiments.tex:403: ignored error: Infinite glue shrinkage found in box being split [16]) (sections/05_discussion.tex [17]) (sections/06_conclusion.tex) (manuscript.bbl [18] [19]) [20] (manuscript.aux)
+sections/04_experiments.tex:300: ignored error: Infinite glue shrinkage found in box being split [15]) (sections/05_discussion.tex [16]) (sections/06_conclusion.tex [17]) (manuscript.bbl [18] [19]) [20] (manuscript.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
@@ -614,15 +613,15 @@ L3 programming layer <2025-12-24>
 Here is how much of TeX's memory you used:
  14981 strings out of 467871
  235637 string characters out of 5428434
- 726350 words of memory out of 5000000
+ 722350 words of memory out of 5000000
  43116 multiletter control sequences out of 15000+600000
  731859 words of font info for 261 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  77i,15n,81p,1154b,612s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbx7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbx9.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmex10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmmi10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmmi6.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmmi7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmmi9.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmmib10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr17.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr6.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr9.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmri9.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmsy6.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmsy7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmsy8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmsy9.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on manuscript.pdf (20 pages, 9462634 bytes).
+Output written on manuscript.pdf (20 pages, 9461308 bytes).
 PDF statistics:
- 628 PDF objects out of 1000 (max. 8388607)
+ 627 PDF objects out of 1000 (max. 8388607)
  142 named destinations out of 1000 (max. 500000)
  57680 words of extra memory for PDF output out of 61914 (max. 10000000)
 
