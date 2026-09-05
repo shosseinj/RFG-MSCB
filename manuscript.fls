@@ -271,6 +271,13 @@ INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\rm-lmbx10.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\rm-lmbx7.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\rm-lmbx5.tfm
 INPUT C:\Program Files\MiKTeX\fonts\enc\dvips\lm\lm-mathsy.enc
+INPUT .\media\hosein.png
+INPUT .\media\hosein.png
+INPUT .\media\hosein.png
+INPUT .\media\hosein.png
+INPUT .\media\hosein.png
+INPUT .\media\hosein.png
+INPUT .\media\hosein.png
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\lmmib10.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\lmmib7.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\lmmib5.tfm
@@ -301,6 +308,13 @@ INPUT .\sections\04_ablation_experiments.tex
 INPUT .\sections\04_ablation_experiments.tex
 INPUT .\sections\04_ablation_experiments.tex
 INPUT sections\04_ablation_experiments.tex
+INPUT .\media\ablation.png
+INPUT .\media\ablation.png
+INPUT .\media\ablation.png
+INPUT .\media\ablation.png
+INPUT .\media\ablation.png
+INPUT .\media\ablation.png
+INPUT .\media\ablation.png
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\ec-lmbx10.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\ec-lmbx7.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\ec-lmr7.tfm

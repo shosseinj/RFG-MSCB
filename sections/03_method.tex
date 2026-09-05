@@ -44,7 +44,26 @@ D_1&=\mathcal{D}_1(D_2).
 
 Here, $\mathcal{D}_i$ denotes a decoder block, $\mathcal{S}_i$ denotes the corresponding skip-feature fusion operation, $\mathbf{z}_f$ is the frequency descriptor extracted at the bottleneck, and $\mathcal{M}_{\mathrm{RFG}}$ denotes the residual frequency-guided multi-scale refinement mechanism. Equations~\eqref{eq:overall_stage3}--\eqref{eq:decoder_final} summarize the decoder path.
 
-The final prediction head transforms $D_1$ into a single-channel segmentation logit map, which is bilinearly resized to the original image resolution.
+Figure~\ref{fig:overall_architecture} summarizes the complete data flow. The input
+image passes through the hierarchical ConvNeXt-Tiny encoder to produce $F_1$--$F_4$.
+At the bottleneck, FAFEM transforms the deepest feature $F_4$ into an enhanced
+representation and the 1536-dimensional descriptor $\mathbf{z}_f$; the enhanced
+representation then passes through the lightweight residual bottleneck and the
+fourth decoder block. After fusion with the Stage-3 encoder feature $F_3$, RFG-MSCB
+uses $\mathbf{z}_f$ to modulate its multi-kernel branches. Thus, the descriptor is
+transferred from the bottleneck to a later decoder fusion rather than being used only
+locally. The ordinary MSCB aggregation remains the reference path, and the
+frequency-conditioned response enters as a bounded residual deviation. The remaining
+decoder stages progressively recover spatial resolution before the prediction head
+produces a single-channel logit map, which is bilinearly upsampled to form the final
+segmentation mask.
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=0.98\textwidth,keepaspectratio]{media/hosein.png}
+\caption{Overall architecture and detailed mechanism of the proposed segmentation framework. The left panel shows the ConvNeXt-Tiny encoder--decoder network with bottleneck FAFEM, Stage-3 RFG-MSCB, and the prediction head. The middle panel illustrates how FAFEM independently processes low- and high-frequency components of the deepest encoder feature, concatenates them, and generates the descriptor $\mathbf{z}_f$. The right panel details RFG-MSCB, in which a lightweight guidance MLP uses $\mathbf{z}_f$ to adaptively weight the $1\times1$, $3\times3$, and $5\times5$ depthwise branches, and bounded residual coupling introduces the guided response as a deviation from ordinary MSCB aggregation.}
+\label{fig:overall_architecture}
+\end{figure}
 
 \subsection{ConvNeXt-Tiny Encoder}
 
