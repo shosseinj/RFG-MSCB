@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.12) (preloaded format=xelatex 2026.9.3)  5 SEP 2026 20:08
+This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.12) (preloaded format=xelatex 2026.9.3)  5 SEP 2026 20:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1238,19 +1238,19 @@ sing the ImageNet statistics
  []
 
 [5] [6] [7] [8] [9] [10]) (sections/04_experiments.tex [11] [12]
-(sections/04_ablation_experiments.tex [13] [14]
+(sections/04_ablation_experiments.tex [13]
 File: media/ablation10.png Graphic file (type bmp)
 <media/ablation10.png>
 
-Underfull \hbox (badness 1142) in paragraph at lines 93--93
+Underfull \hbox (badness 1142) in paragraph at lines 96--96
 []\TU/lmr/m/n/10 Figure 3: []Qualitative comparison of the ablation configurati
 ons using two displayed samples per
  []
 
-) [15] [16]
-ignored error: Infinite glue shrinkage found in box being split [17])
-(sections/05_discussion.tex [18]) (sections/06_conclusion.tex) [19]
-(manuscript.bbl [20] [21]) [22] (manuscript.aux)
+[14] [15])
+ignored error: Infinite glue shrinkage found in box being split [16] [17])
+(sections/05_discussion.tex [18]) (sections/06_conclusion.tex) (manuscript.bbl
+[19] [20]) [21] (manuscript.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
@@ -1259,10 +1259,10 @@ L3 programming layer <2025-12-24>
 Here is how much of TeX's memory you used:
  19579 strings out of 402987
  353942 string characters out of 5452872
- 983441 words of memory out of 5000000
+ 986542 words of memory out of 5000000
  47985 multiletter control sequences out of 15000+600000
  636947 words of font info for 115 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 90i,18n,114p,1108b,501s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 90i,18n,114p,1138b,501s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on manuscript.pdf (22 pages).
+Output written on manuscript.pdf (21 pages).

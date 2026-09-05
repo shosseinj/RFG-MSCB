@@ -110,21 +110,21 @@
 \newlabel{experiments}{{}{11}{Experiments}{section*.17}{}}
 \@writefile{toc}{\contentsline {subsection}{Datasets and Data Splits}{11}{section*.18}\protected@file@percent }
 \newlabel{dataset}{{}{11}{Datasets and Data Splits}{section*.18}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Dataset partition used in the experiments.}}{12}{table.2}\protected@file@percent }
-\newlabel{tab:dataset-splits}{{2}{12}{Dataset partition used in the experiments}{table.2}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Dataset partition used in the experiments.}}{11}{table.2}\protected@file@percent }
+\newlabel{tab:dataset-splits}{{2}{11}{Dataset partition used in the experiments}{table.2}{}}
+\citation{smeasure}
+\citation{weightedfmeasure}
+\citation{emeasure}
+\citation{saliencyfilters}
 \@writefile{toc}{\contentsline {subsection}{Implementation Details}{12}{section*.19}\protected@file@percent }
 \newlabel{implementation-details}{{}{12}{Implementation Details}{section*.19}{}}
 \@writefile{toc}{\contentsline {subsection}{Loss Function}{12}{section*.20}\protected@file@percent }
 \newlabel{loss-function}{{}{12}{Loss Function}{section*.20}{}}
 \newlabel{eq:loss}{{28}{12}{Loss Function}{equation.28}{}}
-\citation{smeasure}
-\citation{weightedfmeasure}
-\citation{emeasure}
-\citation{saliencyfilters}
-\newlabel{eq:boundary_loss}{{29}{13}{Loss Function}{equation.29}{}}
-\@writefile{toc}{\contentsline {subsection}{Evaluation Metrics}{13}{section*.21}\protected@file@percent }
-\newlabel{evaluation-metrics}{{}{13}{Evaluation Metrics}{section*.21}{}}
-\newlabel{eq:dice_iou}{{30}{13}{Evaluation Metrics}{equation.30}{}}
+\newlabel{eq:boundary_loss}{{29}{12}{Loss Function}{equation.29}{}}
+\@writefile{toc}{\contentsline {subsection}{Evaluation Metrics}{12}{section*.21}\protected@file@percent }
+\newlabel{evaluation-metrics}{{}{12}{Evaluation Metrics}{section*.21}{}}
+\newlabel{eq:dice_iou}{{30}{12}{Evaluation Metrics}{equation.30}{}}
 \@writefile{toc}{\contentsline {subsection}{Model Selection and Evaluation Protocol}{13}{section*.22}\protected@file@percent }
 \newlabel{model-selection}{{}{13}{Model Selection and Evaluation Protocol}{section*.22}{}}
 \@writefile{toc}{\contentsline {subsection}{Experimental Study}{13}{section*.23}\protected@file@percent }
@@ -132,13 +132,15 @@
 \@writefile{toc}{\contentsline {section}{Ablation Study}{13}{section*.24}\protected@file@percent }
 \newlabel{ablation-study}{{}{13}{Ablation Study}{section*.24}{}}
 \@writefile{toc}{\contentsline {subsection}{Ablation Results}{13}{section*.25}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Ablation comparison macro-averaged across five polyp segmentation datasets. Values are mean $\pm $ sample standard deviation across three seed-level macro averages; each metric cell uses two lines for readability.}}{14}{table.3}\protected@file@percent }
-\newlabel{tab:ablation}{{3}{14}{Ablation comparison macro-averaged across five polyp segmentation datasets. Values are mean $\pm $ sample standard deviation across three seed-level macro averages; each metric cell uses two lines for readability}{table.3}{}}
-\@writefile{toc}{\contentsline {subsection}{Ablation Interpretation}{14}{section*.26}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{Ablation Interpretation}{13}{section*.26}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Ablation and matched-hardware efficiency comparison across four model configurations. Segmentation metrics are five-dataset macro averages reported as mean $\pm $ sample standard deviation across three seeds. Runtime measurements used an NVIDIA GeForce RTX 4090, FP16 inference, batch size 1, and $352\times 352$ inputs.}}{14}{table.3}\protected@file@percent }
+\newlabel{tab:ablation}{{3}{14}{Ablation and matched-hardware efficiency comparison across four model configurations. Segmentation metrics are five-dataset macro averages reported as mean $\pm $ sample standard deviation across three seeds. Runtime measurements used an NVIDIA GeForce RTX 4090, FP16 inference, batch size 1, and $352\times 352$ inputs}{table.3}{}}
 \@writefile{toc}{\contentsline {subsection}{MSCB-lite Placement Analysis}{14}{section*.27}\protected@file@percent }
 \newlabel{mscb-placement}{{}{14}{MSCB-lite Placement Analysis}{section*.27}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Single-seed placement analysis of MSCB-lite using the same five-dataset macro-averaging procedure.}}{14}{table.4}\protected@file@percent }
 \newlabel{tab:mscb-placement}{{4}{14}{Single-seed placement analysis of MSCB-lite using the same five-dataset macro-averaging procedure}{table.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Qualitative comparison of the ablation configurations using two displayed samples per dataset. Dataset groups correspond to Kvasir-SEG, CVC-ClinicDB, CVC-300, CVC-ColonDB, and ETIS-LaribPolypDB; columns show the original image, ground-truth mask, Baseline prediction, FAFEM + MSCB prediction, and Residual RFG-MSCB prediction.}}{15}{figure.3}\protected@file@percent }
+\newlabel{fig:qualitative_ablation}{{3}{15}{Qualitative comparison of the ablation configurations using two displayed samples per dataset. Dataset groups correspond to Kvasir-SEG, CVC-ClinicDB, CVC-300, CVC-ColonDB, and ETIS-LaribPolypDB; columns show the original image, ground-truth mask, Baseline prediction, FAFEM + MSCB prediction, and Residual RFG-MSCB prediction}{figure.3}{}}
 \citation{meganet}
 \citation{msbpnet}
 \citation{cifformer}
@@ -146,13 +148,6 @@
 \citation{mlbnet}
 \citation{mspn}
 \citation{dvfipnet}
-\@writefile{toc}{\contentsline {subsection}{Qualitative Ablation Analysis}{15}{section*.28}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{Comparative study}{15}{section*.29}\protected@file@percent }
-\newlabel{comparative-study}{{}{15}{Comparative study}{section*.29}{}}
-\@writefile{toc}{\contentsline {subsubsection}{Quantitative analysis}{15}{section*.30}\protected@file@percent }
-\newlabel{quantitative-analysis}{{}{15}{Quantitative analysis}{section*.30}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Qualitative comparison of the ablation configurations using two displayed samples per dataset. Dataset groups correspond to Kvasir-SEG, CVC-ClinicDB, CVC-300, CVC-ColonDB, and ETIS-LaribPolypDB; columns show the original image, ground-truth mask, Baseline prediction, FAFEM + MSCB prediction, and Residual RFG-MSCB prediction.}}{16}{figure.3}\protected@file@percent }
-\newlabel{fig:qualitative_ablation}{{3}{16}{Qualitative comparison of the ablation configurations using two displayed samples per dataset. Dataset groups correspond to Kvasir-SEG, CVC-ClinicDB, CVC-300, CVC-ColonDB, and ETIS-LaribPolypDB; columns show the original image, ground-truth mask, Baseline prediction, FAFEM + MSCB prediction, and Residual RFG-MSCB prediction}{figure.3}{}}
 \gdef \LT@i {\LT@entry 
     {1}{117.74377pt}\LT@entry 
     {1}{28.52202pt}\LT@entry 
@@ -163,6 +158,13 @@
     {5}{36.33405pt}\LT@entry 
     {1}{39.97215pt}\LT@entry 
     {5}{31.33405pt}}
+\@writefile{toc}{\contentsline {subsection}{Qualitative Ablation Analysis}{16}{section*.28}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{Comparative study}{16}{section*.29}\protected@file@percent }
+\newlabel{comparative-study}{{}{16}{Comparative study}{section*.29}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Quantitative analysis}{16}{section*.30}\protected@file@percent }
+\newlabel{quantitative-analysis}{{}{16}{Quantitative analysis}{section*.30}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {5}{Quantitative comparison on Kvasir-SEG.}}{16}{table.5}\protected@file@percent }
+\newlabel{tab:kvasir-comparison}{{5}{16}{Quantitative comparison on Kvasir-SEG}{table.5}{}}
 \citation{meganet}
 \citation{msbpnet}
 \citation{cifformer}
@@ -214,14 +216,6 @@
     {5}{36.33405pt}\LT@entry 
     {1}{39.97215pt}\LT@entry 
     {5}{31.33405pt}}
-\@writefile{lot}{\contentsline {table}{\numberline {5}{Quantitative comparison on Kvasir-SEG.}}{17}{table.5}\protected@file@percent }
-\newlabel{tab:kvasir-comparison}{{5}{17}{Quantitative comparison on Kvasir-SEG}{table.5}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {6}{Quantitative comparison on CVC-ClinicDB.}}{17}{table.6}\protected@file@percent }
-\newlabel{tab:clinicdb-comparison}{{6}{17}{Quantitative comparison on CVC-ClinicDB}{table.6}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {7}{Quantitative comparison on ETIS-LaribPolypDB.}}{17}{table.7}\protected@file@percent }
-\newlabel{tab:etis-comparison}{{7}{17}{Quantitative comparison on ETIS-LaribPolypDB}{table.7}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {8}{Quantitative comparison on CVC-ColonDB.}}{17}{table.8}\protected@file@percent }
-\newlabel{tab:colondb-comparison}{{8}{17}{Quantitative comparison on CVC-ColonDB}{table.8}{}}
 \citation{meganet}
 \citation{msbpnet}
 \citation{cifformer}
@@ -229,6 +223,12 @@
 \citation{mlbnet}
 \citation{mspn}
 \citation{dvfipnet}
+\@writefile{lot}{\contentsline {table}{\numberline {6}{Quantitative comparison on CVC-ClinicDB.}}{17}{table.6}\protected@file@percent }
+\newlabel{tab:clinicdb-comparison}{{6}{17}{Quantitative comparison on CVC-ClinicDB}{table.6}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {7}{Quantitative comparison on ETIS-LaribPolypDB.}}{17}{table.7}\protected@file@percent }
+\newlabel{tab:etis-comparison}{{7}{17}{Quantitative comparison on ETIS-LaribPolypDB}{table.7}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {8}{Quantitative comparison on CVC-ColonDB.}}{17}{table.8}\protected@file@percent }
+\newlabel{tab:colondb-comparison}{{8}{17}{Quantitative comparison on CVC-ColonDB}{table.8}{}}
 \gdef \LT@v {\LT@entry 
     {1}{117.74377pt}\LT@entry 
     {1}{28.52202pt}\LT@entry 
@@ -245,14 +245,20 @@
 \newlabel{discussion}{{}{18}{Discussion}{section*.31}{}}
 \@writefile{toc}{\contentsline {subsection}{Quantitative and Ablation Interpretation}{18}{section*.32}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{Cross-Dataset Generalization}{18}{section*.33}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{Practical Trade-offs and Placement}{19}{section*.34}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{Practical Trade-offs and Placement}{18}{section*.34}\protected@file@percent }
+\bibstyle{unsrt}
+\bibdata{references}
+\bibcite{unet}{1}
 \@writefile{toc}{\contentsline {subsection}{Limitations}{19}{section*.35}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{Future Work}{19}{section*.36}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{Conclusion}{19}{section*.37}\protected@file@percent }
 \newlabel{conclusion}{{}{19}{Conclusion}{section*.37}{}}
-\bibstyle{unsrt}
-\bibdata{references}
-\bibcite{unet}{1}
+\newlabel{declaration-of-competing-interest}{{}{19}{Declaration of competing interest}{section*.38}{}}
+\@writefile{toc}{\contentsline {section}{Declaration of competing interest}{19}{section*.38}\protected@file@percent }
+\newlabel{data-availability}{{}{19}{Data availability}{section*.39}{}}
+\@writefile{toc}{\contentsline {section}{Data availability}{19}{section*.39}\protected@file@percent }
+\newlabel{references}{{}{19}{Data availability}{section*.40}{}}
+\@writefile{toc}{\contentsline {section}{References}{19}{section*.40}\protected@file@percent }
 \bibcite{unetpp}{2}
 \bibcite{transunet}{3}
 \bibcite{polyppvt}{4}
@@ -270,12 +276,6 @@
 \bibcite{pfprnet}{16}
 \bibcite{mfnet}{17}
 \bibcite{sknet}{18}
-\newlabel{declaration-of-competing-interest}{{}{20}{Declaration of competing interest}{section*.38}{}}
-\@writefile{toc}{\contentsline {section}{Declaration of competing interest}{20}{section*.38}\protected@file@percent }
-\newlabel{data-availability}{{}{20}{Data availability}{section*.39}{}}
-\@writefile{toc}{\contentsline {section}{Data availability}{20}{section*.39}\protected@file@percent }
-\newlabel{references}{{}{20}{Data availability}{section*.40}{}}
-\@writefile{toc}{\contentsline {section}{References}{20}{section*.40}\protected@file@percent }
 \bibcite{dynamicconv}{19}
 \bibcite{femaanet}{20}
 \bibcite{senet}{21}
@@ -297,4 +297,4 @@
 \bibcite{weightedfmeasure}{37}
 \bibcite{emeasure}{38}
 \bibcite{saliencyfilters}{39}
-\gdef \@abspage@last{22}
+\gdef \@abspage@last{21}

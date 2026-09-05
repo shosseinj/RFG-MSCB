@@ -18,22 +18,25 @@ Kvasir-SEG, CVC-ClinicDB, CVC-300, CVC-ColonDB, and ETIS-LaribPolypDB.
 
 \begin{table*}[htbp]
 \centering
-\caption{Ablation comparison macro-averaged across five polyp segmentation datasets. Values are mean $\pm$ sample standard deviation across three seed-level macro averages; each metric cell uses two lines for readability.}\label{tab:ablation}
-\footnotesize
-\setlength{\tabcolsep}{2pt}
+\caption{Ablation and matched-hardware efficiency comparison across four model configurations. Segmentation metrics are five-dataset macro averages reported as mean $\pm$ sample standard deviation across three seeds. Runtime measurements used an NVIDIA GeForce RTX 4090, FP16 inference, batch size 1, and $352\times352$ inputs.}\label{tab:ablation}
+\small
+\setlength{\tabcolsep}{1.5pt}
 \renewcommand{\arraystretch}{1.1}
 \resizebox{\textwidth}{!}{%
-\begin{tabular}{@{}lrrrrrrrrr@{}}
+\begin{tabular}{@{}lrrrrrrrrrrrr@{}}
 \toprule
-Model & mDice & mIoU & $F_{\beta}^{w}$ & $S_{\alpha}$ & $mE_{\phi}$ & $\max E_{\phi}$ & MAE & Params (M) & GFLOPs \\
+Model & mDice & mIoU & $F_{\beta}^{w}$ & $S_{\alpha}$ & $mE_{\phi}$ & $\max E_{\phi}$ & MAE & Params (M) & GFLOPs & Latency (ms) & FPS & Peak VRAM (MiB) \\
 \midrule
-Baseline & \meanstd{0.827}{0.007} & \meanstd{0.762}{0.008} & \meanstd{0.811}{0.006} & \meanstd{0.890}{0.004} & \meanstd{0.907}{0.005} & \meanstd{0.916}{0.005} & \meanstd{0.019}{0.000} & 29.190 & 27.202 \\
- + FAFEM & \meanstd{0.864}{0.002} & \meanstd{0.797}{0.001} & \meanstd{0.841}{0.003} & \meanstd{0.908}{0.001} & \meanstd{0.934}{0.002} & \meanstd{0.945}{0.002} & \meanstd{0.018}{0.000} & 29.360 & 27.208 \\
- + MSCB & \meanstd{0.867}{0.002} & \meanstd{0.802}{0.003} & \meanstd{0.845}{0.003} & \meanstd{0.910}{0.002} & \meanstd{0.937}{0.001} & \meanstd{0.946}{0.001} & \meanstd{0.018}{0.000} & 29.983 & 27.818 \\
- + Residual RFG-MSCB & \meanstd{0.872}{0.004} & \meanstd{0.810}{0.004} & \meanstd{0.849}{0.003} & \meanstd{0.914}{0.003} & \meanstd{0.941}{0.001} & \meanstd{0.949}{0.001} & \meanstd{0.018}{0.000} & 30.057 & 27.818 \\
+Baseline & \meanstd{0.827}{0.007} & \meanstd{0.762}{0.008} & \meanstd{0.811}{0.006} & \meanstd{0.890}{0.004} & \meanstd{0.907}{0.005} & \meanstd{0.916}{0.005} & \meanstd{0.019}{0.000} & 29.190 & 27.202 & \meanstd{10.573}{0.196} & 94.585 & 248.859 \\
+ + FAFEM & \meanstd{0.864}{0.002} & \meanstd{0.797}{0.001} & \meanstd{0.841}{0.003} & \meanstd{0.908}{0.001} & \meanstd{0.934}{0.002} & \meanstd{0.945}{0.002} & \meanstd{0.018}{0.000} & 29.360 & 27.208 & \meanstd{11.014}{0.137} & 90.794 & 249.832 \\
+ + MSCB & \meanstd{0.867}{0.002} & \meanstd{0.802}{0.003} & \meanstd{0.845}{0.003} & \meanstd{0.910}{0.002} & \meanstd{0.937}{0.001} & \meanstd{0.946}{0.001} & \meanstd{0.018}{0.000} & 29.983 & 27.818 & \meanstd{11.630}{0.137} & 85.986 & 252.876 \\
+ + Residual RFG-MSCB & \meanstd{0.872}{0.004} & \meanstd{0.810}{0.004} & \meanstd{0.849}{0.003} & \meanstd{0.914}{0.003} & \meanstd{0.941}{0.001} & \meanstd{0.949}{0.001} & \meanstd{0.018}{0.000} & 30.057 & 27.818 & \meanstd{11.806}{0.023} & 84.701 & 253.306 \\
 \bottomrule
 \end{tabular}%
 }
+\vspace{2pt}
+
+\parbox{0.99\textwidth}{\footnotesize Runtime protocol: PyTorch 2.5.1+cu124 and CUDA 12.4 on an NVIDIA GeForce RTX 4090; FP16 autocast, batch size 1, $1\times3\times352\times352$ input, forward pass only, and no TTA, I/O, or post-processing. Each of three repetitions used 100 warm-ups and 500 synchronized CUDA-event measurements. Latency variation is the sample standard deviation of the three repetition means.}
 \end{table*}
 
 \subsection{Ablation Interpretation}
@@ -44,7 +47,7 @@ Adding MSCB to FAFEM raises mDice, mIoU, and $F_{\beta}^{w}$ by 0.3, 0.5, and 0.
 
 Relative to FAFEM + MSCB, Residual RFG-MSCB adds 0.5 points in mDice, 0.8 in mIoU, 0.4 in $F_{\beta}^{w}$, 0.4 in $S_{\alpha}$, 0.4 in $mE_{\phi}$, and 0.3 in $\max E_{\phi}$. It consequently has the highest mean for each of these six metrics: 0.872, 0.810, 0.849, 0.914, 0.941, and 0.949, respectively. Its displayed MAE remains 0.018, tied with FAFEM and FAFEM + MSCB.
 
-The progression increases parameters from 29.190 M for the Baseline to 29.360 M with FAFEM, 29.983 M with MSCB, and 30.057 M with Residual RFG-MSCB. GFLOPs increase from 27.202 to 27.208 and 27.818 after adding MSCB, then remain 27.818 for the final configuration at the displayed precision. Thus the complete configuration adds 0.867 M parameters and 0.616 GFLOPs over the Baseline; the final residual frequency-guided step accounts for about 0.074 M parameters with effectively unchanged displayed GFLOPs. Together with the metric changes, this four-stage pattern supports positive descriptive contributions from each added component at the reported aggregate level. No statistical significance is claimed.
+The progression increases parameters from 29.190 M for the Baseline to 29.360 M with FAFEM, 29.983 M with MSCB, and 30.057 M with Residual RFG-MSCB. GFLOPs increase from 27.202 to 27.208 and 27.818 after adding MSCB, then remain 27.818 for the final configuration at the displayed precision. Thus the complete configuration adds 0.867 M parameters and 0.616 GFLOPs over the Baseline. Relative to FAFEM + MSCB, the residual frequency-guided extension adds about 0.074 M parameters while leaving GFLOPs unchanged at the displayed precision. Under matched FP16 inference, latency increases from 11.630 to 11.806 ms (1.52\%), FPS decreases from 85.986 to 84.701 (1.50\%), and peak allocated VRAM increases from 252.876 to 253.306 MiB (0.17\%). This represents modest measured runtime overhead, with throughput remaining 84.70 FPS. Together with the metric changes, this four-stage pattern supports positive descriptive contributions from each added component at the reported aggregate level. No statistical significance is claimed.
 
 \subsection{MSCB-lite Placement Analysis}
 \label{mscb-placement}

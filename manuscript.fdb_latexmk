@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex manuscript"] 1788626152.7881 "manuscript.aux" "manuscript.bbl" "manuscript" 1788626158.56426 0
+["bibtex manuscript"] 1788627766.33135 "manuscript.aux" "manuscript.bbl" "manuscript" 1788627771.96026 0
   "./references.bib" 1788621208 15417 877738831b1bffc78447f896fb73aee1 ""
   "C:/Program Files/MiKTeX/bibtex/bst/bibtex/unsrt.bst" 1291864736 18030 1376b4b231b50c66211e47e42eda2875 ""
-  "manuscript.aux" 1788626157 32674 fa91454e75a9dacdaf1a513ae8e53245 "pdflatex"
+  "manuscript.aux" 1788627771 32889 bde0070a2a556a0b596f03c9106822c7 "pdflatex"
   (generated)
   "manuscript.bbl"
   "manuscript.blg"
   (rewritten before read)
-["pdflatex"] 1788626153.07051 "g:/RFG-MSCB/manuscript.tex" "manuscript.pdf" "manuscript" 1788626158.56502 0
+["pdflatex"] 1788627766.61855 "g:/RFG-MSCB/manuscript.tex" "manuscript.pdf" "manuscript" 1788627771.96101 0
   "C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc" 1256929440 2375 baa924870cfb487815765f9094cf3728 ""
   "C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-mathex.enc" 1256929440 3486 c7eadf5dcc57b3b2d11736679f6636ba ""
   "C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc" 1256929440 2405 5dcf2c1b967ee25cc46c58cd52244aed ""
@@ -78,7 +78,6 @@
   "C:/Program Files/MiKTeX/fonts/type1/public/lm/lmmi10.pfb" 1256929440 30388 702fae6a5f0e6e9c48a1d872b442ffcf ""
   "C:/Program Files/MiKTeX/fonts/type1/public/lm/lmmi6.pfb" 1256929440 31113 04b711c9a4c7f8cb4ed784c6fc4cc1c5 ""
   "C:/Program Files/MiKTeX/fonts/type1/public/lm/lmmi7.pfb" 1256929440 30789 39c6b966e509dbc60e7a1aaaf85d08a0 ""
-  "C:/Program Files/MiKTeX/fonts/type1/public/lm/lmmi8.pfb" 1256929440 30635 833ec815d446ec453a4913fc26d24cbc ""
   "C:/Program Files/MiKTeX/fonts/type1/public/lm/lmmi9.pfb" 1256929440 30698 e53a423459271d6c5cdd91f7559396af ""
   "C:/Program Files/MiKTeX/fonts/type1/public/lm/lmmib10.pfb" 1256929440 30962 0fa65166a316c2ff6663754edfd267df ""
   "C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr10.pfb" 1256929440 119235 05e5c8d6d60439433e50047898c2c0e0 ""
@@ -182,18 +181,18 @@
   "C:/Users/hosse/AppData/Roaming/MiKTeX/tex/latex/upquote/upquote.sty" 1335534756 1088 517e01cde97c1c0baf72e69d43aa5a2e ""
   "C:/Users/hosse/AppData/Roaming/MiKTeX/tex/latex/xurl/xurl.sty" 1641733940 4675 e4b8c405820368c2dfb03526e16d725a ""
   "g:/RFG-MSCB/manuscript.tex" 1788624595 5432 5234c6211de91f9715b57c799b658d1d ""
-  "manuscript.aux" 1788626157 32674 fa91454e75a9dacdaf1a513ae8e53245 "pdflatex"
-  "manuscript.bbl" 1788626152 10794 85319f4d9051436499e757894fcd1938 "bibtex manuscript"
+  "manuscript.aux" 1788627771 32889 bde0070a2a556a0b596f03c9106822c7 "pdflatex"
+  "manuscript.bbl" 1788627766 10794 85319f4d9051436499e757894fcd1938 "bibtex manuscript"
   "manuscript.tex" 1788624595 5432 5234c6211de91f9715b57c799b658d1d ""
   "media/ablation10.png" 1788621208 8012561 07787e490d07a2759f0f83bbef2d7026 ""
   "media/convnext.png" 1788621208 1177110 c949eff14314d37ff4fc9421b6021ab4 ""
   "media/hosein.png" 1788621208 1780365 0d9309a3a8444fcec675bea3894bc71f ""
   "sections/01_introduction.tex" 1788626146 5400 22ddc19df26fbed9362eea0ef6fcab5c ""
   "sections/02_related_work.tex" 1788621208 7608 63e43456340dbf4c5bf6ee3df274192d ""
-  "sections/03_method.tex" 1788626146 19918 b498088fff40a0ff6592cc866dce6306 ""
-  "sections/04_ablation_experiments.tex" 1788626146 7698 3a4085500b24dd1b33e5baa5f61dd5bc ""
+  "sections/03_method.tex" 1788627759 18585 2ecc0619f8501cc7615d0de891a7ea01 ""
+  "sections/04_ablation_experiments.tex" 1788627759 8756 4431ae192fd02b15ca987491c009ed02 ""
   "sections/04_experiments.tex" 1788621208 18946 e015042660a57f9338538f8cc971530e ""
-  "sections/05_discussion.tex" 1788626146 5293 b2531651c28bd35780e3c43ba2bd517c ""
+  "sections/05_discussion.tex" 1788627759 5097 b8116d1051e85c909f605396fd711dae ""
   "sections/06_conclusion.tex" 1788626146 1249 9eeefe02547cd21cba6c352fb129712b ""
   (generated)
   "manuscript.aux"

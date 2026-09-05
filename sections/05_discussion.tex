@@ -46,12 +46,9 @@ model-selection criteria, and implementation details remain.
 \subsection{Practical Trade-offs and Placement}
 
 As summarized in Table~\ref{tab:model-complexity}, the final architecture has
-30.057 M parameters and requires 27.818 GFLOPs at $352\times352$. Under identical
-FP16 inference conditions on an NVIDIA GeForce RTX 4090, it achieved 84.70 FPS at
-batch size 1. Relative to FAFEM + MSCB, the final modification adds about 0.074 M
-parameters with effectively unchanged GFLOPs at the displayed precision; mean latency
-increased by 1.52\%, FPS decreased by 1.50\%, and peak allocated GPU memory increased
-by 0.17\%. The Stage-3 localization is also consistent
+30.057 M parameters and requires 27.818 GFLOPs at $352\times352$. The matched-hardware
+results in Table~\ref{tab:ablation} show modest runtime and memory overhead for the
+residual frequency-guided extension relative to FAFEM + MSCB. The Stage-3 localization is also consistent
 with the single-seed MSCB-lite placement analysis, where extending refinement to
 additional skip levels increased computational cost without improving the
 five-dataset macro-average overlap metrics. This placement evidence concerns ordinary

@@ -373,11 +373,9 @@ and 27.818 GFLOPs; the final RFG modification therefore adds about 0.074 M
 parameters, while GFLOPs are effectively unchanged at the displayed precision.
 Adaptive computation is localized to the Stage-3 encoder--decoder fusion, and the
 remaining decoder stages retain depthwise-separable convolution, consistent with the
-MSCB-lite placement analysis in Table~\ref{tab:mscb-placement}. Under identical FP16
-inference conditions on an NVIDIA GeForce RTX 4090, the final model achieved 84.70 FPS
-at batch size 1. Relative to FAFEM + MSCB, mean latency increased by 1.52\%, FPS
-decreased by 1.50\%, and peak allocated GPU memory increased by 0.17\%, indicating
-modest measured runtime overhead.
+MSCB-lite placement analysis in Table~\ref{tab:mscb-placement}. Matched-hardware
+runtime efficiency for the four internal configurations is reported with the ablation
+results in Table~\ref{tab:ablation}.
 
 \begin{table}[htbp]
 \centering
@@ -403,28 +401,4 @@ DVFIP-Net~\cite{dvfipnet} & 2026 & $352^2$ & 45.62 & 19.37 \\
 
 \vspace{2pt}
 \parbox{0.96\linewidth}{\footnotesize $^{\dagger}$Our value uses 13.91 GMACs and the explicit convention $\mathrm{FLOPs}=2\times\mathrm{MACs}$. Competitor values are preserved in source terminology and are not convention-normalized.}
-\end{table}
-
-\begin{table}[htbp]
-\centering
-\small
-\textbf{Matched-hardware inference efficiency of the internal ablation variants on an NVIDIA GeForce RTX 4090 using FP16 inference, batch size 1, and $352\times352$ input.}\par
-\vspace{4pt}
-\setlength{\tabcolsep}{3.5pt}
-\renewcommand{\arraystretch}{1.1}
-\resizebox{\columnwidth}{!}{%
-\begin{tabular}{lccccc}
-\toprule
-Model & Params (M) & GFLOPs & Latency (ms) & FPS & Peak VRAM (MiB) \\
-\midrule
-Baseline & 29.190 & 27.202 & $10.573 \pm 0.196$ & 94.585 & 248.859 \\
-FAFEM & 29.360 & 27.208 & $11.014 \pm 0.137$ & 90.794 & 249.832 \\
-FAFEM + MSCB & 29.983 & 27.818 & $11.630 \pm 0.137$ & 85.986 & 252.876 \\
-Residual RFG-MSCB (Ours) & 30.057 & 27.818 & $11.806 \pm 0.023$ & 84.701 & 253.306 \\
-\bottomrule
-\end{tabular}%
-}
-\vspace{3pt}
-
-\parbox{0.98\linewidth}{\footnotesize Forward-pass-only measurements used PyTorch 2.5.1+cu124, CUDA 12.4, FP16 autocast, batch size 1, and $1\times3\times352\times352$ input, with no TTA, I/O, or post-processing. Each of three repetitions used 100 warm-ups and 500 synchronized CUDA-event measurements; latency variation is the sample standard deviation of the repetition means.}
 \end{table}
