@@ -369,8 +369,8 @@ The selected architecture does not employ auxiliary prediction heads or deep sup
 
 The complete model has 30.06 M parameters and requires 27.82 GFLOPs for a
 $352\times352$ input. The FAFEM + MSCB configuration has 29.98 M parameters
-and 27.514 GFLOPs; the final RFG modification therefore adds approximately 0.08 M
-parameters, while the GFLOP estimate remains 27.818 at the displayed precision.
+and 27.514 GFLOPs; the final RFG modification therefore adds 0.08 M parameters
+and 0.304 GFLOPs, bringing the respective totals to 30.06 M and 27.818 GFLOPs.
 Adaptive computation is localized to the Stage-3 encoder--decoder fusion, and the
 remaining decoder stages retain depthwise-separable convolution. Latency, throughput,
 and peak memory were not retained with the final runs, so these measurements support

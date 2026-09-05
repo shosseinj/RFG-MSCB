@@ -8,10 +8,11 @@ refinement while preserving the ordinary multi-scale pathway as a reference.
 The final model achieved mDice/mIoU of 0.932/0.883 on Kvasir-SEG and transferred
 most strongly to CVC-300 among the three external datasets, with lower performance on
 CVC-ColonDB and ETIS-LaribPolypDB. In the controlled ablation, FAFEM + MSCB reached
-the highest aggregate overlap measures (0.867 mDice, 0.802 mIoU), while Residual
-RFG-MSCB produced the strongest mean E-measures ($0.939\ mE_{\phi}$ and $0.948\ \max E_{\phi}$)
-and added 0.08 M parameters over FAFEM + MSCB without changing the remaining
-depthwise-separable decoder stages.
+0.867 mDice before Residual RFG-MSCB increased the mean to 0.872 and achieved the
+highest means across all six positive-valued aggregate metrics. The displayed MAE
+remained 0.018 after the FAFEM stage. The final modification adds 0.08 M parameters
+and 0.304 GFLOPs over FAFEM + MSCB without changing the remaining depthwise-separable
+decoder stages.
 
 Future work should evaluate alternative placements across multiple seeds, disentangle
 residualization from frequency conditioning, and examine adaptation across acquisition
