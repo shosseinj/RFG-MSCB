@@ -10,9 +10,10 @@ most strongly to CVC-300 among the three external datasets, with lower performan
 CVC-ColonDB and ETIS-LaribPolypDB. In the controlled ablation, FAFEM + MSCB reached
 0.867 mDice before Residual RFG-MSCB increased the mean to 0.872 and achieved the
 highest means across all six positive-valued aggregate metrics. The displayed MAE
-remained 0.018 after the FAFEM stage. The final modification adds 0.08 M parameters
-and 0.304 GFLOPs over FAFEM + MSCB without changing the remaining depthwise-separable
-decoder stages.
+remained 0.018 after the FAFEM stage. The final modification adds about 0.074 M
+parameters over FAFEM + MSCB with effectively unchanged GFLOPs at the displayed
+precision and modest measured runtime overhead, without changing the remaining
+depthwise-separable decoder stages.
 
 Future work should evaluate Residual RFG-MSCB placement across multiple seeds,
 disentangle residualization from frequency conditioning, and examine adaptation across

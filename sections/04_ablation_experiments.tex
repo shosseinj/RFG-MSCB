@@ -27,10 +27,10 @@ Kvasir-SEG, CVC-ClinicDB, CVC-300, CVC-ColonDB, and ETIS-LaribPolypDB.
 \toprule
 Model & mDice & mIoU & $F_{\beta}^{w}$ & $S_{\alpha}$ & $mE_{\phi}$ & $\max E_{\phi}$ & MAE & Params (M) & GFLOPs \\
 \midrule
-Baseline & \meanstd{0.827}{0.007} & \meanstd{0.762}{0.008} & \meanstd{0.811}{0.006} & \meanstd{0.890}{0.004} & \meanstd{0.907}{0.005} & \meanstd{0.916}{0.005} & \meanstd{0.019}{0.000} & 29.19 & 27.202 \\
- + FAFEM & \meanstd{0.864}{0.002} & \meanstd{0.797}{0.001} & \meanstd{0.841}{0.003} & \meanstd{0.908}{0.001} & \meanstd{0.934}{0.002} & \meanstd{0.945}{0.002} & \meanstd{0.018}{0.000} & 29.36 & 27.208 \\
- + MSCB & \meanstd{0.867}{0.002} & \meanstd{0.802}{0.003} & \meanstd{0.845}{0.003} & \meanstd{0.910}{0.002} & \meanstd{0.937}{0.001} & \meanstd{0.946}{0.001} & \meanstd{0.018}{0.000} & 29.98 & 27.514 \\
- + Residual RFG-MSCB & \meanstd{0.872}{0.004} & \meanstd{0.810}{0.004} & \meanstd{0.849}{0.003} & \meanstd{0.914}{0.003} & \meanstd{0.941}{0.001} & \meanstd{0.949}{0.001} & \meanstd{0.018}{0.000} & 30.06 & 27.818 \\
+Baseline & \meanstd{0.827}{0.007} & \meanstd{0.762}{0.008} & \meanstd{0.811}{0.006} & \meanstd{0.890}{0.004} & \meanstd{0.907}{0.005} & \meanstd{0.916}{0.005} & \meanstd{0.019}{0.000} & 29.190 & 27.202 \\
+ + FAFEM & \meanstd{0.864}{0.002} & \meanstd{0.797}{0.001} & \meanstd{0.841}{0.003} & \meanstd{0.908}{0.001} & \meanstd{0.934}{0.002} & \meanstd{0.945}{0.002} & \meanstd{0.018}{0.000} & 29.360 & 27.208 \\
+ + MSCB & \meanstd{0.867}{0.002} & \meanstd{0.802}{0.003} & \meanstd{0.845}{0.003} & \meanstd{0.910}{0.002} & \meanstd{0.937}{0.001} & \meanstd{0.946}{0.001} & \meanstd{0.018}{0.000} & 29.983 & 27.818 \\
+ + Residual RFG-MSCB & \meanstd{0.872}{0.004} & \meanstd{0.810}{0.004} & \meanstd{0.849}{0.003} & \meanstd{0.914}{0.003} & \meanstd{0.941}{0.001} & \meanstd{0.949}{0.001} & \meanstd{0.018}{0.000} & 30.057 & 27.818 \\
 \bottomrule
 \end{tabular}%
 }
@@ -44,7 +44,7 @@ Adding MSCB to FAFEM raises mDice, mIoU, and $F_{\beta}^{w}$ by 0.3, 0.5, and 0.
 
 Relative to FAFEM + MSCB, Residual RFG-MSCB adds 0.5 points in mDice, 0.8 in mIoU, 0.4 in $F_{\beta}^{w}$, 0.4 in $S_{\alpha}$, 0.4 in $mE_{\phi}$, and 0.3 in $\max E_{\phi}$. It consequently has the highest mean for each of these six metrics: 0.872, 0.810, 0.849, 0.914, 0.941, and 0.949, respectively. Its displayed MAE remains 0.018, tied with FAFEM and FAFEM + MSCB.
 
-The progression increases parameters from 29.19 M for the Baseline to 29.36 M with FAFEM, 29.98 M with MSCB, and 30.06 M with Residual RFG-MSCB. GFLOPs increase from 27.202 to 27.208, 27.514, and 27.818, respectively. Thus the complete configuration adds 0.87 M parameters and 0.616 GFLOPs over the Baseline; the final residual frequency-guided step accounts for 0.08 M parameters and 0.304 GFLOPs. Together with the metric changes, this four-stage pattern supports positive descriptive contributions from each added component at the reported aggregate level. No statistical significance is claimed.
+The progression increases parameters from 29.190 M for the Baseline to 29.360 M with FAFEM, 29.983 M with MSCB, and 30.057 M with Residual RFG-MSCB. GFLOPs increase from 27.202 to 27.208 and 27.818 after adding MSCB, then remain 27.818 for the final configuration at the displayed precision. Thus the complete configuration adds 0.867 M parameters and 0.616 GFLOPs over the Baseline; the final residual frequency-guided step accounts for about 0.074 M parameters with effectively unchanged displayed GFLOPs. Together with the metric changes, this four-stage pattern supports positive descriptive contributions from each added component at the reported aggregate level. No statistical significance is claimed.
 
 \subsection{MSCB-lite Placement Analysis}
 \label{mscb-placement}
