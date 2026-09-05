@@ -1,0 +1,28 @@
+\section{Introduction}
+
+Colorectal polyps are abnormal tissue growths that can develop into malignant lesions if they are not detected and removed at an early stage. Colonoscopy is widely used for the examination of the lower gastrointestinal tract and enables clinicians to identify and remove suspicious lesions. Nevertheless, visual inspection remains challenging because polyp appearance varies considerably across patients and imaging conditions. Variations in lesion size, morphology, texture, contrast, and location, together with specular reflections, motion blur, intestinal folds, bubbles, and other visual artifacts, can complicate accurate delineation of polyp regions. Automated polyp segmentation therefore remains an important problem in computer-aided colonoscopy, where reliable pixel-level localization may assist subsequent analysis and clinical decision support.
+
+Accurate polyp segmentation requires a model to simultaneously capture high-level semantic information and preserve sufficiently detailed spatial representations. U-shaped encoder--decoder architectures are well suited to this task because they combine progressively abstract encoder features with higher-resolution representations through skip connections. U-Net established this general design, while subsequent architectures such as UNet++ further demonstrated the importance of multi-level feature interaction and hierarchical decoding \cite{unet,unetpp}. However, repeated downsampling reduces spatial resolution, and fixed decoder operations may not always provide sufficient flexibility for lesions that vary considerably in scale and visual frequency content.
+
+Recent transformer-based and hybrid architectures have improved long-range dependency modeling in medical image segmentation. TransUNet combines convolutional representations with transformer encoding, while Polyp-PVT applies hierarchical transformer features and cross-level aggregation to polyp segmentation \cite{transunet,polyppvt}. These approaches demonstrate the importance of broad contextual modeling, but they can introduce additional architectural complexity. Modern convolutional networks such as ConvNeXt provide an alternative by retaining the efficiency and spatial inductive bias of convolution while incorporating design principles that improve representation capacity. ConvNeXt employs large-kernel depthwise convolution, inverted channel expansion, Layer Normalization, GELU activation, layer scaling, and stochastic depth, making it a strong hierarchical encoder for dense prediction tasks \cite{convnext}.
+
+Multi-scale representation is particularly important in polyp segmentation because lesions may occupy very small regions or extend over a large portion of the image. Multi-Scale Convolution Blocks (MSCBs) address this issue by combining convolutional branches with different receptive fields, allowing a network to aggregate local and broader spatial responses \cite{emcad}. In their ordinary form, the branch responses are summed without sample-specific frequency conditioning.
+
+Frequency-aware feature processing provides another complementary perspective. The bottleneck FAFEM implemented in this work uses local low-pass and residual high-pass proxies to enhance deep features and produce a compact descriptor. The descriptor can then provide image-dependent information for guiding later multi-scale processing rather than being used only at the bottleneck.
+
+This observation motivates the central idea of this work. Instead of treating bottleneck frequency enhancement and decoder multi-scale refinement as independent operations, we establish an explicit cross-level interaction between them. The frequency descriptor produced by a bottleneck FAFEM is propagated to the first decoder stage and used to regulate the relative contributions of the multi-scale branches in an MSCB. In this way, the receptive-field mixture of the decoder becomes sample dependent rather than fixed across all images.
+
+Directly replacing the original MSCB aggregation with a fully frequency-guided formulation could, however, unnecessarily perturb a stable multi-scale representation. To address this issue, we introduce the bounded residual guidance strategy formalized in Eq.~\eqref{eq:rfg_residual}. Here, $M_{\mathrm{ord}}$ denotes the ordinary multi-scale aggregation, $M_{\mathrm{guide}}$ denotes the frequency-conditioned aggregation, and $s$ is a bounded learnable guidance-strength parameter. This formulation preserves the conventional MSCB pathway as a reference and allows the model to progressively learn frequency-dependent deviations during optimization.
+
+Based on this mechanism, we develop a ConvNeXt-Tiny U-shaped segmentation framework in which the frequency-guided modification is localized to the first encoder--decoder fusion stage; the remaining decoder stages retain conventional fusion and depthwise-separable convolution.
+
+The principal contributions of this work are summarized as follows:
+
+\begin{itemize}
+
+\item We introduce RFG-MSCB, which uses the bottleneck FAFEM descriptor to modulate the multi-kernel MSCB branches through bounded residual interpolation around ordinary MSCB aggregation.
+
+\item We evaluate the resulting ConvNeXt-Tiny segmentation architecture on multiple public colorectal polyp datasets using a three-seed comparison of FAFEM, FAFEM + MSCB, and FAFEM + RFG-MSCB configurations, supplemented by exploratory single-seed mechanistic and placement observations.
+
+\item We quantify the architectural trade-off: the localized RFG-MSCB modification adds 0.08 M parameters over FAFEM + MSCB without additional reported GFLOPs at the displayed precision.
+\end{itemize}

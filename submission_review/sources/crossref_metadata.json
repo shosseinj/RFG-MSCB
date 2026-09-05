@@ -1,0 +1,3620 @@
+[
+  {
+    "key": "unet",
+    "doi": "10.1007/978-3-319-24574-4_28",
+    "endpoint": "https://api.crossref.org/works/10.1007%2F978-3-319-24574-4_28",
+    "status": "METADATA_RETRIEVED_NOT_CLAIM_VERIFICATION",
+    "metadata": {
+      "DOI": "10.1007/978-3-319-24574-4_28",
+      "title": [
+        "U-Net: Convolutional Networks for Biomedical Image Segmentation"
+      ],
+      "author": [
+        {
+          "given": "Olaf",
+          "family": "Ronneberger",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Philipp",
+          "family": "Fischer",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Thomas",
+          "family": "Brox",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "Lecture Notes in Computer Science",
+        "Medical Image Computing and Computer-Assisted Intervention – MICCAI 2015"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2015
+          ]
+        ]
+      },
+      "published-print": {
+        "date-parts": [
+          [
+            2015
+          ]
+        ]
+      },
+      "published-online": {
+        "date-parts": [
+          [
+            2015,
+            11,
+            18
+          ]
+        ]
+      },
+      "page": "234-241",
+      "relation": {
+        "is-referenced-by": [
+          {
+            "id-type": "doi",
+            "id": "10.1007/s12530-026-09825-x",
+            "asserted-by": "object"
+          }
+        ]
+      },
+      "link": [
+        {
+          "URL": "http://link.springer.com/content/pdf/10.1007/978-3-319-24574-4_28",
+          "content-type": "unspecified",
+          "content-version": "vor",
+          "intended-application": "similarity-checking"
+        }
+      ]
+    }
+  },
+  {
+    "key": "unetpp",
+    "doi": "10.1109/TMI.2019.2959609",
+    "endpoint": "https://api.crossref.org/works/10.1109%2FTMI.2019.2959609",
+    "status": "METADATA_RETRIEVED_NOT_CLAIM_VERIFICATION",
+    "metadata": {
+      "DOI": "10.1109/tmi.2019.2959609",
+      "title": [
+        "UNet++: Redesigning Skip Connections to Exploit Multiscale Features in Image Segmentation"
+      ],
+      "author": [
+        {
+          "ORCID": "https://orcid.org/0000-0002-3154-9851",
+          "authenticated-orcid": false,
+          "given": "Zongwei",
+          "family": "Zhou",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Md Mahfuzur Rahman",
+          "family": "Siddiquee",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Nima",
+          "family": "Tajbakhsh",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "ORCID": "https://orcid.org/0000-0001-5486-1613",
+          "authenticated-orcid": false,
+          "given": "Jianming",
+          "family": "Liang",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "IEEE Transactions on Medical Imaging"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2020,
+            6
+          ]
+        ]
+      },
+      "published-print": {
+        "date-parts": [
+          [
+            2020,
+            6
+          ]
+        ]
+      },
+      "volume": "39",
+      "issue": "6",
+      "page": "1856-1867",
+      "relation": {},
+      "link": [
+        {
+          "URL": "http://xplorestaging.ieee.org/ielx7/42/9106594/08932614.pdf?arnumber=8932614",
+          "content-type": "unspecified",
+          "content-version": "vor",
+          "intended-application": "similarity-checking"
+        }
+      ]
+    }
+  },
+  {
+    "key": "transunet",
+    "doi": null,
+    "status": "ARXIV_RECORD_CHECK_SEPARATELY"
+  },
+  {
+    "key": "polyppvt",
+    "doi": "10.26599/AIR.2023.9150015",
+    "endpoint": "https://api.crossref.org/works/10.26599%2FAIR.2023.9150015",
+    "status": "METADATA_RETRIEVED_NOT_CLAIM_VERIFICATION",
+    "metadata": {
+      "DOI": "10.26599/air.2023.9150015",
+      "title": [
+        "Polyp-PVT: Polyp Segmentation with Pyramid Vision Transformers"
+      ],
+      "author": [
+        {
+          "given": "Bo",
+          "family": "Dong",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Wenhai",
+          "family": "Wang",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Deng-Ping",
+          "family": "Fan",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Jinpeng",
+          "family": "Li",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Huazhu",
+          "family": "Fu",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Ling",
+          "family": "Shao",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "CAAI Artificial Intelligence Research"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2023,
+            12
+          ]
+        ]
+      },
+      "published-print": {
+        "date-parts": [
+          [
+            2023,
+            12
+          ]
+        ]
+      },
+      "page": "9150015",
+      "relation": {}
+    }
+  },
+  {
+    "key": "convnext",
+    "doi": "10.1109/CVPR52688.2022.01167",
+    "endpoint": "https://api.crossref.org/works/10.1109%2FCVPR52688.2022.01167",
+    "status": "METADATA_RETRIEVED_NOT_CLAIM_VERIFICATION",
+    "metadata": {
+      "DOI": "10.1109/cvpr52688.2022.01167",
+      "title": [
+        "A ConvNet for the 2020s"
+      ],
+      "author": [
+        {
+          "given": "Zhuang",
+          "family": "Liu",
+          "sequence": "first",
+          "affiliation": [
+            {
+              "name": "Facebook AI Research (FAIR)"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Hanzi",
+          "family": "Mao",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "Facebook AI Research (FAIR)"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Chao-Yuan",
+          "family": "Wu",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "Facebook AI Research (FAIR)"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Christoph",
+          "family": "Feichtenhofer",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "Facebook AI Research (FAIR)"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Trevor",
+          "family": "Darrell",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "UC Berkeley"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Saining",
+          "family": "Xie",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "Facebook AI Research (FAIR)"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "2022 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2022,
+            6
+          ]
+        ]
+      },
+      "published-print": {
+        "date-parts": [
+          [
+            2022,
+            6
+          ]
+        ]
+      },
+      "page": "11966-11976",
+      "relation": {},
+      "link": [
+        {
+          "URL": "http://xplorestaging.ieee.org/ielx7/9878378/9878366/09879745.pdf?arnumber=9879745",
+          "content-type": "unspecified",
+          "content-version": "vor",
+          "intended-application": "similarity-checking"
+        }
+      ]
+    }
+  },
+  {
+    "key": "senet",
+    "doi": "10.1109/CVPR.2018.00745",
+    "endpoint": "https://api.crossref.org/works/10.1109%2FCVPR.2018.00745",
+    "status": "METADATA_RETRIEVED_NOT_CLAIM_VERIFICATION",
+    "metadata": {
+      "DOI": "10.1109/cvpr.2018.00745",
+      "title": [
+        "Squeeze-and-Excitation Networks"
+      ],
+      "author": [
+        {
+          "given": "Jie",
+          "family": "Hu",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Li",
+          "family": "Shen",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Gang",
+          "family": "Sun",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "2018 IEEE/CVF Conference on Computer Vision and Pattern Recognition"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2018,
+            6
+          ]
+        ]
+      },
+      "published-print": {
+        "date-parts": [
+          [
+            2018,
+            6
+          ]
+        ]
+      },
+      "page": "7132-7141",
+      "relation": {},
+      "link": [
+        {
+          "URL": "http://xplorestaging.ieee.org/ielx7/8576498/8578098/08578843.pdf?arnumber=8578843",
+          "content-type": "unspecified",
+          "content-version": "vor",
+          "intended-application": "similarity-checking"
+        }
+      ]
+    }
+  },
+  {
+    "key": "sknet",
+    "doi": "10.1109/CVPR.2019.00060",
+    "endpoint": "https://api.crossref.org/works/10.1109%2FCVPR.2019.00060",
+    "status": "METADATA_RETRIEVED_NOT_CLAIM_VERIFICATION",
+    "metadata": {
+      "DOI": "10.1109/cvpr.2019.00060",
+      "title": [
+        "Selective Kernel Networks"
+      ],
+      "author": [
+        {
+          "given": "Xiang",
+          "family": "Li",
+          "sequence": "first",
+          "affiliation": [
+            {
+              "name": "Nanjing Univ. of Science and Technology"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Wenhai",
+          "family": "Wang",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "Tsinghua Univ."
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Xiaolin",
+          "family": "Hu",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "Nanjing Univ."
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Jian",
+          "family": "Yang",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "Nanjing Univ. of Science and Technology"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "2019 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2019,
+            6
+          ]
+        ]
+      },
+      "published-print": {
+        "date-parts": [
+          [
+            2019,
+            6
+          ]
+        ]
+      },
+      "page": "510-519",
+      "relation": {},
+      "link": [
+        {
+          "URL": "http://xplorestaging.ieee.org/ielx7/8938205/8953184/08954149.pdf?arnumber=8954149",
+          "content-type": "unspecified",
+          "content-version": "vor",
+          "intended-application": "similarity-checking"
+        }
+      ]
+    }
+  },
+  {
+    "key": "fcanet",
+    "doi": "10.1109/ICCV48922.2021.00082",
+    "endpoint": "https://api.crossref.org/works/10.1109%2FICCV48922.2021.00082",
+    "status": "METADATA_RETRIEVED_NOT_CLAIM_VERIFICATION",
+    "metadata": {
+      "DOI": "10.1109/iccv48922.2021.00082",
+      "title": [
+        "FcaNet: Frequency Channel Attention Networks"
+      ],
+      "author": [
+        {
+          "given": "Zequn",
+          "family": "Qin",
+          "sequence": "first",
+          "affiliation": [
+            {
+              "name": "Zhejiang University,College of Computer Science"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Pengyi",
+          "family": "Zhang",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "Zhejiang University,College of Computer Science"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Fei",
+          "family": "Wu",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "Zhejiang University,College of Computer Science"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Xi",
+          "family": "Li",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "Zhejiang University,College of Computer Science"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "2021 IEEE/CVF International Conference on Computer Vision (ICCV)"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2021,
+            10
+          ]
+        ]
+      },
+      "published-print": {
+        "date-parts": [
+          [
+            2021,
+            10
+          ]
+        ]
+      },
+      "page": "763-772",
+      "relation": {},
+      "link": [
+        {
+          "URL": "http://xplorestaging.ieee.org/ielx7/9709627/9709628/09710319.pdf?arnumber=9710319",
+          "content-type": "unspecified",
+          "content-version": "vor",
+          "intended-application": "similarity-checking"
+        }
+      ]
+    }
+  },
+  {
+    "key": "emcad",
+    "doi": "10.1109/CVPR52733.2024.01118",
+    "endpoint": "https://api.crossref.org/works/10.1109%2FCVPR52733.2024.01118",
+    "status": "METADATA_RETRIEVED_NOT_CLAIM_VERIFICATION",
+    "metadata": {
+      "DOI": "10.1109/cvpr52733.2024.01118",
+      "title": [
+        "EMCAD: Efficient Multi-Scale Convolutional Attention Decoding for Medical Image Segmentation"
+      ],
+      "author": [
+        {
+          "given": "Md Mostafijur",
+          "family": "Rahman",
+          "sequence": "first",
+          "affiliation": [
+            {
+              "name": "The University of Texas at Austin,Austin,Texas,USA"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Mustafa",
+          "family": "Munir",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "The University of Texas at Austin,Austin,Texas,USA"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Radu",
+          "family": "Marculescu",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "The University of Texas at Austin,Austin,Texas,USA"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "2024 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2024,
+            6,
+            16
+          ]
+        ]
+      },
+      "published-print": {
+        "date-parts": [
+          [
+            2024,
+            6,
+            16
+          ]
+        ]
+      },
+      "page": "11769-11779",
+      "relation": {},
+      "link": [
+        {
+          "URL": "http://xplorestaging.ieee.org/ielx8/10654794/10654797/10656043.pdf?arnumber=10656043",
+          "content-type": "unspecified",
+          "content-version": "vor",
+          "intended-application": "similarity-checking"
+        }
+      ]
+    }
+  },
+  {
+    "key": "hardnetmseg",
+    "doi": null,
+    "status": "ARXIV_RECORD_CHECK_SEPARATELY"
+  },
+  {
+    "key": "pranet",
+    "doi": "10.1007/978-3-030-59725-2_26",
+    "endpoint": "https://api.crossref.org/works/10.1007%2F978-3-030-59725-2_26",
+    "status": "METADATA_RETRIEVED_NOT_CLAIM_VERIFICATION",
+    "metadata": {
+      "DOI": "10.1007/978-3-030-59725-2_26",
+      "title": [
+        "PraNet: Parallel Reverse Attention Network for Polyp Segmentation"
+      ],
+      "author": [
+        {
+          "given": "Deng-Ping",
+          "family": "Fan",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Ge-Peng",
+          "family": "Ji",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Tao",
+          "family": "Zhou",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Geng",
+          "family": "Chen",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Huazhu",
+          "family": "Fu",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Jianbing",
+          "family": "Shen",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Ling",
+          "family": "Shao",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "Lecture Notes in Computer Science",
+        "Medical Image Computing and Computer Assisted Intervention – MICCAI 2020"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2020
+          ]
+        ]
+      },
+      "published-print": {
+        "date-parts": [
+          [
+            2020
+          ]
+        ]
+      },
+      "published-online": {
+        "date-parts": [
+          [
+            2020,
+            9,
+            29
+          ]
+        ]
+      },
+      "page": "263-273",
+      "relation": {},
+      "link": [
+        {
+          "URL": "https://link.springer.com/content/pdf/10.1007/978-3-030-59725-2_26",
+          "content-type": "unspecified",
+          "content-version": "vor",
+          "intended-application": "similarity-checking"
+        }
+      ]
+    }
+  },
+  {
+    "key": "ctnet",
+    "doi": "10.1109/TCYB.2024.3368154",
+    "endpoint": "https://api.crossref.org/works/10.1109%2FTCYB.2024.3368154",
+    "status": "METADATA_RETRIEVED_NOT_CLAIM_VERIFICATION",
+    "metadata": {
+      "DOI": "10.1109/tcyb.2024.3368154",
+      "title": [
+        "CTNet: Contrastive Transformer Network for Polyp Segmentation"
+      ],
+      "author": [
+        {
+          "ORCID": "https://orcid.org/0000-0001-8469-5302",
+          "authenticated-orcid": false,
+          "given": "Bin",
+          "family": "Xiao",
+          "sequence": "first",
+          "affiliation": [
+            {
+              "name": "Department of Computer Science and Technology, Chongqing University of Posts and Telecommunications, Chongqing, China"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "ORCID": "https://orcid.org/0000-0002-6025-8578",
+          "authenticated-orcid": false,
+          "given": "Jinwu",
+          "family": "Hu",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "Department of Computer Science and Technology, Chongqing University of Posts and Telecommunications, Chongqing, China"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "ORCID": "https://orcid.org/0000-0002-9033-8245",
+          "authenticated-orcid": false,
+          "given": "Weisheng",
+          "family": "Li",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "Department of Computer Science and Technology, Chongqing University of Posts and Telecommunications, Chongqing, China"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "ORCID": "https://orcid.org/0000-0003-1788-3746",
+          "authenticated-orcid": false,
+          "given": "Chi-Man",
+          "family": "Pun",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "Department of Computer and Information Science, University of Macau, Macau, China"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "ORCID": "https://orcid.org/0000-0003-3134-217X",
+          "authenticated-orcid": false,
+          "given": "Xiuli",
+          "family": "Bi",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "Department of Computer Science and Technology, Chongqing University of Posts and Telecommunications, Chongqing, China"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "IEEE Transactions on Cybernetics"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2024,
+            9
+          ]
+        ]
+      },
+      "published-print": {
+        "date-parts": [
+          [
+            2024,
+            9
+          ]
+        ]
+      },
+      "volume": "54",
+      "issue": "9",
+      "page": "5040-5053",
+      "relation": {},
+      "link": [
+        {
+          "URL": "http://xplorestaging.ieee.org/ielx7/6221036/10646531/10471227.pdf?arnumber=10471227",
+          "content-type": "unspecified",
+          "content-version": "vor",
+          "intended-application": "similarity-checking"
+        }
+      ]
+    }
+  },
+  {
+    "key": "meganet",
+    "doi": "10.1109/WACV57701.2024.00780",
+    "endpoint": "https://api.crossref.org/works/10.1109%2FWACV57701.2024.00780",
+    "status": "METADATA_RETRIEVED_NOT_CLAIM_VERIFICATION",
+    "metadata": {
+      "DOI": "10.1109/wacv57701.2024.00780",
+      "title": [
+        "MEGANet: Multi-Scale Edge-Guided Attention Network for Weak Boundary Polyp Segmentation"
+      ],
+      "author": [
+        {
+          "given": "Nhat-Tan",
+          "family": "Bui",
+          "sequence": "first",
+          "affiliation": [
+            {
+              "name": "University of Arkansas,AICV Lab,Fayetteville,Arkansas,USA"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Dinh-Hieu",
+          "family": "Hoang",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "University of Science, and John von Neumann Institute, VNU-HCM"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Quang-Thuc",
+          "family": "Nguyen",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "University of Science, and John von Neumann Institute, VNU-HCM"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Minh-Triet",
+          "family": "Tran",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "University of Science, and John von Neumann Institute, VNU-HCM"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Ngan",
+          "family": "Le",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "University of Arkansas,AICV Lab,Fayetteville,Arkansas,USA"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "2024 IEEE/CVF Winter Conference on Applications of Computer Vision (WACV)"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2024,
+            1,
+            3
+          ]
+        ]
+      },
+      "published-print": {
+        "date-parts": [
+          [
+            2024,
+            1,
+            3
+          ]
+        ]
+      },
+      "page": "7970-7979",
+      "relation": {},
+      "link": [
+        {
+          "URL": "http://xplorestaging.ieee.org/ielx7/10483279/10483282/10484210.pdf?arnumber=10484210",
+          "content-type": "unspecified",
+          "content-version": "vor",
+          "intended-application": "similarity-checking"
+        }
+      ]
+    }
+  },
+  {
+    "key": "mein",
+    "doi": "10.1016/j.neunet.2025.107553",
+    "endpoint": "https://api.crossref.org/works/10.1016%2Fj.neunet.2025.107553",
+    "status": "METADATA_RETRIEVED_NOT_CLAIM_VERIFICATION",
+    "metadata": {
+      "DOI": "10.1016/j.neunet.2025.107553",
+      "title": [
+        "Modeling multi-scale uncertainty with evidence integration for reliable polyp segmentation"
+      ],
+      "author": [
+        {
+          "given": "Xiaolu",
+          "family": "Kang",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "ORCID": "https://orcid.org/0000-0003-0729-9706",
+          "authenticated-orcid": false,
+          "given": "Zhuoqi",
+          "family": "Ma",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Kang",
+          "family": "Liu",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Yunan",
+          "family": "Li",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Qiguang",
+          "family": "Miao",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "Neural Networks"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2025,
+            9
+          ]
+        ]
+      },
+      "published-print": {
+        "date-parts": [
+          [
+            2025,
+            9
+          ]
+        ]
+      },
+      "volume": "189",
+      "page": "107553",
+      "article-number": "107553",
+      "relation": {},
+      "link": [
+        {
+          "URL": "https://api.elsevier.com/content/article/PII:S0893608025004320?httpAccept=text/xml",
+          "content-type": "text/xml",
+          "content-version": "vor",
+          "intended-application": "text-mining"
+        },
+        {
+          "URL": "https://api.elsevier.com/content/article/PII:S0893608025004320?httpAccept=text/plain",
+          "content-type": "text/plain",
+          "content-version": "vor",
+          "intended-application": "text-mining"
+        }
+      ]
+    }
+  },
+  {
+    "key": "mfnet",
+    "doi": "10.1016/j.eswa.2025.127558",
+    "endpoint": "https://api.crossref.org/works/10.1016%2Fj.eswa.2025.127558",
+    "status": "METADATA_RETRIEVED_NOT_CLAIM_VERIFICATION",
+    "metadata": {
+      "DOI": "10.1016/j.eswa.2025.127558",
+      "title": [
+        "Multi-feature fusion for accurate polyp segmentation using pyramid visual transformers"
+      ],
+      "author": [
+        {
+          "ORCID": "https://orcid.org/0000-0002-5664-3086",
+          "authenticated-orcid": false,
+          "given": "Shuangyuan",
+          "family": "Wang",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "ORCID": "https://orcid.org/0009-0002-4154-4736",
+          "authenticated-orcid": false,
+          "given": "Shengmao",
+          "family": "Lin",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Fujia",
+          "family": "Sun",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Xiaobo",
+          "family": "Li",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "Expert Systems with Applications"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2025,
+            6
+          ]
+        ]
+      },
+      "published-print": {
+        "date-parts": [
+          [
+            2025,
+            6
+          ]
+        ]
+      },
+      "volume": "280",
+      "page": "127558",
+      "article-number": "127558",
+      "relation": {},
+      "link": [
+        {
+          "URL": "https://api.elsevier.com/content/article/PII:S0957417425011807?httpAccept=text/xml",
+          "content-type": "text/xml",
+          "content-version": "vor",
+          "intended-application": "text-mining"
+        },
+        {
+          "URL": "https://api.elsevier.com/content/article/PII:S0957417425011807?httpAccept=text/plain",
+          "content-type": "text/plain",
+          "content-version": "vor",
+          "intended-application": "text-mining"
+        }
+      ]
+    }
+  },
+  {
+    "key": "msbpnet",
+    "doi": "10.1016/j.patcog.2025.112101",
+    "endpoint": "https://api.crossref.org/works/10.1016%2Fj.patcog.2025.112101",
+    "status": "METADATA_RETRIEVED_NOT_CLAIM_VERIFICATION",
+    "metadata": {
+      "DOI": "10.1016/j.patcog.2025.112101",
+      "title": [
+        "MSBP-Net: A multi-scale boundary prediction network for automated polyp segmentation"
+      ],
+      "author": [
+        {
+          "given": "Xing-Liang",
+          "family": "Pan",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Ju-Rong",
+          "family": "Ding",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Xia",
+          "family": "Li",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Shuo",
+          "family": "Liu",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Jie",
+          "family": "Wang",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Bo",
+          "family": "Hua",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Guo-Zhi",
+          "family": "Tang",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Chang-Hua",
+          "family": "Zhong",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "Pattern Recognition"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2026,
+            2
+          ]
+        ]
+      },
+      "published-print": {
+        "date-parts": [
+          [
+            2026,
+            2
+          ]
+        ]
+      },
+      "volume": "170",
+      "page": "112101",
+      "article-number": "112101",
+      "relation": {},
+      "link": [
+        {
+          "URL": "https://api.elsevier.com/content/article/PII:S0031320325007617?httpAccept=text/xml",
+          "content-type": "text/xml",
+          "content-version": "vor",
+          "intended-application": "text-mining"
+        },
+        {
+          "URL": "https://api.elsevier.com/content/article/PII:S0031320325007617?httpAccept=text/plain",
+          "content-type": "text/plain",
+          "content-version": "vor",
+          "intended-application": "text-mining"
+        }
+      ]
+    }
+  },
+  {
+    "key": "cifformer",
+    "doi": "10.1016/j.neucom.2025.130413",
+    "endpoint": "https://api.crossref.org/works/10.1016%2Fj.neucom.2025.130413",
+    "status": "METADATA_RETRIEVED_NOT_CLAIM_VERIFICATION",
+    "metadata": {
+      "DOI": "10.1016/j.neucom.2025.130413",
+      "title": [
+        "CIFFormer: A Contextual Information Flow Guided Transformer for colorectal polyp segmentation"
+      ],
+      "author": [
+        {
+          "given": "Cunlu",
+          "family": "Xu",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "ORCID": "https://orcid.org/0009-0000-3207-6657",
+          "authenticated-orcid": false,
+          "given": "Long",
+          "family": "Lin",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Bin",
+          "family": "Wang",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "ORCID": "https://orcid.org/0000-0001-8859-5405",
+          "authenticated-orcid": false,
+          "given": "Jun",
+          "family": "Liu",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "Neurocomputing"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2025,
+            9
+          ]
+        ]
+      },
+      "published-print": {
+        "date-parts": [
+          [
+            2025,
+            9
+          ]
+        ]
+      },
+      "volume": "644",
+      "page": "130413",
+      "article-number": "130413",
+      "relation": {},
+      "link": [
+        {
+          "URL": "https://api.elsevier.com/content/article/PII:S0925231225010859?httpAccept=text/xml",
+          "content-type": "text/xml",
+          "content-version": "vor",
+          "intended-application": "text-mining"
+        },
+        {
+          "URL": "https://api.elsevier.com/content/article/PII:S0925231225010859?httpAccept=text/plain",
+          "content-type": "text/plain",
+          "content-version": "vor",
+          "intended-application": "text-mining"
+        }
+      ]
+    }
+  },
+  {
+    "key": "pfprnet",
+    "doi": "10.1109/JBHI.2024.3500026",
+    "endpoint": "https://api.crossref.org/works/10.1109%2FJBHI.2024.3500026",
+    "status": "METADATA_RETRIEVED_NOT_CLAIM_VERIFICATION",
+    "metadata": {
+      "DOI": "10.1109/jbhi.2024.3500026",
+      "title": [
+        "PFPRNet: A Phase-Wise Feature Pyramid With Retention Network for Polyp Segmentation"
+      ],
+      "author": [
+        {
+          "ORCID": "https://orcid.org/0000-0001-7926-8824",
+          "authenticated-orcid": false,
+          "given": "Jinghui",
+          "family": "Chu",
+          "sequence": "first",
+          "affiliation": [
+            {
+              "name": "Tianjin University, Tianjin, China"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Wangtao",
+          "family": "Liu",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "Tianjin University, Tianjin, China"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "ORCID": "https://orcid.org/0009-0003-2676-5300",
+          "authenticated-orcid": false,
+          "given": "Qi",
+          "family": "Tian",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "Tianjin University, Tianjin, China"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "ORCID": "https://orcid.org/0000-0002-6566-775X",
+          "authenticated-orcid": false,
+          "given": "Wei",
+          "family": "Lu",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "Tianjin University, Tianjin, China"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "IEEE Journal of Biomedical and Health Informatics"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2025,
+            2
+          ]
+        ]
+      },
+      "published-print": {
+        "date-parts": [
+          [
+            2025,
+            2
+          ]
+        ]
+      },
+      "volume": "29",
+      "issue": "2",
+      "page": "1137-1150",
+      "relation": {},
+      "link": [
+        {
+          "URL": "http://xplorestaging.ieee.org/ielx8/6221020/10879093/10755084.pdf?arnumber=10755084",
+          "content-type": "unspecified",
+          "content-version": "vor",
+          "intended-application": "similarity-checking"
+        }
+      ]
+    }
+  },
+  {
+    "key": "pranetv2",
+    "doi": "10.26599/CVM.2025.9450510",
+    "endpoint": "https://api.crossref.org/works/10.26599%2FCVM.2025.9450510",
+    "status": "METADATA_RETRIEVED_NOT_CLAIM_VERIFICATION",
+    "metadata": {
+      "DOI": "10.26599/cvm.2025.9450510",
+      "title": [
+        "PraNet-V2: Dual-Supervised Reverse Attention for Medical Image Segmentation"
+      ],
+      "author": [
+        {
+          "given": "Bo-Cheng",
+          "family": "Hu",
+          "sequence": "first",
+          "affiliation": [
+            {
+              "name": "Nankai Institute of Advanced Research Institute (SHENZHEN FUTIAN),Shenzhen,China,518045"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Ge-Peng",
+          "family": "Ji",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "School of Computing, Australian National University,Canberra,Australia,2601"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Dian",
+          "family": "Shao",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "Unmanned System Research Institute, Northwestern Polytechnical University,Xi&#x0027;an,China,710072"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Deng-Ping",
+          "family": "Fan",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "Nankai Institute of Advanced Research Institute (SHENZHEN FUTIAN),Shenzhen,China,518045"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "Computational Visual Media"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2026,
+            4
+          ]
+        ]
+      },
+      "published-print": {
+        "date-parts": [
+          [
+            2026,
+            4
+          ]
+        ]
+      },
+      "volume": "12",
+      "issue": "2",
+      "page": "493-500",
+      "relation": {},
+      "link": [
+        {
+          "URL": "http://xplorestaging.ieee.org/ielx8/10750449/11435620/11373451.pdf?arnumber=11373451",
+          "content-type": "unspecified",
+          "content-version": "vor",
+          "intended-application": "similarity-checking"
+        }
+      ]
+    }
+  },
+  {
+    "key": "kvasirseg",
+    "doi": "10.1007/978-3-030-37734-2_37",
+    "endpoint": "https://api.crossref.org/works/10.1007%2F978-3-030-37734-2_37",
+    "status": "METADATA_RETRIEVED_NOT_CLAIM_VERIFICATION",
+    "metadata": {
+      "DOI": "10.1007/978-3-030-37734-2_37",
+      "title": [
+        "Kvasir-SEG: A Segmented Polyp Dataset"
+      ],
+      "author": [
+        {
+          "given": "Debesh",
+          "family": "Jha",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Pia H.",
+          "family": "Smedsrud",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Michael A.",
+          "family": "Riegler",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Pål",
+          "family": "Halvorsen",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Thomas",
+          "family": "de Lange",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Dag",
+          "family": "Johansen",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Håvard D.",
+          "family": "Johansen",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "Lecture Notes in Computer Science",
+        "MultiMedia Modeling"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2019,
+            12,
+            24
+          ]
+        ]
+      },
+      "published-print": {
+        "date-parts": [
+          [
+            2020
+          ]
+        ]
+      },
+      "published-online": {
+        "date-parts": [
+          [
+            2019,
+            12,
+            24
+          ]
+        ]
+      },
+      "page": "451-462",
+      "relation": {},
+      "link": [
+        {
+          "URL": "http://link.springer.com/content/pdf/10.1007/978-3-030-37734-2_37",
+          "content-type": "unspecified",
+          "content-version": "vor",
+          "intended-application": "similarity-checking"
+        }
+      ]
+    }
+  },
+  {
+    "key": "cvcclinicdb",
+    "doi": "10.1016/j.compmedimag.2015.02.007",
+    "endpoint": "https://api.crossref.org/works/10.1016%2Fj.compmedimag.2015.02.007",
+    "status": "METADATA_RETRIEVED_NOT_CLAIM_VERIFICATION",
+    "metadata": {
+      "DOI": "10.1016/j.compmedimag.2015.02.007",
+      "title": [
+        "WM-DOVA maps for accurate polyp highlighting in colonoscopy: Validation vs. saliency maps from physicians"
+      ],
+      "author": [
+        {
+          "given": "Jorge",
+          "family": "Bernal",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "F. Javier",
+          "family": "Sánchez",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Gloria",
+          "family": "Fernández-Esparrach",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Debora",
+          "family": "Gil",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Cristina",
+          "family": "Rodríguez",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Fernando",
+          "family": "Vilariño",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "Computerized Medical Imaging and Graphics"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2015,
+            7
+          ]
+        ]
+      },
+      "published-print": {
+        "date-parts": [
+          [
+            2015,
+            7
+          ]
+        ]
+      },
+      "volume": "43",
+      "page": "99-111",
+      "relation": {},
+      "link": [
+        {
+          "URL": "https://api.elsevier.com/content/article/PII:S0895611115000567?httpAccept=text/xml",
+          "content-type": "text/xml",
+          "content-version": "vor",
+          "intended-application": "text-mining"
+        },
+        {
+          "URL": "https://api.elsevier.com/content/article/PII:S0895611115000567?httpAccept=text/plain",
+          "content-type": "text/plain",
+          "content-version": "vor",
+          "intended-application": "text-mining"
+        }
+      ]
+    }
+  },
+  {
+    "key": "etis",
+    "doi": "10.1007/s11548-013-0926-3",
+    "endpoint": "https://api.crossref.org/works/10.1007%2Fs11548-013-0926-3",
+    "status": "METADATA_RETRIEVED_NOT_CLAIM_VERIFICATION",
+    "metadata": {
+      "DOI": "10.1007/s11548-013-0926-3",
+      "title": [
+        "Toward embedded detection of polyps in WCE images for early diagnosis of colorectal cancer"
+      ],
+      "author": [
+        {
+          "given": "Juan",
+          "family": "Silva",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Aymeric",
+          "family": "Histace",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Olivier",
+          "family": "Romain",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Xavier",
+          "family": "Dray",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Bertrand",
+          "family": "Granado",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "International Journal of Computer Assisted Radiology and Surgery"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2013,
+            9,
+            15
+          ]
+        ]
+      },
+      "published-print": {
+        "date-parts": [
+          [
+            2014,
+            3
+          ]
+        ]
+      },
+      "published-online": {
+        "date-parts": [
+          [
+            2013,
+            9,
+            15
+          ]
+        ]
+      },
+      "volume": "9",
+      "issue": "2",
+      "page": "283-293",
+      "relation": {},
+      "link": [
+        {
+          "URL": "http://link.springer.com/content/pdf/10.1007/s11548-013-0926-3.pdf",
+          "content-type": "application/pdf",
+          "content-version": "vor",
+          "intended-application": "text-mining"
+        },
+        {
+          "URL": "http://link.springer.com/article/10.1007/s11548-013-0926-3/fulltext.html",
+          "content-type": "text/html",
+          "content-version": "vor",
+          "intended-application": "text-mining"
+        },
+        {
+          "URL": "http://link.springer.com/content/pdf/10.1007/s11548-013-0926-3",
+          "content-type": "unspecified",
+          "content-version": "vor",
+          "intended-application": "similarity-checking"
+        }
+      ]
+    }
+  },
+  {
+    "key": "cvccolondb",
+    "doi": "10.1109/TMI.2015.2487997",
+    "endpoint": "https://api.crossref.org/works/10.1109%2FTMI.2015.2487997",
+    "status": "METADATA_RETRIEVED_NOT_CLAIM_VERIFICATION",
+    "metadata": {
+      "DOI": "10.1109/tmi.2015.2487997",
+      "title": [
+        "Automated Polyp Detection in Colonoscopy Videos Using Shape and Context Information"
+      ],
+      "author": [
+        {
+          "given": "Nima",
+          "family": "Tajbakhsh",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Suryakanth R.",
+          "family": "Gurudu",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Jianming",
+          "family": "Liang",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "IEEE Transactions on Medical Imaging"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2016,
+            2
+          ]
+        ]
+      },
+      "published-print": {
+        "date-parts": [
+          [
+            2016,
+            2
+          ]
+        ]
+      },
+      "volume": "35",
+      "issue": "2",
+      "page": "630-644",
+      "relation": {},
+      "link": [
+        {
+          "URL": "http://xplorestaging.ieee.org/ielx7/42/7396977/7294676.pdf?arnumber=7294676",
+          "content-type": "unspecified",
+          "content-version": "vor",
+          "intended-application": "similarity-checking"
+        }
+      ]
+    }
+  },
+  {
+    "key": "cvc300",
+    "doi": "10.1155/2017/4037190",
+    "endpoint": "https://api.crossref.org/works/10.1155%2F2017%2F4037190",
+    "status": "METADATA_RETRIEVED_NOT_CLAIM_VERIFICATION",
+    "metadata": {
+      "DOI": "10.1155/2017/4037190",
+      "title": [
+        "A Benchmark for Endoluminal Scene Segmentation of Colonoscopy Images"
+      ],
+      "author": [
+        {
+          "ORCID": "https://orcid.org/0000-0002-2845-8158",
+          "authenticated-orcid": true,
+          "given": "David",
+          "family": "Vázquez",
+          "sequence": "first",
+          "affiliation": [
+            {
+              "name": "Computer Vision Center, Computer Science Department, Universitat Autonoma de Barcelona, Barcelona, Spain"
+            },
+            {
+              "name": "Montreal Institute for Learning Algorithms, Université de Montréal, Montreal, QC, Canada"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "ORCID": "https://orcid.org/0000-0001-8493-9514",
+          "authenticated-orcid": true,
+          "given": "Jorge",
+          "family": "Bernal",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "Computer Vision Center, Computer Science Department, Universitat Autonoma de Barcelona, Barcelona, Spain"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "F. Javier",
+          "family": "Sánchez",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "Computer Vision Center, Computer Science Department, Universitat Autonoma de Barcelona, Barcelona, Spain"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Gloria",
+          "family": "Fernández-Esparrach",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "Endoscopy Unit, Gastroenterology Service, CIBERHED, IDIBAPS, Hospital Clinic, Universidad de Barcelona, Barcelona, Spain"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Antonio M.",
+          "family": "López",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "Computer Vision Center, Computer Science Department, Universitat Autonoma de Barcelona, Barcelona, Spain"
+            },
+            {
+              "name": "Montreal Institute for Learning Algorithms, Université de Montréal, Montreal, QC, Canada"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Adriana",
+          "family": "Romero",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "Montreal Institute for Learning Algorithms, Université de Montréal, Montreal, QC, Canada"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Michal",
+          "family": "Drozdzal",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "École Polytechnique de Montréal, Montréal, QC, Canada"
+            },
+            {
+              "name": "Imagia Inc., Montréal, QC, Canada"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Aaron",
+          "family": "Courville",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "Montreal Institute for Learning Algorithms, Université de Montréal, Montreal, QC, Canada"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "Journal of Healthcare Engineering"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2017
+          ]
+        ]
+      },
+      "published-print": {
+        "date-parts": [
+          [
+            2017
+          ]
+        ]
+      },
+      "volume": "2017",
+      "page": "1-9",
+      "relation": {},
+      "link": [
+        {
+          "URL": "http://downloads.hindawi.com/journals/jhe/2017/4037190.pdf",
+          "content-type": "application/pdf",
+          "content-version": "vor",
+          "intended-application": "text-mining"
+        },
+        {
+          "URL": "http://downloads.hindawi.com/journals/jhe/2017/4037190.xml",
+          "content-type": "application/xml",
+          "content-version": "vor",
+          "intended-application": "text-mining"
+        },
+        {
+          "URL": "http://downloads.hindawi.com/journals/jhe/2017/4037190.pdf",
+          "content-type": "unspecified",
+          "content-version": "vor",
+          "intended-application": "similarity-checking"
+        }
+      ]
+    }
+  },
+  {
+    "key": "smeasure",
+    "doi": "10.1109/ICCV.2017.487",
+    "endpoint": "https://api.crossref.org/works/10.1109%2FICCV.2017.487",
+    "status": "METADATA_RETRIEVED_NOT_CLAIM_VERIFICATION",
+    "metadata": {
+      "DOI": "10.1109/iccv.2017.487",
+      "title": [
+        "Structure-Measure: A New Way to Evaluate Foreground Maps"
+      ],
+      "author": [
+        {
+          "given": "Deng-Ping",
+          "family": "Fan",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Ming-Ming",
+          "family": "Cheng",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Yun",
+          "family": "Liu",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Tao",
+          "family": "Li",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Ali",
+          "family": "Borji",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "2017 IEEE International Conference on Computer Vision (ICCV)"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2017,
+            10
+          ]
+        ]
+      },
+      "published-print": {
+        "date-parts": [
+          [
+            2017,
+            10
+          ]
+        ]
+      },
+      "page": "4558-4567",
+      "relation": {},
+      "link": [
+        {
+          "URL": "http://xplorestaging.ieee.org/ielx7/8234942/8237262/08237749.pdf?arnumber=8237749",
+          "content-type": "unspecified",
+          "content-version": "vor",
+          "intended-application": "similarity-checking"
+        }
+      ]
+    }
+  },
+  {
+    "key": "emeasure",
+    "doi": "10.24963/ijcai.2018/97",
+    "endpoint": "https://api.crossref.org/works/10.24963%2Fijcai.2018%2F97",
+    "status": "METADATA_RETRIEVED_NOT_CLAIM_VERIFICATION",
+    "metadata": {
+      "DOI": "10.24963/ijcai.2018/97",
+      "title": [
+        "Enhanced-alignment Measure for Binary Foreground Map Evaluation"
+      ],
+      "author": [
+        {
+          "given": "Deng-Ping",
+          "family": "Fan",
+          "sequence": "first",
+          "affiliation": [
+            {
+              "name": "College of Computer and Control Engineering, Nankai University"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Cheng",
+          "family": "Gong",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "College of Computer and Control Engineering, Nankai University"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Yang",
+          "family": "Cao",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "College of Computer and Control Engineering, Nankai University"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Bo",
+          "family": "Ren",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "College of Computer and Control Engineering, Nankai University"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Ming-Ming",
+          "family": "Cheng",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "College of Computer and Control Engineering, Nankai University"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Ali",
+          "family": "Borji",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "Center for Research in Computer Vision, Central Florida University"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "Proceedings of the Twenty-Seventh International Joint Conference on Artificial Intelligence"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2018,
+            7
+          ]
+        ]
+      },
+      "published-print": {
+        "date-parts": [
+          [
+            2018,
+            7
+          ]
+        ]
+      },
+      "page": "698-704",
+      "relation": {}
+    }
+  },
+  {
+    "key": "weightedfmeasure",
+    "doi": "10.1109/CVPR.2014.39",
+    "endpoint": "https://api.crossref.org/works/10.1109%2FCVPR.2014.39",
+    "status": "METADATA_RETRIEVED_NOT_CLAIM_VERIFICATION",
+    "metadata": {
+      "DOI": "10.1109/cvpr.2014.39",
+      "title": [
+        "How to Evaluate Foreground Maps"
+      ],
+      "author": [
+        {
+          "given": "Ran",
+          "family": "Margolin",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Lihi",
+          "family": "Zelnik-Manor",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Ayellet",
+          "family": "Tal",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "2014 IEEE Conference on Computer Vision and Pattern Recognition"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2014,
+            6
+          ]
+        ]
+      },
+      "published-print": {
+        "date-parts": [
+          [
+            2014,
+            6
+          ]
+        ]
+      },
+      "page": "248-255",
+      "relation": {},
+      "link": [
+        {
+          "URL": "http://xplorestaging.ieee.org/ielx7/6909096/6909393/06909433.pdf?arnumber=6909433",
+          "content-type": "unspecified",
+          "content-version": "vor",
+          "intended-application": "similarity-checking"
+        }
+      ]
+    }
+  },
+  {
+    "key": "saliencyfilters",
+    "doi": "10.1109/CVPR.2012.6247743",
+    "endpoint": "https://api.crossref.org/works/10.1109%2FCVPR.2012.6247743",
+    "status": "METADATA_RETRIEVED_NOT_CLAIM_VERIFICATION",
+    "metadata": {
+      "DOI": "10.1109/cvpr.2012.6247743",
+      "title": [
+        "Saliency filters: Contrast based filtering for salient region detection"
+      ],
+      "author": [
+        {
+          "given": "F.",
+          "family": "Perazzi",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "P.",
+          "family": "Krahenbuhl",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Y.",
+          "family": "Pritch",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "A.",
+          "family": "Hornung",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "2012 IEEE Conference on Computer Vision and Pattern Recognition"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2012,
+            6
+          ]
+        ]
+      },
+      "published-print": {
+        "date-parts": [
+          [
+            2012,
+            6
+          ]
+        ]
+      },
+      "page": "733-740",
+      "relation": {},
+      "link": [
+        {
+          "URL": "http://xplorestaging.ieee.org/ielx5/6235193/6247647/06247743.pdf?arnumber=6247743",
+          "content-type": "unspecified",
+          "content-version": "vor",
+          "intended-application": "similarity-checking"
+        }
+      ]
+    }
+  },
+  {
+    "key": "cafenet",
+    "doi": "10.1016/j.eswa.2023.121754",
+    "endpoint": "https://api.crossref.org/works/10.1016%2Fj.eswa.2023.121754",
+    "status": "METADATA_RETRIEVED_NOT_CLAIM_VERIFICATION",
+    "metadata": {
+      "DOI": "10.1016/j.eswa.2023.121754",
+      "title": [
+        "CAFE-Net: Cross-Attention and Feature Exploration Network for polyp segmentation"
+      ],
+      "author": [
+        {
+          "ORCID": "https://orcid.org/0000-0002-4106-3222",
+          "authenticated-orcid": false,
+          "given": "Guoqi",
+          "family": "Liu",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "ORCID": "https://orcid.org/0009-0001-2895-9737",
+          "authenticated-orcid": false,
+          "given": "Sheng",
+          "family": "Yao",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "ORCID": "https://orcid.org/0000-0003-4346-9565",
+          "authenticated-orcid": false,
+          "given": "Dong",
+          "family": "Liu",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "ORCID": "https://orcid.org/0000-0002-5402-4345",
+          "authenticated-orcid": false,
+          "given": "Baofang",
+          "family": "Chang",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "ORCID": "https://orcid.org/0000-0001-9010-8135",
+          "authenticated-orcid": false,
+          "given": "Zongyu",
+          "family": "Chen",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "ORCID": "https://orcid.org/0000-0002-4666-5652",
+          "authenticated-orcid": false,
+          "given": "Jiajia",
+          "family": "Wang",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "ORCID": "https://orcid.org/0009-0007-7985-391X",
+          "authenticated-orcid": false,
+          "given": "Jiangqi",
+          "family": "Wei",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "Expert Systems with Applications"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2024,
+            3
+          ]
+        ]
+      },
+      "published-print": {
+        "date-parts": [
+          [
+            2024,
+            3
+          ]
+        ]
+      },
+      "volume": "238",
+      "page": "121754",
+      "article-number": "121754",
+      "relation": {},
+      "link": [
+        {
+          "URL": "https://api.elsevier.com/content/article/PII:S095741742302256X?httpAccept=text/xml",
+          "content-type": "text/xml",
+          "content-version": "vor",
+          "intended-application": "text-mining"
+        },
+        {
+          "URL": "https://api.elsevier.com/content/article/PII:S095741742302256X?httpAccept=text/plain",
+          "content-type": "text/plain",
+          "content-version": "vor",
+          "intended-application": "text-mining"
+        }
+      ]
+    }
+  },
+  {
+    "key": "polyplvt",
+    "doi": "10.1016/j.knosys.2024.112181",
+    "endpoint": "https://api.crossref.org/works/10.1016%2Fj.knosys.2024.112181",
+    "status": "METADATA_RETRIEVED_NOT_CLAIM_VERIFICATION",
+    "metadata": {
+      "DOI": "10.1016/j.knosys.2024.112181",
+      "title": [
+        "Polyp-LVT: Polyp segmentation with lightweight vision transformers"
+      ],
+      "author": [
+        {
+          "given": "Long",
+          "family": "Lin",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Guangzu",
+          "family": "Lv",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Bin",
+          "family": "Wang",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Cunlu",
+          "family": "Xu",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "ORCID": "https://orcid.org/0000-0001-8859-5405",
+          "authenticated-orcid": false,
+          "given": "Jun",
+          "family": "Liu",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "Knowledge-Based Systems"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2024,
+            9
+          ]
+        ]
+      },
+      "published-print": {
+        "date-parts": [
+          [
+            2024,
+            9
+          ]
+        ]
+      },
+      "volume": "300",
+      "page": "112181",
+      "article-number": "112181",
+      "relation": {},
+      "link": [
+        {
+          "URL": "https://api.elsevier.com/content/article/PII:S0950705124008153?httpAccept=text/xml",
+          "content-type": "text/xml",
+          "content-version": "vor",
+          "intended-application": "text-mining"
+        },
+        {
+          "URL": "https://api.elsevier.com/content/article/PII:S0950705124008153?httpAccept=text/plain",
+          "content-type": "text/plain",
+          "content-version": "vor",
+          "intended-application": "text-mining"
+        }
+      ]
+    }
+  },
+  {
+    "key": "mlbnet",
+    "doi": "10.1007/s10278-026-01909-z",
+    "endpoint": "https://api.crossref.org/works/10.1007%2Fs10278-026-01909-z",
+    "status": "METADATA_RETRIEVED_NOT_CLAIM_VERIFICATION",
+    "metadata": {
+      "DOI": "10.1007/s10278-026-01909-z",
+      "title": [
+        "MLB-Net: A Multi-level Lesion-Aware and Boundary-Enhanced Network for Polyp Segmentation"
+      ],
+      "author": [
+        {
+          "ORCID": "https://orcid.org/0009-0004-4111-5012",
+          "authenticated-orcid": false,
+          "given": "Juntong",
+          "family": "Ti",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        },
+        {
+          "ORCID": "https://orcid.org/0000-0003-4543-0111",
+          "authenticated-orcid": false,
+          "given": "Lijun",
+          "family": "Liu",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        },
+        {
+          "given": "Xiaobing",
+          "family": "Yang",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        },
+        {
+          "given": "Li",
+          "family": "Liu",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        },
+        {
+          "given": "Wei",
+          "family": "Peng",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "Journal of Imaging Informatics in Medicine"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2026,
+            3,
+            11
+          ]
+        ]
+      },
+      "published-online": {
+        "date-parts": [
+          [
+            2026,
+            3,
+            11
+          ]
+        ]
+      },
+      "relation": {},
+      "link": [
+        {
+          "URL": "https://link.springer.com/content/pdf/10.1007/s10278-026-01909-z.pdf",
+          "content-type": "application/pdf",
+          "content-version": "vor",
+          "intended-application": "text-mining"
+        },
+        {
+          "URL": "https://link.springer.com/article/10.1007/s10278-026-01909-z",
+          "content-type": "text/html",
+          "content-version": "vor",
+          "intended-application": "text-mining"
+        },
+        {
+          "URL": "https://link.springer.com/content/pdf/10.1007/s10278-026-01909-z.pdf",
+          "content-type": "application/pdf",
+          "content-version": "vor",
+          "intended-application": "similarity-checking"
+        }
+      ]
+    }
+  },
+  {
+    "key": "mspn",
+    "doi": "10.1109/ICASSP55912.2026.11461882",
+    "endpoint": "https://api.crossref.org/works/10.1109%2FICASSP55912.2026.11461882",
+    "status": "METADATA_RETRIEVED_NOT_CLAIM_VERIFICATION",
+    "metadata": {
+      "DOI": "10.1109/icassp55912.2026.11461882",
+      "title": [
+        "From Coarse to Fine: Multi-Stage Progressive Network for Colon Polyp Segmentation"
+      ],
+      "author": [
+        {
+          "given": "Yang",
+          "family": "Yang",
+          "sequence": "first",
+          "affiliation": [
+            {
+              "name": "Sichuan University,College of Computer Science,Chengdu,China"
+            }
+          ],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        },
+        {
+          "given": "Junlong",
+          "family": "Cheng",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "Sichuan University,College of Computer Science,Chengdu,China"
+            }
+          ],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        },
+        {
+          "given": "Taotao",
+          "family": "Zhu",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "Sichuan University,College of Computer Science,Chengdu,China"
+            }
+          ],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        },
+        {
+          "given": "Min",
+          "family": "Zhu",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "Sichuan University,College of Computer Science,Chengdu,China"
+            }
+          ],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "ICASSP 2026 - 2026 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2026,
+            5,
+            3
+          ]
+        ]
+      },
+      "published-print": {
+        "date-parts": [
+          [
+            2026,
+            5,
+            3
+          ]
+        ]
+      },
+      "page": "7652-7656",
+      "relation": {},
+      "link": [
+        {
+          "URL": "http://xplorestaging.ieee.org/ielx8/11460365/11460314/11461882.pdf?arnumber=11461882",
+          "content-type": "unspecified",
+          "content-version": "vor",
+          "intended-application": "similarity-checking"
+        }
+      ]
+    }
+  },
+  {
+    "key": "dvfipnet",
+    "doi": "10.1109/ACCESS.2026.3667956",
+    "endpoint": "https://api.crossref.org/works/10.1109%2FACCESS.2026.3667956",
+    "status": "METADATA_RETRIEVED_NOT_CLAIM_VERIFICATION",
+    "metadata": {
+      "DOI": "10.1109/access.2026.3667956",
+      "title": [
+        "DVFIP-Net: Dual View Feature Interaction Propagation Network for Polyp Segmentation"
+      ],
+      "author": [
+        {
+          "ORCID": "https://orcid.org/0009-0001-4093-5754",
+          "authenticated-orcid": false,
+          "given": "Haijiao",
+          "family": "Yun",
+          "sequence": "first",
+          "affiliation": [
+            {
+              "name": "School of Electronic Information Engineering, Changchun University, Changchun, Jilin, China"
+            }
+          ],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        },
+        {
+          "ORCID": "https://orcid.org/0009-0005-2716-9521",
+          "authenticated-orcid": false,
+          "given": "Chao",
+          "family": "Wang",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "School of Electronic Information Engineering, Changchun University, Changchun, Jilin, China"
+            }
+          ],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        },
+        {
+          "given": "Jinyang",
+          "family": "Luan",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "School of Electronic Information Engineering, Changchun University, Changchun, Jilin, China"
+            }
+          ],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        },
+        {
+          "given": "Ziqing",
+          "family": "Han",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "School of Electronic Information Engineering, Changchun University, Changchun, Jilin, China"
+            }
+          ],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        },
+        {
+          "given": "Qingyu",
+          "family": "Du",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "School of Electronic Information Engineering, Changchun University, Changchun, Jilin, China"
+            }
+          ],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        },
+        {
+          "given": "Mingjing",
+          "family": "Li",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "School of Electronic Information Engineering, Changchun University, Changchun, Jilin, China"
+            }
+          ],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "IEEE Access"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2026
+          ]
+        ]
+      },
+      "published-print": {
+        "date-parts": [
+          [
+            2026
+          ]
+        ]
+      },
+      "volume": "14",
+      "page": "31995-32008",
+      "relation": {},
+      "link": [
+        {
+          "URL": "http://xplorestaging.ieee.org/ielx8/6287639/11323511/11411683.pdf?arnumber=11411683",
+          "content-type": "unspecified",
+          "content-version": "vor",
+          "intended-application": "similarity-checking"
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,69 @@
+\section{Discussion}\label{discussion}
+
+\subsection{Quantitative and Ablation Interpretation}
+
+The evaluation protocol separates seen-domain testing on Kvasir-SEG and
+CVC-ClinicDB from external testing on CVC-300, CVC-ColonDB, and
+ETIS-LaribPolypDB. All five test sets are isolated from checkpoint selection, which
+uses only the internal validation subset of the combined development pool.
+% TODO: insert the new seen-test and external-test interpretation after the final three-seed run.
+This design evaluates the sample-dependent guidance while retaining a convolutional
+multi-scale pathway for efficient decoding.
+
+% TODO: update result-dependent ablation interpretation after the protocol-matched rerun.
+FAFEM establishes the bottleneck feature-enhancement reference, MSCB-lite adds
+multi-scale refinement at Stage 3, and RFG-MSCB adds adaptive branch modulation to
+that path. The final increment is small, consistent with a localized refinement of the
+decoder. In the paired single-seed comparison, direct frequency guidance without
+residual coupling produced a lower result than MSCB-lite.
+
+The bounded residual design preserves the conventional MSCB response while allowing
+sample-dependent branch modulation. Because residualization and frequency conditioning
+were not evaluated independently, their individual contributions remain unresolved.
+This adaptive refinement reuses the bottleneck descriptor at one decoder stage without
+discarding the established multi-scale response or modifying the full decoder.
+
+\subsection{Cross-Dataset Generalization}
+
+CVC-300, CVC-ColonDB, and ETIS-LaribPolypDB are reserved for external
+generalization evaluation and do not influence model development. Differences in
+acquisition, annotation, case mix, and polyp morphology make these datasets a distinct
+test of transfer beyond the Kvasir-SEG/CVC-ClinicDB development domain.
+On the external datasets, the model obtained mDice/mIoU of 0.916/0.863 on
+CVC-300, 0.824/0.747 on CVC-ColonDB, and 0.816/0.763 on ETIS-LaribPolypDB.
+CVC-300 therefore had the strongest external result among the three evaluated
+datasets, while CVC-ColonDB and ETIS remained lower than the seen-domain results.
+
+Although the main comparison is restricted to methods with closely matched dataset
+partitioning, differences in optimization, augmentation, backbone initialization,
+model-selection criteria, and implementation details remain.
+
+\subsection{Practical Trade-offs and Placement}
+
+As summarized in Table~\ref{tab:model-complexity}, the final architecture has
+30.06 M parameters and requires 27.82 GFLOPs at $352\times352$. Matched-hardware
+latency was not measured.
+
+The final model uses the new guidance at the Stage-3 decoder--encoder fusion. The
+all-skip experiment was exploratory, single-seed, incomplete, and used a different
+batch size. Deployment-oriented placement and latency optimization remain future work.
+
+\subsection{Limitations}
+
+\begin{itemize}
+\item \textbf{No statistical significance testing:} All reported differences are descriptive; no hypothesis testing was performed.
+\item \textbf{Hardware and software records:} Exact hardware and dependency versions were not recorded.
+% TODO: replace the seed-wise training-duration limitation after the final three-seed run.
+\item \textbf{Training duration:} With zero-based epoch indices, seed 7777 stopped after epoch 167 (168 completed epochs; patience 30), while seeds 42 and 6543 completed epochs 0--199; this asymmetry may affect the mean estimate.
+\end{itemize}
+
+\subsection{Future Work}
+
+\begin{itemize}
+\item Systematic multi-seed placement ablation with controlled batch size and learning rate.
+\item Disentanglement of the RFG-MSCB components (residual form, initialization schedule, frequency conditioning) via factorial experiments.
+\item Investigation of initialization sensitivity using completed default-initialization runs.
+\item Domain adaptation or targeted augmentation to improve generalization on CVC-ColonDB and ETIS-LaribPolypDB.
+\item Evaluate between-configuration differences using larger seed ensembles or bootstrap confidence intervals.
+\item Record hardware and software configurations systematically in future experiments.
+\end{itemize}

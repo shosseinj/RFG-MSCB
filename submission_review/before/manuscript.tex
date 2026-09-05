@@ -1,0 +1,147 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  10pt,
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{longtable,booktabs,array}
+\usepackage{multirow}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\usepackage{pdflscape}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\ifLuaTeX
+  \usepackage{luacolor}
+  \usepackage[soul]{lua-ul}
+\else
+  \usepackage{soul}
+\fi
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\ifPDFTeX
+  \TeXXeTstate=1
+  \newcommand{\RL}[1]{\beginR #1\endR}
+  \newcommand{\LR}[1]{\beginL #1\endL}
+  \newenvironment{RTL}{\beginR}{\endR}
+  \newenvironment{LTR}{\beginL}{\endL}
+\fi
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Cross-Level Residual Frequency-Guided Multi-Scale Refinement with a ConvNeXt Encoder for Polyp Segmentation}
+\author{}
+\date{}
+
+\providecommand{\RL}[1]{#1}
+\newcommand{\meanstd}[2]{%
+\begin{tabular}[c]{@{}c@{}}
+#1\\[-1pt]
+{\scriptsize $\pm$ #2}
+\end{tabular}%
+}
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+% TODO: insert new PraNet-style split three-seed Kvasir-SEG, CVC-ClinicDB, external-test, and ablation results.
+Accurate colorectal polyp segmentation remains challenging because lesions vary in scale, morphology, contrast, and boundary appearance. Conventional multi-scale convolution blocks aggregate different receptive fields without explicitly using sample-specific frequency information from deep semantic features. We present a ConvNeXt-Tiny U-shaped framework with bottleneck Frequency-Aware Feature Enhancement (FAFEM) and introduce residual frequency-guided coupling to the Multi-Scale Convolution Block (MSCB) structure. The resulting RFG-MSCB reuses the low- and high-frequency descriptor produced by bottleneck FAFEM to assign sample-dependent weights to MSCB multi-kernel branches at the Stage-3 encoder--decoder fusion. The guided response is a bounded residual deviation from ordinary MSCB aggregation, preserving the conventional multi-scale path as a reference. The model is evaluated under a PraNet-style data protocol using final seen test sets from Kvasir-SEG and CVC-ClinicDB and external test sets from CVC-300, CVC-ColonDB, and ETIS-LaribPolypDB. Checkpoint selection uses only an internal validation subset of the combined Kvasir-SEG/CVC-ClinicDB development pool. The architectural ablation changes mDice/mIoU/MAE from 0.827/0.763/0.019 for the Baseline to 0.869/0.803/0.018 for FAFEM + MSCB and 0.875/0.815/0.017 for Residual RFG-MSCB. The final modification adds 0.08 M parameters over FAFEM + MSCB without additional reported GFLOPs at the displayed precision, while preserving the conventional MSCB pathway.
+\end{abstract}
+
+
+
+
+
+
+
+
+\input{sections/01_introduction}
+\input{sections/02_related_work}
+\input{sections/03_method}
+\input{sections/04_experiments}
+\input{sections/05_discussion}
+\input{sections/06_conclusion}
+\section*{Declaration of competing
+interest}\label{declaration-of-competing-interest}
+\addcontentsline{toc}{section}{Declaration of competing interest}
+
+The authors declare that they have no known competing financial
+interests or personal relationships that could have appeared to
+influence the work reported in this paper.
+
+\section*{Data availability}\label{data-availability}
+\addcontentsline{toc}{section}{Data availability}
+
+The datasets used in this study are publicly available from the sources cited in the
+manuscript. The project code, trained weights, and derived evaluation artifacts are
+maintained locally and are not currently available from a public repository.
+
+\phantomsection
+\label{references}
+\addcontentsline{toc}{section}{References}
+\bibliographystyle{unsrt}
+\bibliography{references}
+
+\end{document}

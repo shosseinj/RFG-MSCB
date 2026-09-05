@@ -1,0 +1,64 @@
+\section{Ablation Study}\label{ablation-study}
+
+The ablation design compares three configurations in sequence: Baseline,
+FAFEM + MSCB, and Residual RFG-MSCB (Ours). This sequence evaluates the
+feature-enhancement and multi-scale components together before assessing the
+additional residual frequency-guided modification.
+
+\subsection{Ablation Results}
+
+The Baseline provides the reference without the added FAFEM and MSCB components.
+
+Adding FAFEM and MSCB improves the baseline across the reported segmentation
+metrics. The final configuration then adds residual frequency-guided coupling to
+the multi-scale configuration. The complete numerical comparison, including
+computational complexity, is given in Table~\ref{tab:ablation}.
+
+A single-seed direct frequency-guidance configuration tested the mechanism without
+residual coupling. Its Kvasir-SEG result was lower than that of FAFEM + MSCB in
+the paired seed-42 comparison.
+% TODO: replace the direct-guidance comparison after rerunning it under the final data protocol.
+
+\begin{table*}[htbp]
+\centering
+\caption{Ablation study of the proposed architectural components on Kvasir-SEG, including segmentation performance and computational complexity.}\label{tab:ablation}
+\small
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{@{}lrrrrrrrrr@{}}
+\toprule
+Model & mDice & mIoU & $F_{\beta}^{w}$ & $S_{\alpha}$ & $mE_{\phi}$ & $\max E_{\phi}$ & MAE & Params (M) & GFLOPs \\
+\midrule
+Baseline & 0.827 & 0.763 & 0.811 & 0.890 & 0.907 & 0.913 & 0.019 & 29.19 & 27.202 \\
+FAFEM + MSCB & 0.869 & 0.803 & 0.845 & 0.910 & 0.937 & 0.947 & 0.018 & 29.98 & 27.818 \\
+\textbf{Residual RFG-MSCB (Ours)} & \textbf{0.875} & \textbf{0.815} & \textbf{0.847} & \textbf{0.913} & \textbf{0.941} & \textbf{0.949} & \textbf{0.017} & 30.06 & 27.818 \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\subsection{Ablation Interpretation}
+
+FAFEM + MSCB improves mDice from 0.827 to 0.869, mIoU from 0.763 to
+0.803, and reduces MAE from 0.019 to 0.018 relative to the Baseline. Residual
+RFG-MSCB further changes mDice from 0.869 to 0.875, mIoU from 0.803 to 0.815,
+and MAE from 0.018 to 0.017. The parameter count increases from 29.19 M to
+29.98 M and then 30.06 M, while GFLOPs increase from 27.202 to 27.818 and
+remain 27.818 for the final configuration. Thus, the residual modification adds
+only 0.08 M parameters over FAFEM + MSCB and no additional reported GFLOPs at
+the displayed precision. These are descriptive comparisons; no statistical
+significance is claimed.
+
+\subsection{Stage Placement and Generalization}
+
+% TODO: update placement and cross-dataset observations after the final reruns.
+Stage 3 is used in the selected configuration. The exploratory all-skip
+experiment used a single seed, was incomplete, and used batch size 32 with the same
+learning rate. Its training result was lower than that of the Stage-3 configuration.
+A controlled multi-seed placement study remains future work.
+
+On the four additional datasets, the change from FAFEM + MSCB to the final guidance
+configuration was mixed in the paired seed-42 comparison: mDice decreased on
+CVC-ClinicDB and CVC-300 and increased on CVC-ColonDB and ETIS. The residual-coupling configuration
+with default initialization did not complete training and is therefore excluded from
+the quantitative ablation; initialization sensitivity remains a subject for future
+work.

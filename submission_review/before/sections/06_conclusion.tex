@@ -1,0 +1,26 @@
+\section{Conclusion}\label{conclusion}
+
+We presented a ConvNeXt-Tiny U-shaped segmentation framework that uses a locally
+implemented bottleneck FAFEM and couples its descriptor to the MSCB structure through
+RFG-MSCB at the Stage-3 encoder--decoder fusion. The design
+extends bottleneck frequency enhancement into decoder refinement while preserving the
+ordinary multi-scale pathway as a reference, thereby addressing the motivation for
+sample-dependent receptive-field selection without replacing the established decoder
+path.
+
+The evaluation protocol reserves Kvasir-SEG and CVC-ClinicDB subsets for final
+seen-domain testing and uses CVC-300, CVC-ColonDB, and ETIS-LaribPolypDB only
+for external testing; checkpoint selection is confined to the internal validation split.
+The final model obtained mDice/mIoU of 0.932/0.883 on Kvasir-SEG and
+0.948/0.904 on CVC-ClinicDB, compared with 0.916/0.863 on CVC-300,
+0.824/0.747 on CVC-ColonDB, and 0.816/0.763 on ETIS-LaribPolypDB.
+The parameter-efficient modification is localized to Stage 3, adds 0.08 M parameters
+over FAFEM + MSCB without additional reported GFLOPs at the displayed precision,
+and retains
+depthwise-separable convolution in the remaining decoder.
+
+Future work should examine placement across multiple seeds, separate residualization
+from frequency conditioning, and evaluate domain-adaptation strategies for the
+external datasets. Overall, RFG-MSCB connects bottleneck frequency
+information to sample-dependent multi-scale decoding through bounded residual coupling
+that preserves the original MSCB pathway.

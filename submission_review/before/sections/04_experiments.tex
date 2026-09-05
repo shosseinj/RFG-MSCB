@@ -1,0 +1,408 @@
+\section{Experiments}\label{experiments}
+
+\subsection{Datasets and Data Splits}\label{dataset}
+
+To evaluate the proposed framework under a fixed training and evaluation design, we
+used Kvasir-SEG \cite{kvasirseg}, CVC-ClinicDB \cite{cvcclinicdb},
+CVC-300 \cite{cvc300}, CVC-ColonDB \cite{cvccolondb}, and
+ETIS-LaribPolypDB \cite{etis}. Following a PraNet-style data partition,
+100 of the 1000 Kvasir-SEG images and 62 of the 612 CVC-ClinicDB images
+were reserved as final seen test sets. The remaining 900 Kvasir-SEG and
+550 CVC-ClinicDB images formed a combined 1450-image train/validation pool.
+This pool was split deterministically into 1305 training images and 145 internal
+validation images using shuffled sampling with \texttt{random\_state=42}; dataset
+membership was identical across all training seeds.
+
+The final Kvasir-SEG and CVC-ClinicDB test images were excluded from training,
+validation, checkpoint selection, early stopping, threshold tuning, hyperparameter
+tuning, and architecture selection. CVC-300, CVC-ColonDB, and
+ETIS-LaribPolypDB were used exclusively as external test sets and did not influence
+model selection.
+
+\begin{table}[htbp]
+\centering
+\caption{Dataset partition used in the experiments.}
+\label{tab:dataset-splits}
+\small
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{lrrr}
+\toprule
+Dataset & Total & Train & Test \\
+\midrule
+Kvasir-SEG & 1000 & 900 & 100 \\
+CVC-ClinicDB & 612 & 550 & 62 \\
+CVC-300 & 60 & -- & 60 \\
+CVC-ColonDB & 380 & -- & 380 \\
+ETIS-LaribPolypDB & 196 & -- & 196 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Images were converted to RGB, resized to $352\times352$ with bilinear
+interpolation, and scaled to $[0,1]$. Masks were resized with
+nearest-neighbor interpolation and binarized. The encoder applied
+ImageNet normalization with mean $(0.485,0.456,0.406)$ and standard
+deviation $(0.229,0.224,0.225)$.
+
+\subsection{Implementation Details}\label{implementation-details}
+
+The final protocol uses seeds 42, 6543, and 7777. All final and ablation
+results are reported as the mean $\pm$ sample standard deviation (ddof=1) across
+these seeds unless otherwise noted. The runs were implemented
+in PyTorch 2.5.1+cu124 on Windows, with a maximum of 200 epochs and batch size 24.
+AdamW with betas
+$(0.9,0.999)$ used separate parameter groups. The maximum learning rates
+were $3.0\times10^{-4}$ for the decoder and $4.5\times10^{-4}$ for the
+final refinement head. Encoder Stages 4, 3, 2, and 1 plus the stem used
+$3.0\times10^{-5}$, $2.4\times10^{-5}$, $1.92\times10^{-5}$, and
+$1.536\times10^{-5}$, respectively, corresponding to layer-wise decay
+0.8. Weight decay was $1.0\times10^{-4}$ for the decoder,
+$5.0\times10^{-2}$ for the encoder, and $1.0\times10^{-2}$ for the
+refinement head.
+
+Learning rates were warmed up linearly for five epochs from 0.1 to 1.0
+of each group maximum and then cosine-annealed over the remaining epochs
+to $1.0\times10^{-6}$. Training used AMP FP16, global gradient clipping
+at norm 1.0, and an exponential moving average (EMA) with decay 0.995.
+All parameters were trainable from the first epoch; no staged freezing
+or decoder-only warmup was used. The encoder was initialized from
+\texttt{convnext\_tiny\_22k\_1k\_384.pth}, logged as ImageNet pretrained
+weights. Deep supervision and frequency augmentation were disabled, and
+sampling was uniform. Early stopping was configured with patience 30
+from the start of training. Seeds 42 and 6543 completed the maximum 200
+epochs, corresponding to zero-based epochs 0--199; seed 7777 stopped after
+epoch 167 (168 completed epochs). Model complexity and
+its measurement convention are reported in Table~\ref{tab:model-complexity}.
+% TODO: replace seed-wise training completion details after the final PraNet-style split three-seed run.
+
+Training augmentation applied horizontal and vertical flips independently
+with probability 0.5, rotation in $[-15^{\circ},15^{\circ}]$ with
+probability 0.5, and a random crop ratio in $[0.7,1.0]$ followed by
+resizing with probability 0.5. Joint brightness and contrast factors in
+$[0.85,1.15]$ and saturation in $[0.9,1.1]$ were applied with probability
+0.5. A $3\times3$ Gaussian blur and additive Gaussian noise with standard
+deviation 0.015 were applied with probabilities 0.15 and 0.25,
+respectively.
+
+The code seeded Python, NumPy, PyTorch CPU, and all CUDA random-number generators.
+Deterministic CUDA algorithms and cuDNN deterministic backend flags were not enabled.
+
+\subsection{Loss Function}\label{loss-function}
+
+The final objective was
+\begin{equation}
+\mathcal{L}=0.55\mathcal{L}_{\mathrm{Dice}}
++0.25\mathcal{L}_{\mathrm{BCE}}
++0.20\mathcal{L}_{\mathrm{boundary}}.
+\label{eq:loss}
+\end{equation}
+The objective in Eq.~\eqref{eq:loss} uses a soft Dice term with a smoothing constant of 1.0. The BCE-with-logits
+term used targets smoothed as
+$y_{\mathrm{BCE}}=0.98y+0.01$, corresponding to label smoothing 0.02.
+For the boundary-aware term, fixed Sobel filters were applied to each binary mask to
+obtain $g=\sqrt{g_x^2+g_y^2}$. The magnitude was normalized per image as
+$a=g/\max(\max(g),10^{-6})$, and the pixel weights were
+$w=1+\kappa a$ with $\kappa=5$; consequently, the weights range from 1 to 6.
+For probability $p=\sigma(P)$ and target $y$, the term was
+\begin{equation}
+\mathcal{L}_{\mathrm{boundary}}
+=-\frac{\sum_i w_i[y_i\log(p_i+\epsilon)+(1-y_i)\log(1-p_i+\epsilon)]}
+{\sum_i w_i+\epsilon}
++1-\frac{\sum_i w_i y_i p_i+\epsilon}
+{\sum_i w_i(y_i+p_i-y_ip_i)+\epsilon},
+\label{eq:boundary_loss}
+\end{equation}
+with $\epsilon=10^{-6}$ and batch averaging for the weighted IoU component. The
+focal-Tversky term was assigned zero weight and therefore did not contribute to the
+final objective.
+
+\subsection{Evaluation Metrics}\label{evaluation-metrics}
+
+We report mean Dice (mDice), mean intersection over union (mIoU),
+S-measure $S_{\alpha}$ \cite{smeasure}, weighted F-measure
+$F_{\beta}^{w}$ \cite{weightedfmeasure}, mean and maximum E-measure ($mE_{\phi}$ and
+$\max E_{\phi}$) \cite{emeasure}, and mean absolute error (MAE)
+\cite{saliencyfilters}. For each image, the thresholded prediction $P$
+and binary ground truth $G$ were flattened and evaluated as
+\begin{equation}
+\operatorname{Dice}(P,G)=
+\frac{2|P\cap G|+10^{-6}}{|P|+|G|+10^{-6}},
+\qquad
+\operatorname{IoU}(P,G)=
+\frac{|P\cap G|+10^{-6}}{|P|+|G|-|P\cap G|+10^{-6}}.
+\label{eq:dice_iou}
+\end{equation}
+The reported mDice and mIoU are arithmetic means of the per-image scores in Eq.~\eqref{eq:dice_iou}, rather than global pixel aggregates. S-measure, weighted
+F-measure, the E-measure curve, and MAE were computed per image with
+\texttt{py\_sod\_metrics} from 8-bit probability maps and binary ground
+truth. The mean and maximum of the resulting E-measure curve were
+reported.
+
+\subsection{Model Selection and Evaluation Protocol}
+\label{model-selection}
+
+At each epoch, EMA weights were evaluated only on the 145-image internal
+validation subset. Probabilities were obtained with one sigmoid operation and
+binarized using the strict rule $p>0.45$. A checkpoint was saved only when
+internal-validation IoU was strictly greater than the previous best. Best
+checkpoints were selected independently for each seed according to
+internal-validation IoU.
+% TODO: insert selected epochs after the final PraNet-style split three-seed run.
+
+After model selection, each best checkpoint was loaded strictly and evaluated on the
+100-image Kvasir-SEG and 62-image CVC-ClinicDB seen test sets, followed by the full
+CVC-300, CVC-ColonDB, and ETIS-LaribPolypDB external test sets. Test-time
+augmentation was disabled. Neither the seen nor external test results influenced
+checkpoint selection or other model-development decisions.
+
+\subsection{Experimental Study}\label{experimental-study}
+
+The experimental study first examines the contribution of the architectural components
+under controlled variants and then compares the resulting model with published methods.
+Presenting the ablation before the comparative evaluation establishes the reference
+configuration and clarifies which part of the final design is being assessed in the
+comparative tables.
+
+\input{sections/04_ablation_experiments}
+
+\subsection{Comparative study}\label{comparative-study}
+
+After the component-level analysis, the comparative study evaluates the complete model
+on the Kvasir-SEG and CVC-ClinicDB seen test sets and on three external test sets,
+and places its performance alongside published baselines. The quantitative results
+are presented below.
+
+\subsubsection{Quantitative analysis}\label{quantitative-analysis}
+
+% TODO: replace with new PraNet-style split three-seed results and recompute all rank statements.
+On Kvasir-SEG, the proposed model achieved the highest displayed mDice and mIoU,
+reaching $0.932\pm0.0044$ and $0.883\pm0.004$, respectively. PFPRNet was
+second-highest for both metrics, with mDice of 0.930 and mIoU of 0.881. On
+CVC-ClinicDB, the proposed model achieved $0.948\pm0.003$ mDice, which was
+second-highest to PFPRNet's 0.949, and the highest displayed mIoU at
+$0.904\pm0.004$.
+
+The 100 Kvasir-SEG and 62 CVC-ClinicDB images were reserved exclusively for final
+seen-set testing and did not participate in training, validation, checkpoint selection,
+or hyperparameter tuning. Checkpoint selection was performed exclusively on the
+145-image internal validation subset sampled from the combined 1450-image
+Kvasir-SEG/CVC-ClinicDB train/validation pool.
+
+The main comparison is restricted to methods using comparable PraNet-style data
+protocols with closely matched Kvasir-SEG and CVC-ClinicDB partitioning. Methods
+using materially different data partitions remain discussed in Related Work but are
+omitted from the main performance tables. Differences in optimization, augmentation,
+backbone initialization, model-selection criteria, and implementation details remain.
+Across the comparison tables, the best and second-best displayed values are shown in
+bold and underlined, respectively.
+
+On the external datasets, mDice/mIoU were
+$0.916\pm0.002$/$0.863\pm0.002$ on CVC-300,
+$0.824\pm0.009$/$0.747\pm0.008$ on CVC-ColonDB, and
+$0.816\pm0.012$/$0.763\pm0.013$ on ETIS-LaribPolypDB. Across these three
+external datasets, the displayed mDice ranged from 0.812 to 0.916 and mIoU
+ranged from 0.746 to 0.863; the largest between-seed variation in both metrics
+occurred on ETIS.
+
+\small
+\setlength{\tabcolsep}{5pt}
+\renewcommand{\arraystretch}{1.1}
+\begin{longtable}{@{}p{0.24\textwidth}*{8}{>{\centering\arraybackslash}c}@{}}
+\caption{Quantitative comparison on Kvasir-SEG.}\label{tab:kvasir-comparison}\\
+\toprule\noalign{}
+Methods & Year & mDice & mIoU & $F_{\beta}^{w}$ & $S_{\alpha}$ & $mE_{\phi}$ & $\max E_{\phi}$ & MAE \\
+\midrule\noalign{}
+\endfirsthead
+\caption[]{Quantitative comparison on Kvasir-SEG (continued).}\\
+\toprule\noalign{}
+Methods & Year & mDice & mIoU & $F_{\beta}^{w}$ & $S_{\alpha}$ & $mE_{\phi}$ & $\max E_{\phi}$ & MAE \\
+\midrule\noalign{}
+\endhead
+\midrule\noalign{}
+\multicolumn{9}{r}{Continued on next page} \\
+\endfoot
+\bottomrule\noalign{}
+\endlastfoot
+MEGANet~\cite{meganet} & 2024 & 0.913 & 0.863 & 0.907 & 0.918 & 0.956 & 0.959 &
+0.025 \\
+
+MSBP-Net~\cite{msbpnet} & 2026 & 0.919 & 0.868 & 0.916 & 0.926 & 0.961 & -- &
+0.023 \\
+
+CIFFormer~\cite{cifformer} & 2025 & 0.926 & 0.876 & \textbf{0.929} &
+\textbf{0.939} & 0.967 & -- & \textbf{0.019} \\
+
+PFPRNet~\cite{pfprnet} & 2025 &
+\underline{0.930} &
+\underline{0.881} &
+0.920 &
+0.935 &
+0.971 &
+-- &
+\textbf{0.019} \\
+
+MLB-Net~\cite{mlbnet} & 2026 & 0.926 & 0.878 & \underline{0.921} & \underline{0.938} &
+\underline{0.969} & \textbf{0.975} & 0.021 \\
+
+MSPN~\cite{mspn} & 2026 & 0.927 & 0.879 & -- & -- & -- & -- &
+\underline{0.021} \\
+
+DVFIP-Net~\cite{dvfipnet} & 2026 & 0.922 & 0.874 & -- & -- & -- & -- & -- \\
+
+\textbf{Ours} & -- &
+\textbf{\meanstd{0.932}{0.0044}} &
+\textbf{\meanstd{0.883}{0.004}} &
+\meanstd{0.904}{0.006} &
+\meanstd{0.936}{0.003} &
+\textbf{\meanstd{0.972}{0.003}} &
+\underline{\meanstd{0.968}{0.002}} &
+\underline{\meanstd{0.020}{0.001}} \\
+\end{longtable}
+
+
+
+
+
+\begin{longtable}{@{}p{0.24\textwidth}*{8}{>{\centering\arraybackslash}c}@{}}
+\caption{Quantitative comparison on CVC-ClinicDB.}\label{tab:clinicdb-comparison}\\
+\toprule\noalign{}
+Methods & Year & mDice & mIoU & $F_{\beta}^{w}$ & $S_{\alpha}$ & $mE_{\phi}$ & $\max E_{\phi}$ & MAE \\
+\midrule\noalign{}
+\endfirsthead
+\caption[]{Quantitative comparison on CVC-ClinicDB (continued).}\\
+\toprule\noalign{}
+Methods & Year & mDice & mIoU & $F_{\beta}^{w}$ & $S_{\alpha}$ & $mE_{\phi}$ & $\max E_{\phi}$ & MAE \\
+\midrule\noalign{}
+\endhead
+\midrule\noalign{}
+\multicolumn{9}{r}{Continued on next page} \\
+\endfoot
+\bottomrule\noalign{}
+\endlastfoot
+MEGANet~\cite{meganet} & 2024 & 0.938 & 0.894 & 0.940 & 0.950 & -- &
+\underline{0.987} & \underline{0.007} \\
+MSBP-Net~\cite{msbpnet} & 2026 & 0.940 & 0.892 & 0.927 & 0.939 & 0.976 & -- &
+\underline{0.007} \\
+CIFFormer~\cite{cifformer} & 2025 & 0.944 & 0.897 & 0.941 & 0.934 & 0.972 & -- &
+\underline{0.007} \\
+PFPRNet~\cite{pfprnet} & 2025 & \textbf{0.949} & \underline{0.903} & \underline{0.947} & \underline{0.957} &
+\textbf{0.989} & -- &
+\textbf{0.006} \\
+MLB-Net~\cite{mlbnet} & 2026 & \underline{0.945} & 0.902 &
+\textbf{0.948} & \textbf{0.958} & \textbf{0.989} &
+\textbf{0.992} & \textbf{0.006} \\
+MSPN~\cite{mspn} & 2026 & 0.943 & 0.902 & -- & -- & -- & -- &
+\textbf{0.006} \\
+DVFIP-Net~\cite{dvfipnet} & 2026 & 0.942 & 0.896 & -- & -- & -- & -- & -- \\
+\textbf{Ours} & -- & \underline{\meanstd{0.948}{0.003}} & \textbf{\meanstd{0.904}{0.004}} &
+\meanstd{0.939}{0.001} & \textbf{\meanstd{0.958}{0.001}} &
+\underline{\meanstd{0.979}{0.001}} & \underline{\meanstd{0.988}{0.002}} &
+\underline{\meanstd{0.007}{0.001}} \\
+\end{longtable}
+
+\begin{longtable}{@{}p{0.24\textwidth}*{8}{>{\centering\arraybackslash}c}@{}}
+\caption{Quantitative comparison on ETIS-LaribPolypDB.}\label{tab:etis-comparison}\\
+\toprule\noalign{}
+Methods & Year & mDice & mIoU & $F_{\beta}^{w}$ & $S_{\alpha}$ & $mE_{\phi}$ & $\max E_{\phi}$ & MAE \\
+\midrule\noalign{}
+\endfirsthead
+\caption[]{Quantitative comparison on ETIS-LaribPolypDB (continued).}\\
+\toprule\noalign{}
+Methods & Year & mDice & mIoU & $F_{\beta}^{w}$ & $S_{\alpha}$ & $mE_{\phi}$ & $\max E_{\phi}$ & MAE \\
+\midrule\noalign{}
+\endhead
+\midrule\noalign{}
+\multicolumn{9}{r}{Continued on next page} \\
+\endfoot
+\bottomrule\noalign{}
+\endlastfoot
+MEGANet~\cite{meganet} & 2024 & 0.789 & 0.709 & 0.753 & 0.866 & 0.855 & 0.915
+& 0.015 \\
+MSBP-Net~\cite{msbpnet} & 2026 & 0.795 & 0.718 & 0.770 & 0.873 & 0.899 & -- &
+0.019 \\
+CIFFormer~\cite{cifformer} & 2025 & 0.810 & 0.746 & \textbf{0.858} & 0.889 & \underline{0.918}
+& -- & \underline{0.013} \\
+PFPRNet~\cite{pfprnet} & 2025 & \textbf{0.828} & \textbf{0.764} & \underline{0.839} &
+\textbf{0.908} &
+\textbf{0.935} & -- & \textbf{0.012} \\
+MLB-Net~\cite{mlbnet} & 2026 & \underline{0.821} & 0.744 & 0.780 & \underline{0.899} & 0.914 &
+\textbf{0.935} & \underline{0.013} \\
+MSPN~\cite{mspn} & 2026 & 0.798 & 0.717 & -- & -- & -- & -- & 0.017 \\
+DVFIP-Net~\cite{dvfipnet} & 2026 & 0.811 & 0.730 & -- & -- & -- & -- & -- \\
+\textbf{Ours} & -- & \meanstd{0.816}{0.012} & \underline{\meanstd{0.763}{0.013}} &
+\meanstd{0.783}{0.004} & \meanstd{0.882}{0.001} &
+\underline{\meanstd{0.921}{0.006}} & \underline{\meanstd{0.927}{0.010}} &
+\meanstd{0.014}{0.001} \\
+\end{longtable}
+
+\begin{longtable}{@{}p{0.24\textwidth}*{8}{>{\centering\arraybackslash}c}@{}}
+\caption{Quantitative comparison on CVC-ColonDB.}\label{tab:colondb-comparison}\\
+\toprule\noalign{}
+Methods & Year & mDice & mIoU & $F_{\beta}^{w}$ & $S_{\alpha}$ & $mE_{\phi}$ & $\max E_{\phi}$ & MAE \\
+\midrule\noalign{}
+\endfirsthead
+\caption[]{Quantitative comparison on CVC-ColonDB (continued).}\\
+\toprule\noalign{}
+Methods & Year & mDice & mIoU & $F_{\beta}^{w}$ & $S_{\alpha}$ & $mE_{\phi}$ & $\max E_{\phi}$ & MAE \\
+\midrule\noalign{}
+\endhead
+\midrule\noalign{}
+\multicolumn{9}{r}{Continued on next page} \\
+\endfoot
+\bottomrule\noalign{}
+\endlastfoot
+MEGANet~\cite{meganet} & 2024 & 0.793 & 0.714 & 0.779 & 0.854 & 0.892 & 0.895
+& 0.034 \\
+MSBP-Net~\cite{msbpnet} & 2026 & 0.810 & 0.731 & 0.810 & 0.861 & 0.912 & -- &
+0.029 \\
+CIFFormer~\cite{cifformer} & 2025 & 0.823 & 0.741 & \textbf{0.851} & 0.874 & \underline{0.918} & -- &
+\underline{0.026} \\
+PFPRNet~\cite{pfprnet} & 2025 & 0.819 & 0.741 & \underline{0.843} & \underline{0.882} & 0.915 & -- &
+0.028 \\
+MLB-Net~\cite{mlbnet} & 2026 & \textbf{0.832} & \textbf{0.757} & 0.825 &
+\textbf{0.886} & \textbf{0.924} & \textbf{0.931} & \textbf{0.023} \\
+MSPN~\cite{mspn} & 2026 & 0.811 & 0.734 & -- & -- & -- & -- & 0.029 \\
+DVFIP-Net~\cite{dvfipnet} & 2026 & \underline{0.826} & 0.746 & -- & -- & -- & -- & -- \\
+\textbf{Ours} & -- & \meanstd{0.824}{0.009} & \underline{\meanstd{0.747}{0.008}} &
+\meanstd{0.832}{0.002} & \meanstd{0.862}{0.004} &
+\underline{\meanstd{0.919}{0.002}} & \meanstd{0.911}{0.003} &
+\underline{\meanstd{0.025}{0.001}} \\
+\end{longtable}
+
+\begin{longtable}{@{}p{0.24\textwidth}*{8}{>{\centering\arraybackslash}c}@{}}
+\caption{Quantitative comparison on CVC-300 (EndoScene).}\label{tab:cvc300-comparison}\\
+\toprule\noalign{}
+Methods & Year & mDice & mIoU & $F_{\beta}^{w}$ & $S_{\alpha}$ & $mE_{\phi}$ & $\max E_{\phi}$ & MAE \\
+\midrule\noalign{}
+\endfirsthead
+\caption[]{Quantitative comparison on CVC-300 (EndoScene; continued).}\\
+\toprule\noalign{}
+Methods & Year & mDice & mIoU & $F_{\beta}^{w}$ & $S_{\alpha}$ & $mE_{\phi}$ & $\max E_{\phi}$ & MAE \\
+\midrule\noalign{}
+\endhead
+\midrule\noalign{}
+\multicolumn{9}{r}{Continued on next page} \\
+\endfoot
+\bottomrule\noalign{}
+\endlastfoot
+MEGANet~\cite{meganet} & 2024 & 0.899 & 0.834 & 0.882 & 0.935 & \underline{0.966} & \underline{0.969}
+& 0.007 \\
+MSBP-Net~\cite{msbpnet} & 2026 & 0.903 & \underline{0.859} & \textbf{0.927} & \underline{0.942} & \underline{0.967} & -- &
+0.019 \\
+CIFFormer~\cite{cifformer} & 2025 & 0.883 & 0.822 & 0.912 & 0.939 & 0.961 & -- &
+0.100 \\
+PFPRNet~\cite{pfprnet} & 2025 & 0.891 & 0.833 & \underline{0.917} & 0.928 & 0.950 & -- &
+0.013 \\
+MLB-Net~\cite{mlbnet} & 2026 & \underline{0.915} & 0.852 & 0.909 &
+\underline{0.974} & \textbf{0.974} & \underline{0.978} & \textbf{0.005} \\
+MSPN~\cite{mspn} & 2026 & \underline{0.907} & 0.840 & -- & -- & -- & -- & \underline{0.006} \\
+DVFIP-Net~\cite{dvfipnet} & 2026 & 0.900 & 0.833 & -- & -- & -- & -- & -- \\
+\textbf{Ours} & -- & \textbf{\meanstd{0.916}{0.002}} & \textbf{\meanstd{0.863}{0.002}} &
+\meanstd{0.847}{0.005} & \textbf{\meanstd{0.975}{0.004}} &
+\underline{\meanstd{0.969}{0.004}} & \textbf{\meanstd{0.979}{0.005}} &
+\textbf{\meanstd{0.005}{0.001}} \\
+\end{longtable}
+
+% Qualitative analysis is reserved for the pending figure-generation stage.
+% \subsubsection{Qualitative analysis}\label{qualitative-analysis}
