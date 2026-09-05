@@ -271,6 +271,13 @@ INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\rm-lmbx10.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\rm-lmbx7.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\rm-lmbx5.tfm
 INPUT C:\Program Files\MiKTeX\fonts\enc\dvips\lm\lm-mathsy.enc
+INPUT .\media\convnext.png
+INPUT .\media\convnext.png
+INPUT .\media\convnext.png
+INPUT .\media\convnext.png
+INPUT .\media\convnext.png
+INPUT .\media\convnext.png
+INPUT .\media\convnext.png
 INPUT .\media\hosein.png
 INPUT .\media\hosein.png
 INPUT .\media\hosein.png
@@ -284,13 +291,6 @@ INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\lmmib5.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\lmbsy10.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\lmbsy7.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\lmbsy5.tfm
-INPUT .\media\convnext.png
-INPUT .\media\convnext.png
-INPUT .\media\convnext.png
-INPUT .\media\convnext.png
-INPUT .\media\convnext.png
-INPUT .\media\convnext.png
-INPUT .\media\convnext.png
 INPUT C:\Program Files\MiKTeX\fonts\enc\dvips\lm\lm-mathex.enc
 INPUT C:\Program Files\MiKTeX\tex\latex\lm\t1lmtt.fd
 INPUT C:\Program Files\MiKTeX\tex\latex\lm\t1lmtt.fd

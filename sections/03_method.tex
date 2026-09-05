@@ -60,6 +60,13 @@ segmentation mask.
 
 \begin{figure}[!htbp]
 \centering
+\includegraphics[width=0.68\textwidth,keepaspectratio]{media/convnext.png}
+\caption{ConvNeXt-Tiny encoder structure. (A) Stage-level processing after the one-time ImageNet normalization: Stage 1 uses a $4\times4$ stride-4 stem, while subsequent stages use $2\times2$ stride-2 downsampling and repeat ConvNeXt blocks according to depths $[3,3,9,3]$. (B) An individual ConvNeXt block, comprising a $7\times7$ stride-1 depthwise convolution, channels-last Layer Normalization, linear expansion from $C$ to $4C$, GELU, linear projection from $4C$ to $C$, layer scaling, DropPath, and residual addition.}
+\label{fig:convnext_encoder}
+\end{figure}
+
+\begin{figure}[!htbp]
+\centering
 \includegraphics[width=0.98\textwidth,keepaspectratio]{media/hosein.png}
 \caption{Overall architecture and detailed mechanism of the proposed segmentation framework. The left panel shows the ConvNeXt-Tiny encoder--decoder network with bottleneck FAFEM, Stage-3 RFG-MSCB, and the prediction head. The middle panel illustrates how FAFEM independently processes low- and high-frequency components of the deepest encoder feature, concatenates them, and generates the descriptor $\mathbf{z}_f$. The right panel details RFG-MSCB, in which a lightweight guidance MLP uses $\mathbf{z}_f$ to adaptively weight the $1\times1$, $3\times3$, and $5\times5$ depthwise branches, and bounded residual coupling introduces the guided response as a deviation from ordinary MSCB aggregation.}
 \label{fig:overall_architecture}
@@ -77,13 +84,6 @@ blocks. Within each block, a $7\times7$ stride-1 depthwise convolution is follow
 channels-last Layer Normalization and a pointwise MLP that expands $C$ to $4C$, applies
 GELU, and projects $4C$ back to $C$. Layer scaling and stochastic depth are applied
 before the transformed feature is added to the residual path.
-
-\begin{figure}[!htbp]
-\centering
-\includegraphics[width=0.88\textwidth,height=0.78\textheight,keepaspectratio]{media/convnext.png}
-\caption{ConvNeXt-Tiny encoder structure. (A) Stage-level processing after the one-time ImageNet normalization: Stage 1 uses a $4\times4$ stride-4 stem, while subsequent stages use $2\times2$ stride-2 downsampling and repeat ConvNeXt blocks according to depths $[3,3,9,3]$. (B) An individual ConvNeXt block, comprising a $7\times7$ stride-1 depthwise convolution, channels-last Layer Normalization, linear expansion from $C$ to $4C$, GELU, linear projection from $4C$ to $C$, layer scaling, DropPath, and residual addition.}
-\label{fig:convnext_encoder}
-\end{figure}
 
 For an input feature $X$, the block transformation is formalized as
 
