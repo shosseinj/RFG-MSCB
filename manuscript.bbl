@@ -117,6 +117,12 @@ Yinpeng Chen, Xiyang Dai, Mengchen Liu, Dongdong Chen, Lu~Yuan, and Zicheng
 \newblock In {\em Proceedings of the IEEE/CVF Conference on Computer Vision and
   Pattern Recognition}, pages 11027--11036, 2020.
 
+\bibitem{femaanet}
+Ke~Peng, Bi~Hong, Yiyang Liu, Chunyu Chen, Yu~Pan, Yu~Jiang, and Xiaojuan Liu.
+\newblock {FE-MAANet}: A frequency-enhanced multi-scale adaptive attention
+  network for medical image segmentation.
+\newblock {\em Biomedical Signal Processing and Control}, 113:108884, 2026.
+
 \bibitem{senet}
 Jie Hu, Li~Shen, and Gang Sun.
 \newblock Squeeze-and-excitation networks.
@@ -134,6 +140,20 @@ Linwei Chen, Ying Fu, Lin Gu, Chenggang Yan, Tatsuya Harada, and Gao Huang.
 \newblock Frequency-aware feature fusion for dense image prediction.
 \newblock {\em IEEE Transactions on Pattern Analysis and Machine Intelligence},
   46(12):10763--10780, 2024.
+
+\bibitem{fainet}
+Dongfang Wang, Tao Zhou, Yizhe Zhang, Shangbing Gao, and Jian Yang.
+\newblock Frequency-aware interaction network for ultrasound image
+  segmentation.
+\newblock {\em IEEE Transactions on Circuits and Systems for Video Technology},
+  35(7):7020--7032, 2025.
+
+\bibitem{shapefrequency}
+Ke~Zhou, Tianxiang Chen, Jiayuan Huang, Dongmei Fu, and Chuanjiang Qi.
+\newblock Shape-aware medical image segmentation via frequency domain
+  partitioning.
+\newblock {\em Engineering Applications of Artificial Intelligence},
+  172:114324, 2026.
 
 \bibitem{polypmamba}
 Xingguo Zhu, Wei Wang, Chen Zhang, and Haifeng Wang.
