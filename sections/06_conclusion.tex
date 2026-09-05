@@ -1,25 +1,16 @@
 \section{Conclusion}\label{conclusion}
 
-We presented a ConvNeXt-Tiny U-shaped segmentation framework that uses a locally
-implemented bottleneck FAFEM and couples its descriptor to the MSCB structure through
-RFG-MSCB at the Stage-3 encoder--decoder fusion. The design
-extends bottleneck frequency enhancement into decoder refinement while preserving the
-ordinary multi-scale pathway as a reference, thereby addressing the motivation for
-sample-dependent receptive-field selection without replacing the established decoder
-path.
+We presented a ConvNeXt-Tiny U-shaped segmentation framework that couples a locally
+implemented bottleneck FAFEM descriptor to MSCB through RFG-MSCB at the Stage-3
+encoder--decoder fusion. The design extends frequency enhancement into decoder
+refinement while preserving the ordinary multi-scale pathway as a reference.
 
-The evaluation protocol reserves Kvasir-SEG and CVC-ClinicDB subsets for final
-seen-domain testing and uses CVC-300, CVC-ColonDB, and ETIS-LaribPolypDB only
-for external testing; checkpoint selection is confined to the internal validation split.
 The final model obtained mDice/mIoU of 0.932/0.883 on Kvasir-SEG and
 0.948/0.904 on CVC-ClinicDB, compared with 0.916/0.863 on CVC-300,
 0.824/0.747 on CVC-ColonDB, and 0.816/0.763 on ETIS-LaribPolypDB.
-In the displayed comparisons, these results corresponded to the highest mDice and
-mIoU on Kvasir-SEG and CVC-300, the highest mIoU and second-highest mDice on
-CVC-ClinicDB, and the second-highest mIoU on CVC-ColonDB and ETIS.
 The parameter-efficient modification is localized to Stage 3, adds 0.08 M parameters
 over FAFEM + MSCB without additional reported GFLOPs at the displayed precision,
-and retains depthwise-separable convolution in the remaining decoder. In the ablation
+and retains depthwise-separable convolution elsewhere. In the ablation
 averaged across all five datasets, Residual RFG-MSCB achieved mDice/mIoU/MAE of
 0.887/0.832/0.014, compared with 0.869/0.803/0.018 for FAFEM + MSCB.
 

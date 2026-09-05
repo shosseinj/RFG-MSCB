@@ -50,7 +50,8 @@ deviation $(0.229,0.224,0.225)$.
 The final protocol uses seeds 42, 6543, and 7777. All final and ablation
 results are reported as the mean $\pm$ sample standard deviation (ddof=1) across
 these seeds unless otherwise noted. The runs were implemented
-in PyTorch 2.5.1+cu124 on Windows, with a maximum of 200 epochs and batch size 24.
+in PyTorch 2.5.1+cu124 on Windows and executed on an NVIDIA GeForce RTX 4090,
+with a maximum of 200 epochs and batch size 24.
 AdamW with betas
 $(0.9,0.999)$ used separate parameter groups. The maximum learning rates
 were $3.0\times10^{-4}$ for the decoder and $4.5\times10^{-4}$ for the
@@ -183,12 +184,6 @@ second-highest to PFPRNet's 0.949, and the highest displayed mIoU at
 $0.904\pm0.004$. It also tied for the highest displayed $S_{\alpha}$ on
 CVC-ClinicDB at $0.958\pm0.001$ and was second-highest in $mE_{\phi}$ and
 $\max E_{\phi}$ at $0.979\pm0.001$ and $0.988\pm0.002$, respectively.
-
-The 100 Kvasir-SEG and 62 CVC-ClinicDB images were reserved exclusively for final
-seen-set testing and did not participate in training, validation, checkpoint selection,
-or hyperparameter tuning. Checkpoint selection was performed exclusively on the
-145-image internal validation subset sampled from the combined 1450-image
-Kvasir-SEG/CVC-ClinicDB train/validation pool.
 
 The main comparison is restricted to methods using comparable PraNet-style data
 protocols with closely matched Kvasir-SEG and CVC-ClinicDB partitioning. Methods

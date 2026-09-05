@@ -370,6 +370,10 @@ The selected architecture does not employ auxiliary prediction heads or deep sup
 The complete model has 30.06 M parameters and requires 27.82 GFLOPs for a
 $352\times352$ input. RFG-MSCB is localized to the Stage-3 encoder--decoder
 fusion, while the remaining decoder retains depthwise-separable convolution.
+Thus, the additional adaptive processing is confined to one fusion level rather than
+repeated across all high-resolution decoder stages. Latency, throughput, and peak
+memory were not retained with the final runs, so the comparison below supports a
+computational-complexity assessment but not a matched-hardware runtime claim.
 
 \begin{table}[htbp]
 \centering

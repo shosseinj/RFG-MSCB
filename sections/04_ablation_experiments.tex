@@ -54,12 +54,12 @@ significance is claimed.
 The qualitative examples in Fig.~\ref{fig:qualitative_ablation} complement the
 aggregate ablation results in Table~\ref{tab:ablation} by illustrating how the
 architectural changes affect the predicted mask geometry and by showing the
-corresponding heatmap overlays.
+corresponding color overlays retained with the experiment outputs.
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.98\textwidth,keepaspectratio]{media/ablation10.png}
-\caption{Qualitative comparison of the three ablation configurations across the five polyp segmentation datasets. Rows correspond to Kvasir-SEG, CVC-ClinicDB, CVC-300, CVC-ColonDB, and ETIS-LaribPolypDB; columns show the original image, ground-truth mask, Baseline prediction, FAFEM + MSCB prediction, Residual RFG-MSCB prediction, and heatmap overlay, respectively.}
+\caption{Qualitative comparison of the three ablation configurations using two displayed samples per dataset. Dataset groups correspond to Kvasir-SEG, CVC-ClinicDB, CVC-300, CVC-ColonDB, and ETIS-LaribPolypDB; columns show the original image, ground-truth mask, Baseline prediction, FAFEM + MSCB prediction, Residual RFG-MSCB prediction, and a color overlay retained with the experiment outputs. Because the visualization-generation procedure was not retained, the final column is not identified as a specific attribution, activation, or probability map.}
 \label{fig:qualitative_ablation}
 \end{figure}
 
@@ -80,7 +80,7 @@ ground-truth contour exactly. These examples therefore provide a visual compleme
 the aggregate trends in Table~\ref{tab:ablation}, rather than evidence of uniform
 improvement for every image.
 
-\subsection{Stage Placement and Generalization}
+\subsection{Stage Placement}
 
 % TODO: update placement and cross-dataset observations after the final reruns.
 Stage 3 is used in the selected configuration. The exploratory all-skip
@@ -88,9 +88,6 @@ experiment used a single seed, was incomplete, and used batch size 32 with the s
 learning rate. Its training result was lower than that of the Stage-3 configuration.
 A controlled multi-seed placement study remains future work.
 
-On the four additional datasets, the change from FAFEM + MSCB to the final guidance
-configuration was mixed in the paired seed-42 comparison: mDice decreased on
-CVC-ClinicDB and CVC-300 and increased on CVC-ColonDB and ETIS. The residual-coupling configuration
-with default initialization did not complete training and is therefore excluded from
-the quantitative ablation; initialization sensitivity remains a subject for future
-work.
+The residual-coupling configuration with default initialization did not complete
+training and is therefore excluded from the quantitative ablation; initialization
+sensitivity remains a subject for future work.

@@ -35,7 +35,12 @@ CVC-300 therefore had the strongest external result among the three evaluated
 datasets and the highest displayed mDice and mIoU in its comparison table. On
 CVC-ColonDB and ETIS, the model's mIoU was second-highest among the displayed
 methods, whereas its mDice was below the two highest displayed values. These results
-indicate uneven transfer across the external datasets rather than uniform superiority.
+show that performance varied across the external datasets rather than supporting
+uniform superiority. In the paired seed-42 ablation, the change from FAFEM + MSCB to
+Residual RFG-MSCB likewise differed by dataset. Differences in acquisition,
+annotation, and lesion appearance are plausible contributors, but were not isolated
+experimentally. Stage-3 placement was selected on the development-domain evidence
+and should not be assumed optimal for every external distribution.
 
 Although the main comparison is restricted to methods with closely matched dataset
 partitioning, differences in optimization, augmentation, backbone initialization,
@@ -55,7 +60,7 @@ batch size. Deployment-oriented placement and latency optimization remain future
 
 \begin{itemize}
 \item \textbf{No statistical significance testing:} All reported differences are descriptive; no hypothesis testing was performed.
-\item \textbf{Hardware and software records:} Exact hardware and dependency versions were not recorded.
+\item \textbf{Software records:} Runs used an NVIDIA GeForce RTX 4090 and PyTorch 2.5.1+cu124 on Windows, but the complete dependency environment was not retained.
 % TODO: replace the seed-wise training-duration limitation after the final three-seed run.
 \item \textbf{Training duration:} With zero-based epoch indices, seed 7777 stopped after epoch 167 (168 completed epochs; patience 30), while seeds 42 and 6543 completed epochs 0--199; this asymmetry may affect the mean estimate.
 \end{itemize}
