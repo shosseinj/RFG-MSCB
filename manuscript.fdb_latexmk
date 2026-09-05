@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex manuscript"] 1788586607.88015 "manuscript.aux" "manuscript.bbl" "manuscript" 1788586935.82942 0
+["bibtex manuscript"] 1788587789.10677 "manuscript.aux" "manuscript.bbl" "manuscript" 1788587792.42729 0
   "./references.bib" 1788581954 12647 bd5547a376ac0ec20d7c251a10434731 ""
   "C:/Program Files/MiKTeX/bibtex/bst/bibtex/unsrt.bst" 1291864736 18030 1376b4b231b50c66211e47e42eda2875 ""
-  "manuscript.aux" 1788586935 30975 c9792de8d1c33c49306f6918f78b2fb6 "pdflatex"
+  "manuscript.aux" 1788587791 32180 6665cec4983ce60d30d577e1f51088e5 "pdflatex"
   (generated)
   "manuscript.bbl"
   "manuscript.blg"
   (rewritten before read)
-["pdflatex"] 1788586932.66911 "c:/Users/jafari.h/Desktop/ai_project/testing/writing/manuscript.tex" "manuscript.pdf" "manuscript" 1788586935.82989 0
+["pdflatex"] 1788587789.31958 "c:/Users/jafari.h/Desktop/ai_project/testing/writing/manuscript.tex" "manuscript.pdf" "manuscript" 1788587792.42798 0
   "C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc" 1256929440 2375 baa924870cfb487815765f9094cf3728 ""
   "C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-mathex.enc" 1256929440 3486 c7eadf5dcc57b3b2d11736679f6636ba ""
   "C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc" 1256929440 2405 5dcf2c1b967ee25cc46c58cd52244aed ""
@@ -181,14 +181,15 @@
   "C:/Users/jafari.h/AppData/Roaming/MiKTeX/tex/latex/upquote/upquote.sty" 1335534756 1088 517e01cde97c1c0baf72e69d43aa5a2e ""
   "C:/Users/jafari.h/AppData/Roaming/MiKTeX/tex/latex/xurl/xurl.sty" 1641733940 4675 e4b8c405820368c2dfb03526e16d725a ""
   "c:/Users/jafari.h/Desktop/ai_project/testing/writing/manuscript.tex" 1788581954 6223 82e6eb457f3c6148c32c1d04a42e3d8d ""
-  "manuscript.aux" 1788586935 30975 c9792de8d1c33c49306f6918f78b2fb6 "pdflatex"
-  "manuscript.bbl" 1788586608 8508 030e2bf9983f2f397e72833e1d87df6d "bibtex manuscript"
+  "manuscript.aux" 1788587791 32180 6665cec4983ce60d30d577e1f51088e5 "pdflatex"
+  "manuscript.bbl" 1788587789 8508 030e2bf9983f2f397e72833e1d87df6d "bibtex manuscript"
   "manuscript.tex" 1788581954 6223 82e6eb457f3c6148c32c1d04a42e3d8d ""
   "media/ablation.png" 1788585072 2245784 004ecfebb386754dab6d6359431aa212 ""
+  "media/convnext.png" 1788587784 1177110 c949eff14314d37ff4fc9421b6021ab4 ""
   "media/hosein.png" 1788586931 1778515 59d4a9c908ad29d28c84af1fce22a8f9 ""
   "sections/01_introduction.tex" 1788581954 5708 84fcc8042c6ad45c332d06ec1c17fd71 ""
   "sections/02_related_work.tex" 1788581954 7106 913f202f73ed8b84f822cd7b80d6d692 ""
-  "sections/03_method.tex" 1788586362 17118 a825b46ce935ff737daf525a1ab857e5 ""
+  "sections/03_method.tex" 1788587633 18120 00c0856fb7c27ecafdaf33ecbf51da54 ""
   "sections/04_ablation_experiments.tex" 1788585089 5529 ea7a2ea546d8c009340a2e3878136c11 ""
   "sections/04_experiments.tex" 1788581954 19469 71921c6072616faebb79f9cd1b87947d ""
   "sections/05_discussion.tex" 1788581954 4505 43c39870f0d5bcddedc0b8d9c92c119f ""

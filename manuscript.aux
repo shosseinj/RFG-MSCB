@@ -53,7 +53,7 @@
 \@writefile{toc}{\contentsline {subsection}{Overall Architecture}{4}{section*.10}\protected@file@percent }
 \newlabel{eq:encoder_features}{{1}{4}{Overall Architecture}{equation.1}{}}
 \BKM@entry{id=11,dest={73656374696F6E2A2E3131},srcline={68}}{5C3337365C3337375C303030435C3030306F5C3030306E5C303030765C3030304E5C303030655C303030585C303030745C3030302D5C303030545C303030695C3030306E5C303030795C3030305C3034305C303030455C3030306E5C303030635C3030306F5C303030645C303030655C30303072}
-\BKM@entry{id=12,dest={73656374696F6E2A2E3132},srcline={95}}{5C3337365C3337375C303030465C303030725C303030655C303030715C303030755C303030655C3030306E5C303030635C303030795C3030302D5C303030415C303030775C303030615C303030725C303030655C3030305C3034305C303030425C3030306F5C303030745C303030745C3030306C5C303030655C3030306E5C303030655C303030635C3030306B5C3030305C3034305C303030455C3030306E5C303030685C303030615C3030306E5C303030635C303030655C3030306D5C303030655C3030306E5C30303074}
+\BKM@entry{id=12,dest={73656374696F6E2A2E3132},srcline={109}}{5C3337365C3337375C303030465C303030725C303030655C303030715C303030755C303030655C3030306E5C303030635C303030795C3030302D5C303030415C303030775C303030615C303030725C303030655C3030305C3034305C303030425C3030306F5C303030745C303030745C3030306C5C303030655C3030306E5C303030655C303030635C3030306B5C3030305C3034305C303030455C3030306E5C303030685C303030615C3030306E5C303030635C303030655C3030306D5C303030655C3030306E5C30303074}
 \newlabel{eq:overall_fafem}{{2}{5}{Overall Architecture}{equation.2}{}}
 \newlabel{eq:overall_bottleneck}{{3}{5}{Overall Architecture}{equation.3}{}}
 \newlabel{eq:overall_stage3}{{4}{5}{Overall Architecture}{equation.4}{}}
@@ -65,34 +65,36 @@
 \newlabel{eq:convnext_residual}{{9}{5}{ConvNeXt-Tiny Encoder}{equation.9}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Overall architecture and detailed mechanism of the proposed segmentation framework. The left panel shows the ConvNeXt-Tiny encoder--decoder network with bottleneck FAFEM, Stage-3 RFG-MSCB, and the prediction head. The middle panel illustrates how FAFEM independently processes low- and high-frequency components of the deepest encoder feature, concatenates them, and generates the descriptor $\mathbf  {z}_f$. The right panel details RFG-MSCB, in which a lightweight guidance MLP uses $\mathbf  {z}_f$ to adaptively weight the $1\times 1$, $3\times 3$, and $5\times 5$ depthwise branches, and bounded residual coupling introduces the guided response as a deviation from ordinary MSCB aggregation.}}{6}{figure.1}\protected@file@percent }
 \newlabel{fig:overall_architecture}{{1}{6}{Overall architecture and detailed mechanism of the proposed segmentation framework. The left panel shows the ConvNeXt-Tiny encoder--decoder network with bottleneck FAFEM, Stage-3 RFG-MSCB, and the prediction head. The middle panel illustrates how FAFEM independently processes low- and high-frequency components of the deepest encoder feature, concatenates them, and generates the descriptor $\mathbf {z}_f$. The right panel details RFG-MSCB, in which a lightweight guidance MLP uses $\mathbf {z}_f$ to adaptively weight the $1\times 1$, $3\times 3$, and $5\times 5$ depthwise branches, and bounded residual coupling introduces the guided response as a deviation from ordinary MSCB aggregation}{figure.1}{}}
-\BKM@entry{id=13,dest={73656374696F6E2A2E3133},srcline={157}}{5C3337365C3337375C3030304C5C303030695C303030675C303030685C303030745C303030775C303030655C303030695C303030675C303030685C303030745C3030305C3034305C303030525C303030655C303030735C303030695C303030645C303030755C303030615C3030306C5C3030305C3034305C303030425C3030306F5C303030745C303030745C3030306C5C303030655C3030306E5C303030655C303030635C3030306B}
-\@writefile{toc}{\contentsline {subsection}{Frequency-Aware Bottleneck Enhancement}{7}{section*.12}\protected@file@percent }
-\newlabel{eq:fafem_low_frequency}{{10}{7}{Frequency-Aware Bottleneck Enhancement}{equation.10}{}}
-\newlabel{eq:fafem_high_frequency}{{11}{7}{Frequency-Aware Bottleneck Enhancement}{equation.11}{}}
-\newlabel{eq:fafem_frequency_transforms}{{12}{7}{Frequency-Aware Bottleneck Enhancement}{equation.12}{}}
-\newlabel{eq:frequency_descriptor}{{13}{7}{Frequency-Aware Bottleneck Enhancement}{equation.13}{}}
-\newlabel{eq:fafem_residual_output}{{14}{7}{Frequency-Aware Bottleneck Enhancement}{equation.14}{}}
-\@writefile{toc}{\contentsline {subsection}{Lightweight Residual Bottleneck}{7}{section*.13}\protected@file@percent }
-\newlabel{eq:bottleneck_reduction}{{15}{7}{Lightweight Residual Bottleneck}{equation.15}{}}
-\newlabel{eq:lightweight_bottleneck}{{16}{7}{Lightweight Residual Bottleneck}{equation.16}{}}
-\BKM@entry{id=14,dest={73656374696F6E2A2E3134},srcline={188}}{5C3337365C3337375C303030525C303030655C303030735C303030695C303030645C303030755C303030615C3030306C5C3030305C3034305C303030465C303030725C303030655C303030715C303030755C303030655C3030306E5C303030635C303030795C3030302D5C303030475C303030755C303030695C303030645C303030655C303030645C3030305C3034305C3030304D5C303030755C3030306C5C303030745C303030695C3030302D5C303030535C303030635C303030615C3030306C5C303030655C3030305C3034305C303030435C3030306F5C3030306E5C303030765C3030306F5C3030306C5C303030755C303030745C303030695C3030306F5C3030306E}
-\@writefile{toc}{\contentsline {subsection}{Residual Frequency-Guided Multi-Scale Convolution}{8}{section*.14}\protected@file@percent }
-\newlabel{eq:mscb_expansion}{{17}{8}{Residual Frequency-Guided Multi-Scale Convolution}{equation.17}{}}
-\newlabel{eq:mscb_branches}{{18}{8}{Residual Frequency-Guided Multi-Scale Convolution}{equation.18}{}}
-\newlabel{eq:mscb_ordinary_aggregation}{{19}{8}{Residual Frequency-Guided Multi-Scale Convolution}{equation.19}{}}
-\newlabel{eq:rfg_logits}{{20}{8}{Residual Frequency-Guided Multi-Scale Convolution}{equation.20}{}}
-\newlabel{eq:rfg_weights}{{21}{8}{Residual Frequency-Guided Multi-Scale Convolution}{equation.21}{}}
-\newlabel{eq:rfg_guided_aggregation}{{22}{8}{Residual Frequency-Guided Multi-Scale Convolution}{equation.22}{}}
-\newlabel{eq:rfg_residual}{{23}{8}{Residual Frequency-Guided Multi-Scale Convolution}{equation.23}{}}
-\BKM@entry{id=15,dest={73656374696F6E2A2E3135},srcline={309}}{5C3337365C3337375C303030505C303030725C3030306F5C303030675C303030725C303030655C303030735C303030735C303030695C303030765C303030655C3030305C3034305C303030445C303030655C303030635C3030306F5C303030645C303030655C303030725C3030305C3034305C303030615C3030306E5C303030645C3030305C3034305C303030535C3030306B5C303030695C303030705C3030305C3034305C303030465C303030755C303030735C303030695C3030306F5C3030306E}
-\BKM@entry{id=16,dest={73656374696F6E2A2E3136},srcline={332}}{5C3337365C3337375C303030505C303030725C303030655C303030645C303030695C303030635C303030745C303030695C3030306F5C3030306E5C3030305C3034305C303030485C303030655C303030615C30303064}
-\newlabel{eq:rfg_final_output}{{24}{9}{Residual Frequency-Guided Multi-Scale Convolution}{equation.24}{}}
-\@writefile{toc}{\contentsline {subsection}{Progressive Decoder and Skip Fusion}{9}{section*.15}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{Prediction Head}{9}{section*.16}\protected@file@percent }
-\newlabel{eq:prediction_logits}{{25}{9}{Prediction Head}{equation.25}{}}
-\newlabel{eq:prediction_resize}{{26}{9}{Prediction Head}{equation.26}{}}
-\newlabel{eq:prediction_probability}{{27}{9}{Prediction Head}{equation.27}{}}
-\BKM@entry{id=17,dest={73656374696F6E2A2E3137},srcline={353}}{5C3337365C3337375C3030304D5C3030306F5C303030645C303030655C3030306C5C3030305C3034305C303030435C3030306F5C3030306D5C303030705C3030306C5C303030655C303030785C303030695C303030745C30303079}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces ConvNeXt-Tiny encoder structure. (A) Stage-level processing after the one-time ImageNet normalization: Stage 1 uses a $4\times 4$ stride-4 stem, while subsequent stages use $2\times 2$ stride-2 downsampling and repeat ConvNeXt blocks according to depths $[3,3,9,3]$. (B) An individual ConvNeXt block, comprising a $7\times 7$ stride-1 depthwise convolution, channels-last Layer Normalization, linear expansion from $C$ to $4C$, GELU, linear projection from $4C$ to $C$, layer scaling, DropPath, and residual addition.}}{7}{figure.2}\protected@file@percent }
+\newlabel{fig:convnext_encoder}{{2}{7}{ConvNeXt-Tiny encoder structure. (A) Stage-level processing after the one-time ImageNet normalization: Stage 1 uses a $4\times 4$ stride-4 stem, while subsequent stages use $2\times 2$ stride-2 downsampling and repeat ConvNeXt blocks according to depths $[3,3,9,3]$. (B) An individual ConvNeXt block, comprising a $7\times 7$ stride-1 depthwise convolution, channels-last Layer Normalization, linear expansion from $C$ to $4C$, GELU, linear projection from $4C$ to $C$, layer scaling, DropPath, and residual addition}{figure.2}{}}
+\BKM@entry{id=13,dest={73656374696F6E2A2E3133},srcline={171}}{5C3337365C3337375C3030304C5C303030695C303030675C303030685C303030745C303030775C303030655C303030695C303030675C303030685C303030745C3030305C3034305C303030525C303030655C303030735C303030695C303030645C303030755C303030615C3030306C5C3030305C3034305C303030425C3030306F5C303030745C303030745C3030306C5C303030655C3030306E5C303030655C303030635C3030306B}
+\@writefile{toc}{\contentsline {subsection}{Frequency-Aware Bottleneck Enhancement}{8}{section*.12}\protected@file@percent }
+\newlabel{eq:fafem_low_frequency}{{10}{8}{Frequency-Aware Bottleneck Enhancement}{equation.10}{}}
+\newlabel{eq:fafem_high_frequency}{{11}{8}{Frequency-Aware Bottleneck Enhancement}{equation.11}{}}
+\newlabel{eq:fafem_frequency_transforms}{{12}{8}{Frequency-Aware Bottleneck Enhancement}{equation.12}{}}
+\newlabel{eq:frequency_descriptor}{{13}{8}{Frequency-Aware Bottleneck Enhancement}{equation.13}{}}
+\newlabel{eq:fafem_residual_output}{{14}{8}{Frequency-Aware Bottleneck Enhancement}{equation.14}{}}
+\@writefile{toc}{\contentsline {subsection}{Lightweight Residual Bottleneck}{8}{section*.13}\protected@file@percent }
+\newlabel{eq:bottleneck_reduction}{{15}{8}{Lightweight Residual Bottleneck}{equation.15}{}}
+\newlabel{eq:lightweight_bottleneck}{{16}{8}{Lightweight Residual Bottleneck}{equation.16}{}}
+\BKM@entry{id=14,dest={73656374696F6E2A2E3134},srcline={202}}{5C3337365C3337375C303030525C303030655C303030735C303030695C303030645C303030755C303030615C3030306C5C3030305C3034305C303030465C303030725C303030655C303030715C303030755C303030655C3030306E5C303030635C303030795C3030302D5C303030475C303030755C303030695C303030645C303030655C303030645C3030305C3034305C3030304D5C303030755C3030306C5C303030745C303030695C3030302D5C303030535C303030635C303030615C3030306C5C303030655C3030305C3034305C303030435C3030306F5C3030306E5C303030765C3030306F5C3030306C5C303030755C303030745C303030695C3030306F5C3030306E}
+\@writefile{toc}{\contentsline {subsection}{Residual Frequency-Guided Multi-Scale Convolution}{9}{section*.14}\protected@file@percent }
+\newlabel{eq:mscb_expansion}{{17}{9}{Residual Frequency-Guided Multi-Scale Convolution}{equation.17}{}}
+\newlabel{eq:mscb_branches}{{18}{9}{Residual Frequency-Guided Multi-Scale Convolution}{equation.18}{}}
+\newlabel{eq:mscb_ordinary_aggregation}{{19}{9}{Residual Frequency-Guided Multi-Scale Convolution}{equation.19}{}}
+\newlabel{eq:rfg_logits}{{20}{9}{Residual Frequency-Guided Multi-Scale Convolution}{equation.20}{}}
+\newlabel{eq:rfg_weights}{{21}{9}{Residual Frequency-Guided Multi-Scale Convolution}{equation.21}{}}
+\newlabel{eq:rfg_guided_aggregation}{{22}{9}{Residual Frequency-Guided Multi-Scale Convolution}{equation.22}{}}
+\newlabel{eq:rfg_residual}{{23}{9}{Residual Frequency-Guided Multi-Scale Convolution}{equation.23}{}}
+\BKM@entry{id=15,dest={73656374696F6E2A2E3135},srcline={323}}{5C3337365C3337375C303030505C303030725C3030306F5C303030675C303030725C303030655C303030735C303030735C303030695C303030765C303030655C3030305C3034305C303030445C303030655C303030635C3030306F5C303030645C303030655C303030725C3030305C3034305C303030615C3030306E5C303030645C3030305C3034305C303030535C3030306B5C303030695C303030705C3030305C3034305C303030465C303030755C303030735C303030695C3030306F5C3030306E}
+\BKM@entry{id=16,dest={73656374696F6E2A2E3136},srcline={346}}{5C3337365C3337375C303030505C303030725C303030655C303030645C303030695C303030635C303030745C303030695C3030306F5C3030306E5C3030305C3034305C303030485C303030655C303030615C30303064}
+\newlabel{eq:rfg_final_output}{{24}{10}{Residual Frequency-Guided Multi-Scale Convolution}{equation.24}{}}
+\@writefile{toc}{\contentsline {subsection}{Progressive Decoder and Skip Fusion}{10}{section*.15}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{Prediction Head}{10}{section*.16}\protected@file@percent }
+\newlabel{eq:prediction_logits}{{25}{10}{Prediction Head}{equation.25}{}}
+\newlabel{eq:prediction_resize}{{26}{10}{Prediction Head}{equation.26}{}}
+\newlabel{eq:prediction_probability}{{27}{10}{Prediction Head}{equation.27}{}}
+\BKM@entry{id=17,dest={73656374696F6E2A2E3137},srcline={367}}{5C3337365C3337375C3030304D5C3030306F5C303030645C303030655C3030306C5C3030305C3034305C303030435C3030306F5C3030306D5C303030705C3030306C5C303030655C303030785C303030695C303030745C30303079}
 \citation{meganet}
 \citation{msbpnet}
 \citation{cifformer}
@@ -107,16 +109,16 @@
 \citation{cvc300}
 \citation{cvccolondb}
 \citation{etis}
-\@writefile{toc}{\contentsline {subsection}{Model Complexity}{10}{section*.17}\protected@file@percent }
-\newlabel{model-complexity}{{}{10}{Model Complexity}{section*.17}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Computational complexity comparison. Parameter counts and computational cost are taken from original publications or official implementations where available; `--' denotes an unavailable or unverified value.}}{10}{table.1}\protected@file@percent }
-\newlabel{tab:model-complexity}{{1}{10}{Computational complexity comparison. Parameter counts and computational cost are taken from original publications or official implementations where available; `--' denotes an unavailable or unverified value}{table.1}{}}
-\@writefile{toc}{\contentsline {section}{Experiments}{10}{section*.18}\protected@file@percent }
-\newlabel{experiments}{{}{10}{Experiments}{section*.18}{}}
-\@writefile{toc}{\contentsline {subsection}{Datasets and Data Splits}{10}{section*.19}\protected@file@percent }
-\newlabel{dataset}{{}{10}{Datasets and Data Splits}{section*.19}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Dataset partition used in the experiments.}}{10}{table.2}\protected@file@percent }
-\newlabel{tab:dataset-splits}{{2}{10}{Dataset partition used in the experiments}{table.2}{}}
+\@writefile{toc}{\contentsline {subsection}{Model Complexity}{11}{section*.17}\protected@file@percent }
+\newlabel{model-complexity}{{}{11}{Model Complexity}{section*.17}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Computational complexity comparison. Parameter counts and computational cost are taken from original publications or official implementations where available; `--' denotes an unavailable or unverified value.}}{11}{table.1}\protected@file@percent }
+\newlabel{tab:model-complexity}{{1}{11}{Computational complexity comparison. Parameter counts and computational cost are taken from original publications or official implementations where available; `--' denotes an unavailable or unverified value}{table.1}{}}
+\@writefile{toc}{\contentsline {section}{Experiments}{11}{section*.18}\protected@file@percent }
+\newlabel{experiments}{{}{11}{Experiments}{section*.18}{}}
+\@writefile{toc}{\contentsline {subsection}{Datasets and Data Splits}{11}{section*.19}\protected@file@percent }
+\newlabel{dataset}{{}{11}{Datasets and Data Splits}{section*.19}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Dataset partition used in the experiments.}}{11}{table.2}\protected@file@percent }
+\newlabel{tab:dataset-splits}{{2}{11}{Dataset partition used in the experiments}{table.2}{}}
 \BKM@entry{id=20,dest={73656374696F6E2A2E3230},srcline={48}}{5C3337365C3337375C303030495C3030306D5C303030705C3030306C5C303030655C3030306D5C303030655C3030306E5C303030745C303030615C303030745C303030695C3030306F5C3030306E5C3030305C3034305C303030445C303030655C303030745C303030615C303030695C3030306C5C30303073}
 \BKM@entry{id=21,dest={73656374696F6E2A2E3231},srcline={91}}{5C3337365C3337375C3030304C5C3030306F5C303030735C303030735C3030305C3034305C303030465C303030755C3030306E5C303030635C303030745C303030695C3030306F5C3030306E}
 \BKM@entry{id=22,dest={73656374696F6E2A2E3232},srcline={120}}{5C3337365C3337375C303030455C303030765C303030615C3030306C5C303030755C303030615C303030745C303030695C3030306F5C3030306E5C3030305C3034305C3030304D5C303030655C303030745C303030725C303030695C303030635C30303073}
@@ -124,34 +126,34 @@
 \citation{weightedfmeasure}
 \citation{emeasure}
 \citation{saliencyfilters}
-\@writefile{toc}{\contentsline {subsection}{Implementation Details}{11}{section*.20}\protected@file@percent }
-\newlabel{implementation-details}{{}{11}{Implementation Details}{section*.20}{}}
-\@writefile{toc}{\contentsline {subsection}{Loss Function}{11}{section*.21}\protected@file@percent }
-\newlabel{loss-function}{{}{11}{Loss Function}{section*.21}{}}
-\newlabel{eq:loss}{{28}{11}{Loss Function}{equation.28}{}}
-\newlabel{eq:boundary_loss}{{29}{11}{Loss Function}{equation.29}{}}
-\@writefile{toc}{\contentsline {subsection}{Evaluation Metrics}{11}{section*.22}\protected@file@percent }
-\newlabel{evaluation-metrics}{{}{11}{Evaluation Metrics}{section*.22}{}}
-\newlabel{eq:dice_iou}{{30}{11}{Evaluation Metrics}{equation.30}{}}
+\@writefile{toc}{\contentsline {subsection}{Implementation Details}{12}{section*.20}\protected@file@percent }
+\newlabel{implementation-details}{{}{12}{Implementation Details}{section*.20}{}}
+\@writefile{toc}{\contentsline {subsection}{Loss Function}{12}{section*.21}\protected@file@percent }
+\newlabel{loss-function}{{}{12}{Loss Function}{section*.21}{}}
+\newlabel{eq:loss}{{28}{12}{Loss Function}{equation.28}{}}
+\newlabel{eq:boundary_loss}{{29}{12}{Loss Function}{equation.29}{}}
+\@writefile{toc}{\contentsline {subsection}{Evaluation Metrics}{12}{section*.22}\protected@file@percent }
+\newlabel{evaluation-metrics}{{}{12}{Evaluation Metrics}{section*.22}{}}
+\newlabel{eq:dice_iou}{{30}{12}{Evaluation Metrics}{equation.30}{}}
 \BKM@entry{id=23,dest={73656374696F6E2A2E3233},srcline={142}}{5C3337365C3337375C3030304D5C3030306F5C303030645C303030655C3030306C5C3030305C3034305C303030535C303030655C3030306C5C303030655C303030635C303030745C303030695C3030306F5C3030306E5C3030305C3034305C303030615C3030306E5C303030645C3030305C3034305C303030455C303030765C303030615C3030306C5C303030755C303030615C303030745C303030695C3030306F5C3030306E5C3030305C3034305C303030505C303030725C3030306F5C303030745C3030306F5C303030635C3030306F5C3030306C}
 \BKM@entry{id=24,dest={73656374696F6E2A2E3234},srcline={159}}{5C3337365C3337375C303030455C303030785C303030705C303030655C303030725C303030695C3030306D5C303030655C3030306E5C303030745C303030615C3030306C5C3030305C3034305C303030535C303030745C303030755C303030645C30303079}
 \BKM@entry{id=25,dest={73656374696F6E2A2E3235},srcline={1}}{5C3337365C3337375C303030415C303030625C3030306C5C303030615C303030745C303030695C3030306F5C3030306E5C3030305C3034305C303030535C303030745C303030755C303030645C30303079}
 \BKM@entry{id=26,dest={73656374696F6E2A2E3236},srcline={8}}{5C3337365C3337375C303030415C303030625C3030306C5C303030615C303030745C303030695C3030306F5C3030306E5C3030305C3034305C303030525C303030655C303030735C303030755C3030306C5C303030745C30303073}
 \BKM@entry{id=27,dest={73656374696F6E2A2E3237},srcline={40}}{5C3337365C3337375C303030415C303030625C3030306C5C303030615C303030745C303030695C3030306F5C3030306E5C3030305C3034305C303030495C3030306E5C303030745C303030655C303030725C303030705C303030725C303030655C303030745C303030615C303030745C303030695C3030306F5C3030306E}
-\@writefile{toc}{\contentsline {subsection}{Model Selection and Evaluation Protocol}{12}{section*.23}\protected@file@percent }
-\newlabel{model-selection}{{}{12}{Model Selection and Evaluation Protocol}{section*.23}{}}
-\@writefile{toc}{\contentsline {subsection}{Experimental Study}{12}{section*.24}\protected@file@percent }
-\newlabel{experimental-study}{{}{12}{Experimental Study}{section*.24}{}}
-\@writefile{toc}{\contentsline {section}{Ablation Study}{12}{section*.25}\protected@file@percent }
-\newlabel{ablation-study}{{}{12}{Ablation Study}{section*.25}{}}
-\@writefile{toc}{\contentsline {subsection}{Ablation Results}{12}{section*.26}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Ablation comparison averaged across the five polyp segmentation datasets, with computational complexity.}}{12}{table.3}\protected@file@percent }
-\newlabel{tab:ablation}{{3}{12}{Ablation comparison averaged across the five polyp segmentation datasets, with computational complexity}{table.3}{}}
-\@writefile{toc}{\contentsline {subsection}{Ablation Interpretation}{12}{section*.27}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{Model Selection and Evaluation Protocol}{13}{section*.23}\protected@file@percent }
+\newlabel{model-selection}{{}{13}{Model Selection and Evaluation Protocol}{section*.23}{}}
+\@writefile{toc}{\contentsline {subsection}{Experimental Study}{13}{section*.24}\protected@file@percent }
+\newlabel{experimental-study}{{}{13}{Experimental Study}{section*.24}{}}
+\@writefile{toc}{\contentsline {section}{Ablation Study}{13}{section*.25}\protected@file@percent }
+\newlabel{ablation-study}{{}{13}{Ablation Study}{section*.25}{}}
+\@writefile{toc}{\contentsline {subsection}{Ablation Results}{13}{section*.26}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Ablation comparison averaged across the five polyp segmentation datasets, with computational complexity.}}{13}{table.3}\protected@file@percent }
+\newlabel{tab:ablation}{{3}{13}{Ablation comparison averaged across the five polyp segmentation datasets, with computational complexity}{table.3}{}}
+\@writefile{toc}{\contentsline {subsection}{Ablation Interpretation}{13}{section*.27}\protected@file@percent }
 \BKM@entry{id=28,dest={73656374696F6E2A2E3238},srcline={65}}{5C3337365C3337375C303030515C303030755C303030615C3030306C5C303030695C303030745C303030615C303030745C303030695C303030765C303030655C3030305C3034305C303030415C303030625C3030306C5C303030615C303030745C303030695C3030306F5C3030306E5C3030305C3034305C303030415C3030306E5C303030615C3030306C5C303030795C303030735C303030695C30303073}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Qualitative comparison of the three ablation configurations across the five polyp segmentation datasets. Rows correspond to Kvasir-SEG, CVC-ClinicDB, CVC-300, CVC-ColonDB, and ETIS-LaribPolypDB; columns show the original image, ground-truth mask, Baseline prediction, FAFEM + MSCB prediction, and Residual RFG-MSCB prediction, respectively.}}{13}{figure.2}\protected@file@percent }
-\newlabel{fig:qualitative_ablation}{{2}{13}{Qualitative comparison of the three ablation configurations across the five polyp segmentation datasets. Rows correspond to Kvasir-SEG, CVC-ClinicDB, CVC-300, CVC-ColonDB, and ETIS-LaribPolypDB; columns show the original image, ground-truth mask, Baseline prediction, FAFEM + MSCB prediction, and Residual RFG-MSCB prediction, respectively}{figure.2}{}}
-\@writefile{toc}{\contentsline {subsection}{Qualitative Ablation Analysis}{13}{section*.28}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Qualitative comparison of the three ablation configurations across the five polyp segmentation datasets. Rows correspond to Kvasir-SEG, CVC-ClinicDB, CVC-300, CVC-ColonDB, and ETIS-LaribPolypDB; columns show the original image, ground-truth mask, Baseline prediction, FAFEM + MSCB prediction, and Residual RFG-MSCB prediction, respectively.}}{14}{figure.3}\protected@file@percent }
+\newlabel{fig:qualitative_ablation}{{3}{14}{Qualitative comparison of the three ablation configurations across the five polyp segmentation datasets. Rows correspond to Kvasir-SEG, CVC-ClinicDB, CVC-300, CVC-ColonDB, and ETIS-LaribPolypDB; columns show the original image, ground-truth mask, Baseline prediction, FAFEM + MSCB prediction, and Residual RFG-MSCB prediction, respectively}{figure.3}{}}
+\@writefile{toc}{\contentsline {subsection}{Qualitative Ablation Analysis}{14}{section*.28}\protected@file@percent }
 \BKM@entry{id=29,dest={73656374696F6E2A2E3239},srcline={82}}{5C3337365C3337375C303030535C303030745C303030615C303030675C303030655C3030305C3034305C303030505C3030306C5C303030615C303030635C303030655C3030306D5C303030655C3030306E5C303030745C3030305C3034305C303030615C3030306E5C303030645C3030305C3034305C303030475C303030655C3030306E5C303030655C303030725C303030615C3030306C5C303030695C3030307A5C303030615C303030745C303030695C3030306F5C3030306E}
 \BKM@entry{id=30,dest={73656374696F6E2A2E3330},srcline={169}}{5C3337365C3337375C303030435C3030306F5C3030306D5C303030705C303030615C303030725C303030615C303030745C303030695C303030765C303030655C3030305C3034305C303030735C303030745C303030755C303030645C30303079}
 \BKM@entry{id=31,dest={73656374696F6E2A2E3331},srcline={176}}{5C3337365C3337375C303030515C303030755C303030615C3030306E5C303030745C303030695C303030745C303030615C303030745C303030695C303030765C303030655C3030305C3034305C303030615C3030306E5C303030615C3030306C5C303030795C303030735C303030695C30303073}
@@ -162,11 +164,11 @@
 \citation{mlbnet}
 \citation{mspn}
 \citation{dvfipnet}
-\@writefile{toc}{\contentsline {subsection}{Stage Placement and Generalization}{14}{section*.29}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{Comparative study}{14}{section*.30}\protected@file@percent }
-\newlabel{comparative-study}{{}{14}{Comparative study}{section*.30}{}}
-\@writefile{toc}{\contentsline {subsubsection}{Quantitative analysis}{14}{section*.31}\protected@file@percent }
-\newlabel{quantitative-analysis}{{}{14}{Quantitative analysis}{section*.31}{}}
+\@writefile{toc}{\contentsline {subsection}{Stage Placement and Generalization}{15}{section*.29}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{Comparative study}{15}{section*.30}\protected@file@percent }
+\newlabel{comparative-study}{{}{15}{Comparative study}{section*.30}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Quantitative analysis}{15}{section*.31}\protected@file@percent }
+\newlabel{quantitative-analysis}{{}{15}{Quantitative analysis}{section*.31}{}}
 \gdef \LT@i {\LT@entry 
     {1}{117.74377pt}\LT@entry 
     {1}{28.52264pt}\LT@entry 
@@ -228,14 +230,14 @@
     {5}{37.15248pt}\LT@entry 
     {1}{40.6364pt}\LT@entry 
     {5}{32.15248pt}}
-\@writefile{lot}{\contentsline {table}{\numberline {4}{Quantitative comparison on Kvasir-SEG.}}{15}{table.4}\protected@file@percent }
-\newlabel{tab:kvasir-comparison}{{4}{15}{Quantitative comparison on Kvasir-SEG}{table.4}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {5}{Quantitative comparison on CVC-ClinicDB.}}{15}{table.5}\protected@file@percent }
-\newlabel{tab:clinicdb-comparison}{{5}{15}{Quantitative comparison on CVC-ClinicDB}{table.5}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {6}{Quantitative comparison on ETIS-LaribPolypDB.}}{15}{table.6}\protected@file@percent }
-\newlabel{tab:etis-comparison}{{6}{15}{Quantitative comparison on ETIS-LaribPolypDB}{table.6}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {7}{Quantitative comparison on CVC-ColonDB.}}{15}{table.7}\protected@file@percent }
-\newlabel{tab:colondb-comparison}{{7}{15}{Quantitative comparison on CVC-ColonDB}{table.7}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4}{Quantitative comparison on Kvasir-SEG.}}{16}{table.4}\protected@file@percent }
+\newlabel{tab:kvasir-comparison}{{4}{16}{Quantitative comparison on Kvasir-SEG}{table.4}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {5}{Quantitative comparison on CVC-ClinicDB.}}{16}{table.5}\protected@file@percent }
+\newlabel{tab:clinicdb-comparison}{{5}{16}{Quantitative comparison on CVC-ClinicDB}{table.5}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {6}{Quantitative comparison on ETIS-LaribPolypDB.}}{16}{table.6}\protected@file@percent }
+\newlabel{tab:etis-comparison}{{6}{16}{Quantitative comparison on ETIS-LaribPolypDB}{table.6}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {7}{Quantitative comparison on CVC-ColonDB.}}{16}{table.7}\protected@file@percent }
+\newlabel{tab:colondb-comparison}{{7}{16}{Quantitative comparison on CVC-ColonDB}{table.7}{}}
 \citation{meganet}
 \citation{msbpnet}
 \citation{cifformer}
@@ -257,24 +259,24 @@
 \BKM@entry{id=33,dest={73656374696F6E2A2E3333},srcline={3}}{5C3337365C3337375C303030515C303030755C303030615C3030306E5C303030745C303030695C303030745C303030615C303030745C303030695C303030765C303030655C3030305C3034305C303030615C3030306E5C303030645C3030305C3034305C303030415C303030625C3030306C5C303030615C303030745C303030695C3030306F5C3030306E5C3030305C3034305C303030495C3030306E5C303030745C303030655C303030725C303030705C303030725C303030655C303030745C303030615C303030745C303030695C3030306F5C3030306E}
 \BKM@entry{id=34,dest={73656374696F6E2A2E3334},srcline={26}}{5C3337365C3337375C303030435C303030725C3030306F5C303030735C303030735C3030302D5C303030445C303030615C303030745C303030615C303030735C303030655C303030745C3030305C3034305C303030475C303030655C3030306E5C303030655C303030725C303030615C3030306C5C303030695C3030307A5C303030615C303030745C303030695C3030306F5C3030306E}
 \BKM@entry{id=35,dest={73656374696F6E2A2E3335},srcline={44}}{5C3337365C3337375C303030505C303030725C303030615C303030635C303030745C303030695C303030635C303030615C3030306C5C3030305C3034305C303030545C303030725C303030615C303030645C303030655C3030302D5C3030306F5C303030665C303030665C303030735C3030305C3034305C303030615C3030306E5C303030645C3030305C3034305C303030505C3030306C5C303030615C303030635C303030655C3030306D5C303030655C3030306E5C30303074}
-\@writefile{lot}{\contentsline {table}{\numberline {8}{Quantitative comparison on CVC-300 (EndoScene).}}{16}{table.8}\protected@file@percent }
-\newlabel{tab:cvc300-comparison}{{8}{16}{Quantitative comparison on CVC-300 (EndoScene)}{table.8}{}}
-\@writefile{toc}{\contentsline {section}{Discussion}{16}{section*.32}\protected@file@percent }
-\newlabel{discussion}{{}{16}{Discussion}{section*.32}{}}
-\@writefile{toc}{\contentsline {subsection}{Quantitative and Ablation Interpretation}{16}{section*.33}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{Cross-Dataset Generalization}{16}{section*.34}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {8}{Quantitative comparison on CVC-300 (EndoScene).}}{17}{table.8}\protected@file@percent }
+\newlabel{tab:cvc300-comparison}{{8}{17}{Quantitative comparison on CVC-300 (EndoScene)}{table.8}{}}
+\@writefile{toc}{\contentsline {section}{Discussion}{17}{section*.32}\protected@file@percent }
+\newlabel{discussion}{{}{17}{Discussion}{section*.32}{}}
+\@writefile{toc}{\contentsline {subsection}{Quantitative and Ablation Interpretation}{17}{section*.33}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{Cross-Dataset Generalization}{17}{section*.34}\protected@file@percent }
 \BKM@entry{id=36,dest={73656374696F6E2A2E3336},srcline={54}}{5C3337365C3337375C3030304C5C303030695C3030306D5C303030695C303030745C303030615C303030745C303030695C3030306F5C3030306E5C30303073}
 \BKM@entry{id=37,dest={73656374696F6E2A2E3337},srcline={63}}{5C3337365C3337375C303030465C303030755C303030745C303030755C303030725C303030655C3030305C3034305C303030575C3030306F5C303030725C3030306B}
 \BKM@entry{id=38,dest={73656374696F6E2A2E3338},srcline={1}}{5C3337365C3337375C303030435C3030306F5C3030306E5C303030635C3030306C5C303030755C303030735C303030695C3030306F5C3030306E}
 \BKM@entry{id=39,dest={73656374696F6E2A2E3339},srcline={127}}{5C3337365C3337375C303030445C303030655C303030635C3030306C5C303030615C303030725C303030615C303030745C303030695C3030306F5C3030306E5C3030305C3034305C3030306F5C303030665C3030305C3034305C303030635C3030306F5C3030306D5C303030705C303030655C303030745C303030695C3030306E5C303030675C3030305C3034305C303030695C3030306E5C303030745C303030655C303030725C303030655C303030735C30303074}
 \BKM@entry{id=40,dest={73656374696F6E2A2E3430},srcline={134}}{5C3337365C3337375C303030445C303030615C303030745C303030615C3030305C3034305C303030615C303030765C303030615C303030695C3030306C5C303030615C303030625C303030695C3030306C5C303030695C303030745C30303079}
-\@writefile{toc}{\contentsline {subsection}{Practical Trade-offs and Placement}{17}{section*.35}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{Limitations}{17}{section*.36}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{Future Work}{17}{section*.37}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{Conclusion}{17}{section*.38}\protected@file@percent }
-\newlabel{conclusion}{{}{17}{Conclusion}{section*.38}{}}
-\newlabel{declaration-of-competing-interest}{{}{17}{Declaration of competing interest}{section*.39}{}}
-\@writefile{toc}{\contentsline {section}{Declaration of competing interest}{17}{section*.39}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{Practical Trade-offs and Placement}{18}{section*.35}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{Limitations}{18}{section*.36}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{Future Work}{18}{section*.37}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{Conclusion}{18}{section*.38}\protected@file@percent }
+\newlabel{conclusion}{{}{18}{Conclusion}{section*.38}{}}
+\newlabel{declaration-of-competing-interest}{{}{18}{Declaration of competing interest}{section*.39}{}}
+\@writefile{toc}{\contentsline {section}{Declaration of competing interest}{18}{section*.39}\protected@file@percent }
 \BKM@entry{id=41,dest={73656374696F6E2A2E3431},srcline={142}}{5C3337365C3337375C303030525C303030655C303030665C303030655C303030725C303030655C3030306E5C303030635C303030655C30303073}
 \bibstyle{unsrt}
 \bibdata{references}
@@ -299,10 +301,10 @@
 \bibcite{pranetv2}{19}
 \bibcite{mlbnet}{20}
 \bibcite{mspn}{21}
-\newlabel{data-availability}{{}{18}{Data availability}{section*.40}{}}
-\@writefile{toc}{\contentsline {section}{Data availability}{18}{section*.40}\protected@file@percent }
-\newlabel{references}{{}{18}{Data availability}{section*.41}{}}
-\@writefile{toc}{\contentsline {section}{References}{18}{section*.41}\protected@file@percent }
+\newlabel{data-availability}{{}{19}{Data availability}{section*.40}{}}
+\@writefile{toc}{\contentsline {section}{Data availability}{19}{section*.40}\protected@file@percent }
+\newlabel{references}{{}{19}{Data availability}{section*.41}{}}
+\@writefile{toc}{\contentsline {section}{References}{19}{section*.41}\protected@file@percent }
 \bibcite{dvfipnet}{22}
 \bibcite{kvasirseg}{23}
 \bibcite{cvcclinicdb}{24}
@@ -313,4 +315,4 @@
 \bibcite{weightedfmeasure}{29}
 \bibcite{emeasure}{30}
 \bibcite{saliencyfilters}{31}
-\gdef \@abspage@last{19}
+\gdef \@abspage@last{20}

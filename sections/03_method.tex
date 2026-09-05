@@ -67,11 +67,25 @@ segmentation mask.
 
 \subsection{ConvNeXt-Tiny Encoder}
 
-The encoder employs ConvNeXt-Tiny with stage depths $[3,3,9,3]$ and channel dimensions $[96,192,384,768]$. Before entering the encoder, each RGB image is normalized using the ImageNet statistics $\boldsymbol{\mu}=(0.485,0.456,0.406)$ and $\boldsymbol{\sigma}=(0.229,0.224,0.225)$.
+The encoder employs ConvNeXt-Tiny with stage depths $[3,3,9,3]$ and channel dimensions $[96,192,384,768]$. Before entering the encoder, each RGB image is normalized once using the ImageNet statistics $\boldsymbol{\mu}=(0.485,0.456,0.406)$ and $\boldsymbol{\sigma}=(0.229,0.224,0.225)$.
 
-The first stage uses a $4\times4$ convolution with stride 4 to generate $F_1$. Each subsequent stage begins with spatial downsampling using a $2\times2$ stride-2 convolution.
+Figure~\ref{fig:convnext_encoder} summarizes the stage-level organization and the
+internal structure of an individual ConvNeXt block. The first stage begins with a
+$4\times4$ stride-4 stem convolution, whereas Stages 2--4 begin with a $2\times2$
+stride-2 downsampling convolution. Each stage then applies its prescribed number of
+blocks. Within each block, a $7\times7$ stride-1 depthwise convolution is followed by
+channels-last Layer Normalization and a pointwise MLP that expands $C$ to $4C$, applies
+GELU, and projects $4C$ back to $C$. Layer scaling and stochastic depth are applied
+before the transformed feature is added to the residual path.
 
-For an input feature $X$, a ConvNeXt block first performs a $7\times7$ depthwise convolution. The resulting feature is normalized in channels-last format and processed by a pointwise multilayer perceptron with a fourfold channel expansion:
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=0.88\textwidth,height=0.78\textheight,keepaspectratio]{media/convnext.png}
+\caption{ConvNeXt-Tiny encoder structure. (A) Stage-level processing after the one-time ImageNet normalization: Stage 1 uses a $4\times4$ stride-4 stem, while subsequent stages use $2\times2$ stride-2 downsampling and repeat ConvNeXt blocks according to depths $[3,3,9,3]$. (B) An individual ConvNeXt block, comprising a $7\times7$ stride-1 depthwise convolution, channels-last Layer Normalization, linear expansion from $C$ to $4C$, GELU, linear projection from $4C$ to $C$, layer scaling, DropPath, and residual addition.}
+\label{fig:convnext_encoder}
+\end{figure}
+
+For an input feature $X$, the block transformation is formalized as
 
 \begin{equation}
 \begin{aligned}
