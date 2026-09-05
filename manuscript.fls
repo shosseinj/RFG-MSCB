@@ -1,6 +1,6 @@
-PWD c:\Users\jafari.h\Desktop\ai_project\testing\writing
+PWD C:\Users\jafari.h\Desktop\ai_project\testing\writing
 INPUT C:\Users\jafari.h\AppData\Local\MiKTeX\miktex\data\le\pdftex\pdflatex.fmt
-INPUT c:\Users\jafari.h\Desktop\ai_project\testing\writing\manuscript.tex
+INPUT manuscript.tex
 OUTPUT manuscript.log
 INPUT C:\Program Files\MiKTeX\tex\latex\hyperref\hyperref.sty
 INPUT C:\Program Files\MiKTeX\tex\latex\url\url.sty
@@ -315,13 +315,13 @@ INPUT .\sections\04_ablation_experiments.tex
 INPUT .\sections\04_ablation_experiments.tex
 INPUT .\sections\04_ablation_experiments.tex
 INPUT sections\04_ablation_experiments.tex
-INPUT .\media\ablation.png
-INPUT .\media\ablation.png
-INPUT .\media\ablation.png
-INPUT .\media\ablation.png
-INPUT .\media\ablation.png
-INPUT .\media\ablation.png
-INPUT .\media\ablation.png
+INPUT .\media\ablation10.png
+INPUT .\media\ablation10.png
+INPUT .\media\ablation10.png
+INPUT .\media\ablation10.png
+INPUT .\media\ablation10.png
+INPUT .\media\ablation10.png
+INPUT .\media\ablation10.png
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\ec-lmbx10.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\ec-lmbx7.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\ec-lmr7.tfm
