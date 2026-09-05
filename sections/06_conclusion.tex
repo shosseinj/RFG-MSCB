@@ -14,10 +14,14 @@ for external testing; checkpoint selection is confined to the internal validatio
 The final model obtained mDice/mIoU of 0.932/0.883 on Kvasir-SEG and
 0.948/0.904 on CVC-ClinicDB, compared with 0.916/0.863 on CVC-300,
 0.824/0.747 on CVC-ColonDB, and 0.816/0.763 on ETIS-LaribPolypDB.
+In the displayed comparisons, these results corresponded to the highest mDice and
+mIoU on Kvasir-SEG and CVC-300, the highest mIoU and second-highest mDice on
+CVC-ClinicDB, and the second-highest mIoU on CVC-ColonDB and ETIS.
 The parameter-efficient modification is localized to Stage 3, adds 0.08 M parameters
 over FAFEM + MSCB without additional reported GFLOPs at the displayed precision,
-and retains
-depthwise-separable convolution in the remaining decoder.
+and retains depthwise-separable convolution in the remaining decoder. In the ablation
+averaged across all five datasets, Residual RFG-MSCB achieved mDice/mIoU/MAE of
+0.887/0.832/0.014, compared with 0.869/0.803/0.018 for FAFEM + MSCB.
 
 Future work should examine placement across multiple seeds, separate residualization
 from frequency conditioning, and evaluate domain-adaptation strategies for the
