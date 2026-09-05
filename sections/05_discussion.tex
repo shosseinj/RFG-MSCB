@@ -48,17 +48,20 @@ model-selection criteria, and implementation details remain.
 As summarized in Table~\ref{tab:model-complexity}, the final architecture has
 30.06 M parameters and requires 27.82 GFLOPs at $352\times352$. Matched-hardware
 latency was not measured. Relative to FAFEM + MSCB, the final modification adds
-0.08 M parameters and 0.304 GFLOPs. The final model localizes the new guidance to the Stage-3
-decoder--encoder fusion. Systematic multi-seed evaluation of alternative placements
-and deployment-oriented latency optimization remain future work.
+0.08 M parameters and 0.304 GFLOPs. The Stage-3 localization is also consistent
+with the single-seed MSCB-lite placement analysis, where extending refinement to
+additional skip levels increased computational cost without improving the
+five-dataset macro-average overlap metrics. This placement evidence concerns ordinary
+MSCB-lite; Residual RFG-MSCB itself was not independently evaluated at every decoder
+stage. Deployment-oriented latency optimization remains future work.
 
 \subsection{Limitations}
 
 \begin{itemize}
 \item \textbf{No statistical significance testing:} All reported differences are descriptive; no hypothesis testing was performed.
-\item \textbf{Seed coverage:} The controlled comparisons use three training seeds, which limits characterization of run-to-run variability.
+\item \textbf{Seed coverage:} The Table~\ref{tab:ablation} comparisons use three training seeds, which limits characterization of run-to-run variability.
 \item \textbf{Component isolation:} Residualization and frequency conditioning were not independently disentangled.
-\item \textbf{Placement evaluation:} Alternative RFG-MSCB placements were not compared in a controlled multi-seed study.
+\item \textbf{Placement evaluation:} MSCB-lite placement was examined using matched single-seed runs, whereas a multi-seed placement study of Residual RFG-MSCB itself was not performed.
 \item \textbf{Runtime evaluation:} No matched-hardware latency or peak-memory benchmark was retained.
 \item \textbf{External generalization:} Performance was lower on CVC-ColonDB and ETIS-LaribPolypDB than on CVC-300, motivating broader evaluation across acquisition domains.
 \end{itemize}
@@ -66,7 +69,7 @@ and deployment-oriented latency optimization remain future work.
 \subsection{Future Work}
 
 \begin{itemize}
-\item Systematic multi-seed placement ablation with controlled batch size and learning rate.
+\item Systematic multi-seed placement evaluation of Residual RFG-MSCB with controlled batch size and learning rate.
 \item Disentanglement of residualization, frequency conditioning, and initialization through factorial experiments.
 \item Domain adaptation or targeted augmentation for CVC-ColonDB and ETIS-LaribPolypDB.
 \item Evaluation of between-configuration differences using larger seed ensembles or bootstrap confidence intervals.

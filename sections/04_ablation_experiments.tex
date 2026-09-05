@@ -46,6 +46,43 @@ Relative to FAFEM + MSCB, Residual RFG-MSCB adds 0.5 points in mDice, 0.8 in mIo
 
 The progression increases parameters from 29.19 M for the Baseline to 29.36 M with FAFEM, 29.98 M with MSCB, and 30.06 M with Residual RFG-MSCB. GFLOPs increase from 27.202 to 27.208, 27.514, and 27.818, respectively. Thus the complete configuration adds 0.87 M parameters and 0.616 GFLOPs over the Baseline; the final residual frequency-guided step accounts for 0.08 M parameters and 0.304 GFLOPs. Together with the metric changes, this four-stage pattern supports positive descriptive contributions from each added component at the reported aggregate level. No statistical significance is claimed.
 
+\subsection{MSCB-lite Placement Analysis}
+\label{mscb-placement}
+
+Since Table~\ref{tab:ablation} identifies multi-scale refinement as an effective
+component, we further examined whether extending MSCB-lite beyond the Stage-3 fusion
+provides additional benefit. The matched comparison evaluates refinement at Stage 3,
+Stages 3 + 2, and Stages 3 + 2 + 1 using the same five-dataset macro-averaging
+procedure.
+
+\begin{table}[htbp]
+\centering
+\caption{Single-seed placement analysis of MSCB-lite using the same five-dataset macro-averaging procedure.}
+\label{tab:mscb-placement}
+\small
+\setlength{\tabcolsep}{5pt}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{lcccc}
+\toprule
+Placement & mDice & mIoU & Params (M) & GFLOPs \\
+\midrule
+Stage 3 & \textbf{0.8685} & \textbf{0.8027} & \textbf{29.983} & \textbf{27.818} \\
+Stages 3 + 2 & 0.8640 & 0.7985 & 30.148 & 28.468 \\
+Stages 3 + 2 + 1 & 0.8660 & 0.8014 & 30.193 & 29.197 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Stage 3 alone gives the highest observed mDice (0.8685) and mIoU (0.8027).
+Extending MSCB-lite to Stage 2 decreases both overlap metrics; extension to Stage 1
+recovers part of that loss but does not exceed Stage 3 alone. Meanwhile, GFLOPs rise
+from 27.818 to 28.468 and 29.197, with corresponding parameter increases. Stage 3
+therefore provides the most favorable observed accuracy--complexity trade-off among
+the tested MSCB-lite placements. Based on this placement behavior, multi-scale
+refinement was retained only at Stage 3 when introducing the residual frequency-guided
+formulation, avoiding the additional cost of distributing MSCB across shallower decoder
+levels.
+
 The qualitative examples in Fig.~\ref{fig:qualitative_ablation} complement the
 aggregate ablation results in Table~\ref{tab:ablation} by illustrating how the
 architectural changes affect predicted mask geometry in the displayed samples.
@@ -73,8 +110,3 @@ differ mainly in boundary position and extent, and no configuration reproduces e
 ground-truth contour exactly. These examples therefore provide a visual complement to
 the aggregate trends in Table~\ref{tab:ablation}, rather than evidence of uniform
 improvement for every image.
-
-\subsection{Stage Placement}
-
-The selected configuration localizes RFG-MSCB to Stage 3. Systematic multi-seed
-evaluation of alternative placements remains future work.
