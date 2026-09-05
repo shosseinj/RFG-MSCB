@@ -28,9 +28,9 @@ Kvasir-SEG, CVC-ClinicDB, CVC-300, CVC-ColonDB, and ETIS-LaribPolypDB.
 Model & mDice & mIoU & $F_{\beta}^{w}$ & $S_{\alpha}$ & $mE_{\phi}$ & $\max E_{\phi}$ & MAE & Params (M) & GFLOPs & Latency (ms) & FPS & Peak VRAM (MiB) \\
 \midrule
 Baseline & \meanstd{0.827}{0.007} & \meanstd{0.762}{0.008} & \meanstd{0.811}{0.006} & \meanstd{0.890}{0.004} & \meanstd{0.907}{0.005} & \meanstd{0.916}{0.005} & \meanstd{0.019}{0.000} & 29.190 & 27.202 & \meanstd{10.573}{0.196} & 94.585 & 248.859 \\
- + FAFEM & \meanstd{0.864}{0.002} & \meanstd{0.797}{0.001} & \meanstd{0.841}{0.003} & \meanstd{0.908}{0.001} & \meanstd{0.934}{0.002} & \meanstd{0.945}{0.002} & \meanstd{0.018}{0.000} & 29.360 & 27.208 & \meanstd{11.014}{0.137} & 90.794 & 249.832 \\
- + MSCB & \meanstd{0.867}{0.002} & \meanstd{0.802}{0.003} & \meanstd{0.845}{0.003} & \meanstd{0.910}{0.002} & \meanstd{0.937}{0.001} & \meanstd{0.946}{0.001} & \meanstd{0.018}{0.000} & 29.983 & 27.818 & \meanstd{11.630}{0.137} & 85.986 & 252.876 \\
- + Residual RFG-MSCB & \meanstd{0.872}{0.004} & \meanstd{0.810}{0.004} & \meanstd{0.849}{0.003} & \meanstd{0.914}{0.003} & \meanstd{0.941}{0.001} & \meanstd{0.949}{0.001} & \meanstd{0.018}{0.000} & 30.057 & 27.818 & \meanstd{11.806}{0.023} & 84.701 & 253.306 \\
+FAFEM & \meanstd{0.864}{0.002} & \meanstd{0.797}{0.001} & \meanstd{0.841}{0.003} & \meanstd{0.908}{0.001} & \meanstd{0.934}{0.002} & \meanstd{0.945}{0.002} & \meanstd{0.018}{0.000} & 29.360 & 27.208 & \meanstd{11.014}{0.137} & 90.794 & 249.832 \\
+FAFEM + MSCB & \meanstd{0.867}{0.002} & \meanstd{0.802}{0.003} & \meanstd{0.845}{0.003} & \meanstd{0.910}{0.002} & \meanstd{0.937}{0.001} & \meanstd{0.946}{0.001} & \meanstd{0.018}{0.000} & 29.983 & 27.818 & \meanstd{11.630}{0.137} & 85.986 & 252.876 \\
+Residual RFG-MSCB (Ours) & \meanstd{0.872}{0.004} & \meanstd{0.810}{0.004} & \meanstd{0.849}{0.003} & \meanstd{0.914}{0.003} & \meanstd{0.941}{0.001} & \meanstd{0.949}{0.001} & \meanstd{0.018}{0.000} & 30.057 & 27.818 & \meanstd{11.806}{0.023} & 84.701 & 253.306 \\
 \bottomrule
 \end{tabular}%
 }
@@ -81,10 +81,11 @@ Extending MSCB-lite to Stage 2 decreases both overlap metrics; extension to Stag
 recovers part of that loss but does not exceed Stage 3 alone. Meanwhile, GFLOPs rise
 from 27.818 to 28.468 and 29.197, with corresponding parameter increases. Stage 3
 therefore provides the most favorable observed accuracy--complexity trade-off among
-the tested MSCB-lite placements. Based on this placement behavior, multi-scale
-refinement was retained only at Stage 3 when introducing the residual frequency-guided
-formulation, avoiding the additional cost of distributing MSCB across shallower decoder
-levels.
+the tested MSCB-lite placements. This placement behavior provides empirical motivation
+for retaining multi-scale refinement at Stage 3 when introducing the residual
+frequency-guided formulation, while avoiding the additional cost of distributing MSCB
+across shallower decoder levels. Residual RFG-MSCB itself was not exhaustively tested
+at alternative decoder-stage placements.
 
 The qualitative examples in Fig.~\ref{fig:qualitative_ablation} complement the
 aggregate ablation results in Table~\ref{tab:ablation} by illustrating how the
@@ -93,23 +94,24 @@ architectural changes affect predicted mask geometry in the displayed samples.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.98\textwidth,keepaspectratio]{media/ablation10.png}
-\caption{Qualitative comparison of the ablation configurations using two displayed samples per dataset. Dataset groups correspond to Kvasir-SEG, CVC-ClinicDB, CVC-300, CVC-ColonDB, and ETIS-LaribPolypDB; columns show the original image, ground-truth mask, Baseline prediction, FAFEM + MSCB prediction, and Residual RFG-MSCB prediction.}
+\caption{Qualitative comparison of the ablation configurations using two displayed samples per dataset. Dataset groups correspond to Kvasir-SEG, CVC-ClinicDB, CVC-300, CVC-ColonDB, and ETIS-LaribPolypDB; columns show, from left to right, the original image, ground-truth mask, Baseline prediction, FAFEM prediction, FAFEM + MSCB prediction, and Residual RFG-MSCB prediction.}
 \label{fig:qualitative_ablation}
 \end{figure}
 
 \subsection{Qualitative Ablation Analysis}
 
-Relative to the Baseline, FAFEM + MSCB produces mask shapes with closer spatial
-coverage or boundary alignment in several displayed examples. In the displayed
-CVC-ColonDB case with an elongated annotation, the disconnected Baseline regions are
-replaced by a more coherent prediction. For the displayed small-lesion
-ETIS-LaribPolypDB example, the Baseline does not recover the annotated region,
-whereas both augmented configurations produce a localized response.
+Figure~\ref{fig:qualitative_ablation} shows the Baseline, FAFEM, FAFEM + MSCB,
+and Residual RFG-MSCB predictions in the same order as the quantitative ablation.
+The added components alter mask coverage and boundary position across the displayed
+examples. In the CVC-ColonDB case with an elongated annotation, the disconnected
+Baseline regions are replaced by more coherent predictions from FAFEM, FAFEM + MSCB,
+and Residual RFG-MSCB.
 
 Residual RFG-MSCB yields a more coherent or better-localized mask in selected cases,
 including the displayed CVC-ColonDB case, while its effect varies among the selected
-images. In the displayed Kvasir-SEG, CVC-ClinicDB, and CVC-300 examples, the predictions
-differ mainly in boundary position and extent, and no configuration reproduces every
-ground-truth contour exactly. These examples therefore provide a visual complement to
+images. In the displayed Kvasir-SEG, CVC-ClinicDB, CVC-300, and small-lesion ETIS
+examples, the four configurations differ mainly in boundary position and extent, and
+no configuration reproduces every ground-truth contour exactly. These examples
+therefore provide a visual complement to
 the aggregate trends in Table~\ref{tab:ablation}, rather than evidence of uniform
 improvement for every image.

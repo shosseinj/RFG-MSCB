@@ -8,7 +8,7 @@ CVC-300 \cite{cvc300}, CVC-ColonDB \cite{cvccolondb}, and
 ETIS-LaribPolypDB \cite{etis}. Following a PraNet-style data partition,
 100 of the 1000 Kvasir-SEG images and 62 of the 612 CVC-ClinicDB images
 were reserved as final seen test sets. The remaining 900 Kvasir-SEG and
-550 CVC-ClinicDB images formed a combined 1450-image train/validation pool.
+550 CVC-ClinicDB images formed a combined 1450-image development pool.
 This pool was split deterministically into 1305 training images and 145 internal
 validation images using shuffled sampling with \texttt{random\_state=42}; dataset
 membership was identical across all training seeds.
@@ -28,7 +28,7 @@ model selection.
 \renewcommand{\arraystretch}{1.1}
 \begin{tabular}{lrrr}
 \toprule
-Dataset & Total & Train & Test \\
+Dataset & Total & Development pool & Test \\
 \midrule
 Kvasir-SEG & 1000 & 900 & 100 \\
 CVC-ClinicDB & 612 & 550 & 62 \\

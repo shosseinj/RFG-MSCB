@@ -372,8 +372,10 @@ $352\times352$ input. The FAFEM + MSCB configuration has 29.983 M parameters
 and 27.818 GFLOPs; the final RFG modification therefore adds about 0.074 M
 parameters, while GFLOPs are effectively unchanged at the displayed precision.
 Adaptive computation is localized to the Stage-3 encoder--decoder fusion, and the
-remaining decoder stages retain depthwise-separable convolution, consistent with the
-MSCB-lite placement analysis in Table~\ref{tab:mscb-placement}. Matched-hardware
+remaining decoder stages retain depthwise-separable convolution. This localization is
+empirically motivated by the single-seed MSCB-lite placement analysis in
+Table~\ref{tab:mscb-placement}, rather than an exhaustive placement evaluation of
+Residual RFG-MSCB. Matched-hardware
 runtime efficiency for the four internal configurations is reported with the ablation
 results in Table~\ref{tab:ablation}.
 
