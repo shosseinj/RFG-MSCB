@@ -51,6 +51,34 @@ count increases from 29.19 M to 29.98 M and then 30.06 M, changes of 0.79 M and
 changes of 0.616 and 0.000. These are descriptive comparisons; no statistical
 significance is claimed.
 
+The qualitative examples in Fig.~\ref{fig:qualitative_ablation} complement the
+aggregate ablation results in Table~\ref{tab:ablation} by illustrating how the
+architectural changes affect the predicted mask geometry.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.98\textwidth,keepaspectratio]{media/ablation.png}
+\caption{Qualitative comparison of the three ablation configurations across the five polyp segmentation datasets. Rows correspond to Kvasir-SEG, CVC-ClinicDB, CVC-300, CVC-ColonDB, and ETIS-LaribPolypDB; columns show the original image, ground-truth mask, Baseline prediction, FAFEM + MSCB prediction, and Residual RFG-MSCB prediction, respectively.}
+\label{fig:qualitative_ablation}
+\end{figure}
+
+\subsection{Qualitative Ablation Analysis}
+
+Relative to the Baseline, FAFEM + MSCB produces mask shapes with closer spatial
+coverage or boundary alignment in several examples. The clearest structural change
+appears for CVC-ColonDB, where the disconnected Baseline regions are replaced by a
+single prediction that better preserves the elongated ground-truth shape. For the
+small ETIS-LaribPolypDB lesion, the Baseline misses the lesion, whereas both augmented
+configurations produce a localized response.
+
+Residual RFG-MSCB yields a more coherent or better-localized mask in selected cases,
+including the CVC-ColonDB example, while its effect varies with lesion size and
+appearance. In the Kvasir-SEG, CVC-ClinicDB, and CVC-300 rows, the three predictions
+differ mainly in boundary position and extent, and no configuration reproduces every
+ground-truth contour exactly. These examples therefore provide a visual complement to
+the aggregate trends in Table~\ref{tab:ablation}, rather than evidence of uniform
+improvement for every image.
+
 \subsection{Stage Placement and Generalization}
 
 % TODO: update placement and cross-dataset observations after the final reruns.
