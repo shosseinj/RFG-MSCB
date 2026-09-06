@@ -1,11 +1,11 @@
-\section{Ablation Study}\label{ablation-study}
+\subsection{Ablation Study}\label{ablation-study}
 
 The ablation design compares four configurations in sequence: Baseline,
 FAFEM, FAFEM + MSCB, and Residual RFG-MSCB (Ours). This sequence first isolates
 bottleneck frequency-aware enhancement, then adds Stage-3 multi-scale refinement,
 and finally assesses the residual frequency-guided modification.
 
-\subsection{Ablation Results}
+\subsubsection{Ablation Results}
 
 The Baseline serves as the reference configuration without FAFEM and MSCB. Adding
 FAFEM introduces bottleneck frequency-aware enhancement, while FAFEM + MSCB further
@@ -39,7 +39,7 @@ Residual RFG-MSCB (Ours) & \meanstd{0.872}{0.004} & \meanstd{0.810}{0.004} & \me
 \parbox{0.99\textwidth}{\footnotesize Runtime protocol: PyTorch 2.5.1+cu124 and CUDA 12.4 on an NVIDIA GeForce RTX 4090; FP16 autocast, batch size 1, $1\times3\times352\times352$ input, forward pass only, and no TTA, I/O, or post-processing. Each of three repetitions used 100 warm-ups and 500 synchronized CUDA-event measurements. Latency variation is the sample standard deviation of the three repetition means.}
 \end{table*}
 
-\subsection{Ablation Interpretation}
+\subsubsection{Ablation Interpretation}
 
 Table~\ref{tab:ablation} presents the macro-averaged ablation results across the five polyp segmentation datasets. Relative to the Baseline, FAFEM increases mDice and mIoU by 3.7 and 3.5 percentage points, respectively. The corresponding changes are +3.0 points in $F_{\beta}^{w}$, +1.8 in $S_{\alpha}$, +2.7 in $mE_{\phi}$, and +2.9 in $\max E_{\phi}$, while MAE decreases by 0.1 point from 0.019 to 0.018.
 
