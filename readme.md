@@ -48,3 +48,16 @@ xelatex manuscript.tex
 ## Research Status
 
 This repository documents work in progress. Experimental values, tables, and manuscript text may be revised as additional validation and ablation studies are completed.
+
+
+## Goal
+
+This repository is the evidence and manuscript workspace for defining RFG-MSCB precisely, checking its provenance, and reporting the associated polyp-segmentation experiments without mixing current results with archival drafts.
+
+## Installation
+
+No Python environment is required to read the evidence package. To build the paper, install a LaTeX distribution that provides XeLaTeX and BibTeX, then run the commands in the building section from the repository root.
+
+## Working with the Repository
+
+Edit the paper through `manuscript.tex`, `sections/`, and `references.bib`. Treat files whose names contain `AUDIT` and the material under `paper_evidence*/` as traceability records: numerical changes should be checked against those files before manuscript tables or claims are updated. Model development and inference belong in the linked `Convnext-unet` repository.
