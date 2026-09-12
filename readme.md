@@ -1,26 +1,50 @@
-# OpenCode + K-Dense Scientific Agent Skills setup
+# RFG-MSCB: Frequency-Guided Multi-Scale Refinement for Polyp Segmentation
 
-This ZIP is a small Windows helper package for installing K-Dense Scientific
-Agent Skills into an OpenCode paper project.
+This repository contains an ongoing research project on colorectal polyp segmentation using a ConvNeXt-Tiny encoder and a U-shaped decoder. The main focus is on using information extracted from low- and high-frequency components at the bottleneck to guide multi-scale feature refinement in the decoder.
 
-It does NOT bundle a stale copy of the upstream skills. Instead, the installer
-clones the current upstream repository when you run it, then installs skills
-project-locally under `.opencode/skills/`.
+## Method Overview
 
-Files:
+The framework combines three main components:
 
-- install_kdense_opencode.ps1
-- verify_opencode_skills.ps1
-- OPENCODE_PAPER_WORKFLOW.md
+- **ConvNeXt-Tiny encoder** with four hierarchical stages.
+- **Frequency-Aware Feature Enhancement Module (FAFEM)** at the bottleneck, where low- and high-frequency components are processed separately and summarized into a compact frequency descriptor.
+- **Residual Frequency-Guided Multi-Scale Convolution Block (RFG-MSCB)** at the Stage-3 encoder-decoder fusion, where the bottleneck descriptor modulates parallel depthwise branches with different receptive fields.
 
-Typical use:
+FAFEM and the underlying MSCB operations are adopted prior components rather than claimed inventions. MSCB is associated with the published EMCAD architecture; the contribution investigated here is the bounded residual, cross-level coupling that uses the bottleneck frequency descriptor to modulate Stage-3 MSCB branches. The exact scholarly source for the adopted FAFEM remains unresolved in the repository audit and should not be inferred from the project name.
 
-1. Put these files in the root of the LaTeX project.
-2. Open PowerShell there.
-3. Run:
+For a 352 × 352 input, the encoder produces feature maps with channel dimensions `[96, 192, 384, 768]`. The frequency descriptor generated at the bottleneck is 1536-dimensional and is used to adapt the relative contribution of 1 × 1, 3 × 3, and 5 × 5 depthwise branches.
 
-   Set-ExecutionPolicy -Scope Process Bypass
-   .\install_kdense_opencode.ps1
+## Research Motivation
 
-4. Restart OpenCode in the same project.
-5. Read OPENCODE_PAPER_WORKFLOW.md for prompts and workflow.
+Polyp appearance varies substantially in size, contrast, texture, and boundary definition. The project investigates whether deep frequency information can provide useful global guidance for selecting receptive fields during decoder refinement, while retaining a stable residual path to the ordinary multi-scale convolution response.
+
+## Experimental Protocol
+
+The current study uses five public polyp-segmentation datasets and evaluates model variants across multiple random seeds. The experimental design includes controlled ablations from the baseline model through frequency enhancement and multi-scale refinement to the complete residual frequency-guided formulation.
+
+The manuscript currently reports a five-dataset, three-seed mean mDice of **0.872** for the complete model, together with improvements across the positive-valued evaluation metrics considered in the study. These values should be interpreted as results from the current experimental version of the project rather than as a finalized publication claim.
+
+## Repository Contents
+
+- `manuscript.tex` — main LaTeX manuscript
+- `sections/` — manuscript sections
+- `media/` — architecture and qualitative figures
+- `references.bib` — bibliography
+- experimental and manuscript-support material used during the study
+
+The implementation associated with the segmentation experiments is maintained in the related [Convnext-unet](https://github.com/shosseinj/Convnext-unet) repository.
+
+## Building the Manuscript
+
+The manuscript can be compiled with a standard LaTeX environment, for example:
+
+```bash
+xelatex manuscript.tex
+bibtex manuscript
+xelatex manuscript.tex
+xelatex manuscript.tex
+```
+
+## Research Status
+
+This repository documents work in progress. Experimental values, tables, and manuscript text may be revised as additional validation and ablation studies are completed.
